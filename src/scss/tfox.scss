@@ -1,12 +1,19 @@
+@font-face {
+    font-family: 'CrimsonText-Regular';
+    src: url('CrimsonText-Regular') format('truetype');
+}
 
 // font families
-$font-regular: "Helvetica Neue", Helvetica, sans-serif;
-// $font-thin: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$font-bodycopy: "CrimsonText-Regular", "Times New Roman", Times, serif;
 
 // color constants
 
 // general colors
 $color-zalando: #fb9521;
+$color-white: #f6f6f6;
+$color-gray: #aaaaaa;
+$color-black: #444444;
 
 // background colors
 $bg-color-header: #333333;
@@ -33,6 +40,12 @@ body {
   margin-top: 40px;
   background-color: $bg-color-header;
   font-family: $font-regular;
+}
+
+.bodycopy {
+    font-family: $font-bodycopy;
+    font-weight: 300;
+    font-size: 1.8rem;
 }
 
 .no-margin {
@@ -77,25 +90,44 @@ header {
 
     &.white {
         background-color: $bg-color-white;
+        color: $color-black;
     }
     &.gray {
         background-color: $bg-color-gray;
+        color: $color-white;
     }
     &.black {
         background-color: $bg-color-black;
+        color: $color-white;
     }
 }
 
 .fullsize-media {
     width: 100%;
     height: auto;
-    max-height: 500px;
+    max-height: 400px;
     position: relative;
     overflow: hidden;
 
     video {
         width: 100%;
         height: auto;
+    }
+
+    .teaser {
+        background-color: transparent;
+        position: absolute;
+        z-index: 1000;
+        width: 100%;
+        position: absolute;
+        top: 20%;
+        transform: translateY(-50%);
+
+        h1 {
+            font-weight: 400;
+            font-size: 7.0rem;
+            color: $color-white;
+        }
     }
 }
 
@@ -226,5 +258,45 @@ header {
         text-align: center;
         font-weight: 300;
         font-size: 3.0rem;
+    }
+}
+
+// footer
+
+footer {
+    padding: 40px 0;
+    background-color: $bg-color-black;
+}
+
+.footer-group {
+    padding: 0 20px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 1.6rem;
+
+    .title {
+        display: block;
+        border-bottom: 1px solid $color-gray;
+        color: $color-gray;
+        text-transform: uppercase;
+    }
+
+    ul {
+        display: block;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        li {
+            display: block;
+            padding: 4px 0;
+            margin: 0;
+            a {
+                color: $color-white;
+                &:hover {
+                    color: $color-zalando;
+                    text-decoration: none;
+                }
+            }
+        }
     }
 }

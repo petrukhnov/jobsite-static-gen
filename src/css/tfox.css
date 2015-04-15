@@ -1,10 +1,19 @@
+@font-face {
+  font-family: 'CrimsonText-Regular';
+  src: url('CrimsonText-Regular') format('truetype'); }
+
 html {
   font-size: 10px; }
 
 body {
   margin-top: 40px;
   background-color: #333333;
-  font-family: "Helvetica Neue", Helvetica, sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+
+.bodycopy {
+  font-family: "CrimsonText-Regular", "Times New Roman", Times, serif;
+  font-weight: 300;
+  font-size: 1.8rem; }
 
 .no-margin {
   margin: 0 !important; }
@@ -34,21 +43,36 @@ header {
   width: 100%;
   padding: 40px 0 40px 0; }
   .fullsize-container.white {
-    background-color: #f6f6f6; }
+    background-color: #f6f6f6;
+    color: #444444; }
   .fullsize-container.gray {
-    background-color: #aaaaaa; }
+    background-color: #aaaaaa;
+    color: #f6f6f6; }
   .fullsize-container.black {
-    background-color: #444444; }
+    background-color: #444444;
+    color: #f6f6f6; }
 
 .fullsize-media {
   width: 100%;
   height: auto;
-  max-height: 500px;
+  max-height: 400px;
   position: relative;
   overflow: hidden; }
   .fullsize-media video {
     width: 100%;
     height: auto; }
+  .fullsize-media .teaser {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    position: absolute;
+    top: 20%;
+    transform: translateY(-50%); }
+    .fullsize-media .teaser h1 {
+      font-weight: 400;
+      font-size: 7rem;
+      color: #f6f6f6; }
 
 .cards {
   padding: 0 0 20px 0; }
@@ -139,3 +163,32 @@ header {
     text-align: center;
     font-weight: 300;
     font-size: 3rem; }
+
+footer {
+  padding: 40px 0;
+  background-color: #444444; }
+
+.footer-group {
+  padding: 0 20px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 1.6rem; }
+  .footer-group .title {
+    display: block;
+    border-bottom: 1px solid #aaaaaa;
+    color: #aaaaaa;
+    text-transform: uppercase; }
+  .footer-group ul {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    .footer-group ul li {
+      display: block;
+      padding: 4px 0;
+      margin: 0; }
+      .footer-group ul li a {
+        color: #f6f6f6; }
+        .footer-group ul li a:hover {
+          color: #fb9521;
+          text-decoration: none; }
