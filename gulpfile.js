@@ -8,7 +8,8 @@ var jshint = require('gulp-jshint'),
     closureCompiler = require('gulp-closure-compiler'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
-    awspublish = require('gulp-awspublish');
+    awspublish = require('gulp-awspublish'),
+    connect = require('gulp-connect');
 
 var config = require('./config').site;
 
@@ -74,9 +75,15 @@ gulp.task('minify-html', function() {
         .pipe(gulp.dest("dist"));
 });
 
-// server
+// start a server
 
-// TODO
+gulp.task('server', ['watch'], function () {
+  connect.server({
+    port: 4001,
+    root: ['dist'],
+    livereload: true
+  });
+});
 
 // deploy to AWS S3
 
@@ -92,11 +99,11 @@ gulp.task('deploy:dev', function() {
 });
 
 // watch files for changes
-gulp.task('watch', ['lint', 'minify-js', 'minify-css'], function() {
+gulp.task('watch', ['lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
     gulp.watch('src/js/*.js', ['lint', 'minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html']);
 });
 
 // default task
-gulp.task('default', ['lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets', 'watch']);
+gulp.task('default', ['server']);
