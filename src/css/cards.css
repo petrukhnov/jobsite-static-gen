@@ -1,0 +1,65 @@
+.cards {
+  padding: 0 0 20px 0; }
+
+.card {
+  display: block;
+  background: #f6f6f6;
+  margin-bottom: 20px;
+  overflow: hidden;
+  border: none;
+  border-radius: 2px;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); }
+  .card.white {
+    background: #f9f9f9; }
+  .card:hover {
+    cursor: pointer;
+    -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
+    -ms-transform: scale(1.02, 1.02);
+    /* IE 9 */
+    -webkit-transform: scale(1.02, 1.02);
+    /* Chrome, Safari, Opera */
+    transform: scale(1.02, 1.02); }
+  .card.white:hover {
+    background: #ffffff; }
+  .card .media {
+    height: 177px;
+    background-size: cover;
+    background-position: center center; }
+  .card.blog .media {
+    background-image: url('../images/blog.jpg'); }
+  .card.job .media {
+    background-image: url('../images/coding.jpg'); }
+  .card.opensource .media {
+    background-image: url('../images/opensource.jpg'); }
+  .card .content {
+    padding: 24px;
+    position: relative;
+    height: 300px;
+    color: #222222;
+    border: 1px solid #e0e0e0;
+    border-width: 0 1px 1px 1px; }
+    .card .content .title {
+      font-size: 2.2rem;
+      line-height: 2.4rem;
+      text-transform: uppercase;
+      margin: 0 16px 16px 16px; }
+    .card .content .text {
+      font-weight: 300;
+      font-size: 1.6rem;
+      margin: 0 16px 8px 16px; }
+    .card .content .author {
+      font-size: 1.4rem;
+      letter-spacing: 0.1rem;
+      margin: 0 16px;
+      color: #555555; }
+    .card .content .footer-position-bottom {
+      display: block;
+      position: absolute;
+      bottom: 16px;
+      left: 24px;
+      right: 24px;
+      z-index: 1000; }
+  .card.small .content {
+    height: 120px; }

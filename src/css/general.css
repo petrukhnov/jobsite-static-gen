@@ -1,19 +1,19 @@
-@font-face {
-  font-family: 'CrimsonText-Regular';
-  src: url('../fonts/CrimsonText-Regular.ttf') format('truetype'); }
-
 html {
   font-size: 10px; }
 
 body {
   margin-top: 40px;
   background-color: #333333;
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; }
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.35em; }
 
 .bodycopy {
   font-family: "CrimsonText-Regular", "Times New Roman", Times, serif;
-  font-weight: 300;
-  font-size: 1.8rem; }
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: 0.015em; }
 
 .no-margin {
   margin: 0 !important; }
@@ -22,9 +22,8 @@ body {
   padding: 0 !important; }
 
 .heading-1 {
-  font-weight: 300;
-  font-size: 4.2rem;
-  padding: 0 0 30px 0; }
+  font-size: 3.6rem;
+  padding: 0 0 24px 0; }
 
 header {
   margin: 0; }
@@ -37,7 +36,7 @@ header {
       transition: color 0.1s, background-color 0.1s; }
     header.navbar-default .navbar-brand:hover, header.navbar-default .navbar-nav > li > a:hover {
       background-color: #f6f6f6;
-      color: #fb9521; }
+      color: #f16a21; }
 
 .navbar-default .navbar-toggle {
   border: 0;
@@ -84,18 +83,21 @@ header {
   padding: 40px 0 40px 0; }
   .fullsize-container.white {
     background-color: #f6f6f6;
-    color: #444444; }
+    color: #222222; }
+  .fullsize-container.light-gray {
+    background-color: #f3f3f3;
+    color: #222222; }
   .fullsize-container.gray {
     background-color: #aaaaaa;
     color: #f6f6f6; }
   .fullsize-container.black {
-    background-color: #444444;
+    background-color: #222222;
     color: #f6f6f6; }
 
 .fullsize-media {
   width: 100%;
   height: auto;
-  max-height: 400px;
+  max-height: 500px;
   position: relative;
   overflow: hidden; }
   .fullsize-media video {
@@ -114,69 +116,6 @@ header {
       font-size: 7rem;
       color: #f6f6f6; }
 
-.cards {
-  padding: 0 0 20px 0; }
-
-.card {
-  display: block;
-  background: #cccccc;
-  margin-bottom: 20px;
-  overflow: hidden;
-  border: none;
-  border-radius: 2px;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-  -webkit-transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s;
-  transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s; }
-  .card.white {
-    background: #f9f9f9; }
-  .card:hover {
-    cursor: pointer;
-    -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
-    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
-    background-color: #dddddd;
-    -ms-transform: scale(1.02, 1.02);
-    /* IE 9 */
-    -webkit-transform: scale(1.02, 1.02);
-    /* Chrome, Safari, Opera */
-    transform: scale(1.02, 1.02); }
-  .card.white:hover {
-    background: #ffffff; }
-  .card .media {
-    height: 200px;
-    background-size: cover;
-    background-position: center center; }
-  .card.blog .media {
-    background-image: url('../images/workspace.jpg'); }
-  .card.job .media {
-    background-image: url('../images/coding.jpg'); }
-  .card.opensource .media {
-    background-image: url('../images/opensource.jpg'); }
-  .card .content {
-    padding: 24px 16px;
-    position: relative;
-    height: 200px;
-    color: #444444; }
-    .card .content .title {
-      font-weight: 400;
-      font-size: 3rem;
-      text-transform: uppercase;
-      margin: 0 0 16px 0; }
-    .card .content .text {
-      font-weight: 300;
-      font-size: 1.6rem;
-      margin: 0; }
-    .card .content .footer {
-      display: block;
-      position: absolute;
-      bottom: 16px;
-      left: 16px;
-      z-index: 1000;
-      font-weight: 600;
-      font-size: 1.4rem; }
-  .card.small .content {
-    height: 120px; }
-
 .big-points {
   padding: 0 0 0 0; }
 
@@ -187,7 +126,7 @@ header {
   .big-point .icon {
     height: 220px;
     border-radius: 50%;
-    background-color: #444444;
+    background-color: #000000;
     margin-bottom: 10px;
     -webkit-transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s;
     transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s; }
@@ -207,7 +146,7 @@ header {
 
 footer {
   padding: 40px 0;
-  background-color: #444444; }
+  background-color: #000000; }
 
 .footer-group {
   padding: 0 20px;
@@ -231,5 +170,5 @@ footer {
       .footer-group ul li a {
         color: #f6f6f6; }
         .footer-group ul li a:hover {
-          color: #fb9521;
+          color: #f16a21;
           text-decoration: none; }

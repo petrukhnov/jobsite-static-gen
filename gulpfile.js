@@ -41,7 +41,10 @@ gulp.task('minify-js', ['clean:js'], function() {
 
 // compile sass to css
 gulp.task('sass', function() {
-    return gulp.src('src/scss/*.scss')
+    return gulp.src([
+            'src/scss/*.scss',
+            '!src/scss/_constants.scss'
+        ])
         .pipe(sass())
         .pipe(gulp.dest('src/css'));
 });
@@ -50,7 +53,10 @@ gulp.task('sass', function() {
 gulp.task('minify-css', ['sass', 'clean:css'], function() {
     gulp.src([
         "src/css/vendor/bootstrap.min.css",
-        "src/css/tech.zalando.css"
+        "src/css/fonts.css",
+        "src/css/general.css",
+        "src/css/cards.css",
+        "src/css/buttons.css"
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
@@ -133,6 +139,7 @@ gulp.task('watch', ['lint', 'minify-js', 'minify-css', 'minify-html', 'copy-asse
     gulp.watch('src/js/*.js', ['lint', 'minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html']);
+    gulp.watch('src/images/*.*', ['copy-assets']);
 });
 
 // default task

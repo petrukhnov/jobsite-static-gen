@@ -1,0 +1,105 @@
+
+@import "constants";
+
+// card layout inspired from:
+// http://www.google.com/design/spec/components/cards.html#cards-actions
+
+.cards {
+    padding: 0 0 20px 0;
+}
+.card {
+    display: block;
+    background: $color-white;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    border: none;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
+
+    // -webkit-transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
+    // transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
+
+    &.white {
+        background: $bg-color-card-white;
+    }
+
+    &:hover {
+        cursor: pointer;
+        -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
+        // background-color: $bg-color-card-hover;
+        -ms-transform: scale(1.02, 1.02); /* IE 9 */
+        -webkit-transform: scale(1.02, 1.02); /* Chrome, Safari, Opera */
+        transform: scale(1.02, 1.02);
+    }
+    &.white:hover {
+        background: $bg-color-card-white-hover;
+    }
+
+    // card media
+
+    .media {
+        height: 177px;
+        background-size: cover;
+        background-position: center center;
+    }
+    &.blog {
+        .media {
+            background-image: url('../images/blog.jpg');
+        }
+    }
+    &.job {
+        .media {
+            background-image: url('../images/coding.jpg');
+        }
+    }
+    &.opensource {
+        .media {
+            background-image: url('../images/opensource.jpg');
+        }
+    }
+
+    // card content
+
+    .content {
+        padding: 24px;
+        position: relative;
+        height: 300px;
+        color: $color-black;
+        border: 1px solid $color-light-gray-darker;
+        border-width: 0 1px 1px 1px;
+
+        .title {
+            font-size: 2.2rem;
+            line-height: 2.4rem;
+            text-transform: uppercase;
+            margin: 0 16px 16px 16px;
+        }
+        .text {
+            font-weight: 300;
+            font-size: 1.6rem;
+            margin: 0 16px 8px 16px;
+        }
+        .author {
+            font-size: 1.4rem;
+            letter-spacing: 0.1rem;
+            margin: 0 16px;
+            color: $color-dark-gray;
+        }
+        .footer-position-bottom {
+            display: block;
+            position: absolute;
+            bottom: 16px;
+            left: 24px;
+            right: 24px;
+            z-index: 1000;
+        }
+    }
+    &.small {
+        .content {
+            height: 120px;
+        }
+    }
+}

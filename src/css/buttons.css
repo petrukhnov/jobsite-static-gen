@@ -1,0 +1,12 @@
+button.default-button {
+  display: block;
+  background-color: #f6f6f6;
+  color: #555555;
+  border: 1px solid #555555;
+  padding: 4px 16px;
+  border-radius: 4px;
+  font-weight: 300;
+  font-size: 1.8rem; }
+  button.default-button:hover {
+    background-color: #555555;
+    color: #f6f6f6; }

@@ -1,0 +1,18 @@
+
+@import "constants";
+
+button.default-button {
+    display: block;
+    background-color: $color-white;
+    color: $color-dark-gray;
+    border: 1px solid $color-dark-gray;
+    padding: 4px 16px;
+    border-radius: 4px;
+    font-weight: 300;
+    font-size: 1.8rem;
+
+    &:hover {
+        background-color: $color-dark-gray;
+        color: $color-white;
+    }
+}

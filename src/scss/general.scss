@@ -1,36 +1,5 @@
-@font-face {
-    font-family: 'CrimsonText-Regular';
-    src: url('../fonts/CrimsonText-Regular.ttf') format('truetype');
-}
 
-// font families
-$font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-$font-bodycopy: "CrimsonText-Regular", "Times New Roman", Times, serif;
-
-// color constants
-
-// general colors
-$color-zalando: #fb9521;
-$color-white: #f6f6f6;
-$color-gray: #aaaaaa;
-$color-black: #444444;
-
-// background colors
-$bg-color-header: #333333;
-$bg-color-white: #f6f6f6;
-$bg-color-gray: #aaaaaa;
-$bg-color-black: #444444;
-$bg-color-card: #cccccc;
-$bg-color-card-hover: #dddddd;
-$bg-color-card-white: #f9f9f9;
-$bg-color-card-white-hover: #ffffff;
-
-// font colors
-$font-color-header: #dddddd;
-
-// other constants
-$animation-duration: 0.1s;
-$long-animation-duration: 0.5s;
+@import "constants";
 
 html {
     font-size: 10px;   // 1rem = 10px
@@ -41,12 +10,16 @@ body {
   margin-top: 40px;
   background-color: $bg-color-header;
   font-family: $font-regular;
+  font-weight: 600;
+  letter-spacing: 0.35em;
 }
 
 .bodycopy {
     font-family: $font-bodycopy;
-    font-weight: 300;
-    font-size: 1.8rem;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.0rem;
+    letter-spacing: 0.015em;
 }
 
 .no-margin {
@@ -57,9 +30,8 @@ body {
 }
 
 .heading-1 {
-    font-weight: 300;
-    font-size: 4.2rem;
-    padding: 0 0 30px 0;
+    font-size: 3.6rem;
+    padding: 0 0 24px 0;
 }
 
 // header
@@ -144,23 +116,24 @@ header {
     }
 }
 
-
-
-
 .fullsize-container {
     width: 100%;
     padding: 40px 0 40px 0;
 
     &.white {
-        background-color: $bg-color-white;
+        background-color: $color-white;
+        color: $color-black;
+    }
+    &.light-gray {
+        background-color: $color-light-gray;
         color: $color-black;
     }
     &.gray {
-        background-color: $bg-color-gray;
+        background-color: $color-gray;
         color: $color-white;
     }
     &.black {
-        background-color: $bg-color-black;
+        background-color: $color-black;
         color: $color-white;
     }
 }
@@ -168,7 +141,7 @@ header {
 .fullsize-media {
     width: 100%;
     height: auto;
-    max-height: 400px;
+    max-height: 500px;
     position: relative;
     overflow: hidden;
 
@@ -196,99 +169,7 @@ header {
 
 // content
 
-// card layout inspired from:
-// http://www.google.com/design/spec/components/cards.html#cards-actions
 
-.cards {
-    padding: 0 0 20px 0;
-}
-.card {
-    display: block;
-    background: $bg-color-card;
-    margin-bottom: 20px;
-    overflow: hidden;
-
-    border: none;
-    border-radius: 2px;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-
-    -webkit-transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
-    transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
-
-    &.white {
-        background: $bg-color-card-white;
-    }
-
-    &:hover {
-        cursor: pointer;
-        -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
-        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
-        background-color: $bg-color-card-hover;
-        -ms-transform: scale(1.02, 1.02); /* IE 9 */
-        -webkit-transform: scale(1.02, 1.02); /* Chrome, Safari, Opera */
-        transform: scale(1.02, 1.02);
-    }
-    &.white:hover {
-        background: $bg-color-card-white-hover;
-    }
-
-    .media {
-        height: 200px;
-        background-size: cover;
-        background-position: center center;
-    }
-    &.blog {
-        .media {
-            background-image: url('../images/workspace.jpg');
-        }
-    }
-    &.job {
-        .media {
-            background-image: url('../images/coding.jpg');
-        }
-    }
-    &.opensource {
-        .media {
-            background-image: url('../images/opensource.jpg');
-        }
-    }
-
-    .content {
-        padding: 24px 16px;
-        position: relative;
-        height: 200px;
-        color: $color-black;
-
-        .title {
-            font-weight: 400;
-            font-size: 3.0rem;
-            text-transform: uppercase;
-            margin: 0 0 16px 0;
-        }
-
-        .text {
-            font-weight: 300;
-            font-size: 1.6rem;
-            margin: 0;
-        }
-
-        .footer {
-            display: block;
-            position: absolute;
-            bottom: 16px;
-            left: 16px;
-            z-index: 1000;
-            font-weight: 600;
-            font-size: 1.4rem;
-        }
-    }
-    &.small {
-        .content {
-            height: 120px;
-        }
-    }
-}
 
 // big points
 
