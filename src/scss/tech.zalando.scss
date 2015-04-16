@@ -29,8 +29,8 @@ $bg-color-card-white-hover: #ffffff;
 $font-color-header: #dddddd;
 
 // other constants
-$animation-duration: .1s;
-$long-animation-duration: .5s;
+$animation-duration: 0.1s;
+$long-animation-duration: 0.5s;
 
 html {
     font-size: 10px;   // 1rem = 10px
@@ -95,8 +95,11 @@ header {
         }
 
         .icon-bar {
-            -webkit-transition: opacity $long-animation-duration, -moz-transform $long-animation-duration, -webkit-transform $long-animation-duration, -o-transform $long-animation-duration, -ms-transform $long-animation-duration, transform $long-animation-duration;
-            transition: opacity $long-animation-duration, -moz-transform $long-animation-duration, -webkit-transform $long-animation-duration, -o-transform $long-animation-duration, -ms-transform $long-animation-duration, transform $long-animation-duration;
+            -webkit-transition: all 0.5s ease-in-out;
+            -moz-transition: all 0.5s ease-in-out;
+            -ms-transition: all 0.5s ease-in-out;
+            -o-transition: all 0.5s ease-in-out;
+            transition: all 0.5s ease-in-out;
         }
         .icon-bar.bar-1 {
             -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
