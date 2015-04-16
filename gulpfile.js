@@ -66,8 +66,6 @@ gulp.task('copy-assets', function() {
     .pipe(gulp.dest("dist/images"));
 });
 
-// TODO
-
 // minify html
 gulp.task('minify-html', function() {
     gulp.src("./src/*.html")
@@ -76,7 +74,6 @@ gulp.task('minify-html', function() {
 });
 
 // start a server
-
 gulp.task('server', ['watch'], function () {
   connect.server({
     port: 4001,
@@ -86,7 +83,6 @@ gulp.task('server', ['watch'], function () {
 });
 
 // deploy to AWS S3
-
 gulp.task('deploy:dev', function() {
   var publisher = awspublish.create(config.aws);
   var headers = {
