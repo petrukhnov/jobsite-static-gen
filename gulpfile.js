@@ -56,6 +56,14 @@ gulp.task('minify-css', ['sass'], function() {
 });
 
 // copy assets
+gulp.task('copy-assets', function() {
+    gulp.src([
+        "./src/images/*.jpg",
+        "./src/images/*.png",
+        "./src/images/*.ico"
+    ])
+    .pipe(gulp.dest("dist/images"));
+});
 
 // TODO
 
@@ -91,4 +99,4 @@ gulp.task('watch', ['lint', 'minify-js', 'minify-css'], function() {
 });
 
 // default task
-gulp.task('default', ['lint', 'minify-js', 'minify-css', 'minify-html', 'watch']);
+gulp.task('default', ['lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets', 'watch']);
