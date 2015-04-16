@@ -25,7 +25,7 @@ gulp.task('minify-js', function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
         "src/js/vendor/bootstrap.min.js",
-        "src/js/tfox.js"
+        "src/js/tech.zalando.js"
     ])
     .pipe(closureCompiler({
         compilerPath: 'build/closure-compiler/compiler.jar',
@@ -33,7 +33,7 @@ gulp.task('minify-js', function() {
             compilation_level: 'SIMPLE_OPTIMIZATIONS',
             warning_level: 'QUIET'
         },
-        fileName: 'tfox-all.js'
+        fileName: 'tech.zalando-all.js'
     }))
     .pipe(gulp.dest('dist/js'));
 });
@@ -49,9 +49,9 @@ gulp.task('sass', function() {
 gulp.task('minify-css', ['sass'], function() {
     gulp.src([
         "src/css/vendor/bootstrap.min.css",
-        "src/css/tfox.css"
+        "src/css/tech.zalando.css"
     ])
-    .pipe(concat('tfox-all.css'))
+    .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest('dist/css'));
 });
