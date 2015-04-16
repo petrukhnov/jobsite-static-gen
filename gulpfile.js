@@ -7,7 +7,10 @@ var jshint = require('gulp-jshint'),
     concat = require('gulp-concat'),
     closureCompiler = require('gulp-closure-compiler'),
     minifyCSS = require('gulp-minify-css'),
-    minifyHTML = require('gulp-minify-html');
+    minifyHTML = require('gulp-minify-html'),
+    awspublish = require('gulp-awspublish');
+
+var config = require('./config').site;
 
 // lint task
 gulp.task('lint', function() {
@@ -63,6 +66,23 @@ gulp.task('minify-html', function() {
         .pipe(gulp.dest("dist"));
 });
 
+// server
+
+// TODO
+
+// deploy to AWS S3
+
+gulp.task('deploy:dev', function() {
+  var publisher = awspublish.create(config.aws);
+  var headers = {
+    // 'Cache-Control': 'max-age=315360000, no-transform, public'
+  };
+  return gulp.src('./dist/**')
+    .pipe(publisher.publish(headers))
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter());
+});
+
 // watch files for changes
 gulp.task('watch', ['lint', 'minify-js', 'minify-css'], function() {
     gulp.watch('src/js/*.js', ['lint', 'minify-js']);
@@ -71,4 +91,4 @@ gulp.task('watch', ['lint', 'minify-js', 'minify-css'], function() {
 });
 
 // default task
-gulp.task('default', ['lint', 'minify-js', 'minify-css', 'watch']);
+gulp.task('default', ['lint', 'minify-js', 'minify-css', 'minify-html', 'watch']);
