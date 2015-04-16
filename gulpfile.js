@@ -9,7 +9,8 @@ var jshint = require('gulp-jshint'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
     awspublish = require('gulp-awspublish'),
-    connect = require('gulp-connect');
+    connect = require('gulp-connect'),
+    del = require('del');
 
 var config = require('./config').site;
 
@@ -21,7 +22,7 @@ gulp.task('lint', function() {
 });
 
 // concatenate and minigy javascript
-gulp.task('minify-js', function() {
+gulp.task('minify-js', ['clean:js'], function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
         "src/js/vendor/bootstrap.min.js",
@@ -46,7 +47,7 @@ gulp.task('sass', function() {
 });
 
 // concatenate and minify css
-gulp.task('minify-css', ['sass'], function() {
+gulp.task('minify-css', ['sass', 'clean:css'], function() {
     gulp.src([
         "src/css/vendor/bootstrap.min.css",
         "src/css/tech.zalando.css"
@@ -56,21 +57,53 @@ gulp.task('minify-css', ['sass'], function() {
     .pipe(gulp.dest('dist/css'));
 });
 
+// minify html
+gulp.task('minify-html', ['clean:html'], function() {
+    gulp.src("./src/*.html")
+        .pipe(minifyHTML())
+        .pipe(gulp.dest("dist"));
+});
+
 // copy assets
-gulp.task('copy-assets', function() {
+gulp.task('copy-assets', ['clean:assets'], function() {
+    gulp.src([
+        "./src/robots.txt"
+    ])
+    .pipe(gulp.dest("dist"));
     gulp.src([
         "./src/images/*.jpg",
         "./src/images/*.png",
         "./src/images/*.ico"
     ])
     .pipe(gulp.dest("dist/images"));
+    gulp.src([
+        "./src/fonts/**"
+    ])
+    .pipe(gulp.dest("dist/fonts"));
 });
 
-// minify html
-gulp.task('minify-html', function() {
-    gulp.src("./src/*.html")
-        .pipe(minifyHTML())
-        .pipe(gulp.dest("dist"));
+// clean up folders
+gulp.task('clean:css', function (cb) {
+    del([
+        './dist/css/*.css'
+    ], cb);
+});
+gulp.task('clean:js', function (cb) {
+    del([
+        './dist/js/*.js'
+    ], cb);
+});
+gulp.task('clean:html', function (cb) {
+    del([
+        './dist/*.html'
+    ], cb);
+});
+gulp.task('clean:assets', function (cb) {
+    del([
+        './dist/robots.txt',
+        './dist/images/**',
+        './dist/fonts/**'
+    ], cb);
 });
 
 // start a server
@@ -90,6 +123,7 @@ gulp.task('deploy:dev', function() {
   };
   return gulp.src('./dist/**')
     .pipe(publisher.publish(headers))
+    .pipe(publisher.sync())
     .pipe(publisher.cache())
     .pipe(awspublish.reporter());
 });
