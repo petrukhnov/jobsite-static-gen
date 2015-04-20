@@ -5,11 +5,11 @@ button.default-button {
     display: block;
     background-color: $color-white;
     color: $color-dark-gray;
-    border: 1px solid $color-dark-gray;
+    border: 1px solid $color-gray;
     padding: 4px 16px;
     border-radius: 4px;
-    font-weight: 300;
-    font-size: 1.8rem;
+    font-weight: 400;
+    font-size: 1.4rem;
 
     &:hover {
         background-color: $color-dark-gray;

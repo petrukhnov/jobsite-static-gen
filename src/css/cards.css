@@ -3,15 +3,15 @@
 
 .card {
   display: block;
-  background: #f6f6f6;
+  background-color: #ffffff;
   margin-bottom: 20px;
   overflow: hidden;
   border: none;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1); }
+  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
   .card.white {
-    background: #f9f9f9; }
+    background: #ffffff; }
   .card:hover {
     cursor: pointer;
     -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.3);
@@ -30,36 +30,36 @@
   .card.blog .media {
     background-image: url('../images/blog.jpg'); }
   .card.job .media {
-    background-image: url('../images/coding.jpg'); }
+    background-image: url('../images/job.jpg'); }
   .card.opensource .media {
     background-image: url('../images/opensource.jpg'); }
   .card .content {
-    padding: 24px;
+    padding: 24px 8px;
     position: relative;
-    height: 300px;
+    height: 270px;
     color: #222222;
-    border: 1px solid #e0e0e0;
     border-width: 0 1px 1px 1px; }
     .card .content .title {
-      font-size: 2.2rem;
-      line-height: 2.4rem;
+      font-size: 1.4rem;
+      line-height: 1.7rem;
       text-transform: uppercase;
       margin: 0 16px 16px 16px; }
     .card .content .text {
-      font-weight: 300;
-      font-size: 1.6rem;
-      margin: 0 16px 8px 16px; }
-    .card .content .author {
+      font-weight: 400;
       font-size: 1.4rem;
-      letter-spacing: 0.1rem;
+      margin: 0 16px 16px 16px; }
+    .card .content .author {
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.03rem;
       margin: 0 16px;
       color: #555555; }
     .card .content .footer-position-bottom {
       display: block;
       position: absolute;
       bottom: 16px;
-      left: 24px;
-      right: 24px;
+      left: 16px;
+      right: 16px;
       z-index: 1000; }
   .card.small .content {
     height: 120px; }

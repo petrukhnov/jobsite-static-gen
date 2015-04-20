@@ -9,14 +9,14 @@
 }
 .card {
     display: block;
-    background: $color-white;
+    background-color: $color-white;
     margin-bottom: 20px;
     overflow: hidden;
 
     border: none;
     border-radius: 2px;
-    -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.10);
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.10);
 
     // -webkit-transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
     // transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
@@ -52,7 +52,7 @@
     }
     &.job {
         .media {
-            background-image: url('../images/coding.jpg');
+            background-image: url('../images/job.jpg');
         }
     }
     &.opensource {
@@ -64,27 +64,28 @@
     // card content
 
     .content {
-        padding: 24px;
+        padding: 24px 8px;
         position: relative;
-        height: 300px;
+        height: 270px;
         color: $color-black;
-        border: 1px solid $color-light-gray-darker;
+        // border: 1px solid $color-light-gray-darker;
         border-width: 0 1px 1px 1px;
 
         .title {
-            font-size: 2.2rem;
-            line-height: 2.4rem;
+            font-size: 1.4rem;
+            line-height: 1.7rem;
             text-transform: uppercase;
             margin: 0 16px 16px 16px;
         }
         .text {
-            font-weight: 300;
-            font-size: 1.6rem;
-            margin: 0 16px 8px 16px;
+            font-weight: 400;
+            font-size: 1.4rem;
+            margin: 0 16px 16px 16px;
         }
         .author {
-            font-size: 1.4rem;
-            letter-spacing: 0.1rem;
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.03rem;
             margin: 0 16px;
             color: $color-dark-gray;
         }
@@ -92,8 +93,8 @@
             display: block;
             position: absolute;
             bottom: 16px;
-            left: 24px;
-            right: 24px;
+            left: 16px;
+            right: 16px;
             z-index: 1000;
         }
     }
