@@ -58,6 +58,7 @@ header {
       width: 0; }
 
 .cookie-bar {
+  display: none;
   background-color: #222222;
   color: #ffffff;
   text-align: center; }
