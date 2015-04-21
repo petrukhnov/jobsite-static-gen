@@ -26,6 +26,7 @@ gulp.task('minify-js', ['clean:js'], function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
         "src/js/vendor/bootstrap.min.js",
+        "src/js/vendor/swipeview.js",
         "src/js/tech.zalando.js"
     ])
     .pipe(closureCompiler({
@@ -79,6 +80,7 @@ gulp.task('copy-assets', ['clean:assets'], function() {
     gulp.src([
         "./src/images/*.jpg",
         "./src/images/*.png",
+        "./src/images/*.gif",
         "./src/images/*.ico"
     ])
     .pipe(gulp.dest("dist/images"));

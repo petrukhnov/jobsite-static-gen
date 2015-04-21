@@ -8,8 +8,8 @@
   overflow: hidden;
   border: none;
   border-radius: 2px;
-  -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1); }
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
   .card.white {
     background: #ffffff; }
   .card:hover {
@@ -37,7 +37,9 @@
     padding: 24px 8px;
     position: relative;
     height: 270px;
+    border-radius: 0 0 2px 2px;
     color: #222222;
+    border: 1px solid #cccccc;
     border-width: 0 1px 1px 1px; }
     .card .content .title {
       font-size: 1.4rem;
@@ -63,3 +65,35 @@
       z-index: 1000; }
   .card.small .content {
     height: 120px; }
+
+.card-swipe {
+  width: 100%;
+  overflow: hidden; }
+  .card-swipe .main-wrapper {
+    position: relative;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 320px; }
+  .card-swipe .card {
+    margin: 5px 10px; }
+    .card-swipe .card .media {
+      height: 100px; }
+    .card-swipe .card .content {
+      padding: 16px 0;
+      height: 210px; }
+      .card-swipe .card .content .text {
+        font-size: 1.4rem;
+        max-height: 82px;
+        overflow: hidden; }
+      .card-swipe .card .content .footer-position-bottom {
+        display: none; }
+    .card-swipe .card:hover {
+      cursor: inherit;
+      -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      -ms-transform: inherit;
+      /* IE 9 */
+      -webkit-transform: inherit;
+      /* Chrome, Safari, Opera */
+      transform: inherit; }

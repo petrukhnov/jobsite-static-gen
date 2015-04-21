@@ -22,13 +22,16 @@ body {
   padding: 0 !important; }
 
 .heading-1 {
-  font-size: 2.6rem;
-  padding: 0 0 28px 0; }
+  font-size: 3.6rem;
+  padding: 0 0 8px 0;
+  text-transform: uppercase; }
   .heading-1.small {
-    font-size: 2rem;
-    font-weight: 400;
-    line-height: 2.2rem;
-    padding: 0 0 16px 0; }
+    text-transform: none;
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 2.6rem;
+    padding: 0 0 8px 0;
+    letter-spacing: 0.03em; }
 
 header {
   margin: 0; }
@@ -104,7 +107,7 @@ header {
     background-color: #ffffff;
     color: #222222; }
   .fullsize-container.light-gray {
-    background-color: #ebebeb;
+    background-color: #eaeaea;
     color: #222222; }
   .fullsize-container.gray {
     background-color: #aaaaaa;
@@ -116,6 +119,11 @@ header {
     background-image: url('../images/philosophy.jpg');
     background-size: cover;
     background-position: center top;
+    color: #ffffff; }
+  .fullsize-container.radical-agility {
+    background-image: url('../images/radical_agility_bg.gif');
+    background-size: cover;
+    background-position: center center;
     color: #ffffff; }
 
 .fullsize-media {
@@ -141,33 +149,39 @@ header {
       color: #ffffff; }
 
 .big-points {
-  padding: 0 0 0 0; }
+  padding: 16px 0; }
 
 .big-point {
   display: block;
-  width: 220px;
-  margin: 0 auto 40px auto; }
+  margin: 0 auto 40px auto;
+  padding: 24px 8px;
+  background-color: #ffffff; }
   .big-point .icon {
-    height: 220px;
-    border-radius: 50%;
-    background-color: transparent;
-    margin-bottom: 10px;
-    border: 3px solid #ffffff;
-    -webkit-transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s;
-    transition: -ms-transform 0.1s, -webkit-transform 0.1s, transform 0.1s; }
-    .big-point .icon:hover {
-      cursor: pointer;
-      -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-      -ms-transform: scale(1.15, 1.15);
-      /* IE 9 */
-      -webkit-transform: scale(1.15, 1.15);
-      /* Chrome, Safari, Opera */
-      transform: scale(1.15, 1.15); }
+    height: 80px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin: 0 0 10px 0; }
+    .big-point .icon.autonomy {
+      background-image: url('/images/ra_autonomy.png'); }
+    .big-point .icon.mastery {
+      background-image: url('/images/ra_mastery.png'); }
+    .big-point .icon.purpose {
+      background-image: url('/images/ra_purpose.png'); }
   .big-point .title {
     text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #f16a21;
+    margin: 0; }
+  .big-point .text {
+    color: #222222;
+    text-align: center;
     font-size: 1.4rem;
-    text-transform: uppercase; }
+    font-weight: 300;
+    padding: 8px 0 0 0;
+    margin: 0; }
 
 footer {
   padding: 40px 0;
@@ -197,3 +211,9 @@ footer {
         .footer-group ul li a:hover {
           color: #f16a21;
           text-decoration: none; }
+
+#wrapper {
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  height: 150px; }
