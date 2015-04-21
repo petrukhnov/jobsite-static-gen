@@ -18,21 +18,16 @@
         return "";
     };
     
-    // Show the cookie warning if there is no cookie
-    (function () {
-        var oldCookie = getCookie(cookieName);
-        if (oldCookie === "") {
-            $(".cookie-bar").show();
-        }
-    })();
+    // Show the cookie bar if there is no old cookie
+    if (getCookie(cookieName) === "") {
+        $(".cookie-bar").show();
+    }
 
     // Set the cookie
-    (function (days) {
-        var d = new Date();
-        d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-        var expires = "expires=" + d.toGMTString();
-        document.cookie = cookieName + "=1;" + expires;
-    })(365);
+    var d = new Date();
+    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cookieName + "=1;" + expires;
     
     // add handler to hide the warning
     $(".cookie-bar").click(hideCookieBar);
