@@ -5,8 +5,18 @@ button.default-button {
   border: 1px solid #aaaaaa;
   padding: 4px 16px;
   border-radius: 4px;
-  font-weight: 400;
+  font-weight: 300;
   font-size: 1.4rem; }
   button.default-button:hover {
     background-color: #555555;
     color: #ffffff; }
+  button.default-button.transparent {
+    border-color: #ffffff;
+    background-color: transparent;
+    color: #ffffff; }
+    button.default-button.transparent:hover {
+      background-color: #ffffff;
+      color: #555555; }
+  button.default-button.center {
+    margin-left: auto;
+    margin-right: auto; }

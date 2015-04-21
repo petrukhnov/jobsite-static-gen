@@ -30,14 +30,17 @@ body {
 }
 
 .heading-1 {
-    font-size: 2.6rem;
-    padding: 0 0 28px 0;
+    font-size: 3.6rem;
+    padding: 0 0 8px 0;
+    text-transform: uppercase;
 
     &.small {
-        font-size: 2.0rem;
-        font-weight: 400;
-        line-height: 2.2rem;
-        padding: 0 0 16px 0;
+        text-transform: none;
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 2.6rem;
+        padding: 0 0 8px 0;
+        letter-spacing: 0.030em;
     }
 }
 
@@ -184,6 +187,12 @@ header {
         background-position: center top;
         color: $color-white;
     }
+    &.radical-agility {
+        background-image: url('../images/radical_agility_bg.gif');
+        background-size: cover;
+        background-position: center center;
+        color: $color-white;
+    }
 }
 
 .fullsize-media {
@@ -222,36 +231,47 @@ header {
 // big points
 
 .big-points {
-    padding: 0 0 0 0;
+    padding: 16px 0;
 }
 .big-point {
     display: block;
-    width: 220px;
+    // width: 220px;
     margin: 0 auto 40px auto;
+    padding: 24px 8px;
+    background-color: $color-white;
 
     .icon {
-        height: 220px;
-        border-radius: 50%;
-        background-color: transparent;
-        margin-bottom: 10px;
-        border: 3px solid $color-white;
+        height: 80px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin: 0 0 10px 0;
 
-        -webkit-transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
-        transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
-
-        &:hover {
-            cursor: pointer;
-            -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.15);
-            -ms-transform: scale(1.15, 1.15); /* IE 9 */
-            -webkit-transform: scale(1.15, 1.15); /* Chrome, Safari, Opera */
-            transform: scale(1.15, 1.15);
+        &.autonomy {
+            background-image: url('/images/ra_autonomy.png');
+        }
+        &.mastery {
+            background-image: url('/images/ra_mastery.png');
+        }
+        &.purpose {
+            background-image: url('/images/ra_purpose.png');
         }
     }
     .title {
         text-align: center;
-        font-size: 1.4rem;
+        font-size: 2.0rem;
         text-transform: uppercase;
+        color: $color-zalando;
+        margin: 0;
+    }
+    .text {
+        color: $color-black;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 300;
+        padding: 8px 0 0 0;
+        margin: 0;
     }
 }
 
@@ -294,3 +314,11 @@ footer {
         }
     }
 }
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+    height:150px;
+}
+
