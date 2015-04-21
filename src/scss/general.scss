@@ -80,6 +80,23 @@ header {
         }
     }
 }
+
+// cookie warning
+.cookie-bar {
+    background-color: $color-black;
+    color: $color-white;
+    text-align: center;
+    #cookie-warning {
+    }
+    #cookie-button {
+        float: right;
+        background: $color-black;
+        border: 1px;
+        border-color: $color-white;
+        padding: 0 10px 0 0;
+    }
+}
+
 // menu
 .navbar-default {
     .navbar-toggle {

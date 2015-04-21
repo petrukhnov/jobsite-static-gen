@@ -57,6 +57,17 @@ header {
     header.navbar-default .navbar-brand:after, header.navbar-default .navbar-nav > li:last-child > a:after {
       width: 0; }
 
+.cookie-bar {
+  background-color: #222222;
+  color: #ffffff;
+  text-align: center; }
+  .cookie-bar #cookie-button {
+    float: right;
+    background: #222222;
+    border: 1px;
+    border-color: #ffffff;
+    padding: 0 10px 0 0; }
+
 .navbar-default .navbar-toggle {
   border: 0;
   background-color: transparent; }
