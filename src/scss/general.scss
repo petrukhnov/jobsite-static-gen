@@ -30,7 +30,7 @@ body {
 }
 
 .heading-1 {
-    font-size: 3.6rem;
+    font-size: 3.4rem;
     padding: 0 0 8px 0;
     text-transform: uppercase;
 
@@ -54,7 +54,6 @@ header {
         -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 
-        .navbar-brand,
         .navbar-nav > li > a {
             color: $color-black;
             text-transform: uppercase;
@@ -63,12 +62,10 @@ header {
             padding-left: 12px;
             padding-right: 0;
         }
-        .navbar-brand:hover,
         .navbar-nav > li > a:hover {
             background-color: $color-white;
             color: $color-zalando;
         }
-        .navbar-brand:after,
         .navbar-nav > li > a:after {
             display: inline-block;
             content: '';
@@ -77,9 +74,21 @@ header {
             height: 12px;
             margin-left: 12px;
         }
-        .navbar-brand:after,
         .navbar-nav > li:last-child > a:after {
             width: 0;
+        }
+        .navbar-brand {
+            margin: 5px 0 5px 5px;
+            padding: 0 0 0 50px;
+            height: 40px;
+            width: 200px;
+            background-image: url('/images/tech_zalando_logo_black.png');
+            background-position: left center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: $color-black;
         }
     }
 }
@@ -213,6 +222,7 @@ header {
 .fullsize-media {
     width: 100%;
     height: auto;
+    min-height: 200px;
     max-height: 500px;
     position: relative;
     overflow: hidden;
@@ -222,20 +232,26 @@ header {
         height: auto;
     }
 
-    .teaser {
-        background-color: transparent;
-        position: absolute;
-        z-index: 1000;
-        width: 100%;
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
+    &.home-video-bg {
+        background-image: url('../images/home_video_bg.jpg');
+        background-size: cover;
+        background-position: center center;
+    }
+}
 
-        h1 {
-            font-weight: 900;
-            font-size: 7.0rem;
-            color: $color-white;
-        }
+.teaser {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
+    h1 {
+        // font-weight: 600;
+        font-size: 3.4rem;
+        color: $color-white;
     }
 }
 

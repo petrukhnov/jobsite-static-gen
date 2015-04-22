@@ -78,6 +78,13 @@
             text-transform: uppercase;
             margin: 0 16px 16px 16px;
         }
+        .subtitle {
+            font-weight: 400;
+            font-size: 1.2rem;
+            line-height: 1.3rem;
+            margin: -12px 16px 16px 16px;
+            color: $color-dark-gray;
+        }
         .text {
             font-weight: 400;
             font-size: 1.4rem;
@@ -88,6 +95,14 @@
             font-size: 1.2rem;
             letter-spacing: 0.03rem;
             margin: 0 16px;
+            color: $color-dark-gray;
+        }
+        .footer {
+            font-weight: 400;
+            font-size: 1.2rem;
+            letter-spacing: 0.03rem;
+            margin: 0 16px;
+            font-style: italic;
             color: $color-dark-gray;
         }
         .footer-position-bottom {
@@ -109,15 +124,13 @@
 .card-swipe {
     width: 100%;
     overflow: hidden;
-    // background-color: #aaaaaa;
 
-    .main-wrapper {
+    .wrapper {
         position: relative;
         width: 80%;
         margin-left: auto;
         margin-right: auto;
         height: 320px;
-        // background-color: #ffffff;
     }
 
     .card {
@@ -125,13 +138,14 @@
         .media {
             height: 100px;
         }
+        &.job {
+            .content {
+                height: 120px;
+            }
+        }
         .content {
             padding: 16px 0;
             height: 210px;
-            // height: auto;
-            .title {
-                // font-size: 1.2rem;
-            }
             .text {
                 font-size: 1.4rem;
                 max-height: 82px;

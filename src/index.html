@@ -17,7 +17,7 @@
         </div>
         <div class="container" role="navigation">
             <div class="navbar-header">
-                <a class="navbar-brand" href="#">Zalando</a>
+                <a class="navbar-brand" href="#">Zalando.<br/>We dress code.</a>
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zalando-navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar bar-1"></span>
@@ -67,6 +67,16 @@
         </video>
     </div>
 
+    <div class="fullsize-media home-video-bg visible-md-block visible-sm-block visible-xs-block">
+        <div class="teaser">
+            <div class="container">
+                <div class="tech-zalando-logo"></div>
+                <h1>WE DRESS<br/>CODE!</h1>
+                <a class="play-button">Play</a>
+            </div>
+        </div>
+    </div>
+
     <!--
 
         We are hiring!
@@ -77,14 +87,15 @@
         <div class="container">
             <h1 class="heading-1 text-center">We are hiring!</h1>
         </div>
-        <div class="container">
-            <div class="row cards">
+        <div class="container visible-lg-block visible-md-block visible-sm-block">
+            <div id="home-jobs-swipe-cards" class="row cards">
                 <div class="col-md-4">
                     <div class="card small job">
                         <div class="media"></div>
                         <div class="content">
-                            <p class="title">System engineer, product owner</p>
-                            <p class="footer">Berlin</p>
+                            <p class="title">Technical Incident</p>
+                            <p class="subtitle">New Customer-facing Business</p>
+                            <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
                         </div>
                     </div>
                 </div>
@@ -92,8 +103,9 @@
                     <div class="card small job">
                         <div class="media"></div>
                         <div class="content">
-                            <p class="title">iOS DEVELOPER</p>
-                            <p class="footer">Berlin</p>
+                            <p class="title">System engineer product owner</p>
+                            <p class="subtitle">Test Environment</p>
+                            <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
                         </div>
                     </div>
                 </div>
@@ -101,12 +113,17 @@
                     <div class="card small job">
                         <div class="media"></div>
                         <div class="content">
-                            <p class="title">iOS DEVELOPER</p>
-                            <p class="footer">Berlin</p>
+                            <p class="title">Lead user experience (UX)</p>
+                            <p class="subtitle">New Customer-facing Business</p>
+                            <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="card-swipe visible-xs-block">
+            <div data-swipe-source="home-jobs-swipe-cards" class="wrapper"></div>
         </div>
     </div>
 
@@ -164,7 +181,7 @@ master of your own trade.</h1>
         <div class="container">
             <h1 class="heading-1 text-center">Tech Blog</h1>
         </div>
-        <div class="container visible-lg-block visible-md-block visible-sm-block">
+        <div class="container visible-sm-block visible-md-block visible-lg-block">
             <div id="home-blog-swipe-cards" class="row cards">
                 <div class="col-md-4">
                     <div class="card blog">
@@ -208,9 +225,10 @@ master of your own trade.</h1>
             </div>
         </div>
 
-        <div class="card-swipe visible-xs-block" data-swipe-source="home-blog-swipe-cards">
-            <div id="home-blog-swipe" class="main-wrapper"></div>
+        <div class="card-swipe visible-xs-block">
+            <div data-swipe-source="home-blog-swipe-cards" class="wrapper"></div>
         </div>
+
     </div>
 
     <!--
@@ -224,8 +242,8 @@ master of your own trade.</h1>
             <h1 class="heading-1 text-center no-padding">OPEN-SOURCE</h1>
             <h1 class="heading-1 text-center">Give it back to the community</h1>
         </div>
-        <div class="container">
-            <div class="row cards">
+        <div class="container visible-sm-block visible-md-block visible-lg-block">
+            <div id="home-opensource-swipe-cards" class="row cards">
                 <div class="col-md-4">
                     <div class="card white opensource">
                         <div class="media"></div>
@@ -257,6 +275,10 @@ master of your own trade.</h1>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="card-swipe visible-xs-block">
+            <div data-swipe-source="home-opensource-swipe-cards" class="wrapper"></div>
         </div>
     </div>
 
