@@ -8,6 +8,7 @@ var jshint = require('gulp-jshint'),
     closureCompiler = require('gulp-closure-compiler'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
+    htmlHint = require('gulp-htmlhint'),
     awspublish = require('gulp-awspublish'),
     connect = require('gulp-connect'),
     del = require('del');
@@ -18,10 +19,18 @@ var config = require('./config').site;
 gulp.task('lint', function() {
     return gulp.src('src/js/*.js')
         .pipe(jshint())
-        .pipe(jshint.reporter('default'));
+        .pipe(jshint.reporter('default'))
+        .pipe(jshint.reporter('fail'));
 });
 
-// concatenate and minigy javascript
+// hint html
+gulp.task('lint', function() {
+    return gulp.src("./src/*.html")
+        .pipe(htmlHint())
+        .pipe(htmlHint.failReporter());
+});
+
+// concatenate and minify javascript
 gulp.task('minify-js', ['clean:js'], function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
