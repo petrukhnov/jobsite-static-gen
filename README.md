@@ -21,7 +21,11 @@ Closure Compiler: Compiles javascript files. (requires Java 7 or higher)
 
 4. Edit the config.js file and fill in your redentials and configurations
 
-5. run
+5. Install Ruby
+
+6. run "gem install scss-lint"
+
+7. run
 
 ´gulp´
 

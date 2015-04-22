@@ -41,20 +41,20 @@ header {
     -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
     header.navbar-default .navbar-nav > li > a {
-      color: #222222;
+      color: #222;
       text-transform: uppercase;
       -webkit-transition: color 0.1s, background-color 0.1s;
       transition: color 0.1s, background-color 0.1s;
       padding-left: 12px;
       padding-right: 0; }
     header.navbar-default .navbar-nav > li > a:hover {
-      background-color: #ffffff;
+      background-color: #fff;
       color: #f16a21; }
     header.navbar-default .navbar-nav > li > a:after {
       display: inline-block;
       content: '';
       width: 1px;
-      background-color: #aaaaaa;
+      background-color: #aaa;
       height: 12px;
       margin-left: 12px; }
     header.navbar-default .navbar-nav > li:last-child > a:after {
@@ -71,12 +71,12 @@ header {
       font-size: 1.4rem;
       line-height: 1.6rem;
       font-weight: 600;
-      color: #222222; }
+      color: #222; }
 
 .cookie-bar {
   display: table;
   background-color: #f16a21;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   height: 100px;
   width: 100%; }
@@ -86,13 +86,13 @@ header {
     display: table-cell;
     vertical-align: middle; }
     .cookie-bar .cookie-warning a {
-      color: #ffffff;
+      color: #fff;
       text-decoration: underline; }
   .cookie-bar .cookie-button {
     float: right;
     background: #f16a21;
     border: 1px;
-    border-color: #ffffff;
+    border-color: #fff;
     padding: 0 10px 0 0; }
   .cookie-bar.table-hidden {
     display: none; }
@@ -141,27 +141,27 @@ header {
   width: 100%;
   padding: 16px 0 24px 0; }
   .fullsize-container.white {
-    background-color: #ffffff;
-    color: #222222; }
+    background-color: #fff;
+    color: #222; }
   .fullsize-container.light-gray {
     background-color: #eaeaea;
-    color: #222222; }
+    color: #222; }
   .fullsize-container.gray {
-    background-color: #aaaaaa;
-    color: #ffffff; }
+    background-color: #aaa;
+    color: #fff; }
   .fullsize-container.black {
-    background-color: #222222;
-    color: #ffffff; }
+    background-color: #222;
+    color: #fff; }
   .fullsize-container.philosophy {
     background-image: url('../images/philosophy.jpg');
     background-size: cover;
     background-position: center top;
-    color: #ffffff; }
+    color: #fff; }
   .fullsize-container.radical-agility {
     background-image: url('../images/radical_agility_bg.gif');
     background-size: cover;
     background-position: center center;
-    color: #ffffff; }
+    color: #fff; }
 
 .fullsize-media {
   width: 100%;
@@ -195,7 +195,7 @@ header {
     float: left;
     font-size: 5rem;
     line-height: 5.6rem;
-    color: #ffffff;
+    color: #fff;
     margin: 40px 0;
     padding: 0 0 0 140px;
     background-image: url('/images/tech_zalando_logo_white.png');
@@ -233,7 +233,7 @@ header {
   display: block;
   margin: 0 auto 40px auto;
   padding: 24px 8px;
-  background-color: #ffffff; }
+  background-color: #fff; }
   .big-point .icon {
     height: 80px;
     width: 100%;
@@ -254,7 +254,7 @@ header {
     color: #f16a21;
     margin: 0; }
   .big-point .text {
-    color: #222222;
+    color: #222;
     text-align: center;
     font-size: 1.4rem;
     font-weight: 300;
@@ -263,7 +263,7 @@ header {
 
 footer {
   padding: 40px 0;
-  background-color: #000000; }
+  background-color: #000; }
 
 .footer-group {
   padding: 0 20px;
@@ -272,8 +272,8 @@ footer {
   font-size: 1.6rem; }
   .footer-group .title {
     display: block;
-    border-bottom: 1px solid #aaaaaa;
-    color: #aaaaaa;
+    border-bottom: 1px solid #aaa;
+    color: #aaa;
     text-transform: uppercase; }
   .footer-group ul {
     display: block;
@@ -285,7 +285,7 @@ footer {
       padding: 4px 0;
       margin: 0; }
       .footer-group ul li a {
-        color: #ffffff; }
+        color: #fff; }
         .footer-group ul li a:hover {
           color: #f16a21;
           text-decoration: none; }

@@ -2,14 +2,14 @@
 @import "constants";
 
 button.default-button {
-    display: block;
     background-color: $color-white;
-    color: $color-dark-gray;
     border: 1px solid $color-gray;
-    padding: 4px 16px;
     border-radius: 4px;
-    font-weight: 300;
+    color: $color-dark-gray;
+    display: block;
     font-size: 1.4rem;
+    font-weight: 300;
+    padding: 4px 16px;
 
     &:hover {
         background-color: $color-dark-gray;
@@ -17,14 +17,16 @@ button.default-button {
     }
 
     &.transparent {
-        border-color: $color-white;
         background-color: transparent;
+        border-color: $color-white;
         color: $color-white;
+        
         &:hover {
             background-color: $color-white;
             color: $color-dark-gray;
         }
     }
+    
     &.center {
         margin-left: auto;
         margin-right: auto;

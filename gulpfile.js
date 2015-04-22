@@ -33,9 +33,8 @@ gulp.task('html-hint', function() {
 
 // lint scss
 gulp.task('scss-lint', function() {
-  gulp.src('/scss/*.scss')
-    .pipe(scsslint())
-    .pipe(scsslint.failReporter())
+  gulp.src('./src/scss/*.scss')
+    .pipe(scsslint({'config': 'scsslint.yml'}))
 });
 
 // concatenate and minify javascript
