@@ -60,15 +60,16 @@ header {
     header.navbar-default .navbar-nav > li:last-child > a:after {
       width: 0; }
     header.navbar-default .navbar-brand {
-      margin: 5px 0 5px 5px;
-      padding: 0 0 0 50px;
-      height: 40px;
+      margin: 10px 0 10px 10px;
+      padding: 0 0 0 40px;
+      height: 30px;
       width: 200px;
       background-image: url('/images/tech_zalando_logo_black.png');
       background-position: left center;
       background-size: contain;
       background-repeat: no-repeat;
       font-size: 1.4rem;
+      line-height: 1.6rem;
       font-weight: 600;
       color: #222222; }
 
@@ -138,7 +139,7 @@ header {
 
 .fullsize-container {
   width: 100%;
-  padding: 28px 0 24px 0; }
+  padding: 16px 0 24px 0; }
   .fullsize-container.white {
     background-color: #ffffff;
     color: #222222; }
@@ -184,10 +185,46 @@ header {
   width: 100%;
   position: absolute;
   top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
   .teaser h1 {
-    font-size: 3.4rem;
-    color: #ffffff; }
+    display: block;
+    float: left;
+    font-size: 5rem;
+    line-height: 5.6rem;
+    color: #ffffff;
+    margin: 40px 0;
+    padding: 0 0 0 140px;
+    background-image: url('/images/tech_zalando_logo_white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: left center; }
+  .teaser .play-button {
+    margin: 0 50px 0 0;
+    display: block;
+    float: right;
+    text-indent: -9999px;
+    width: 200px;
+    height: 200px;
+    background-image: url('/images/play_button.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.75; }
+
+.home-video-bg h1 {
+  font-size: 3.2rem;
+  line-height: 3.4rem;
+  margin: 14px 0;
+  padding: 0;
+  background-image: none; }
+.home-video-bg .play-button {
+  margin: 0;
+  width: 100px;
+  height: 100px; }
 
 .big-points {
   padding: 16px 0; }
