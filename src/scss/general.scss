@@ -92,6 +92,39 @@ header {
         }
     }
 }
+
+// cookie warning
+.cookie-bar {
+    display: table;
+    background-color: $color-zalando;
+    color: $color-white;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+
+    #cookie-warning {
+        padding-left: 30px;
+        padding-right: 30px;
+        display: table-cell;
+        vertical-align: middle;
+        a {
+            color: $color-white;
+            text-decoration: underline;
+        }
+    }
+    
+    #cookie-button {
+        float: right;
+        background: $color-zalando;
+        border: 1px;
+        border-color: $color-white;
+        padding: 0 10px 0 0;
+    }
+    &.table-hidden {
+        display:none;
+    }
+}
+
 // menu
 .navbar-default {
     .navbar-toggle {
