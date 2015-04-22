@@ -103,7 +103,7 @@ header {
     height: 100px;
     width: 100%;
 
-    #cookie-warning {
+    .cookie-warning {
         padding-left: 30px;
         padding-right: 30px;
         display: table-cell;
@@ -114,7 +114,7 @@ header {
         }
     }
     
-    #cookie-button {
+    .cookie-button {
         float: right;
         background: $color-zalando;
         border: 1px;

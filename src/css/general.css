@@ -80,15 +80,15 @@ header {
   text-align: center;
   height: 100px;
   width: 100%; }
-  .cookie-bar #cookie-warning {
+  .cookie-bar .cookie-warning {
     padding-left: 30px;
     padding-right: 30px;
     display: table-cell;
     vertical-align: middle; }
-    .cookie-bar #cookie-warning a {
+    .cookie-bar .cookie-warning a {
       color: #ffffff;
       text-decoration: underline; }
-  .cookie-bar #cookie-button {
+  .cookie-bar .cookie-button {
     float: right;
     background: #f16a21;
     border: 1px;
