@@ -1,0 +1,298 @@
+html {
+  font-size: 10px; }
+
+body {
+  margin-top: 40px;
+  background-color: #efefef;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.06em; }
+
+.bodycopy {
+  font-family: "CrimsonText-Regular", "Times New Roman", Times, serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  letter-spacing: 0.015em; }
+
+.no-margin {
+  margin: 0 !important; }
+
+.no-padding {
+  padding: 0 !important; }
+
+.heading-1 {
+  font-size: 3rem;
+  padding: 0 0 8px 0;
+  text-transform: uppercase; }
+  .heading-1.small {
+    text-transform: none;
+    font-size: 2.4rem;
+    font-weight: 300;
+    line-height: 2.6rem;
+    padding: 0 0 8px 0;
+    letter-spacing: 0.03em; }
+
+header {
+  margin: 0; }
+  header.navbar-default {
+    background-color: #efefef;
+    border: 0;
+    -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15); }
+    header.navbar-default .navbar-nav > li > a {
+      color: #222;
+      text-transform: uppercase;
+      -webkit-transition: color 0.1s, background-color 0.1s;
+      transition: color 0.1s, background-color 0.1s;
+      padding-left: 12px;
+      padding-right: 0; }
+    header.navbar-default .navbar-nav > li > a:hover {
+      background-color: #fff;
+      color: #f16a21; }
+    header.navbar-default .navbar-nav > li > a:after {
+      display: inline-block;
+      content: '';
+      width: 1px;
+      background-color: #aaa;
+      height: 12px;
+      margin-left: 12px; }
+    header.navbar-default .navbar-nav > li:last-child > a:after {
+      width: 0; }
+    header.navbar-default .navbar-brand {
+      margin: 10px 0 10px 10px;
+      padding: 0 0 0 40px;
+      height: 30px;
+      width: 200px;
+      background-image: url("/images/tech_zalando_logo_black.png");
+      background-position: left center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      font-size: 1.4rem;
+      line-height: 1.6rem;
+      font-weight: 600;
+      color: #222; }
+
+.cookie-bar {
+  display: table;
+  background-color: #f16a21;
+  color: #fff;
+  text-align: center;
+  height: 100px;
+  width: 100%; }
+  .cookie-bar .cookie-warning {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: table-cell;
+    vertical-align: middle; }
+    .cookie-bar .cookie-warning a {
+      color: #fff;
+      text-decoration: underline; }
+  .cookie-bar .cookie-button {
+    float: right;
+    background: #f16a21;
+    border: 1px;
+    border-color: #fff;
+    padding: 0 10px 0 0; }
+  .cookie-bar.table-hidden {
+    display: none; }
+
+.navbar-default .navbar-toggle {
+  border: 0;
+  background-color: transparent; }
+  .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: transparent; }
+  .navbar-default .navbar-toggle .icon-bar {
+    -webkit-transition: all 0.2s ease-in-out;
+    -moz-transition: all 0.2s ease-in-out;
+    -ms-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out; }
+  .navbar-default .navbar-toggle .icon-bar.bar-1 {
+    -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+    -webkit-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+    -o-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+    -ms-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+    transform: rotate(45deg) translateX(4.243px) translateY(4.243px); }
+  .navbar-default .navbar-toggle.collapsed .icon-bar.bar-1 {
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none; }
+  .navbar-default .navbar-toggle .icon-bar.bar-2 {
+    opacity: 0.0; }
+  .navbar-default .navbar-toggle.collapsed .icon-bar.bar-2 {
+    opacity: 1.0; }
+  .navbar-default .navbar-toggle .icon-bar.bar-3 {
+    -moz-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+    -webkit-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+    -o-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+    -ms-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+    transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px); }
+  .navbar-default .navbar-toggle.collapsed .icon-bar.bar-3 {
+    -moz-transform: none;
+    -webkit-transform: none;
+    -o-transform: none;
+    -ms-transform: none;
+    transform: none; }
+
+.fullsize-container {
+  width: 100%;
+  padding: 16px 0 28px 0; }
+  .fullsize-container.white {
+    background-color: #fff;
+    color: #222; }
+  .fullsize-container.light-gray {
+    background-color: #eaeaea;
+    color: #222; }
+  .fullsize-container.gray {
+    background-color: #aaa;
+    color: #fff; }
+  .fullsize-container.black {
+    background-color: #222;
+    color: #fff; }
+  .fullsize-container.philosophy {
+    background-image: url("/images/philosophy.jpg");
+    background-size: cover;
+    background-position: center top;
+    color: #fff; }
+  .fullsize-container.radical-agility {
+    background-image: url("/images/radical_agility_bg.gif");
+    background-size: cover;
+    background-position: center center;
+    color: #fff; }
+
+.fullsize-media {
+  width: 100%;
+  height: auto;
+  min-height: 200px;
+  max-height: 500px;
+  position: relative;
+  overflow: hidden; }
+  .fullsize-media video {
+    width: 100%;
+    height: auto; }
+  .fullsize-media.home-video-bg {
+    background-image: url("/images/home_video_bg.jpg");
+    background-size: cover;
+    background-position: center center; }
+
+.teaser {
+  background-color: transparent;
+  position: absolute;
+  z-index: 1000;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  -moz-transform: translateY(-50%);
+  -webkit-transform: translateY(-50%);
+  -o-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+  .teaser .tech-zalando-logo {
+    display: block;
+    float: left;
+    width: 112px;
+    height: 112px;
+    margin: 40px 20px 40px 0;
+    background-image: url("/images/tech_zalando_logo_white.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center; }
+  .teaser h1 {
+    display: block;
+    float: left;
+    font-size: 5rem;
+    line-height: 5.6rem;
+    color: #fff;
+    margin: 40px 0; }
+  .teaser .play-button {
+    margin: 0 50px 0 0;
+    display: block;
+    float: right;
+    text-indent: -9999px;
+    width: 200px;
+    height: 200px;
+    background-image: url("/images/play_button.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    opacity: 0.75; }
+
+.home-video-bg .tech-zalando-logo {
+  display: none; }
+.home-video-bg h1 {
+  font-size: 3.2rem;
+  line-height: 3.4rem;
+  margin: 14px 0;
+  padding: 0;
+  background-image: none; }
+.home-video-bg .play-button {
+  margin: 0;
+  width: 100px;
+  height: 100px; }
+
+.big-points {
+  padding: 16px 0; }
+
+.big-point {
+  display: block;
+  margin: 0 auto 40px auto;
+  padding: 24px 8px;
+  background-color: #fff; }
+  .big-point .icon {
+    height: 80px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain;
+    margin: 0 0 10px 0; }
+    .big-point .icon.autonomy {
+      background-image: url("/images/ra_autonomy.png"); }
+    .big-point .icon.mastery {
+      background-image: url("/images/ra_mastery.png"); }
+    .big-point .icon.purpose {
+      background-image: url("/images/ra_purpose.png"); }
+  .big-point .title {
+    text-align: center;
+    font-size: 2rem;
+    text-transform: uppercase;
+    color: #f16a21;
+    margin: 0; }
+  .big-point .text {
+    color: #222;
+    text-align: center;
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 8px 0 0 0;
+    margin: 0; }
+
+footer {
+  padding: 40px 0;
+  background-color: #000; }
+
+.footer-group {
+  padding: 0 20px;
+  margin-bottom: 40px;
+  font-weight: 400;
+  font-size: 1.6rem; }
+  .footer-group .title {
+    display: block;
+    border-bottom: 1px solid #aaa;
+    color: #aaa;
+    text-transform: uppercase; }
+  .footer-group ul {
+    display: block;
+    list-style-type: none;
+    padding: 0;
+    margin: 0; }
+    .footer-group ul li {
+      display: block;
+      padding: 4px 0;
+      margin: 0; }
+      .footer-group ul li a {
+        color: #fff; }
+        .footer-group ul li a:hover {
+          color: #f16a21;
+          text-decoration: none; }

@@ -199,9 +199,13 @@ header {
     }
 }
 
+.sub-menu {
+    margin-top: 16px;
+}
+
 .fullsize-container {
     width: 100%;
-    padding: 16px 0 28px 0;
+    padding: 16px 0 16px 0;
 
     &.white {
         background-color: $color-white;
@@ -290,6 +294,7 @@ header {
         line-height: 5.6rem;
         color: $color-white;
         margin: 40px 0;
+        text-transform: uppercase;
     }
 
     .play-button {
@@ -384,7 +389,7 @@ header {
 
 footer {
     padding: 40px 0;
-    background-color: $bg-color-black;
+    background-color: $color-black;
 }
 
 .footer-group {
@@ -394,9 +399,10 @@ footer {
     font-size: 1.6rem;
 
     .title {
+        padding-bottom: 3px;
         display: block;
         border-bottom: 1px solid $color-gray;
-        color: $color-gray;
+        color: $color-white;
         text-transform: uppercase;
     }
 
@@ -423,3 +429,33 @@ footer {
     }
 }
 
+.social-icon {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 2px;
+
+    &.twitter {
+        background-image: url('/images/social_icon_twitter.png');
+    }
+    &.google-plus {
+        background-image: url('/images/social_icon_googleplus.png');
+    }
+    &.instagram {
+        background-image: url('/images/social_icon_instagram.png');
+    }
+    &.flickr {
+        background-image: url('/images/social_icon_flickr.png');
+    }
+}
+
+#wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width:80%;
+    height:150px;
+}
