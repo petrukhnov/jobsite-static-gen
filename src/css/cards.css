@@ -46,6 +46,12 @@
       line-height: 1.7rem;
       text-transform: uppercase;
       margin: 0 16px 16px 16px; }
+    .card .content .subtitle {
+      font-weight: 400;
+      font-size: 1.2rem;
+      line-height: 1.3rem;
+      margin: -12px 16px 16px 16px;
+      color: #555555; }
     .card .content .text {
       font-weight: 400;
       font-size: 1.4rem;
@@ -55,6 +61,13 @@
       font-size: 1.2rem;
       letter-spacing: 0.03rem;
       margin: 0 16px;
+      color: #555555; }
+    .card .content .footer {
+      font-weight: 400;
+      font-size: 1.2rem;
+      letter-spacing: 0.03rem;
+      margin: 0 16px;
+      font-style: italic;
       color: #555555; }
     .card .content .footer-position-bottom {
       display: block;
@@ -69,7 +82,7 @@
 .card-swipe {
   width: 100%;
   overflow: hidden; }
-  .card-swipe .main-wrapper {
+  .card-swipe .wrapper {
     position: relative;
     width: 80%;
     margin-left: auto;
@@ -79,6 +92,8 @@
     margin: 5px 10px; }
     .card-swipe .card .media {
       height: 100px; }
+    .card-swipe .card.job .content {
+      height: 120px; }
     .card-swipe .card .content {
       padding: 16px 0;
       height: 210px; }
