@@ -46,7 +46,7 @@ $(function() {
 
         var i, page;
         for (i=0; i<3; i++) {
-            page = i==0 ? cards.length-1 : i-1;
+            page = i===0 ? cards.length-1 : i-1;
             swipe.masterPages[i].appendChild(cards[page].cloneNode(true));
         }
 
