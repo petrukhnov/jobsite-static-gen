@@ -39,7 +39,7 @@ gulp.task('scss-lint', function() {
 });
 
 // concatenate and minify javascript
-gulp.task('minify-js', ['clean:js'], function() {
+gulp.task('minify-js', ['lint', 'clean:js'], function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
         "src/js/vendor/bootstrap.min.js",
@@ -68,7 +68,7 @@ gulp.task('sass', function() {
 });
 
 // concatenate and minify css
-gulp.task('minify-css', ['sass', 'clean:css'], function() {
+gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     gulp.src([
         "src/css/vendor/bootstrap.min.css",
         "src/css/fonts.css",
@@ -82,7 +82,7 @@ gulp.task('minify-css', ['sass', 'clean:css'], function() {
 });
 
 // minify html
-gulp.task('minify-html', ['clean:html'], function() {
+gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
     gulp.src("./src/*.html")
         .pipe(minifyHTML())
         .pipe(gulp.dest("dist"));
@@ -154,10 +154,10 @@ gulp.task('deploy:dev', function() {
 });
 
 // watch files for changes
-gulp.task('watch', ['lint', 'html-hint', 'scss-lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
-    gulp.watch('src/js/*.js', ['lint', 'minify-js']);
+gulp.task('watch', ['minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
+    gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
-    gulp.watch('src/*.html', ['minify-html']);
+    gulp.watch('src/*.html', ['minify-html', 'html-hint']);
     gulp.watch('src/images/*.*', ['copy-assets']);
 });
 
