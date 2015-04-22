@@ -8,7 +8,8 @@ var jshint = require('gulp-jshint'),
     closureCompiler = require('gulp-closure-compiler'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
-    htmlHint = require('gulp-htmlhint'),
+    htmlhint = require('gulp-htmlhint'),
+    scsslint = require('gulp-scss-lint'),
     awspublish = require('gulp-awspublish'),
     connect = require('gulp-connect'),
     del = require('del');
@@ -24,10 +25,17 @@ gulp.task('lint', function() {
 });
 
 // hint html
-gulp.task('lint', function() {
+gulp.task('html-hint', function() {
     return gulp.src("./src/*.html")
-        .pipe(htmlHint())
-        .pipe(htmlHint.failReporter());
+        .pipe(htmlhint())
+        .pipe(htmlhint.failReporter());
+});
+
+// lint scss
+gulp.task('scss-lint', function() {
+  gulp.src('/scss/*.scss')
+    .pipe(scsslint())
+    .pipe(scsslint.failReporter())
 });
 
 // concatenate and minify javascript
@@ -146,7 +154,7 @@ gulp.task('deploy:dev', function() {
 });
 
 // watch files for changes
-gulp.task('watch', ['lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
+gulp.task('watch', ['lint', 'html-hint', 'scss-lint', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
     gulp.watch('src/js/*.js', ['lint', 'minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html']);
