@@ -61,16 +61,28 @@ header {
       width: 0; }
 
 .cookie-bar {
-  display: none;
-  background-color: #222222;
+  display: table;
+  background-color: #f16a21;
   color: #ffffff;
-  text-align: center; }
+  text-align: center;
+  height: 100px;
+  width: 100%; }
+  .cookie-bar #cookie-warning {
+    padding-left: 30px;
+    padding-right: 30px;
+    display: table-cell;
+    vertical-align: middle; }
+    .cookie-bar #cookie-warning a {
+      color: #ffffff;
+      text-decoration: underline; }
   .cookie-bar #cookie-button {
     float: right;
-    background: #222222;
+    background: #f16a21;
     border: 1px;
     border-color: #ffffff;
     padding: 0 10px 0 0; }
+  .cookie-bar.table-hidden {
+    display: none; }
 
 .navbar-default .navbar-toggle {
   border: 0;

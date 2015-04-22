@@ -2,7 +2,7 @@
     var cookieName = "zalandoCookieWarning";
     
     var hideCookieBar = function () {
-        $(".cookie-bar").hide();
+        $(".cookie-bar").toggleClass("table-hidden", "none");
     };
 
     var getCookie = function (cname) {
@@ -20,7 +20,7 @@
     
     // Show the cookie bar if there is no old cookie
     if (getCookie(cookieName) === "") {
-        $(".cookie-bar").show();
+        $(".cookie-bar").toggleClass("table-hidden", "none");
     }
 
     // Set the cookie
