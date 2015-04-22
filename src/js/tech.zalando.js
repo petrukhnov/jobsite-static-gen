@@ -38,7 +38,7 @@ $(function() {
     function createCardSwipe(wrapper) {
         var swipe, cards;
 
-        cards = $("#" + $(wrapper).data("swipe-source") +" .card");
+        cards = $("#" + $(wrapper).data("swipe-source") +" .card-container");
         swipe = new SwipeView(wrapper, {
             numberOfPages: cards.length,
             hastyPageFlip: true

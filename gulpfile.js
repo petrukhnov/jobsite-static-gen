@@ -147,7 +147,7 @@ gulp.task('deploy:dev', function() {
   };
   return gulp.src('./dist/**')
     .pipe(publisher.publish(headers))
-    .pipe(publisher.sync())
+    // .pipe(publisher.sync()) // do not delete content on S3
     .pipe(publisher.cache())
     .pipe(awspublish.reporter());
 });

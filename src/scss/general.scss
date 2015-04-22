@@ -7,11 +7,11 @@ html {
 
 //
 body {
-  margin-top: 40px;
-  background-color: $bg-color-header;
-  font-family: $font-regular;
-  font-weight: 600;
-  letter-spacing: 0.06em;
+    margin-top: 40px;
+    background-color: $bg-color-header;
+    font-family: $font-regular;
+    font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
 .bodycopy {
@@ -25,12 +25,13 @@ body {
 .no-margin {
     margin: 0 !important;
 }
+
 .no-padding {
     padding: 0 !important;
 }
 
 .heading-1 {
-    font-size: 3.4rem;
+    font-size: 3.0rem;
     padding: 0 0 8px 0;
     text-transform: uppercase;
 
@@ -62,10 +63,12 @@ header {
             padding-left: 12px;
             padding-right: 0;
         }
+
         .navbar-nav > li > a:hover {
             background-color: $color-white;
             color: $color-zalando;
         }
+
         .navbar-nav > li > a:after {
             display: inline-block;
             content: '';
@@ -74,15 +77,17 @@ header {
             height: 12px;
             margin-left: 12px;
         }
+
         .navbar-nav > li:last-child > a:after {
             width: 0;
         }
+
         .navbar-brand {
             margin: 10px 0 10px 10px;
             padding: 0 0 0 40px;
             height: 30px;
             width: 200px;
-            background-image: url('/images/tech_zalando_logo_black.png');
+            background-image: url("/images/tech_zalando_logo_black.png");
             background-position: left center;
             background-size: contain;
             background-repeat: no-repeat;
@@ -113,7 +118,7 @@ header {
             text-decoration: underline;
         }
     }
-    
+
     .cookie-button {
         float: right;
         background: $color-zalando;
@@ -121,6 +126,7 @@ header {
         border-color: $color-white;
         padding: 0 10px 0 0;
     }
+
     &.table-hidden {
         display:none;
     }
@@ -131,6 +137,7 @@ header {
     .navbar-toggle {
         border: 0;
         background-color: transparent;
+
         &:hover,
         &:focus {
             background-color: transparent;
@@ -143,6 +150,7 @@ header {
             -o-transition: all 0.2s ease-in-out;
             transition: all 0.2s ease-in-out;
         }
+
         .icon-bar.bar-1 {
             -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
             -webkit-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
@@ -150,6 +158,7 @@ header {
             -ms-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
             transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
         }
+
         &.collapsed {
             .icon-bar.bar-1 {
                 -moz-transform: none;
@@ -159,14 +168,17 @@ header {
                 transform: none;
             }
         }
+
         .icon-bar.bar-2 {
             opacity: 0.0;
         }
+
         &.collapsed {
             .icon-bar.bar-2 {
                opacity: 1.0;
             }
         }
+
         .icon-bar.bar-3 {
             -moz-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
             -webkit-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
@@ -174,6 +186,7 @@ header {
             -ms-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
             transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
         }
+
         &.collapsed {
             .icon-bar.bar-3 {
                 -moz-transform: none;
@@ -188,32 +201,37 @@ header {
 
 .fullsize-container {
     width: 100%;
-    padding: 16px 0 24px 0;
+    padding: 16px 0 28px 0;
 
     &.white {
         background-color: $color-white;
         color: $color-black;
     }
+
     &.light-gray {
         background-color: $color-light-gray;
         color: $color-black;
     }
+
     &.gray {
         background-color: $color-gray;
         color: $color-white;
     }
+
     &.black {
         background-color: $color-black;
         color: $color-white;
     }
+
     &.philosophy {
-        background-image: url('../images/philosophy.jpg');
+        background-image: url("/images/philosophy.jpg");
         background-size: cover;
         background-position: center top;
         color: $color-white;
     }
+
     &.radical-agility {
-        background-image: url('../images/radical_agility_bg.gif');
+        background-image: url("/images/radical_agility_bg.gif");
         background-size: cover;
         background-position: center center;
         color: $color-white;
@@ -234,7 +252,7 @@ header {
     }
 
     &.home-video-bg {
-        background-image: url('../images/home_video_bg.jpg');
+        background-image: url("/images/home_video_bg.jpg");
         background-size: cover;
         background-position: center center;
     }
@@ -253,6 +271,18 @@ header {
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
 
+    .tech-zalando-logo {
+        display: block;
+        float: left;
+        width: 112px;
+        height: 112px;
+        margin: 40px 20px 40px 0;
+        background-image: url("/images/tech_zalando_logo_white.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+
     h1 {
         display: block;
         float: left;
@@ -260,11 +290,6 @@ header {
         line-height: 5.6rem;
         color: $color-white;
         margin: 40px 0;
-        padding: 0 0 0 140px;
-        background-image: url('/images/tech_zalando_logo_white.png');
-        background-repeat: no-repeat;
-        background-size: contain;
-        background-position: left center;
     }
 
     .play-button {
@@ -274,7 +299,7 @@ header {
         text-indent: -9999px;
         width: 200px;
         height: 200px;
-        background-image: url('/images/play_button.png');
+        background-image: url("/images/play_button.png");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center center;
@@ -283,6 +308,10 @@ header {
 }
 
 .home-video-bg {
+    .tech-zalando-logo {
+        display: none;
+    }
+
     h1 {
         font-size: 3.2rem;
         line-height: 3.4rem;
@@ -290,6 +319,7 @@ header {
         padding: 0;
         background-image: none;
     }
+
     .play-button {
         margin: 0;
         width: 100px;
@@ -304,9 +334,9 @@ header {
 .big-points {
     padding: 16px 0;
 }
+
 .big-point {
     display: block;
-    // width: 220px;
     margin: 0 auto 40px auto;
     padding: 24px 8px;
     background-color: $color-white;
@@ -320,15 +350,18 @@ header {
         margin: 0 0 10px 0;
 
         &.autonomy {
-            background-image: url('/images/ra_autonomy.png');
+            background-image: url("/images/ra_autonomy.png");
         }
+
         &.mastery {
-            background-image: url('/images/ra_mastery.png');
+            background-image: url("/images/ra_mastery.png");
         }
+
         &.purpose {
-            background-image: url('/images/ra_purpose.png');
+            background-image: url("/images/ra_purpose.png");
         }
     }
+
     .title {
         text-align: center;
         font-size: 2.0rem;
@@ -336,6 +369,7 @@ header {
         color: $color-zalando;
         margin: 0;
     }
+
     .text {
         color: $color-black;
         text-align: center;
@@ -371,12 +405,15 @@ footer {
         list-style-type: none;
         padding: 0;
         margin: 0;
+
         li {
             display: block;
             padding: 4px 0;
             margin: 0;
+
             a {
                 color: $color-white;
+
                 &:hover {
                     color: $color-zalando;
                     text-decoration: none;
@@ -384,12 +421,5 @@ footer {
             }
         }
     }
-}
-
-#wrapper {
-    margin-left: auto;
-    margin-right: auto;
-    width:80%;
-    height:150px;
 }
 

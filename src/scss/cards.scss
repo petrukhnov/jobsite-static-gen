@@ -7,19 +7,35 @@
 .cards {
     padding: 0 0 20px 0;
 }
+
+.card-container {
+    .category {
+        display: block;
+        text-align: center;
+        color: $color-black;
+        font-size: 1.8rem;
+        font-weight: 300;
+        text-decoration: none;
+        margin: 0 0 20px 0;
+        -webkit-transition: color $animation-duration, background-color $animation-duration;
+        transition: color $animation-duration, background-color $animation-duration;
+
+        &:hover {
+            background-color: $color-white;
+        }
+    }
+}
+
 .card {
     display: block;
     background-color: $color-white;
     margin-bottom: 20px;
     overflow: hidden;
 
-    border: none;
+    border: 0;
     border-radius: 2px;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
-
-    // -webkit-transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
-    // transition: -ms-transform $animation-duration, -webkit-transform $animation-duration, transform $animation-duration;
 
     &.white {
         background: $bg-color-card-white;
@@ -29,11 +45,11 @@
         cursor: pointer;
         -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
         box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
-        // background-color: $bg-color-card-hover;
-        -ms-transform: scale(1.02, 1.02); /* IE 9 */
-        -webkit-transform: scale(1.02, 1.02); /* Chrome, Safari, Opera */
+        -ms-transform: scale(1.02, 1.02);
+        -webkit-transform: scale(1.02, 1.02);
         transform: scale(1.02, 1.02);
     }
+
     &.white:hover {
         background: $bg-color-card-white-hover;
     }
@@ -45,19 +61,22 @@
         background-size: cover;
         background-position: center center;
     }
+
     &.blog {
         .media {
-            background-image: url('../images/blog.jpg');
+            background-image: url("/images/blog.jpg");
         }
     }
+
     &.job {
         .media {
-            background-image: url('../images/job.jpg');
+            background-image: url("/images/job.jpg");
         }
     }
+
     &.opensource {
         .media {
-            background-image: url('../images/opensource.jpg');
+            background-image: url("/images/opensource.jpg");
         }
     }
 
@@ -78,6 +97,7 @@
             text-transform: uppercase;
             margin: 0 16px 16px 16px;
         }
+
         .subtitle {
             font-weight: 400;
             font-size: 1.2rem;
@@ -85,11 +105,13 @@
             margin: -12px 16px 16px 16px;
             color: $color-dark-gray;
         }
+
         .text {
             font-weight: 400;
             font-size: 1.4rem;
             margin: 0 16px 16px 16px;
         }
+
         .author {
             font-weight: 400;
             font-size: 1.2rem;
@@ -97,6 +119,7 @@
             margin: 0 16px;
             color: $color-dark-gray;
         }
+
         .footer {
             font-weight: 400;
             font-size: 1.2rem;
@@ -105,6 +128,7 @@
             font-style: italic;
             color: $color-dark-gray;
         }
+
         .footer-position-bottom {
             display: block;
             position: absolute;
@@ -114,6 +138,7 @@
             z-index: 1000;
         }
     }
+
     &.small {
         .content {
             height: 120px;
@@ -124,17 +149,32 @@
 .card-swipe {
     width: 100%;
     overflow: hidden;
+    margin-bottom: 20px;
 
     .wrapper {
         position: relative;
         width: 80%;
         margin-left: auto;
         margin-right: auto;
-        height: 320px;
+        height: 300px;
+    }
+
+    &.jobs {
+        .wrapper {
+            height: 260px;
+        }
+    }
+
+    .card-container {
+        .category {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
     }
 
     .card {
         margin: 5px 10px;
+
         .media {
             height: 100px;
         }
@@ -146,11 +186,13 @@
         .content {
             padding: 16px 0;
             height: 210px;
+
             .text {
                 font-size: 1.4rem;
                 max-height: 82px;
                 overflow: hidden;
             }
+
             .footer-position-bottom {
                 display: none;
             }
@@ -160,8 +202,8 @@
             cursor: inherit;
             -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
-            -ms-transform: inherit; /* IE 9 */
-            -webkit-transform: inherit; /* Chrome, Safari, Opera */
+            -ms-transform: inherit;
+            -webkit-transform: inherit;
             transform: inherit;
         }
     }
