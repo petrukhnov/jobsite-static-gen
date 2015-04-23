@@ -71,7 +71,7 @@ header {
 
         .navbar-nav > li > a:after {
             display: inline-block;
-            content: '';
+            content: "";
             width: 1px;
             background-color: $color-gray;
             height: 12px;
@@ -149,14 +149,14 @@ header {
             -ms-transition: all 0.2s ease-in-out;
             -o-transition: all 0.2s ease-in-out;
             transition: all 0.2s ease-in-out;
-        }
-
-        .icon-bar.bar-1 {
-            -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
-            -webkit-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
-            -o-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
-            -ms-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
-            transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+        
+            .bar-1 {
+                -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -webkit-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -o-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -ms-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+            }
         }
 
         &.collapsed {
@@ -167,16 +167,13 @@ header {
                 -ms-transform: none;
                 transform: none;
             }
+            .icon-bar.bar-2 {
+               opacity: 1.0;
+            }
         }
 
         .icon-bar.bar-2 {
             opacity: 0.0;
-        }
-
-        &.collapsed {
-            .icon-bar.bar-2 {
-               opacity: 1.0;
-            }
         }
 
         .icon-bar.bar-3 {
@@ -298,7 +295,6 @@ header {
     position: absolute;
     z-index: 1000;
     width: 100%;
-    position: absolute;
     top: 50%;
     -moz-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
@@ -471,16 +467,16 @@ footer {
     margin: 0 2px;
 
     &.twitter {
-        background-image: url('/images/social_icon_twitter.png');
+        background-image: url("/images/social_icon_twitter.png");
     }
     &.google-plus {
-        background-image: url('/images/social_icon_googleplus.png');
+        background-image: url("/images/social_icon_googleplus.png");
     }
     &.instagram {
-        background-image: url('/images/social_icon_instagram.png');
+        background-image: url("/images/social_icon_instagram.png");
     }
     &.flickr {
-        background-image: url('/images/social_icon_flickr.png');
+        background-image: url("/images/social_icon_flickr.png");
     }
 }
 
