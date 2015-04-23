@@ -1,0 +1,223 @@
+
+@import "constants";
+
+// card layout inspired from:
+// http://www.google.com/design/spec/components/cards.html#cards-actions
+
+.cards {
+    padding: 0;
+}
+
+.card-container {
+    padding: 0 0 10px 0;
+    
+    .category {
+        color: $color-black;
+        display: block;
+        font-size: 1.8rem;
+        font-weight: 300;
+        margin: 0 0 20px 0;
+        text-align: center;
+        text-decoration: none;
+        -webkit-transition: color $animation-duration, background-color $animation-duration;
+        transition: color $animation-duration, background-color $animation-duration;
+
+        &:hover {
+            background-color: $color-white;
+        }
+    }
+}
+
+.card {
+    background-color: $color-white;
+    border: 0;
+    border-radius: 2px;
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+    display: block;
+    margin-bottom: 20px;
+    overflow: hidden;
+
+    &.white {
+        background: $bg-color-card-white;
+    }
+
+    &:hover {
+        -webkit-box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.30);
+        cursor: pointer;
+        -ms-transform: scale(1.02, 1.02);
+        -webkit-transform: scale(1.02, 1.02);
+        transform: scale(1.02, 1.02);
+    }
+
+    &.white:hover {
+        background: $bg-color-card-white-hover;
+    }
+
+    // card media
+
+    .media {
+        background-position: center center;
+        background-size: cover;
+        height: 177px;
+    }
+
+    &.blog {
+        .media {
+            background-image: url("/images/blog.jpg");
+        }
+    }
+
+    &.job {
+        .media {
+            background-image: url("/images/job.jpg");
+        }
+    }
+
+    &.opensource {
+        .media {
+            background-image: url("/images/opensource.jpg");
+        }
+    }
+
+    // card content
+
+    .content {
+        border: 1px solid $color-light-gray-darker;
+        border-radius: 0 0 2px 2px;
+        border-width: 0 1px 1px 1px;
+        color: $color-black;
+        height: 220px;
+        padding: 24px 8px;
+        position: relative;
+
+        .title {
+            font-size: 1.4rem;
+            line-height: 1.7rem;
+            margin: 0 16px 16px 16px;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: $color-dark-gray;
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.3rem;
+            margin: -8px 16px 18px 16px;
+        }
+
+        .text {
+            font-size: 1.4rem;
+            font-weight: 400;
+            margin: 0 16px 16px 16px;
+        }
+
+        .author {
+            color: $color-dark-gray;
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.03rem;
+            margin: 0 16px;
+        }
+
+        .footer {
+            bottom: 20px;
+            color: $color-dark-gray;
+            display: block;
+            font-size: 1.2rem;
+            font-style: italic;
+            font-weight: 400;
+            left: 8px;
+            letter-spacing: 0.03rem;
+            margin: 0 16px;
+            position: absolute;
+            right: 8px;
+            z-index: 900;
+        }
+
+        .footer-position-bottom {
+            bottom: 16px;
+            display: block;
+            left: 16px;
+            position: absolute;
+            right: 16px;
+            z-index: 1000;
+        }
+        
+        a {
+            color: $color-zalando;
+        }
+    }
+
+    &.small {
+        .content {
+            height: 120px;
+        }
+    }
+}
+
+.card-swipe {
+    margin-bottom: 20px;
+    overflow: hidden;
+    width: 100%;
+
+    .wrapper {
+        height: 300px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        width: 80%;
+    }
+
+    &.jobs {
+        .wrapper {
+            height: 260px;
+        }
+    }
+
+    .card-container {
+        .category {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+    }
+
+    .card {
+        margin: 5px 10px;
+
+        .media {
+            height: 100px;
+        }
+        
+        &.job {
+            .content {
+                height: 120px;
+            }
+        }
+        
+        .content {
+            height: 210px;
+            padding: 16px 0;
+
+            .text {
+                font-size: 1.4rem;
+                max-height: 82px;
+                overflow: hidden;
+            }
+
+            .footer-position-bottom {
+                display: none;
+            }
+        }
+
+        &:hover {
+            -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+            cursor: inherit;
+            -ms-transform: inherit;
+            -webkit-transform: inherit;
+            transform: inherit;
+        }
+    }
+}

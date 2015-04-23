@@ -1,3 +1,10 @@
 node_modules
 build
 npm-debug.log
+dist
+.awspublish-zalando-tfox-dev
+config.js
+buttons.css
+cards.css
+fonts.css
+general.css

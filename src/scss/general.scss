@@ -1,0 +1,494 @@
+
+@import "constants";
+
+html {
+    font-size: 10px;   // 1rem = 10px
+}
+
+//
+body {
+    margin-top: 40px;
+    background-color: $bg-color-header;
+    font-family: $font-regular;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+}
+
+.bodycopy {
+    font-family: $font-bodycopy;
+    font-weight: 400;
+    font-size: 1.6rem;
+    line-height: 2.0rem;
+    letter-spacing: 0.015em;
+}
+
+.no-margin {
+    margin: 0 !important;
+}
+
+.no-padding {
+    padding: 0 !important;
+}
+
+.heading-1 {
+    font-size: 3.0rem;
+    padding: 0 0 8px 0;
+    text-transform: uppercase;
+
+    &.small {
+        text-transform: none;
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 2.6rem;
+        padding: 0 0 8px 0;
+        letter-spacing: 0.030em;
+    }
+}
+
+// header
+header {
+    margin: 0;
+
+    &.navbar-default {
+        background-color: $bg-color-header;
+        border: 0;
+        -webkit-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+
+        .navbar-nav > li > a {
+            color: $color-black;
+            text-transform: uppercase;
+            -webkit-transition: color $animation-duration, background-color $animation-duration;
+            transition: color $animation-duration, background-color $animation-duration;
+            padding-left: 12px;
+            padding-right: 0;
+        }
+
+        .navbar-nav > li > a:hover {
+            background-color: $color-white;
+            color: $color-zalando;
+        }
+
+        .navbar-nav > li > a:after {
+            display: inline-block;
+            content: "";
+            width: 1px;
+            background-color: $color-gray;
+            height: 12px;
+            margin-left: 12px;
+        }
+
+        .navbar-nav > li:last-child > a:after {
+            width: 0;
+        }
+
+        .navbar-brand {
+            margin: 10px 0 10px 10px;
+            padding: 0 0 0 40px;
+            height: 30px;
+            width: 200px;
+            background-image: url("/images/tech_zalando_logo_black.png");
+            background-position: left center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            font-size: 1.4rem;
+            line-height: 1.6rem;
+            font-weight: 600;
+            color: $color-black;
+        }
+    }
+}
+
+// cookie warning
+.cookie-bar {
+    display: table;
+    background-color: $color-zalando;
+    color: $color-white;
+    text-align: center;
+    height: 100px;
+    width: 100%;
+
+    .cookie-warning {
+        padding-left: 30px;
+        padding-right: 30px;
+        display: table-cell;
+        vertical-align: middle;
+        a {
+            color: $color-white;
+            text-decoration: underline;
+        }
+    }
+
+    .cookie-button {
+        float: right;
+        background: $color-zalando;
+        border: 1px;
+        border-color: $color-white;
+        padding: 0 10px 0 0;
+    }
+
+    &.table-hidden {
+        display:none;
+    }
+}
+
+// menu
+.navbar-default {
+    .navbar-toggle {
+        border: 0;
+        background-color: transparent;
+
+        &:hover,
+        &:focus {
+            background-color: transparent;
+        }
+
+        .icon-bar {
+            -webkit-transition: all 0.2s ease-in-out;
+            -moz-transition: all 0.2s ease-in-out;
+            -ms-transition: all 0.2s ease-in-out;
+            -o-transition: all 0.2s ease-in-out;
+            transition: all 0.2s ease-in-out;
+        
+            .bar-1 {
+                -moz-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -webkit-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -o-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                -ms-transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+                transform: rotate(45deg) translateX(4.243px) translateY(4.243px);
+            }
+        }
+
+        &.collapsed {
+            .icon-bar.bar-1 {
+                -moz-transform: none;
+                -webkit-transform: none;
+                -o-transform: none;
+                -ms-transform: none;
+                transform: none;
+            }
+            .icon-bar.bar-2 {
+               opacity: 1.0;
+            }
+        }
+
+        .icon-bar.bar-2 {
+            opacity: 0.0;
+        }
+
+        .icon-bar.bar-3 {
+            -moz-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+            -webkit-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+            -o-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+            -ms-transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+            transform: rotate(-45deg) translateX(4.243px) translateY(-4.243px);
+        }
+
+        &.collapsed {
+            .icon-bar.bar-3 {
+                -moz-transform: none;
+                -webkit-transform: none;
+                -o-transform: none;
+                -ms-transform: none;
+                transform: none;
+            }
+        }
+    }
+}
+
+.sub-menu {
+    margin-top: 16px;
+}
+
+.fullsize-container {
+    width: 100%;
+    padding: 16px 0 16px 0;
+
+    &.white {
+        background-color: $color-white;
+        color: $color-black;
+    }
+
+    &.light-gray {
+        background-color: $color-light-gray;
+        color: $color-black;
+    }
+
+    &.gray {
+        background-color: $color-gray;
+        color: $color-white;
+    }
+
+    &.black {
+        background-color: $color-black;
+        color: $color-white;
+    }
+
+    &.philosophy {
+        background-image: url("/images/philosophy.jpg");
+        background-size: cover;
+        background-position: center top;
+        color: $color-white;
+    }
+
+    &.radical-agility {
+        background-image: url("/images/radical_agility_bg.gif");
+        background-size: cover;
+        background-position: center center;
+        color: $color-white;
+    }
+}
+
+.fullsize-media {
+    width: 100%;
+    height: auto;
+    min-height: 200px;
+    max-height: 500px;
+    position: relative;
+    overflow: hidden;
+
+    video {
+        width: 100%;
+        height: auto;
+    }
+
+    &.home-video-bg {
+        background-image: url("/images/home_video_bg.jpg");
+        background-position: center center;
+        background-size: cover;
+    }
+
+    &.picture-bg {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: 400px;
+
+        .blog-header {
+            background-color: rgba(0,0,0,0.5);
+            bottom: 0px;
+            padding: 24px 0;
+            position: absolute;
+            width: 100%;
+        }
+
+        .title {
+            color: $color-white;
+            font-size: 3.0rem;
+            line-height: 3.4rem;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .subtitle {
+            color: $color-white;
+            font-weight: 400;
+            font-size: 2.0rem;
+            line-height: 2.4rem;
+            margin: 8px 0 0 0;
+        }
+    }
+}
+
+.teaser {
+    background-color: transparent;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    top: 50%;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+
+    .tech-zalando-logo {
+        display: block;
+        float: left;
+        width: 112px;
+        height: 112px;
+        margin: 40px 20px 40px 0;
+        background-image: url("/images/tech_zalando_logo_white.png");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center center;
+    }
+
+    .title {
+        display: block;
+        float: left;
+        font-size: 5.0rem;
+        line-height: 5.6rem;
+        color: $color-white;
+        margin: 40px 0;
+        text-transform: uppercase;
+    }
+
+    .play-button {
+        margin: 0 50px 0 0;
+        display: block;
+        float: right;
+        text-indent: -9999px;
+        width: 200px;
+        height: 200px;
+        background-image: url("/images/play_button.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        opacity: 0.75;
+    }
+}
+
+.home-video-bg {
+    .tech-zalando-logo {
+        display: none;
+    }
+
+    h1 {
+        font-size: 3.2rem;
+        line-height: 3.4rem;
+        margin: 14px 0;
+        padding: 0;
+        background-image: none;
+    }
+
+    .play-button {
+        margin: 0;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+// content
+
+// big points
+
+.big-points {
+    padding: 16px 0;
+}
+
+.big-point {
+    display: block;
+    margin: 0 auto 40px auto;
+    padding: 24px 8px;
+    background-color: $color-white;
+
+    .icon {
+        height: 80px;
+        width: 100%;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: contain;
+        margin: 0 0 10px 0;
+
+        &.autonomy {
+            background-image: url("/images/ra_autonomy.png");
+        }
+
+        &.mastery {
+            background-image: url("/images/ra_mastery.png");
+        }
+
+        &.purpose {
+            background-image: url("/images/ra_purpose.png");
+        }
+    }
+
+    .title {
+        text-align: center;
+        font-size: 2.0rem;
+        text-transform: uppercase;
+        color: $color-zalando;
+        margin: 0;
+    }
+
+    .text {
+        color: $color-black;
+        text-align: center;
+        font-size: 1.4rem;
+        font-weight: 300;
+        padding: 8px 0 0 0;
+        margin: 0;
+    }
+}
+
+// footer
+
+footer {
+    padding: 40px 0;
+    background-color: $color-black;
+}
+
+.footer-group {
+    padding: 0 20px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    font-size: 1.6rem;
+
+    .title {
+        padding-bottom: 3px;
+        display: block;
+        border-bottom: 1px solid $color-gray;
+        color: $color-white;
+        text-transform: uppercase;
+    }
+
+    ul {
+        display: block;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+
+        li {
+            display: block;
+            padding: 4px 0;
+            margin: 0;
+
+            a {
+                color: $color-white;
+
+                &:hover {
+                    color: $color-zalando;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.social-icon {
+    display: inline-block;
+    text-indent: -9999px;
+    width: 30px;
+    height: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 0 2px;
+
+    &.twitter {
+        background-image: url("/images/social_icon_twitter.png");
+    }
+    &.google-plus {
+        background-image: url("/images/social_icon_googleplus.png");
+    }
+    &.instagram {
+        background-image: url("/images/social_icon_instagram.png");
+    }
+    &.flickr {
+        background-image: url("/images/social_icon_flickr.png");
+    }
+}
+
+.blog-post {
+    color: $color-black;
+    margin: 40px 0 50px 0;
+
+    p {
+        font-family: $font-bodycopy;
+        font-weight: 400;
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        letter-spacing: 0.015em;
+    }
+}

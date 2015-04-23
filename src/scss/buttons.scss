@@ -1,0 +1,51 @@
+
+@import "constants";
+
+
+.default-button {
+    background-color: $color-white;
+    border: 1px solid $color-gray;
+    border-radius: 4px;
+    color: $color-dark-gray;
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 300;
+    padding: 4px 16px;
+
+    &:hover {
+        background-color: $color-dark-gray;
+        color: $color-white;
+    }
+
+    &.color-transparent {
+        background-color: transparent;
+        border-color: $color-white;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-dark-gray;
+        }
+    }
+
+    &.color-zalando {
+        background-color: $color-white;
+        border-color: $color-zalando;
+        color: $color-zalando;
+
+        &:hover {
+            background-color: $color-zalando;
+            color: $color-white;
+        }
+    }
+
+    &.center {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    &.full-size {
+        margin: 0 0 10px;
+        width: 100%;
+    }
+}
