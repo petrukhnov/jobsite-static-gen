@@ -46,14 +46,14 @@ gulp.task('minify-js', ['lint', 'clean:js'], function() {
         "src/js/tech.zalando.js"
     ])
     .pipe(closureCompiler({
-        compilerPath: 'build/closure-compiler/compiler.jar',
+        compilerPath: 'lib/closure-compiler/compiler.jar',
         compilerFlags: {
             compilation_level: 'SIMPLE_OPTIMIZATIONS',
             warning_level: 'QUIET'
         },
         fileName: 'tech.zalando-all.js'
     }))
-    .pipe(gulp.dest('dist/js'));
+    .pipe(gulp.dest('build/js'));
 });
 
 // compile sass to css
@@ -77,14 +77,14 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('build/css'));
 });
 
 // minify html
 gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
     gulp.src("./src/*.html")
         .pipe(minifyHTML())
-        .pipe(gulp.dest("dist"));
+        .pipe(gulp.dest("build"));
 });
 
 // copy assets
@@ -92,41 +92,41 @@ gulp.task('copy-assets', ['clean:assets'], function() {
     gulp.src([
         "./src/robots.txt"
     ])
-    .pipe(gulp.dest("dist"));
+    .pipe(gulp.dest("build"));
     gulp.src([
         "./src/images/*.jpg",
         "./src/images/*.png",
         "./src/images/*.gif",
         "./src/images/*.ico"
     ])
-    .pipe(gulp.dest("dist/images"));
+    .pipe(gulp.dest("build/images"));
     gulp.src([
         "./src/fonts/**"
     ])
-    .pipe(gulp.dest("dist/fonts"));
+    .pipe(gulp.dest("build/fonts"));
 });
 
 // clean up folders
 gulp.task('clean:css', function (cb) {
     del([
-        './dist/css/*.css'
+        './build/css/*.css'
     ], cb);
 });
 gulp.task('clean:js', function (cb) {
     del([
-        './dist/js/*.js'
+        './build/js/*.js'
     ], cb);
 });
 gulp.task('clean:html', function (cb) {
     del([
-        './dist/*.html'
+        './build/*.html'
     ], cb);
 });
 gulp.task('clean:assets', function (cb) {
     del([
-        './dist/robots.txt',
-        './dist/images/**',
-        './dist/fonts/**'
+        './build/robots.txt',
+        './build/images/**',
+        './build/fonts/**'
     ], cb);
 });
 
@@ -134,7 +134,7 @@ gulp.task('clean:assets', function (cb) {
 gulp.task('server', ['watch'], function () {
   connect.server({
     port: 4001,
-    root: ['dist'],
+    root: ['build'],
     livereload: true
   });
 });
@@ -145,7 +145,7 @@ gulp.task('deploy:dev', function() {
   var headers = {
     // 'Cache-Control': 'max-age=315360000, no-transform, public'
   };
-  return gulp.src('./dist/**')
+  return gulp.src('./build/**')
     .pipe(publisher.publish(headers))
     // .pipe(publisher.sync()) // do not delete content on S3
     .pipe(publisher.cache())
