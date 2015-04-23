@@ -415,19 +415,21 @@ header {
 // footer
 
 footer {
-    padding: 40px 0;
+    padding: 20px 0;
     background-color: $color-black;
 }
 
 .footer-group {
     padding: 0 20px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     font-weight: 400;
     font-size: 1.6rem;
 
     .title {
         padding-bottom: 3px;
         display: block;
+        font-size: 1.4rem;
+        font-weight: 400;
         border-bottom: 1px solid $color-gray;
         color: $color-white;
         text-transform: uppercase;
@@ -435,6 +437,8 @@ footer {
 
     ul {
         display: block;
+        font-size: 1.2rem;
+        font-weight: 300;
         list-style-type: none;
         padding: 0;
         margin: 0;
@@ -464,7 +468,6 @@ footer {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center center;
-    margin: 0 2px;
 
     &.twitter {
         background-image: url("/images/social_icon_twitter.png");

@@ -42,7 +42,6 @@ gulp.task('minify-js', ['lint', 'clean:js'], function() {
     gulp.src([
         "src/js/vendor/jquery.min.js",
         "src/js/vendor/bootstrap.min.js",
-        "src/js/vendor/swipeview.js",
         "src/js/tech.zalando.js"
     ])
     .pipe(closureCompiler({
