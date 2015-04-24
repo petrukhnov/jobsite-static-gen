@@ -114,6 +114,11 @@ gulp.task('copy-assets', ['clean:assets'], function() {
 });
 
 // clean up folders
+gulp.task('clean:all', function () {
+    del([
+        './build'
+    ]);
+});
 gulp.task('clean:css', function (cb) {
     del([
         './build/css/*.css'
@@ -137,28 +142,7 @@ gulp.task('clean:assets', function (cb) {
     ], cb);
 });
 
-// start a server
-gulp.task('server', ['watch'], function () {
-  connect.server({
-    port: 4001,
-    root: ['build'],
-    livereload: true
-  });
-});
-
-// deploy to AWS S3
-gulp.task('deploy:dev', function() {
-  var publisher = awspublish.create(config.aws);
-  var headers = {
-    // 'Cache-Control': 'max-age=315360000, no-transform, public'
-  };
-  return gulp.src('./build/**')
-    .pipe(publisher.publish(headers))
-    // .pipe(publisher.sync()) // do not delete content on S3
-    .pipe(publisher.cache())
-    .pipe(awspublish.reporter());
-});
-
+// pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
     gulp.src('src/**/*.md')
         .pipe(gulp_front_matter()).on('data', function(file) {
@@ -183,12 +167,37 @@ gulp.task('metalsmith', function() {
 });
 
 // watch files for changes
-gulp.task('watch', ['metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
+gulp.task('watch', function() {
     gulp.watch('src/**/*.md', ['metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html', 'html-hint']);
     gulp.watch('src/images/*.*', ['copy-assets']);
+});
+
+// start a server and watch for changes
+gulp.task('server', ['build', 'watch'], function () {
+    connect.server({
+        port: 4001,
+        root: ['build'],
+        livereload: true
+    });
+});
+
+// build static website from sources
+gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
+
+// deploy to AWS S3
+gulp.task('deploy:dev', ['build'], function() {
+  var publisher = awspublish.create(config.aws);
+  var headers = {
+    // 'Cache-Control': 'max-age=315360000, no-transform, public'
+  };
+  return gulp.src('./build/**')
+    .pipe(publisher.publish(headers))
+    // .pipe(publisher.sync()) // do not delete content on S3
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter());
 });
 
 // default task
