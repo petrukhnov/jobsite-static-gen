@@ -34,7 +34,7 @@ gulp.task('lint', function() {
 
 // hint html
 gulp.task('html-hint', function() {
-    return gulp.src('./src/*.html')
+    return gulp.src(['./src/*.html', './_layouts/*.html'])
         .pipe(htmlhint())
         .pipe(htmlhint.failReporter());
 });
@@ -182,7 +182,7 @@ gulp.task('metalsmith', function() {
 
 // watch files for changes
 gulp.task('watch', function() {
-    gulp.watch('src/**/*.md', ['metalsmith']);
+    gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html', 'html-hint']);
