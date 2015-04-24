@@ -13,6 +13,7 @@ var jshint = require('gulp-jshint'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
+    partial = require('metalsmith-partial'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
     htmlhint = require('gulp-htmlhint'),
@@ -89,8 +90,17 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
 // minify html
 gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
     gulp.src('./src/*.html')
+        .pipe(gulpsmith()
+              .use(partial({
+                directory: 'src/partials', 
+                engine: 'swig'
+              }))
+              .use(templates({
+                engine: 'swig',
+                inPlace: true
+              })))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('build/'));
 });
 
 // copy assets
@@ -143,7 +153,7 @@ gulp.task('clean:assets', function (cb) {
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
-    gulp.src('src/**/*.md')
+    gulp.src(['src/**/*.md'])
         .pipe(gulp_front_matter()).on('data', function(file) {
             assign(file, file.frontMatter);
             delete file.frontMatter;
@@ -158,10 +168,15 @@ gulp.task('metalsmith', function() {
               }))
               .use(markdown())
               .use(permalinks())
+              .use(partial({
+                directory: 'src/partials', 
+                engine: 'swig'
+              }))
               .use(templates({
                   'engine': 'swig',
                   'directory': '_layouts'
               })))
+        .pipe(minifyHTML())
         .pipe(gulp.dest('build/'));
 });
 
