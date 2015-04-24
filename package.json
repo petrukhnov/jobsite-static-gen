@@ -2,6 +2,9 @@
   "name": "tfox-static-site-gen",
   "private": true,
   "dependencies": {
+    "gulp-front-matter": "^1.2.2",
+    "gulpsmith": "^0.5.3",
+    "lodash.assign": "^3.1.0",
     "metalsmith": "^1.0.0",
     "metalsmith-markdown": "^0.2.1",
     "metalsmith-permalinks": "^0.1.0",

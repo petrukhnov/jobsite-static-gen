@@ -6,6 +6,13 @@ var jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     closureCompiler = require('gulp-closure-compiler'),
+    gulpsmith = require('gulpsmith'),
+    gulp_front_matter = require('gulp-front-matter'),
+    assign = require('lodash.assign'),
+    prismic = require('metalsmith-prismic'),
+    markdown = require('metalsmith-markdown'),
+    permalinks = require('metalsmith-permalinks'),
+    templates = require('metalsmith-templates'),
     minifyCSS = require('gulp-minify-css'),
     minifyHTML = require('gulp-minify-html'),
     htmlhint = require('gulp-htmlhint'),
@@ -26,24 +33,24 @@ gulp.task('lint', function() {
 
 // hint html
 gulp.task('html-hint', function() {
-    return gulp.src("./src/*.html")
+    return gulp.src('./src/*.html')
         .pipe(htmlhint())
         .pipe(htmlhint.failReporter());
 });
 
 // lint scss
 gulp.task('scss-lint', function() {
-  gulp.src('./src/scss/*.scss')
-    .pipe(scsslint({'config': 'scsslint.yml'}))
+    gulp.src('./src/scss/*.scss')
+        .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
 // concatenate and minify javascript
 gulp.task('minify-js', ['lint', 'clean:js'], function() {
     gulp.src([
-        "src/js/vendor/jquery.min.js",
-        "src/js/vendor/bootstrap.min.js",
-        "src/js/vendor/swipeview.js",
-        "src/js/tech.zalando.js"
+        'src/js/vendor/jquery.min.js',
+        'src/js/vendor/bootstrap.min.js',
+        'src/js/vendor/swipeview.js',
+        'src/js/tech.zalando.js'
     ])
     .pipe(closureCompiler({
         compilerPath: 'lib/closure-compiler/compiler.jar',
@@ -69,11 +76,11 @@ gulp.task('sass', function() {
 // concatenate and minify css
 gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     gulp.src([
-        "src/css/vendor/bootstrap.min.css",
-        "src/css/fonts.css",
-        "src/css/general.css",
-        "src/css/cards.css",
-        "src/css/buttons.css"
+        'src/css/vendor/bootstrap.min.css',
+        'src/css/fonts.css',
+        'src/css/general.css',
+        'src/css/cards.css',
+        'src/css/buttons.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
@@ -82,28 +89,28 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
 
 // minify html
 gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
-    gulp.src("./src/*.html")
+    gulp.src('./src/*.html')
         .pipe(minifyHTML())
-        .pipe(gulp.dest("build"));
+        .pipe(gulp.dest('build'));
 });
 
 // copy assets
 gulp.task('copy-assets', ['clean:assets'], function() {
     gulp.src([
-        "./src/robots.txt"
+        './src/robots.txt'
     ])
-    .pipe(gulp.dest("build"));
+    .pipe(gulp.dest('build'));
     gulp.src([
-        "./src/images/*.jpg",
-        "./src/images/*.png",
-        "./src/images/*.gif",
-        "./src/images/*.ico"
+        './src/images/*.jpg',
+        './src/images/*.png',
+        './src/images/*.gif',
+        './src/images/*.ico'
     ])
-    .pipe(gulp.dest("build/images"));
+    .pipe(gulp.dest('build/images'));
     gulp.src([
-        "./src/fonts/**"
+        './src/fonts/**'
     ])
-    .pipe(gulp.dest("build/fonts"));
+    .pipe(gulp.dest('build/fonts'));
 });
 
 // clean up folders
@@ -152,8 +159,32 @@ gulp.task('deploy:dev', function() {
     .pipe(awspublish.reporter());
 });
 
+gulp.task('metalsmith', function() {
+    gulp.src('src/**/*.md')
+        .pipe(gulp_front_matter()).on('data', function(file) {
+            assign(file, file.frontMatter);
+            delete file.frontMatter;
+        })
+        .pipe(gulpsmith()
+              .metadata({
+                  'title': 'Zalando TFox',
+                  'description': 'We dress code!'
+              })
+              .use(prismic({
+                  'url': 'https://zalando-jobsite.prismic.io/api'
+              }))
+              .use(markdown())
+              .use(permalinks())
+              .use(templates({
+                  'engine': 'swig',
+                  'directory': '_layouts'
+              })))
+        .pipe(gulp.dest('build/'));
+});
+
 // watch files for changes
-gulp.task('watch', ['minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
+gulp.task('watch', ['metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets'], function() {
+    gulp.watch('src/**/*.md', ['metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
     gulp.watch('src/*.html', ['minify-html', 'html-hint']);
