@@ -81,7 +81,8 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
         'src/css/fonts.css',
         'src/css/general.css',
         'src/css/cards.css',
-        'src/css/buttons.css'
+        'src/css/buttons.css',
+        'src/css/blog_post.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
@@ -93,7 +94,7 @@ gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
     gulp.src('./src/*.html')
         .pipe(gulpsmith()
               .use(partial({
-                directory: 'src/partials', 
+                directory: 'src/partials',
                 engine: 'swig'
               }))
               .use(templates({
@@ -170,7 +171,7 @@ gulp.task('metalsmith', function() {
               .use(markdown())
               .use(permalinks())
               .use(partial({
-                directory: 'src/partials', 
+                directory: 'src/partials',
                 engine: 'swig'
               }))
               .use(templates({

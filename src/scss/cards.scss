@@ -10,7 +10,7 @@
 
 .card-container {
     padding: 0 0 10px 0;
-    
+
     .category {
         color: $color-black;
         display: block;
@@ -37,6 +37,8 @@
     display: block;
     margin-bottom: 20px;
     overflow: hidden;
+    border: 1px solid $color-light-gray-darker;
+    // border-width: 0 1px 1px 1px;
 
     &.white {
         background: $bg-color-card-white;
@@ -84,9 +86,9 @@
     // card content
 
     .content {
-        border: 1px solid $color-light-gray-darker;
+        // border: 1px solid $color-light-gray-darker;
+        // border-width: 0 1px 1px 1px;
         border-radius: 0 0 2px 2px;
-        border-width: 0 1px 1px 1px;
         color: $color-black;
         height: 220px;
         padding: 24px 8px;
