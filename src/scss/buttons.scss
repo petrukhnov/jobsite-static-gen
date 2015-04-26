@@ -11,10 +11,12 @@
     font-size: 1.4rem;
     font-weight: 300;
     padding: 4px 16px;
+    text-decoration: none;
 
     &:hover {
         background-color: $color-dark-gray;
         color: $color-white;
+        text-decoration: none;
     }
 
     &.color-transparent {

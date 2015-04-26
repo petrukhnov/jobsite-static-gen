@@ -85,14 +85,20 @@
                 <div class="col-md-4">
                     <div class="card-container">
                         <div class="card blog">
-                            <div class="media" style="background-image: url('{{ result.data.image.json.views.wide.url }}')"></div>
+                            <div class="media" style="background-image: url('{{ result.data.image.json.main.url }}')"></div>
                             <div class="content">
                                 <p class="title">{{ result.data.title.json.blocks[0].text }}</p>
-                                <p class="subtitle">{{ result.data.date.html|safe }}</p>
+                                <p class="subtitle">
+                                    {% if result.data.author %}
+                                        by {{ result.data.author.json.id }}
+                                    {% endif %}
+                                    {% if result.data.date %}
+                                         - {{ result.data.date.json.value|date('F Y') }}
+                                    {% endif %}</p>
                                 <p class="text bodycopy">{% if result.data.shortlede.json.blocks %}{{ result.data.shortlede.json.blocks[0].text }}{% endif %}</p>
                                 <p class="footer"><a href="#">{{ result.data.category.html|safe }}</a></p>
                                 <div class="footer-position-bottom">
-                                    <a class="default-button pull-right" href="{{ result.id }}/{{ result.slug }}">More</a>
+                                    <a class="default-button color-zalando pull-right" href="{{ result.id }}/{{ result.slug }}">More</a>
                                 </div>
                             </div>
                         </div>
@@ -115,6 +121,8 @@
     -->
 
     {% include "../src/partials/footer.html" %}
+
+    <div>{{ prismic.author.results|json }}</div>
 
     <script async src="../js/tech.zalando-all.js"></script>
 
