@@ -185,7 +185,7 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
-    gulp.watch('src/*.html', ['minify-html', 'html-hint']);
+    gulp.watch(['src/*.html', 'src/partials/*.html'], ['minify-html', 'html-hint']);
     gulp.watch('src/images/*.*', ['copy-assets']);
 });
 
