@@ -31,7 +31,16 @@
                 <div class="row">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                         <h1 class="title">{{ result.data.title.json.blocks[0].text }}</h1>
-                        <p class="subtitle">by {{  }} - {{ result.data.date.json.value|date('F Y') }}</p>
+                        <p class="subtitle">by 
+                            {%- for post_author in result.data.authors.json.value %}
+                                {# author.fragments.link.value.document.id #}
+                                {%- for author in prismic.authors.results %}
+                                    {%- if post_author.fragments.link.value.document.id == author.id %}
+                                        {{ author.data.full_name.json.blocks[0].text }}
+                                    {%- endif %}
+                                {%- endfor %}
+                            {%- endfor %}
+                             - {{ result.data.date.json.value|date('F Y') }}</p>
                     </div>
                 </div>
             </div>
@@ -50,6 +59,19 @@
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <div class="blog-post-content">
                         {{ result.data.body.html|safe|replace("``([^`]*)``","<code>$1</code>","g") }}
+                        {%- for post_author in result.data.authors.json.value %}
+                            {# author.fragments.link.value.document.id #}
+                            {%- for author in prismic.authors.results %}
+                                {%- if post_author.fragments.link.value.document.id == author.id %}
+                                    <div class="author">
+                                        <!-- {{ result.data.image.json|json }} -->
+                                        <div class="picture" style="background-image:url('{{ author.data.image.json.main.url }}');"></div>
+                                        <p>{{ author.data.full_name.json.blocks[0].text }}</p>
+                                        <p class="title">{{ author.data.title.json.value }}</p>
+                                    </div>
+                                {%- endif %}
+                            {%- endfor %}
+                        {%- endfor %}
                     </div>
                 </div>
             </div>
@@ -65,8 +87,6 @@
     -->
 
     {% include "../src/partials/footer.html" %}
-
-
 
     <script async src="../../../js/tech.zalando-all.js"></script>
 

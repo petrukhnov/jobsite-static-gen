@@ -76,6 +76,10 @@ header {
             background-color: $color-gray;
             height: 12px;
             margin-left: 12px;
+
+            @media screen and (max-width: $break-large) {
+                width: 0;
+            }
         }
 
         .navbar-nav > li:last-child > a:after {

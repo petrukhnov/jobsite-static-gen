@@ -60,7 +60,7 @@
 
 .blog-post-content {
     color: $color-black;
-    margin: 16px 0 16px 0;
+    margin: 16px 0 24px 0;
     padding: 0 8px;
     overflow: hidden;
 
@@ -124,5 +124,32 @@
         background-color: $color-light-gray-lighter;
         color: $color-black;
         border-radius: 2px;
+    }
+
+    .author {
+        padding: 16px 0;
+
+        .picture {
+            display: block;
+            float: left;
+            margin-right: 16px;
+            width: 50px;
+            height: 50px;
+            background-size: cover;
+            background-position: center center;
+            background-repeat: no-repeat;
+            border-radius: 50%;
+        }
+
+        .title {
+            color: $color-gray;
+        }
+
+        p {
+            font-size: 1.6rem;
+            line-height: 1.6rem;
+            margin: 5px 0 0 66px;
+            font-family: $font-regular;
+        }
     }
 }
