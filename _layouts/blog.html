@@ -80,17 +80,25 @@
 
     <div class="fullsize-container light-gray">
         <div class="container">
-            <div class="row cards">
+            <div class="cards">
             {%- for result in prismic.blogpost.results %}
-                <div class="col-md-4">
+                <!-- <div class="col-md-4"> -->
                     <div class="card-container">
                         <div class="card blog">
                             <div class="media" style="background-image: url('{{ result.data.image.json.main.url }}')"></div>
                             <div class="content">
                                 <p class="title">{{ result.data.title.json.blocks[0].text }}</p>
                                 <p class="subtitle">
-                                    {% if result.data.author %}
-                                        by {{ result.data.author.json.id }}
+                                    {% if result.data.authors %}
+                                        by 
+                                        {%- for post_author in result.data.authors.json.value %}
+                                            {# author.fragments.link.value.document.id #}
+                                            {%- for author in prismic.authors.results %}
+                                                {%- if post_author.fragments.link.value.document.id == author.id %}
+                                                    {{ author.data.full_name.json.blocks[0].text }}
+                                                {%- endif %}
+                                            {%- endfor %}
+                                        {%- endfor %}
                                     {% endif %}
                                     {% if result.data.date %}
                                          - {{ result.data.date.json.value|date('F Y') }}
@@ -103,7 +111,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
             {%- endfor %}
             </div>
         </div>
@@ -121,8 +129,6 @@
     -->
 
     {% include "../src/partials/footer.html" %}
-
-    <div>{{ prismic.author.results|json }}</div>
 
     <script async src="../js/tech.zalando-all.js"></script>
 

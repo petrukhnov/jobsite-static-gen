@@ -2,11 +2,11 @@
 
 .blog-post-picture {
     height: 380px;
-    -moz-transform: scale(1.10);
-    -webkit-transform: scale(1.10);
-    -o-transform: scale(1.10);
-    -ms-transform: scale(1.10);
-    transform: scale(1.10);
+    -moz-transform: scale(1.15);
+    -webkit-transform: scale(1.15);
+    -o-transform: scale(1.15);
+    -ms-transform: scale(1.15);
+    transform: scale(1.15);
 
     .wrapper {
         height: 100%;
@@ -118,6 +118,7 @@
     img {
         width: 100%;
         height: auto;
+        margin: 10px 0;
     }
 
     code {
@@ -138,7 +139,7 @@
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
-            border-radius: 50%;
+            border-radius: 25%;
         }
 
         .title {
