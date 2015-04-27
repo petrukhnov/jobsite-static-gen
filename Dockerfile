@@ -17,4 +17,5 @@ WORKDIR /opt/tfox
 
 EXPOSE 4001
 
+# TODO this should not run the development server, but wait for a build trigger
 CMD ["node_modules/.bin/gulp"]

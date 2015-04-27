@@ -5,3 +5,8 @@ dist
 .awspublish-zalando-tfox-dev
 config.js
 src/css
+
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml

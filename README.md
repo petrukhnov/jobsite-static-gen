@@ -16,7 +16,7 @@ Docker: Containers for consistent runtime environments
 
 2. Install Java 7 or higher (required by Google Closure)
 
-3. Copy the default config file `cp config.default.js config.js`
+3. Copy and update the default config file `cp config.default.js config.js`
 
 4. Edit the config.js file and fill in your redentials and configurations
 
@@ -37,6 +37,20 @@ can also use it for local development of course.
    If you run docker in Virtualbox (e.g. boot2docker) you need to forward the
    port 4001 in virtualbox, too.
 
+# Application Deployment
+
+Deployment can be handled with AWS Beanstalk CLI tools
+([Setup Instructions](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-set-up.html)).
+
+To deploy the current git HEAD with the CLI tools, run:
+`eb deploy`
+
+## Configuration
+- The hosting environment needs to specify the following environment variables
+  to deploy to S3: S3SECRET, S3REGION, S3KEY, S3BUCKET
+- The port forwarding for the AWS Beanstalk load balancer is defined in `Dockerrun.aws.json`
+
 # Deploying website
 
-To generate and deploy the static website run `gulp deploy:dev`
+To generate and deploy the static website from your local machine run `gulp
+deploy:dev`

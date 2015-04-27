@@ -2,7 +2,8 @@
 var gulp = require('gulp');
 
 // include gulp plugins
-var jshint = require('gulp-jshint'),
+var fs = require('fs'),
+    jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     closureCompiler = require('gulp-closure-compiler'),
@@ -22,7 +23,24 @@ var jshint = require('gulp-jshint'),
     connect = require('gulp-connect'),
     del = require('del');
 
-var config = require('./config').site;
+
+var config;
+fs.stat('config.js', function(err, stat) {
+    if (err === null) {
+        // use local config file
+        config = require('./config').site;
+    } else {
+        // import environment variables
+        config = {
+            "aws": {
+                "key": process.env.S3KEY,
+                "secret": process.env.S3SECRET,
+                "bucket": process.env.S3BUCKET,
+                "region": process.env.S3REGION
+            }
+        };
+    }
+});
 
 // lint task
 gulp.task('lint', function() {
