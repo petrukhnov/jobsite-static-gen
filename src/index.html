@@ -269,8 +269,7 @@ master of your own trade.</h1>
 </div>
 
 
-    {% include "src/partials/footer.html" %}
-
+    {% include "src/partials/footer.html" with { 'relative_path_to_root': './' } %}
 
 
     <script async src="js/tech.zalando-all.js"></script>
