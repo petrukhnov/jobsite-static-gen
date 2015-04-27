@@ -31,5 +31,8 @@
   },
   "scripts": {
     "build": "metalsmith"
+  },
+  "devDependencies": {
+    "gulp-autoprefixer": "^2.2.0"
   }
 }

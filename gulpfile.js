@@ -19,6 +19,7 @@ var fs = require('fs'),
     minifyHTML = require('gulp-minify-html'),
     htmlhint = require('gulp-htmlhint'),
     scsslint = require('gulp-scss-lint'),
+    autoprefixer = require('gulp-autoprefixer'),
     awspublish = require('gulp-awspublish'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
@@ -90,6 +91,10 @@ gulp.task('sass', function() {
             '!src/scss/_constants.scss'
         ])
         .pipe(sass())
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
         .pipe(gulp.dest('src/css'));
 });
 
