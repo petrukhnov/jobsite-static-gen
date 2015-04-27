@@ -211,7 +211,9 @@ gulp.task('deploy:dev', function() {
     // 'Cache-Control': 'max-age=315360000, no-transform, public'
   };
   return gulp.src('./build/**')
-    .pipe(rename({ dirname: '/build/latest' }))
+    .pipe(rename(function (path) {
+       path.dirname = '/build/latest/' + path.dirname;
+    }))
     .pipe(publisher.publish(headers))
     .pipe(publisher.sync('/build/latest'))
     .pipe(publisher.cache())
