@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    {% include "src/partials/header.html" %}
+    {% include "src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'privacy-policy' } %}
 
     <div class="fullsize-container white">
         <div class="container">

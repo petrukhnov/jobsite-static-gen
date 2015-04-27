@@ -1,35 +1,44 @@
-    <header class="navbar navbar-default navbar-fixed-top">
-        <div class="cookie-bar table-hidden">
-            <span class="cookie-warning">This site uses cookies.<br />Please see our <a href="#">cookie policy</a> for more information.</span>
-            <button class="cookie-button">X</button>
+<header class="navbar navbar-default navbar-fixed-top">
+    <div class="cookie-bar table-hidden">
+        <span class="cookie-warning">This site uses cookies.<br />Please see our <a href="{{ relative_path_to_root }}privacy-policy.html">cookie policy</a> for more information.</span>
+        <button class="cookie-button">X</button>
+    </div>
+    <div class="container" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="{{ relative_path_to_root }}index.html">Zalando.<br/>We dress code.</a>
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zalando-navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar bar-1"></span>
+                <span class="icon-bar bar-2"></span>
+                <span class="icon-bar bar-3"></span>
+            </button>
         </div>
-        <div class="container" role="navigation">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="/index.html">Zalando.<br/>We dress code.</a>
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#zalando-navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar bar-1"></span>
-                    <span class="icon-bar bar-2"></span>
-                    <span class="icon-bar bar-3"></span>
-                </button>
-            </div>
-            <div class="navbar-collapse collapse" id="zalando-navbar-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/jobs.html">Jobs</a>
-                    </li>
+        <div class="navbar-collapse collapse" id="zalando-navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ relative_path_to_root }}index.html"
+                    {%- if active==='home' %} class="active" {%- endif %}
+                    >Home</a>
+                </li>
+                <li>
+                    <a href="{{ relative_path_to_root }}jobs"
+                    {%- if active==='jobs' %} class="active" {%- endif %}
+                    >Jobs</a>
+                </li>
 <!--
-                    <li>
-                        <a href="working.html">Working @ Z</a>
-                    </li>
-                    <li>
-                        <a href="locations.html">Location</a>
-                    </li>
+                <li>
+                    <a href="working.html">Working @ Z</a>
+                </li>
+                <li>
+                    <a href="locations.html">Location</a>
+                </li>
 -->
-                    <li>
-                        <a href="/blog">Blog</a>
-                    </li>
-                </ul>
-            </div>
+                <li>
+                    <a href="{{ relative_path_to_root }}blog"
+                    {%- if active==='blog' %} class="active" {%- endif %}
+                    >Blog</a>
+                </li>
+            </ul>
         </div>
-    </header>
+    </div>
+</header>
