@@ -19,6 +19,7 @@ var jshint = require('gulp-jshint'),
     htmlhint = require('gulp-htmlhint'),
     scsslint = require('gulp-scss-lint'),
     awspublish = require('gulp-awspublish'),
+    rename = require('gulp-rename'),
     connect = require('gulp-connect'),
     del = require('del');
 
@@ -204,14 +205,15 @@ gulp.task('server', ['build', 'watch'], function () {
 gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
 
 // deploy to AWS S3
-gulp.task('deploy:dev', ['build'], function() {
+gulp.task('deploy:dev', function() {
   var publisher = awspublish.create(config.aws);
   var headers = {
     // 'Cache-Control': 'max-age=315360000, no-transform, public'
   };
   return gulp.src('./build/**')
+    .pipe(rename({ dirname: '/build/latest' }))
     .pipe(publisher.publish(headers))
-    // .pipe(publisher.sync()) // do not delete content on S3
+    .pipe(publisher.sync('/build/latest'))
     .pipe(publisher.cache())
     .pipe(awspublish.reporter());
 });
