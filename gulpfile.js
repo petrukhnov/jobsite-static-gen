@@ -55,8 +55,7 @@ gulp.task('lint', function() {
 // hint html
 gulp.task('html-hint', function() {
     return gulp.src(['./src/*.html', './_layouts/*.html'])
-        .pipe(htmlhint())
-        .pipe(htmlhint.failReporter());
+        .pipe(htmlhint());
 });
 
 // lint scss

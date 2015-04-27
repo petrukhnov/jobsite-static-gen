@@ -1,0 +1,27 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimal-ui" />
+    <title>Zalando Tech</title>
+    <meta name="description" content="This is the home of Zalando Tech. We dress code! Check out our job page for available positions.">
+    <link href="../../../images/zalando.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="../../../css/tech.zalando-all.css" />
+</head>
+<body>
+
+    {% include "../src/partials/header.html" %}
+
+    {%- for result in prismic.partial.results %}{# Hack to assign ...results[0] to a named var #}
+
+    {{ result.data.title.html }}
+    {{ result.data.content.html }}
+
+    {%- endfor %}
+
+    {% include "../src/partials/footer.html" %}
+
+    <script async src="../../../js/tech.zalando-all.js"></script>
+
+</body>
+</html>

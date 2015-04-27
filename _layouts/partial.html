@@ -1,0 +1,4 @@
+{%- for result in prismic.partial.results -%}{# Hack to assign ...results[0] to a named var #}
+{{ result.data.title.html|safe }}
+{{ result.data.content.html|safe }}
+{%- endfor %}
