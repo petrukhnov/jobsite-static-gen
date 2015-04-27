@@ -6,19 +6,19 @@ html {
 }
 
 body {
-    margin-top: 50px;
     background-color: $bg-color-header;
     font-family: $font-regular;
     font-weight: 600;
     letter-spacing: 0.06em;
+    margin-top: 50px;
 }
 
 .bodycopy {
     font-family: $font-bodycopy;
-    font-weight: 400;
     font-size: 1.6rem;
-    line-height: 2.0rem;
+    font-weight: 400;
     letter-spacing: 0.015em;
+    line-height: 2.0rem;
 }
 
 .no-margin {
@@ -35,30 +35,31 @@ body {
     text-transform: uppercase;
 
     &.small {
-        text-transform: none;
         font-size: 2.4rem;
         font-weight: 300;
+        letter-spacing: 0.030em;
         line-height: 2.6rem;
         padding: 0 0 8px 0;
-        letter-spacing: 0.030em;
+        text-transform: none;
     }
 }
 
 // cookie warning
 
 .cookie-bar {
-    display: table;
     background-color: $color-zalando;
     color: $color-white;
-    text-align: center;
+    display: table;
     height: 100px;
+    text-align: center;
     width: 100%;
 
     .cookie-warning {
+        display: table-cell;
         padding-left: 30px;
         padding-right: 30px;
-        display: table-cell;
         vertical-align: middle;
+        
         a {
             color: $color-white;
             text-decoration: underline;
@@ -66,15 +67,15 @@ body {
     }
 
     .cookie-button {
-        float: right;
         background: $color-zalando;
         border: 1px;
         border-color: $color-white;
+        float: right;
         padding: 0 10px 0 0;
     }
 
     &.table-hidden {
-        display:none;
+        display: none;
     }
 }
 
@@ -83,8 +84,8 @@ body {
 }
 
 .fullsize-container {
-    width: 100%;
     padding: 16px 0 16px 0;
+    width: 100%;
 
     &.white {
         background-color: $color-white;
@@ -108,30 +109,30 @@ body {
 
     &.philosophy {
         background-image: url("/images/philosophy.jpg");
-        background-size: cover;
         background-position: center top;
+        background-size: cover;
         color: $color-white;
     }
 
     &.radical-agility {
         background-image: url("/images/radical_agility_bg.gif");
-        background-size: cover;
         background-position: center center;
+        background-size: cover;
         color: $color-white;
     }
 }
 
 .fullsize-media {
-    width: 100%;
     height: auto;
-    min-height: 200px;
     max-height: 500px;
-    position: relative;
+    min-height: 200px;
     overflow: hidden;
+    position: relative;
+    width: 100%;
 
     video {
-        width: 100%;
         height: auto;
+        width: 100%;
     }
 
     &.home-video-bg {
@@ -151,49 +152,45 @@ body {
 .teaser {
     background-color: transparent;
     position: absolute;
-    z-index: 1000;
-    width: 100%;
     top: 50%;
-    -moz-transform: translateY(-50%);
-    -webkit-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     transform: translateY(-50%);
+    width: 100%;
+    z-index: 1000;
 
     .tech-zalando-logo {
-        display: block;
-        float: left;
-        width: 112px;
-        height: 112px;
-        margin: 40px 20px 40px 0;
         background-image: url("/images/tech_zalando_logo_white.png");
+        background-position: center center;
         background-repeat: no-repeat;
         background-size: contain;
-        background-position: center center;
+        display: block;
+        float: left;
+        height: 112px;
+        margin: 40px 20px 40px 0;
+        width: 112px;
     }
 
     .title {
+        color: $color-white;
         display: block;
         float: left;
         font-size: 5.0rem;
         line-height: 5.6rem;
-        color: $color-white;
         margin: 40px 0;
         text-transform: uppercase;
     }
 
     .play-button {
-        margin: 0 50px 0 0;
+        background-image: url("/images/play_button.png");
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
         display: block;
         float: right;
+        height: 200px;
+        margin: 0 50px 0 0;
+        opacity: 0.75;
         text-indent: -9999px;
         width: 200px;
-        height: 200px;
-        background-image: url("/images/play_button.png");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center center;
-        opacity: 0.75;
     }
 }
 
@@ -203,17 +200,17 @@ body {
     }
 
     h1 {
+        background-image: none;
         font-size: 3.2rem;
         line-height: 3.4rem;
         margin: 14px 0;
         padding: 0;
-        background-image: none;
     }
 
     .play-button {
+        height: 100px;
         margin: 0;
         width: 100px;
-        height: 100px;
     }
 }
 
@@ -226,18 +223,18 @@ body {
 }
 
 .big-point {
+    background-color: $color-white;
     display: block;
     margin: 0 auto 40px auto;
     padding: 24px 8px;
-    background-color: $color-white;
 
     .icon {
-        height: 80px;
-        width: 100%;
-        background-repeat: no-repeat;
         background-position: center center;
+        background-repeat: no-repeat;
         background-size: contain;
+        height: 80px;
         margin: 0 0 10px 0;
+        width: 100%;
 
         &.autonomy {
             background-image: url("/images/ra_autonomy.png");
@@ -253,20 +250,20 @@ body {
     }
 
     .title {
-        text-align: center;
-        font-size: 2.0rem;
-        text-transform: uppercase;
         color: $color-zalando;
+        font-size: 2.0rem;
         margin: 0;
+        text-align: center;
+        text-transform: uppercase;
     }
 
     .text {
         color: $color-black;
-        text-align: center;
         font-size: 1.4rem;
         font-weight: 300;
-        padding: 8px 0 0 0;
         margin: 0;
+        padding: 8px 0 0 0;
+        text-align: center;
     }
 }
 

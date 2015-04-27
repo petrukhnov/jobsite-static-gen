@@ -2,10 +2,6 @@
 
 .blog-post-picture {
     height: 380px;
-    -moz-transform: scale(1.15);
-    -webkit-transform: scale(1.15);
-    -o-transform: scale(1.15);
-    -ms-transform: scale(1.15);
     transform: scale(1.15);
 
     .wrapper {
@@ -13,26 +9,26 @@
     }
 
     .inner {
-        height: 100%;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
+        height: 100%;
     }
 }
 
 .blog-post-header {
-    background-color: rgba(0,0,0,0.55);
-    bottom: 0px;
+    background-color: rgba(0, 0, 0, 0.55);
+    bottom: 0;
     padding: 24px 0;
     position: absolute;
     width: 100%;
 
     .title {
         color: $color-white;
-        font-weight: 600;
         font-size: 3.0rem;
-        line-height: 3.4rem;
+        font-weight: 600;
         letter-spacing: 0.06em;
+        line-height: 3.4rem;
         margin: 0;
         padding: 0 8px;
 
@@ -44,8 +40,8 @@
 
     .subtitle {
         color: $color-white;
-        font-weight: 400;
         font-size: 1.6rem;
+        font-weight: 400;
         line-height: 2.0rem;
         margin: 8px 0 0 0;
         padding: 0 8px;
@@ -61,16 +57,16 @@
 .blog-post-content {
     color: $color-black;
     margin: 16px 0 24px 0;
-    padding: 0 8px;
     overflow: hidden;
+    padding: 0 8px;
 
     p,
     li {
         font-family: $font-bodycopy;
-        font-weight: 400;
         font-size: 1.4rem;
-        line-height: 2.2rem;
+        font-weight: 400;
         letter-spacing: 0.015em;
+        line-height: 2.2rem;
 
         @media screen and (min-width: $break-large) {
             font-size: 1.6rem;
@@ -92,8 +88,8 @@
     }
 
     h1 {
-        font-weight: 600;
         font-size: 2.2rem;
+        font-weight: 600;
         line-height: 2.6rem;
         margin: 36px 0 16px 0;
 
@@ -104,8 +100,8 @@
     }
 
     h2 {
-        font-weight: 600;
         font-size: 2.0rem;
+        font-weight: 600;
         line-height: 2.4rem;
         margin: 36px 0 16px 0;
 
@@ -116,15 +112,15 @@
     }
 
     img {
-        width: 100%;
         height: auto;
         margin: 10px 0;
+        width: 100%;
     }
 
     code {
         background-color: $color-light-gray-lighter;
-        color: $color-black;
         border-radius: 2px;
+        color: $color-black;
         font-weight: 400;
     }
 
@@ -141,15 +137,15 @@
         padding: 16px 0;
 
         .picture {
-            display: block;
-            float: left;
-            margin-right: 16px;
-            width: 50px;
-            height: 50px;
-            background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
+            background-size: cover;
             border-radius: 25%;
+            display: block;
+            float: left;
+            height: 50px;
+            margin-right: 16px;
+            width: 50px;
         }
 
         .title {
@@ -157,10 +153,10 @@
         }
 
         p {
+            font-family: $font-regular;
             font-size: 1.6rem;
             line-height: 1.6rem;
             margin: 5px 0 0 66px;
-            font-family: $font-regular;
         }
     }
 }
