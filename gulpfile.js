@@ -116,7 +116,7 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
 
 // minify html
 gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
-    gulp.src('./src/*.html')
+    gulp.src('./src/**/*.html')
         .pipe(gulpsmith()
               .use(partial({
                 directory: 'src/partials',
