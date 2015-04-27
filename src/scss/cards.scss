@@ -155,7 +155,7 @@
             right: 16px;
             z-index: 1000;
         }
-        
+
         a {
             color: $color-zalando;
         }
@@ -165,6 +165,12 @@
         .content {
             height: 120px;
         }
+    }
+
+    &.not-looking-for-a-tech-job {
+        height: 409px;
+        border-radius: 24px;
+        background-color: $color-gray;
     }
 }
 
