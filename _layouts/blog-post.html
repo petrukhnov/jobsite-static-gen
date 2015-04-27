@@ -58,7 +58,10 @@
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <div class="blog-post-content">
-                        {{ result.data.body.html|safe|replace("``([^`]*)``","<code>$1</code>","g") }}
+                        {{ result.data.body.html|
+                                safe|
+                                replace('``([^`]*)``', '<code>$1</code>', 'g')|
+                                replace('<p>.. code:: (.*?)</p><p>(.*?)</p>', '<pre><code data-lang="$1">$2</code></pre>', 'g') }}
                         {%- for post_author in result.data.authors.json.value %}
                             {# author.fragments.link.value.document.id #}
                             {%- for author in prismic.authors.results %}

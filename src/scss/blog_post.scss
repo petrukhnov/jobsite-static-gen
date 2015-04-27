@@ -125,6 +125,16 @@
         background-color: $color-light-gray-lighter;
         color: $color-black;
         border-radius: 2px;
+        font-weight: 400;
+    }
+
+    pre {
+        background-color: $color-light-gray-lighter;
+        border: 0;
+        border-radius: 2px;
+        color: $color-black;
+        font-weight: 400px;
+        margin: 20px 0;
     }
 
     .author {
