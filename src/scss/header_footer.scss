@@ -148,6 +148,8 @@ footer {
     height: 30px;
     text-indent: -9999px;
     width: 30px;
+    display: block;
+    margin: 0 auto;
 
     &.twitter {
         background-image: url("/images/social_icon_twitter.png");
