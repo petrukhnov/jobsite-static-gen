@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    {% include "src/partials/header.html" %}
+    {% include "src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'working' } %}
 
     <div class="fullsize-media visible-md-block visible-lg-block">
         <div class="teaser">
@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    {% include "src/partials/footer.html" %}
+    {% include "src/partials/footer.html" with { 'relative_path_to_root': './' } %}
 
     <script async src="js/tech.zalando-all.js"></script>
 
