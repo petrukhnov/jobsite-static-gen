@@ -13,10 +13,59 @@
     <!-- Header -->
     {% include "src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'jobs-overview' } %}
 
-    <h1>Jobs overview</h1>
+    <!-- Teaser image -->
+    <div class="fullsize-media picture-bg jobs-overview">
+        <div class="teaser">
+            <div class="container">
+                <h1 class="title">Changing the<br/>future of fashion<br/>together</h1>
+            </div>
+        </div>
+    </div>
+
+    <!-- Job type cards -->
+    <div class="fullsize-container light-gray">
+        <div class="container">
+            <h1 class="heading-1 text-center">What’s your craft?</h1>
+            <div class="cards job-types">
+
+                <div class="card-container">
+                    <div class="card job-type">
+
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="card job-type">
+
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="card job-type">
+
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="card job-type">
+
+                    </div>
+                </div>
+
+                <div class="card-container">
+                    <div class="card job-type-not-looking-for-a-tech-job">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     {% include "src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
+
+    <script async src="../js/tech.zalando-all.js"></script>
 
 </body>
 </html>

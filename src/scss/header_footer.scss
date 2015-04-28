@@ -11,7 +11,7 @@
     .navbar-collapse {
         border: 0;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             background-color: $color-black;
         }
 
@@ -28,7 +28,7 @@
         text-transform: uppercase;
         transition: border $medium-animation-duration, color $animation-duration, background-color $animation-duration;
 
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
             border-bottom: 0;
             border-left: 4px solid $color-black;
             color: $color-white;
@@ -41,7 +41,7 @@
             border-bottom: 4px solid $color-zalando;
             color: $color-zalando;
 
-            @media (max-width: 768px) {
+            @media (max-width: 767px) {
                 background-color: transparent;
                 border-bottom: 0;
                 border-left: 4px solid $color-zalando;

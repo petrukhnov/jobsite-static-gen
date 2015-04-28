@@ -26,19 +26,19 @@ var fs = require('fs'),
     del = require('del');
 
 
-var config;
-fs.stat('config.js', function(err, stat) {
-    if (err === null) {
-        // use local config file
-        config = require('./config').site;
-    } else {
-        // import environment variables
-        config = {
-            "aws": {
-                "key": process.env.S3KEY,
-                "secret": process.env.S3SECRET,
-                "bucket": process.env.S3BUCKET,
-                "region": process.env.S3REGION
+var config = {};
+['dev', 'qa', 'prod'].forEach(function(env) {
+    try {
+        config[env] = require('./config-' + env).site;
+    } catch (e) {
+        // else: import environment variables
+        var envCaps = env.toUpperCase();
+        config[env] = {
+            'aws': {
+                'key': process.env['S3KEY_' + envCaps],
+                'secret': process.env['S3SECRET_' + envCaps],
+                'bucket': process.env['S3BUCKET_' + envCaps],
+                'region': process.env['S3REGION_' + envCaps]
             }
         };
     }
@@ -69,7 +69,7 @@ gulp.task('minify-js', ['lint', 'clean:js'], function() {
     gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
-        "src/js/vendor/parallax.min.js",
+        'src/js/vendor/parallax.min.js',
         'src/js/tech.zalando.js'
     ])
     .pipe(closureCompiler({
@@ -235,21 +235,32 @@ gulp.task('server', ['build', 'watch'], function () {
 // build static website from sources
 gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
 
-// deploy to AWS S3
-gulp.task('deploy:dev', function() {
-  var publisher = awspublish.create(config.aws);
-  var headers = {
-    // 'Cache-Control': 'max-age=315360000, no-transform, public'
-  };
-  return gulp.src('./build/**')
-    .pipe(rename(function (path) {
-       path.dirname = '/build/latest/' + path.dirname;
-    }))
-    .pipe(publisher.publish(headers))
-    .pipe(publisher.sync('/build/latest'))
-    .pipe(publisher.cache())
-    .pipe(awspublish.reporter());
-});
+// publish to AWS S3
+gulp.task('publish:dev', publish('dev'));
+gulp.task('publish:qa', publish('qa'));
+gulp.task('publish:prod', publish('prod'));
+
+// build + publish tasks, esp. for automated deployments
+gulp.task('deploy:dev', ['build'], publish('dev'));
+gulp.task('deploy:qa', ['build'], publish('qa'));
+gulp.task('deploy:prod', ['build'], publish('prod'));
+
+function publish(env) {
+    return function() {
+      var publisher = awspublish.create(config[env].aws);
+      var headers = {
+        // 'Cache-Control': 'max-age=315360000, no-transform, public'
+      };
+      return gulp.src('./build/**')
+        .pipe(rename(function (path) {
+           path.dirname = '/build/latest/' + path.dirname;
+        }))
+        .pipe(publisher.publish(headers))
+        .pipe(publisher.sync('/build/latest'))
+        .pipe(publisher.cache())
+        .pipe(awspublish.reporter());
+    }
+}
 
 // default task
 gulp.task('default', ['server']);
