@@ -196,8 +196,7 @@ gulp.task('metalsmith', function() {
                       if (doc.type === 'doc') {
                           return doc.slug;
                       }
-                      // create file based off of type, id and the filename (extracted from the full path)
-                      return '/' + doc.type + '/' + doc.id + '/' +  ctx.path.replace(/^.*(\\|\/|\:)/, '');
+                      return '/' + doc.type + '/' + doc.id + '/' +  doc.slug;
                   }
               }))
               .use(markdown())
