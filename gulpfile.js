@@ -250,7 +250,5 @@ function deploy(env) {
     }
 }
 
-gulp.task('')
-
 // default task
 gulp.task('default', ['server']);
