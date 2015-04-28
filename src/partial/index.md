@@ -1,5 +1,5 @@
 ---
-template: partial-index.html
+template: partial.html
 prismic:
   partial:
     query: '[[:d = at(document.type, "doc")]]'
