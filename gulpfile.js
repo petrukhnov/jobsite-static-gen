@@ -236,7 +236,8 @@ gulp.task('server', ['build', 'watch'], function () {
 });
 
 // build static website from sources
-gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
+gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css',
+                    'minify-html', 'copy-assets']);
 
 // publish to AWS S3
 gulp.task('publish:dev', publish('dev'));

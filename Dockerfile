@@ -15,7 +15,7 @@ RUN gem install scss-lint
 ADD . /opt/tfox
 WORKDIR /opt/tfox
 
-EXPOSE 4001
+EXPOSE 8080
 
 # TODO this should not run the development server, but wait for a build trigger
-CMD ["node_modules/.bin/gulp"]
+CMD ["node", "server.js"]

@@ -7,6 +7,7 @@ Closure Compiler: Compiles javascript files. (requires Java 7 or higher)
 SASS: CSS Preprocessor
 Metalsmith: Static website generator
 Docker: Containers for consistent runtime environments
+NodeJS: Application server to trigger static website builds via webhooks
 
 # Development
 
@@ -16,9 +17,10 @@ Docker: Containers for consistent runtime environments
 
 2. Install Java 7 or higher (required by Google Closure)
 
-3. Copy and update the default config file `cp config.default.js config.js`
+3. Copy and update the default config file `cp config.default.js config-ENV.js`
+   (ENV needs to be replaced with the environment string, "dev", "qa" or "prod")
 
-4. Edit the config.js file and fill in your redentials and configurations
+4. Edit the config-ENV.js file and fill in your credentials and configurations
 
 5. Install Ruby (required by SASS)
 
@@ -32,7 +34,7 @@ Docker is used for deployment of the static site generator to AWS Beanstalk. You
 can also use it for local development of course.
 
 1. build docker container `docker build -t zalando/tfox .`
-2. run app from docker container `docker run -i -p 4001:4001 -t zalando/tfox`.
+2. run app from docker container `docker run -i -p 8080:8080 -t zalando/tfox`.
 
    If you run docker in Virtualbox (e.g. boot2docker) you need to forward the
    port 4001 in virtualbox, too.
@@ -52,5 +54,9 @@ To deploy the current git HEAD with the CLI tools, run:
 
 # Deploying website
 
-To generate and deploy the static website from your local machine run `gulp
-deploy:dev`
+- When updating contents on prismic.io, a webhook triggers a new build of the
+  public website through the integrated NodeJS application and corresponding
+  gulp tasks.
+
+- To generate and deploy the static website from your local machine manually,
+  run `gulp deploy:dev`
