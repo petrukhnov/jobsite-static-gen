@@ -41,6 +41,17 @@
         }
     }
 
+    &.color-gray {
+        background-color: transparent;
+        border-color: $color-gray;
+        color: $color-dark-gray;
+
+        &:hover {
+            background-color: $color-gray;
+            color: $color-white;
+        }
+    }
+
     &.center {
         margin-left: auto;
         margin-right: auto;

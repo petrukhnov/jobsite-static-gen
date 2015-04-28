@@ -126,6 +126,29 @@
         height: 409px;
     }
 
+    &.radical-agility {
+
+        .content {
+
+            .title {
+                color: $color-zalando;
+                font-size: 3.0rem;
+                margin: 0;
+                text-align: center;
+                text-transform: uppercase;
+            }
+
+            .text {
+                color: $color-black;
+                font-size: 1.4rem;
+                font-weight: 300;
+                margin: 0;
+                padding: 16px 0 0 0;
+                text-align: center;
+            }
+        }
+    }
+
     // card content
 
     .content {
@@ -182,6 +205,10 @@
             position: absolute;
             right: 8px;
             z-index: 900;
+
+            a {
+                color: $color-zalando;
+            }
         }
 
         .footer-position-bottom {
@@ -192,9 +219,26 @@
             right: 16px;
             z-index: 1000;
         }
+    }
 
-        a {
-            color: $color-zalando;
+    .icon {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 80px;
+        margin: 20px 0 0 0;
+        width: 100%;
+
+        &.autonomy {
+            background-image: url("/images/ra_autonomy.png");
+        }
+
+        &.mastery {
+            background-image: url("/images/ra_mastery.png");
+        }
+
+        &.purpose {
+            background-image: url("/images/ra_purpose.png");
         }
     }
 }
