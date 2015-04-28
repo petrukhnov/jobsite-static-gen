@@ -26,19 +26,19 @@ var fs = require('fs'),
     del = require('del');
 
 
-var config;
-fs.stat('config.js', function(err, stat) {
-    if (err === null) {
-        // use local config file
-        config = require('./config').site;
-    } else {
-        // import environment variables
-        config = {
-            "aws": {
-                "key": process.env.S3KEY,
-                "secret": process.env.S3SECRET,
-                "bucket": process.env.S3BUCKET,
-                "region": process.env.S3REGION
+var config = {};
+['dev', 'qa', 'prod'].forEach(function(env) {
+    try {
+        config[env] = require('./config-' + env).site;
+    } catch (e) {
+        // else: import environment variables
+        var envCaps = env.toUpperCase();
+        config[env] = {
+            'aws': {
+                'key': process.env['S3KEY_' + envCaps],
+                'secret': process.env['S3SECRET_' + envCaps],
+                'bucket': process.env['S3BUCKET_' + envCaps],
+                'region': process.env['S3REGION_' + envCaps]
             }
         };
     }
@@ -229,20 +229,28 @@ gulp.task('server', ['build', 'watch'], function () {
 gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
 
 // deploy to AWS S3
-gulp.task('deploy:dev', function() {
-  var publisher = awspublish.create(config.aws);
-  var headers = {
-    // 'Cache-Control': 'max-age=315360000, no-transform, public'
-  };
-  return gulp.src('./build/**')
-    .pipe(rename(function (path) {
-       path.dirname = '/build/latest/' + path.dirname;
-    }))
-    .pipe(publisher.publish(headers))
-    .pipe(publisher.sync('/build/latest'))
-    .pipe(publisher.cache())
-    .pipe(awspublish.reporter());
-});
+gulp.task('deploy:dev', deploy('dev'));
+gulp.task('deploy:qa', deploy('qa'));
+gulp.task('deploy:prod', deploy('prod'));
+
+function deploy(env) {
+    return function() {
+      var publisher = awspublish.create(config[env].aws);
+      var headers = {
+        // 'Cache-Control': 'max-age=315360000, no-transform, public'
+      };
+      return gulp.src('./build/**')
+        .pipe(rename(function (path) {
+           path.dirname = '/build/latest/' + path.dirname;
+        }))
+        .pipe(publisher.publish(headers))
+        .pipe(publisher.sync('/build/latest'))
+        .pipe(publisher.cache())
+        .pipe(awspublish.reporter());
+    }
+}
+
+gulp.task('')
 
 // default task
 gulp.task('default', ['server']);
