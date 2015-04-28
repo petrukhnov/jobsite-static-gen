@@ -228,12 +228,17 @@ gulp.task('server', ['build', 'watch'], function () {
 // build static website from sources
 gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css', 'minify-html', 'copy-assets']);
 
-// deploy to AWS S3
-gulp.task('deploy:dev', deploy('dev'));
-gulp.task('deploy:qa', deploy('qa'));
-gulp.task('deploy:prod', deploy('prod'));
+// publish to AWS S3
+gulp.task('publish:dev', publish('dev'));
+gulp.task('publish:qa', publish('qa'));
+gulp.task('publish:prod', publish('prod'));
 
-function deploy(env) {
+// build + publish tasks, esp. for automated deployments
+gulp.task('deploy:dev', ['build'], publish('dev'));
+gulp.task('deploy:qa', ['build'], publish('qa'));
+gulp.task('deploy:prod', ['build'], publish('prod'));
+
+function publish(env) {
     return function() {
       var publisher = awspublish.create(config[env].aws);
       var headers = {
