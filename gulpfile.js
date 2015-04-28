@@ -55,8 +55,7 @@ gulp.task('lint', function() {
 // hint html
 gulp.task('html-hint', function() {
     return gulp.src(['./src/*.html', './_layouts/*.html'])
-        .pipe(htmlhint())
-        .pipe(htmlhint.failReporter());
+        .pipe(htmlhint());
 });
 
 // lint scss
@@ -191,7 +190,15 @@ gulp.task('metalsmith', function() {
                   'description': 'We dress code!'
               })
               .use(prismic({
-                  'url': 'https://zalando-jobsite.prismic.io/api'
+                  'url': 'https://zalando-jobsite.prismic.io/api',
+                  'linkResolver': function (ctx, doc) {
+                      if (doc.isBroken) return;
+                      if (doc.type === 'doc') {
+                          return doc.slug;
+                      }
+                      // create file based off of type, id and the filename (extracted from the full path)
+                      return '/' + doc.type + '/' + doc.id + '/' +  ctx.path.replace(/^.*(\\|\/|\:)/, '');
+                  }
               }))
               .use(markdown())
               .use(permalinks())

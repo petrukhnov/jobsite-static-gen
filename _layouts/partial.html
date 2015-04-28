@@ -1,0 +1,31 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zalando Tech</title>
+    <meta name="description" content="">
+    <link href="images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" async href="../css/tech.zalando-all.css" />
+</head>
+<body>
+
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': '' } %}
+
+    <div class="fullsize-container white">
+
+
+    {%- for result in prismic.partial.results %}{# Hack to assign ...results[0] to a named var #}
+
+    {{ result.data.title.html|safe }}
+    {{ result.data.content.html|safe }}
+
+    {%- endfor %}
+
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
+
+    </div>
+    <script async src="../js/tech.zalando-all.js"></script>
+
+</body>
+</html>
