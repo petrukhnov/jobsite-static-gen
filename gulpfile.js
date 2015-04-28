@@ -146,6 +146,10 @@ gulp.task('copy-assets', ['clean:assets'], function() {
         './src/fonts/**'
     ])
     .pipe(gulp.dest('build/fonts'));
+    gulp.src([
+        './src/videos/**'
+    ])
+    .pipe(gulp.dest('build/videos'));
 });
 
 // clean up folders

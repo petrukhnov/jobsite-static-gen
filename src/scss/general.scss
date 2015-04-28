@@ -25,13 +25,12 @@ body {
     color: $color-zalando;
     font-size: 2.6rem;
     line-height: 3.0rem;
-    margin: 0 0 $element-spacing 0;
+    margin: 0;
     padding: 0;
 
     @media (min-width: 768px) {
         font-size: 3.6rem;
         line-height: 4.0rem;
-        margin: 0 0 $medium-element-spacing 0;
     }
 
     &.small {
@@ -39,8 +38,16 @@ body {
         font-weight: 300;
         letter-spacing: 0.030em;
         line-height: 2.6rem;
-        padding: 0 0 8px 0;
+        padding: 0;
         text-transform: none;
+    }
+}
+
+.element-spacing {
+    margin: 0 0 $element-spacing 0;
+
+    @media (min-width: 768px) {
+        margin: 0 0 $medium-element-spacing 0;
     }
 }
 
@@ -84,11 +91,11 @@ body {
 }
 
 .fullsize-container {
-    padding: $element-spacing 0 0 0;
+    padding: ($element-spacing + 8px) 0 8px 0;
     width: 100%;
 
     @media (min-width: 768px) {
-        padding: $medium-element-spacing 0 0 0;
+        padding: ($medium-element-spacing + 20px) 0 20px 0;
     }
 
     &.white {
@@ -122,7 +129,10 @@ body {
         background-image: url("/images/radical_agility_bg.gif");
         background-position: center center;
         background-size: cover;
-        color: $color-white;
+
+        .heading-1 {
+            color: $color-white;
+        }
     }
 }
 
@@ -149,14 +159,18 @@ body {
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
-        height: 420px;
+        height: 380px;
 
         @media (max-width: 767px) {
             height: 320px;
         }
 
+        &.home {
+            background-image: url("../images/home-header-bg.jpg");
+        }
+
         &.jobs-overview {
-            background-image: url("../images/jobs-overview-header.jpg");
+            background-image: url("../images/jobs-overview-header-bg.jpg");
             background-position: center 35%;
         }
     }
@@ -164,11 +178,21 @@ body {
 
 .teaser {
     background-color: transparent;
+    height: 100%;
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     width: 100%;
     z-index: 1000;
+
+    .container {
+        height: 100%;
+        position: relative;
+    }
+
+    .overlay {
+        display: block;
+        height: 100%;
+        position: relative;
+    }
 
     .tech-zalando-logo {
         background-image: url("/images/tech_zalando_logo_white.png");
@@ -178,22 +202,40 @@ body {
         display: block;
         float: left;
         height: 112px;
-        margin: 40px 20px 40px 0;
+        margin: 0 20px 0 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
         width: 112px;
+
+        @media (max-width: 767px) {
+            display: none;
+        }
     }
 
     .title {
         color: $color-white;
         display: block;
         float: left;
-        font-size: 4.6rem;
-        line-height: 5.0rem;
-        margin: 40px 0;
+        font-size: 3.6rem;
+        line-height: 4.0rem;
+        margin: 0;
+        position: absolute;
         text-transform: uppercase;
+        top: 50%;
+        transform: translateY(-50%);
 
         @media (min-width: 768px) {
             font-size: 5.6rem;
             line-height: 6.4rem;
+        }
+
+        &.with-logo {
+            margin: 0 0 0 132px;
+
+            @media (max-width: 767px) {
+                margin: 0;
+            }
         }
     }
 
@@ -204,11 +246,29 @@ body {
         background-size: contain;
         display: block;
         float: right;
-        height: 200px;
+        height: 140px;
         margin: 0 50px 0 0;
         opacity: 0.75;
+        position: absolute;
+        right: 0;
         text-indent: -9999px;
-        width: 200px;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: height $animation-duration, width $animation-duration, opacity $animation-duration;
+        width: 140px;
+
+        @media (max-width: 767px) {
+            height: 80px;
+            margin: 0 5% 0 0;
+            width: 80px;
+        }
+
+        &:hover {
+            cursor: pointer;
+            height: 160px;
+            opacity: 1.0;
+            width: 160px;
+        }
     }
 }
 

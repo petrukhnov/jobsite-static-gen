@@ -12,159 +12,45 @@
 
     {% include "src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'home' } %}
 
-    <!--
-
-        Teaser Video
-
-    -->
-
+    <!-- Background video -->
     <div class="fullsize-media visible-lg-block">
         <div class="teaser">
             <div class="container">
                 <div class="tech-zalando-logo"></div>
-                <h1>WE DRESS<br/>CODE!</h1>
-                <a class="play-button">Play</a>
+                <h1 class="title with-logo">WE DRESS<br/>CODE!</h1>
+                <a href="./videos/zalando_tech_home_MOBILE_RB.mp4" class="play-button">Play</a>
             </div>
         </div>
-        <!--
-            supported formats:
-            https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats
-
-            2:35 - 2:50
-        -->
         <video autoplay="" loop="loop" class="landing-video" muted="">
-            <source src="http://localhost/ZALANDO/Zalando_2.0_150324.mp4"></source>
+            <source src="./videos/zalando_tech_home_loop_RB.mp4"></source>
         </video>
     </div>
-
-    <div class="fullsize-media home-video-bg visible-md-block visible-sm-block visible-xs-block">
+    <!-- On mobile just show a background picture -->
+    <div class="fullsize-media picture-bg home visible-md-block visible-sm-block visible-xs-block">
         <div class="teaser">
             <div class="container">
                 <div class="tech-zalando-logo"></div>
-                <h1>WE DRESS<br/>CODE!</h1>
-                <a class="play-button">Play</a>
+                <h1 class="title with-logo">WE DRESS<br/>CODE!</h1>
+                <a href="./videos/zalando_tech_home_MOBILE_RB.mp4" class="play-button">Play</a>
             </div>
         </div>
     </div>
 
-    <!--
-
-        We are hiring!
-
-    -->
-
+    <!-- Tech Blog -->
     <div class="fullsize-container light-gray">
-        <div class="container">
-            <h1 class="heading-1 text-center">We are hiring!</h1>
-        </div>
-        <div class="container">
-            <div id="home-jobs-swipe-cards" class="row cards">
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <a href="#" class="category">Sofware Engineering</a>
-                        <div class="card small job">
-                            <div class="media"></div>
-                            <div class="content">
-                                <p class="title">Technical Incident</p>
-                                <p class="subtitle">New Customer-facing Business</p>
-                                <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <a href="#" class="category">Product</a>
-                        <div class="card small job">
-                            <div class="media"></div>
-                            <div class="content">
-                                <p class="title">System engineer product owner</p>
-                                <p class="subtitle">Test Environment</p>
-                                <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <a href="#" class="category">UX Design</a>
-                        <div class="card small job">
-                            <div class="media"></div>
-                            <div class="content">
-                                <p class="title">Lead user experience (UX)</p>
-                                <p class="subtitle">New Customer-facing Business</p>
-                                <p class="footer"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Berlin, Dublin</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- <div class="card-swipe jobs visible-xs-block">
-            <div data-swipe-source="home-jobs-swipe-cards" class="wrapper"></div>
-        </div> -->
-
-        <button class="default-button center color-zalando">See more jobs</button>
-    </div>
-
-    <!--
-
-        Radical Agility
-
-    -->
-
-    <div class="fullsize-container radical-agility">
-        <div class="container">
-            <h1 class="heading-1 text-center">Radical Agility</h1>
-            <h1 class="heading-1 text-center small">A new way of working, that gives you the freedom to
-master of your own trade.</h1>
-        </div>
         <div class="container">
             <div class="row">
-                <div class="col-xs-10 col-xs-offset-1">
-                    <div class="row big-points">
-                        <div class="col-sm-4">
-                            <div class="big-point card">
-                                <div class="icon autonomy"></div>
-                                <p class="title">Autonomy</p>
-                                <p class="text">To make your own decisions</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="big-point card">
-                                <div class="icon mastery"></div>
-                                <p class="title">Mastery</p>
-                                <p class="text">Of your craft and tools</p>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <div class="big-point card">
-                                <div class="icon purpose"></div>
-                                <p class="title">Purpose</p>
-                                <p class="text">In what you do and build</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <h1 class="heading-1 text-center element-spacing">Tech Blog</h1>
+                    <p class="bodycopy text-center element-spacing">It’s not all about building, innovating and create cool stuff. Have a look in what our tech-heads have to say about Technology, the future and how we conquered
+the space!</p>
                 </div>
             </div>
-            <button class="default-button center color-transparent">Learn more about our culture</button>
         </div>
-    </div>
-
-    <!--
-
-        Tech Blog
-
-    -->
-
-    <div class="fullsize-container light-gray">
         <div class="container">
-            <h1 class="heading-1 text-center">Tech Blog</h1>
-        </div>
-        <div class="container visible-sm-block visible-md-block visible-lg-block">
-            <div id="home-blog-swipe-cards" class="row cards">
-                <div class="col-md-4">
+            <div class="cards element-spacing">
+                <div class="card-container">
+                    <a href="#" class="category">Team &amp; Tech</a>
                     <div class="card blog">
                         <div class="media"></div>
                         <div class="content">
@@ -177,7 +63,8 @@ master of your own trade.</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="card-container">
+                    <a href="#" class="category">Events</a>
                     <div class="card blog">
                         <div class="media"></div>
                         <div class="content">
@@ -190,7 +77,8 @@ master of your own trade.</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="card-container">
+                    <a href="#" class="category">Tech Talks</a>
                     <div class="card blog">
                         <div class="media"></div>
                         <div class="content">
@@ -205,27 +93,23 @@ master of your own trade.</h1>
                 </div>
             </div>
         </div>
-
-        <div class="card-swipe visible-xs-block">
-            <div data-swipe-source="home-blog-swipe-cards" class="wrapper"></div>
+        <div class="container text-center">
+            <a href="./blog/" class="default-button color-zalando element-spacing">Check out the blog</a>
         </div>
 
-    </div>
-
-    <!--
-
-        Open Source
-
-    -->
-
-    <div class="fullsize-container white">
+    <!-- Open Source -->
+        <div class="element-spacing"></div>
         <div class="container">
-            <h1 class="heading-1 text-center no-padding">OPEN-SOURCE</h1>
-            <h1 class="heading-1 text-center">Give it back to the community</h1>
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <h1 class="heading-1 text-center element-spacing">Open Source</h1>
+                    <p class="bodycopy text-center element-spacing">The future it’s all about collaboration. That’s why in Zalando we believe in creating great products and tools, and share them with the digital community.</p>
+                </div>
+            </div>
         </div>
-        <div class="container visible-sm-block visible-md-block visible-lg-block">
-            <div id="home-opensource-swipe-cards" class="row cards">
-                <div class="col-md-4">
+        <div class="container">
+            <div class="cards element-spacing">
+                <div class="card-container">
                     <div class="card white opensource">
                         <div class="media"></div>
                         <div class="content">
@@ -235,7 +119,7 @@ master of your own trade.</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="card-container">
                     <div class="card white opensource">
                         <div class="media"></div>
                         <div class="content">
@@ -245,7 +129,7 @@ master of your own trade.</h1>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="card-container">
                     <div class="card white opensource">
                         <div class="media"></div>
                         <div class="content">
@@ -257,20 +141,115 @@ master of your own trade.</h1>
                 </div>
             </div>
         </div>
-
-        <div class="card-swipe visible-xs-block">
-            <div data-swipe-source="home-opensource-swipe-cards" class="wrapper"></div>
+        <div class="container text-center">
+            <a href="https://github.com/zalando" target="_blank" class="default-button color-zalando element-spacing">Check out our repositories</a>
         </div>
     </div>
 
+    <!-- Radical Agility -->
+    <div class="fullsize-container radical-agility">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <h1 class="heading-1 text-center element-spacing">What is Zalando?</h1>
+                    <h1 class="heading-1 text-center small element-spacing">Zalando is a young company, founded in 2008 in
+        Berlin, Germany. We are successfully combining fashion, retail and technology to operate online stores in 15 different countries. We do fashion. Online.</h1>
+                    <div class="element-spacing"></div>
+                    <h1 class="heading-1 text-center element-spacing">How do we work?</h1>
+                    <h1 class="heading-1 text-center small element-spacing">A new way of working, that gives you the freedom to master of your own trade.</h1>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="cards element-spacing">
 
-<div style="width:100%; overflow:hidden">
-    <div id="wrapper"></div>
-</div>
+                <div class="card-container">
+                    <div class="card radical-agility">
+                        <div class="icon autonomy"></div>
+                        <div class="content">
+                            <p class="title">Autonomy</p>
+                            <p class="text">To make your own decisions</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card radical-agility">
+                        <div class="icon mastery"></div>
+                        <div class="content">
+                            <p class="title">Mastery</p>
+                            <p class="text">Of your craft and tools</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <div class="card radical-agility">
+                        <div class="icon purpose"></div>
+                        <div class="content">
+                            <p class="title">Purpose</p>
+                            <p class="text">In what you do and build</p>
+                        </div>
+                    </div>
+                </div>
 
+            </div>
+        </div>
+        <div class="container text-center">
+            <a href="#" class="default-button center color-transparent element-spacing">Learn more about our culture</a>
+        </div>
+    </div>
 
-    {% include "src/partials/footer.html" with { 'relative_path_to_root': './' } %}
+    <!-- Jobs -->
+    <div class="fullsize-container light-gray">
+        <div class="container">
+            <h1 class="heading-1 text-center element-spacing">We are hiring!</h1>
+        </div>
+        <div class="container">
+            <div class="cards element-spacing">
 
+                <div class="card-container">
+                    <a href="#" class="category">Sofware Engineering</a>
+                    <div class="card small job">
+                        <div class="media"></div>
+                        <div class="content">
+                            <p class="title">Technical Incident</p>
+                            <p class="subtitle">New Customer-facing Business</p>
+                            <p class="footer"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Berlin, Dublin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <a href="#" class="category">Product</a>
+                    <div class="card small job">
+                        <div class="media"></div>
+                        <div class="content">
+                            <p class="title">System engineer product owner</p>
+                            <p class="subtitle">Test Environment</p>
+                            <p class="footer"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Berlin, Dublin</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-container">
+                    <a href="#" class="category">UX Design</a>
+                    <div class="card small job">
+                        <div class="media"></div>
+                        <div class="content">
+                            <p class="title">Lead user experience (UX)</p>
+                            <p class="subtitle">New Customer-facing Business</p>
+                            <p class="footer"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> Berlin, Dublin</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="container text-center">
+            <a href="./jobs/overview.html" class="default-button color-zalando element-spacing">See more jobs</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include "./src/partials/footer.html" with { 'relative_path_to_root': './' } %}
 
     <script async src="./js/tech.zalando-all.js"></script>
 
