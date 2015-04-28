@@ -8,6 +8,7 @@ var fs = require('fs'),
     concat = require('gulp-concat'),
     closureCompiler = require('gulp-closure-compiler'),
     gulpsmith = require('gulpsmith'),
+    runSequence = require('run-sequence'),
     gulp_front_matter = require('gulp-front-matter'),
     assign = require('lodash.assign'),
     prismic = require('metalsmith-prismic'),
@@ -153,10 +154,10 @@ gulp.task('copy-assets', ['clean:assets'], function() {
 });
 
 // clean up folders
-gulp.task('clean:all', function () {
+gulp.task('clean:all', function (cb) {
     del([
         './build'
-    ]);
+    ], cb);
 });
 gulp.task('clean:css', function (cb) {
     del([
@@ -183,7 +184,7 @@ gulp.task('clean:assets', function (cb) {
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
-    gulp.src(['src/**/*.md'])
+    return gulp.src(['src/**/*.md'])
         .pipe(gulp_front_matter()).on('data', function(file) {
             assign(file, file.frontMatter);
             delete file.frontMatter;
@@ -236,8 +237,10 @@ gulp.task('server', ['build', 'watch'], function () {
 });
 
 // build static website from sources
-gulp.task('build', ['clean:all', 'metalsmith', 'minify-js', 'minify-css',
-                    'minify-html', 'copy-assets']);
+gulp.task('build',function(cb) {
+    runSequence('clean:all', ['minify-html','metalsmith', 'minify-js',
+                              'minify-css', 'copy-assets'], cb);
+});
 
 // publish to AWS S3
 gulp.task('publish:dev', publish('dev'));
@@ -251,19 +254,19 @@ gulp.task('deploy:prod', ['build'], publish('prod'));
 
 function publish(env) {
     return function() {
-      var publisher = awspublish.create(config[env].aws);
-      var headers = {
-        // 'Cache-Control': 'max-age=315360000, no-transform, public'
-      };
-      return gulp.src('./build/**')
-        .pipe(rename(function (path) {
-           path.dirname = '/build/latest/' + path.dirname;
-        }))
-        .pipe(publisher.publish(headers))
-        .pipe(publisher.sync('/build/latest'))
-        .pipe(publisher.cache())
-        .pipe(awspublish.reporter());
-    }
+        var publisher = awspublish.create(config[env].aws);
+        var headers = {
+            // 'Cache-Control': 'max-age=315360000, no-transform, public'
+        };
+        return gulp.src('./build/**')
+            .pipe(rename(function (path) {
+                path.dirname = '/build/latest/' + path.dirname;
+            }))
+            .pipe(publisher.publish(headers))
+            .pipe(publisher.sync('/build/latest'))
+            .pipe(publisher.cache())
+            .pipe(awspublish.reporter());
+    };
 }
 
 // default task
