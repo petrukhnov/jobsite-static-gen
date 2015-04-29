@@ -14,6 +14,12 @@
     {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'jobs' } %}
 
     <h1>Jobs</h1>
+    <ul>
+    {%- for job in greenhouse.jobs %}
+        <li>{{ job.department.name }} – {{ job.title }} – {{ job.location.name }}
+        {%- if job.metadata && job.metadata[0] && job.metadata[0].value %} ({{ job.metadata[0].value }}){% endif %}</li>
+    {%- endfor %}
+    </ul>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
