@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    {% include "src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'home' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'home' } %}
 
     <!-- Background video -->
     <div class="fullsize-media visible-lg-block">
@@ -41,72 +41,67 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                    <h1 class="heading-1 text-center element-spacing">Tech Blog</h1>
-                    <p class="bodycopy text-center element-spacing">It’s not all about building, innovating and create cool stuff. Have a look in what our tech-heads have to say about Technology, the future and how we conquered
-the space!</p>
+                    <h1 href="#" class="heading-1 text-center element-spacing"><a href="./blog">Tech Blog</a></h1>
+                    <h2 class="heading-2 text-center element-spacing">Visit our tech blog to learn more about the engineering and processes driving Zalando’s exciting work. Here’s where we post technical talks and tips, news about our open source projects, culture tidbits, and much more.</h2>
                 </div>
             </div>
         </div>
         <div class="container">
             <div class="cards element-spacing">
+
+                {%- for blogpost in prismic.blogposts.results %}
+
                 <div class="card-container">
-                    <a href="#" class="category">Team &amp; Tech</a>
-                    <div class="card blog">
-                        <div class="media"></div>
+                    <div class="card blog" onclick="window.location = './blog/{{ blogpost.id }}/{{ blogpost.slug }}';">
+                        <div class="media" style="background-image: url('{{ blogpost.data.image.json.main.url }}')"></div>
                         <div class="content">
-                            <p class="title">We launched it! Zalando space shoe. 1</p>
-                            <p class="subtitle">by Rodrigo Reis - March 2015</p>
-                            <p class="text bodycopy">February 21, 2015 marked another milestone in the success story of Zalando: we sent a shoe into the stratosphere!</p>
-                            <p class="footer"><a href="#">Blog</a></p>
-                            <div class="footer-position-bottom">
-                                <a class="default-button color-gray pull-right" href="#">More</a>
-                            </div>
+                            <p class="title">{{ blogpost.data.title.json.blocks[0].text }}</p>
+                            <p class="subtitle">
+                                {% if blogpost.data.authors %}
+                                    by 
+                                    {%- for post_author in blogpost.data.authors.json.value %}
+                                        {# author.fragments.link.value.document.id #}
+                                        {%- for author in prismic.authors.results %}
+                                            {%- if post_author.fragments.link.value.document.id == author.id %}
+                                                {{ author.data.full_name.json.blocks[0].text }}
+                                            {%- endif %}
+                                        {%- endfor %}
+                                    {%- endfor %}
+                                {% endif %}
+                                {% if blogpost.data.date %}
+                                     - {{ blogpost.data.date.json.value|date('F Y') }}
+                                {% endif %}</p>
+                            <p class="text bodycopy">{% if blogpost.data.shortlede.json.blocks %}{{ blogpost.data.shortlede.json.blocks[0].text }}{% endif %}</p>
+                            <p class="footer"><a href="#">{{ blogpost.data.category.html|safe }}</a></p>
                         </div>
                     </div>
                 </div>
-                <div class="card-container">
-                    <a href="#" class="category">Events</a>
-                    <div class="card blog">
-                        <div class="media"></div>
-                        <div class="content">
-                            <p class="title">We launched it! Zalando space shoe. 1</p>
-                            <p class="subtitle">by Rodrigo Reis - March 2015</p>
-                            <p class="text bodycopy">February 21, 2015 marked another milestone in the success story of Zalando: we sent a shoe into the stratosphere!</p>
-                            <p class="footer"><a href="#">Blog</a></p>
-                            <div class="footer-position-bottom">
-                                <a class="default-button color-gray pull-right" href="#">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <a href="#" class="category">Tech Talks</a>
-                    <div class="card blog">
-                        <div class="media"></div>
-                        <div class="content">
-                            <p class="title">We launched it! Zalando space shoe. 1</p>
-                            <p class="subtitle">by Rodrigo Reis - March 2015</p>
-                            <p class="text bodycopy">February 21, 2015 marked another milestone in the success story of Zalando: we sent a shoe into the stratosphere!</p>
-                            <p class="footer"><a href="#">Blog</a></p>
-                            <div class="footer-position-bottom">
-                                <a class="default-button color-gray pull-right" href="#">More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+                {%- endfor %}
+
             </div>
         </div>
         <div class="container text-center">
             <a href="./blog/" class="default-button color-zalando element-spacing">Check out the blog</a>
         </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+                <div class="seperator"></div>
+            </div>
+        </div>
+    </div>
 
     <!-- Open Source -->
-        <div class="element-spacing"></div>
+    <div class="fullsize-container light-gray">
+        <!-- <div class="element-spacing"></div> -->
         <div class="container">
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <h1 class="heading-1 text-center element-spacing">Open Source</h1>
-                    <p class="bodycopy text-center element-spacing">The future it’s all about collaboration. That’s why in Zalando we believe in creating great products and tools, and share them with the digital community.</p>
+                    <h2 class="heading-2 text-center element-spacing">Zalandos are passionate about collaboration and giving back to the tech community. Check out our open source projects to learn more about the technologies we are contributing to and building.</h2>
                 </div>
             </div>
         </div>
@@ -155,11 +150,10 @@ the space!</p>
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <h1 class="heading-1 text-center element-spacing">What is Zalando?</h1>
-                    <h1 class="heading-1 text-center small element-spacing">Zalando is a young company, founded in 2008 in
-        Berlin, Germany. We are successfully combining fashion, retail and technology to operate online stores in 15 different countries. We do fashion. Online.</h1>
+                    <h2 class="heading-2 text-center element-spacing">Zalando is Europe’s leading online fashion platform, with millions of customers in 15 countries. Our innovative technologists have built most of our platform in-house, using open source and cutting-edge technologies such as Scala, Cassandra, Clojure, and React.js. We work in small, agile, autonomous teams and follow principles that enable us to produce the most delightful shopping experiences possible.</h2>
                     <div class="element-spacing"></div>
                     <h1 class="heading-1 text-center element-spacing">How do we work?</h1>
-                    <h1 class="heading-1 text-center small element-spacing">A new way of working, that gives you the freedom to master of your own trade.</h1>
+                    <h2 class="heading-2 text-center element-spacing">A new way of working, that gives you the freedom to master of your own trade.</h2>
                 </div>
             </div>
         </div>
@@ -171,7 +165,7 @@ the space!</p>
                         <div class="icon autonomy"></div>
                         <div class="content">
                             <p class="title">Autonomy</p>
-                            <p class="text">To make your own decisions</p>
+                            <p class="text">The freedom to solve hard problems in original ways</p>
                         </div>
                     </div>
                 </div>
@@ -180,7 +174,7 @@ the space!</p>
                         <div class="icon mastery"></div>
                         <div class="content">
                             <p class="title">Mastery</p>
-                            <p class="text">Of your craft and tools</p>
+                            <p class="text">Gain knowledge to build your career at Zalando and beyond</p>
                         </div>
                     </div>
                 </div>
@@ -189,7 +183,7 @@ the space!</p>
                         <div class="icon purpose"></div>
                         <div class="content">
                             <p class="title">Purpose</p>
-                            <p class="text">In what you do and build</p>
+                            <p class="text">Know the why behind what you do and build</p>
                         </div>
                     </div>
                 </div>
@@ -204,7 +198,7 @@ the space!</p>
     <!-- Jobs -->
     <div class="fullsize-container light-gray">
         <div class="container">
-            <h1 class="heading-1 text-center element-spacing">We are hiring!</h1>
+            <h1 class="heading-1 text-center element-spacing"><a href="./jobs/overview.html">Apply Now to Join Zalando Tech</a></h1>
         </div>
         <div class="container">
             <div class="cards element-spacing">
@@ -252,7 +246,7 @@ the space!</p>
     </div>
 
     <!-- Footer -->
-    {% include "./src/partials/footer.html" with { 'relative_path_to_root': './' } %}
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': './' } %}
 
     <script async src="./js/tech.zalando-all.js"></script>
 

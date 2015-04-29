@@ -6,7 +6,7 @@ html {
 }
 
 body {
-    background-color: $bg-color-header;
+    background-color: $color-light-gray;
     font-family: $font-regular;
     font-weight: 600;
     letter-spacing: 0.06em;
@@ -28,19 +28,38 @@ body {
     margin: 0;
     padding: 0;
 
+    a {
+        color: $color-zalando;
+
+        &:hover {
+            color: $color-zalando-lighter;
+            text-decoration: none;
+        }
+    }
+
     @media (min-width: 768px) {
         font-size: 3.6rem;
         line-height: 4.0rem;
     }
+}
 
-    &.small {
-        font-size: 2.4rem;
-        font-weight: 300;
-        letter-spacing: 0.030em;
-        line-height: 2.6rem;
-        padding: 0;
-        text-transform: none;
+.heading-2 {
+    color: $color-black;
+    font-size: 1.6rem;
+    font-weight: 300;
+    letter-spacing: 0.030em;
+    line-height: 2.4rem;
+    margin: -8px 0 0 0;
+    padding: 0;
+
+    &.element-spacing {
+        margin-top: -16px;
     }
+}
+
+.seperator {
+    background-color: $color-light-gray-darker;
+    height: 1px;
 }
 
 .element-spacing {
@@ -130,7 +149,8 @@ body {
         background-position: center center;
         background-size: cover;
 
-        .heading-1 {
+        .heading-1,
+        .heading-2 {
             color: $color-white;
         }
     }
