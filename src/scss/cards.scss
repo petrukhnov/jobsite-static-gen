@@ -5,6 +5,8 @@
 // http://www.google.com/design/spec/components/cards.html#cards-actions
 
 .cards {
+    margin-left: -3px;
+    margin-right: -3px;
     padding: 0;
     text-align: center;
 
@@ -31,7 +33,7 @@
         margin: 0 0 10px 0;
         text-align: center;
         text-decoration: none;
-        transition: color $animation-duration, background-color $animation-duration;
+        transition: color $animation-duration;
 
         &:hover {
             color: $color-zalando;
@@ -55,7 +57,6 @@
 
     &:hover {
         box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
-        cursor: pointer;
         transform: scale(1.02, 1.02);
     }
 
@@ -69,6 +70,12 @@
         background-position: center center;
         background-size: cover;
         height: 177px;
+
+        a {
+            display: block;
+            height: 100%;
+            width: 100%;
+        }
     }
 
     &.blog {
@@ -81,11 +88,19 @@
         .media {
             background-image: url("/images/job.jpg");
         }
+
+        .content {
+            height: 130px;
+        }
     }
 
     &.opensource {
         .media {
             background-image: url("/images/opensource.jpg");
+        }
+
+        .content {
+            height: 170px;
         }
     }
 
@@ -114,12 +129,6 @@
         }
     }
 
-    &.small {
-        .content {
-            height: 130px;
-        }
-    }
-
     &.not-looking-for-a-tech-job {
         background-color: $color-dark-gray;
         border-radius: 24px;
@@ -129,6 +138,7 @@
     &.radical-agility {
 
         .content {
+            height: 130px;
 
             .title {
                 color: $color-zalando;
@@ -166,6 +176,10 @@
             line-height: 1.7rem;
             margin: 0 16px 16px 16px;
             text-transform: uppercase;
+
+            a {
+                color: $color-black;
+            }
         }
 
         .subtitle {
@@ -182,6 +196,17 @@
             margin: 0 16px 16px 16px;
             max-height: 60px;
             overflow: hidden;
+        }
+
+        a {
+            color: $color-zalando;
+            transition: color $animation-duration;
+
+            &:hover,
+            &:focus {
+                color: $color-zalando-lighter;
+                text-decoration: none;
+            }
         }
 
         .author {
