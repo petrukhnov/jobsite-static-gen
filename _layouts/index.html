@@ -107,37 +107,31 @@
         </div>
         <div class="container">
             <div class="cards element-spacing">
-                <div class="card-container">
-                    <div class="card white opensource">
-                        <div class="media" style="background-image: url('./images/grafana.jpg')"><a href="https://github.com/grafana/grafana" target="_blank"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="https://github.com/grafana/grafana" target="_blank">Grafana</a></p>
-                            <p class="text bodycopy">A Graphite &amp; InfluxDB Dashboard and Graph Editor 
-<a href="http://grafana.org/" target="_blank">http://grafana.org</a></p>
-                            <p class="footer">Graphite &middot; InfluxDB</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="card white opensource" onclick="window.open('https://github.com/zalando/grafana', '_blank');">
-                        <div class="media" style="background-image: url('./images/maple.jpg')"><a href="https://github.com/zalando/MapleBacon" target="_blank"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="https://github.com/zalando/MapleBacon" target="_blank">MapleBeacon</a></p>
-                            <p class="text bodycopy">MapleBacon is a Swift image download and caching library.</p>
-                            <p class="footer">iOS &middot; Swift</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-container">
-                    <div class="card white opensource">
-                        <div class="media" style="background-image: url('./images/api.jpg')"><a href="https://github.com/zalando/shop-api-demo" target="_blank"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="https://github.com/zalando/shop-api-demo" target="_blank">Shop API Demo</a></p>
-                            <p class="text bodycopy">This is a simple single page application that showcases basic capabilities of Zalando Shop API.</p>
-                            <p class="footer">Javascript &middot; React</p>
-                        </div>
-                    </div>
-                </div>
+
+                {% include "../src/partials/opensource_card.html" with {
+                    'link': 'https://github.com/grafana/grafana',
+                    'image': './images/grafana.jpg',
+                    'title': 'Grafana',
+                    'text': 'A Graphite &amp; InfluxDB Dashboard and Graph Editor <a href="http://grafana.org/" target="_blank">http://grafana.org</a>',
+                    'tags': ['Graphite', 'InfluxDB']
+                } %}
+
+                {% include "../src/partials/opensource_card.html" with {
+                    'link': 'https://github.com/zalando/MapleBacon',
+                    'image': './images/maple.jpg',
+                    'title': 'MapleBeacon',
+                    'text': 'MapleBacon is a Swift image download and caching library.',
+                    'tags': ['iOS', 'Swift']
+                } %}
+
+                {% include "../src/partials/opensource_card.html" with {
+                    'link': 'https://github.com/zalando/shop-api-demo',
+                    'image': './images/api.jpg',
+                    'title': 'Shop API Demo',
+                    'text': 'This is a simple single page application that showcases basic capabilities of Zalando Shop API.',
+                    'tags': ['Javascript', 'React']
+                } %}
+
             </div>
         </div>
         <div class="container text-center">
