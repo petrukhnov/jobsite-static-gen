@@ -15,7 +15,7 @@
     <div class="fullsize-container white">
 
 
-    {%- for result in prismic.partial.results %}{# Hack to assign ...results[0] to a named var #}
+    {%- for result in prismic.docs.results %}{# Hack to assign ...results[0] to a named var #}
 
     {{ result.data.title.html|safe }}
     {{ result.data.content.html|safe }}

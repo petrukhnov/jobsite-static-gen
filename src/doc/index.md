@@ -1,6 +1,6 @@
 ---
-template: partial.html
+template: doc.html
 prismic:
-  partial:
+  docs:
     query: '[[:d = at(document.type, "doc")]]'
 ---
