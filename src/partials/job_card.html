@@ -1,0 +1,13 @@
+<div class="card-container">
+    {%- if category && category_link %}
+        <a href="{{ category_link }}" class="category">{{ category }}</a>
+    {%- endif %}
+    <div class="card job">
+        <div class="media" style="background-image: url('{{ image }}')"><a href="{{ link }}"></a></div>
+        <div class="content">
+            <p class="title"><a href="{{ link }}">{{ title }}</a></p>
+            <p class="subtitle">{{ subtitle }}</p>
+            <p class="footer"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{ locations.join(', ') }}</p>
+        </div>
+    </div>
+</div>
