@@ -51,31 +51,16 @@
 
                 {%- for blogpost in prismic.blogposts.results %}
 
-                <div class="card-container">
-                    <div class="card blog" onclick="window.location = './blog/{{ blogpost.id }}/{{ blogpost.slug }}';">
-                        <div class="media" style="background-image: url('{{ blogpost.data.image.json.main.url }}')"></div>
-                        <div class="content">
-                            <p class="title">{{ blogpost.data.title.json.blocks[0].text }}</p>
-                            <p class="subtitle">
-                                {% if blogpost.data.authors %}
-                                    by 
-                                    {%- for post_author in blogpost.data.authors.json.value %}
-                                        {# author.fragments.link.value.document.id #}
-                                        {%- for author in prismic.authors.results %}
-                                            {%- if post_author.fragments.link.value.document.id == author.id %}
-                                                {{ author.data.full_name.json.blocks[0].text }}
-                                            {%- endif %}
-                                        {%- endfor %}
-                                    {%- endfor %}
-                                {% endif %}
-                                {% if blogpost.data.date %}
-                                     - {{ blogpost.data.date.json.value|date('F Y') }}
-                                {% endif %}</p>
-                            <p class="text bodycopy">{% if blogpost.data.shortlede.json.blocks %}{{ blogpost.data.shortlede.json.blocks[0].text }}{% endif %}</p>
-                            <p class="footer"><a href="#">{{ blogpost.data.category.html|safe }}</a></p>
-                        </div>
-                    </div>
-                </div>
+                {% include "../src/partials/blogpost_card.html" with {
+                    'link': './blog/' + blogpost.id + '/' + blogpost.slug,
+                    'image': blogpost.data.image.json.main.url,
+                    'title': blogpost.data.title.json.blocks[0].text,
+                    'subtitle': 'by .. - ' + blogpost.data.date.json.value | date('F Y'),
+                    'text': blogpost.data.shortlede.json.blocks[0].text,
+                    'tags': null,
+                    'category': null,
+                    'category_link': null
+                } %}
 
                 {%- endfor %}
 

@@ -12,7 +12,7 @@ var fs = require('fs'),
     gulp_front_matter = require('gulp-front-matter'),
     assign = require('lodash.assign'),
     prismic = require('metalsmith-prismic'),
-    // greenhouse = require('../metalsmith-greenhouse'),
+    greenhouse = require('../metalsmith-greenhouse'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
@@ -205,11 +205,11 @@ gulp.task('metalsmith', function() {
                       return '/' + doc.type + '/' + doc.id + '/' +  doc.slug;
                   }
               }))
-              // .use(greenhouse({
-              //     'apiHost': 'boards.api.greenhouse.io',
-              //     'apiEndpointPath': '/v1/boards',
-              //     'boardName': 'zalandotest'
-              // }))
+              .use(greenhouse({
+                  'apiHost': 'boards.api.greenhouse.io',
+                  'apiEndpointPath': '/v1/boards',
+                  'boardName': 'zalandotest'
+              }))
               .use(markdown())
               .use(permalinks())
               .use(partial({
