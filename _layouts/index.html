@@ -195,13 +195,17 @@
                     {% set job_image = './images/job.jpg' %}
                 {%- endif %}
 
+                {%- if job.metadata && job.metadata[1] && job.metadata[1].value && job.metadata[1] %}
+                    {% set category = job.metadata[1] %}
+                {%- endif %}
+
                 {% include "../src/partials/job_card.html" with {
                     'link': job.absolute_url,
                     'image': job_image.value,
                     'title': job.title,
                     'subtitle': job.department.name,
                     'locations': ['Berlin', 'Dublin'],
-                    'category': 'UX Design',
+                    'category': category.value,
                     'category_link': './jobs'
                 } %}
 
