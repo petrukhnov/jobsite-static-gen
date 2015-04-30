@@ -81,35 +81,25 @@
     <div class="fullsize-container light-gray">
         <div class="container">
             <div class="cards">
-            {%- for result in prismic.blogpost.results %}
 
-                <div class="card-container">
-                    <div class="card blog">
-                        <div class="media" style="background-image: url('{{ result.data.image.json.main.url }}')"></div>
-                        <div class="content">
-                            <p class="title">{{ result.data.title.json.blocks[0].text }}</p>
-                            <p class="subtitle">
-                                {% if result.data.authors %}
-                                    by 
-                                    {%- for post_author in result.data.authors.json.value %}
-                                        {# author.fragments.link.value.document.id #}
-                                        {%- for author in prismic.authors.results %}
-                                            {%- if post_author.fragments.link.value.document.id == author.id %}
-                                                {{ author.data.full_name.json.blocks[0].text }}
-                                            {%- endif %}
-                                        {%- endfor %}
-                                    {%- endfor %}
-                                {% endif %}
-                                {% if result.data.date %}
-                                     - {{ result.data.date.json.value|date('F Y') }}
-                                {% endif %}</p>
-                            <p class="text bodycopy">{% if result.data.shortlede.json.blocks %}{{ result.data.shortlede.json.blocks[0].text }}{% endif %}</p>
-                            <p class="footer"><a href="#">{{ result.data.category.html|safe }}</a></p>
-                        </div>
-                    </div>
-                </div>
+                {%- for blogpost in prismic.blogposts.results %}
 
-            {%- endfor %}
+                {% include "../src/partials/blogpost_card.html" with {
+                    'link': '../blog/' + blogpost.id + '/' + blogpost.slug,
+                    'image': blogpost.data.image.json.main.url,
+                    'title': blogpost.data.title.json.blocks[0].text,
+                    'subtitle': 'by .. - ' + blogpost.data.date.json.value | date('F Y'),
+                    'text': blogpost.data.shortlede.json.blocks[0].text,
+                    'tags': null,
+                    'category': null,
+                    'category_link': null,
+                    'blogpost': blogpost,
+                    'authors': prismic.authors.results,
+                    'date': blogpost.data.date.json.value | date('F Y')
+                } %}
+
+                {%- endfor %}
+
             </div>
         </div>
 

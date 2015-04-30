@@ -1,7 +1,7 @@
 ---
 template: blog.html
 prismic:
-  blogpost:
+  blogposts:
     query: '[[:d = at(document.type, "blog")]]'
     orderings: '[my.blog.date desc]'
   authors:

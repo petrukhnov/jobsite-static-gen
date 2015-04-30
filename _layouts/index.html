@@ -59,7 +59,10 @@
                     'text': blogpost.data.shortlede.json.blocks[0].text,
                     'tags': null,
                     'category': null,
-                    'category_link': null
+                    'category_link': null,
+                    'blogpost': blogpost,
+                    'authors': prismic.authors.results,
+                    'date': blogpost.data.date.json.value | date('F Y')
                 } %}
 
                 {%- endfor %}
