@@ -16,11 +16,9 @@
 
     <div class="fullsize-container light-gray">
         <div class="container">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                    {{ result.data.title.html|safe }}
-                    {{ result.data.content.html|safe }}
-                </div>
+            <h1>{{ result.data.title.html|safe }}</h1>
+            <div class="doc-content">
+                {{ result.data.content.html|safe }}
             </div>
         </div>
     </div>
@@ -28,7 +26,6 @@
 
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
 
-    </div>
     <script async src="../js/tech.zalando-all.js"></script>
 
 </body>

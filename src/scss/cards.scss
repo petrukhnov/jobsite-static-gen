@@ -19,7 +19,6 @@
 }
 
 .card-container {
-    // padding: 0 0 10px 0;
     display: inline-block;
     margin: 8px;
     vertical-align: top;
@@ -63,8 +62,6 @@
     &.white:hover {
         background: $bg-color-card-white-hover;
     }
-
-    // card media
 
     .media {
         background-position: center center;
@@ -227,8 +224,6 @@
             text-align: center;
         }
     }
-
-    // card content
 
     .content {
         border-radius: 0 0 2px 2px;
