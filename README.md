@@ -34,10 +34,15 @@ Docker is used for deployment of the static site generator to AWS Beanstalk. You
 can also use it for local development of course.
 
 1. build docker container `docker build -t zalando/tfox .`
-2. run app from docker container `docker run -i -p 8080:8080 -t zalando/tfox`.
+2. run app from docker container:
+   `docker run -e "PRISMIC_SECRET=<PRISMIC_SECRET>" -e "PRISMIC_APIURL=<PRIMSIC_API_URL>" -p 8080:8080 -i -t zalando/tfox`
 
-   If you run docker in Virtualbox (e.g. boot2docker) you need to forward the
-   port 4001 in virtualbox, too.
+   The environment variables used by the node application needs to be passed via
+   the `-e` parameter of `docker run`. You can retrieve the secret and the
+   API-URL from the prismic.io config pages ("API&Security" and "Webhooks").
+
+   If you run docker in Virtualbox (e.g. boot2docker) you may need to forward
+   the port 8080 in virtualbox, too.
 
 # Application Deployment
 
