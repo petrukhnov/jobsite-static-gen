@@ -68,6 +68,7 @@
 
     .media {
         background-position: center center;
+        background-repeat: no-repeat;
         background-size: cover;
         height: 177px;
 
@@ -91,10 +92,6 @@
     }
 
     &.opensource {
-        .media {
-            background-image: url("/images/opensource.jpg");
-        }
-
         .content {
             height: 170px;
         }
@@ -129,6 +126,86 @@
         background-color: $color-dark-gray;
         border-radius: 24px;
         height: 409px;
+    }
+
+    &.joker-non-tech-jobs {
+        background-color: $color-dark-gray;
+        border-radius: 24px;
+        height: 309px;
+
+        .content {
+            .title {
+                font-size: 2.4rem;
+                font-weight: 400;
+                line-height: 2.8rem;
+                text-transform: none;
+                text-align: center;
+
+                a {
+                    color: $color-white;
+
+                    &:hover {
+                        color: $color-zalando-lighter;
+                    }
+                }
+            }
+
+            .text {
+                color: $color-white;
+                font-family: $font-regular;
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+
+        .media {
+            background-image: url("../images/joker_card_non_tech_jobs.png");
+            background-size: 125px 125px;
+            background-position: center 150%;
+            height: 144px;
+        }
+    }
+
+    &.joker-talent-pool {
+        background-color: $color-zalando;
+        border-radius: 24px;
+        height: 309px;
+
+        .content {
+            .title {
+                font-size: 2.4rem;
+                font-weight: 400;
+                line-height: 2.8rem;
+                text-transform: none;
+                text-align: center;
+
+                a {
+                    color: $color-white;
+
+                    &:hover {
+                        color: $color-zalando-lighter;
+                    }
+                }
+            }
+
+            .text {
+                color: $color-white;
+                font-family: $font-regular;
+                font-size: 1.2rem;
+                line-height: 1.4rem;
+                text-align: center;
+                text-transform: uppercase;
+            }
+        }
+
+        .media {
+            background-image: url("../images/joker_card_talent_pool.png");
+            background-size: 125px 125px;
+            background-position: center 150%;
+            height: 144px;
+        }
     }
 
     &.radical-agility {

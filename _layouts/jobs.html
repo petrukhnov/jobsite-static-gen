@@ -13,13 +13,54 @@
     <!-- Header -->
     {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'jobs' } %}
 
-    <h1>Jobs</h1>
-    <ul>
-    {%- for job in greenhouse.jobs %}
-        <li>{{ job.department.name }} – {{ job.title }} – {{ job.location.name }}
-        {%- if job.metadata && job.metadata[0] && job.metadata[0].value %} ({{ job.metadata[0].value }}){% endif %}</li>
-    {%- endfor %}
-    </ul>
+    <div class="fullsize-container light-gray">
+        <div class="container">
+            <h1 class="heading-1 text-center element-spacing">{{ greenhouse.jobs.length }} Jobs</h1>
+        </div>
+        <div class="container">
+            <div class="cards element-spacing">
+                {%- for job in greenhouse.jobs %}
+
+                    {%- if job.metadata && job.metadata[0] %}
+                        {% set job_image = job.metadata[0] %}
+                    {%- else %}
+                        {% set job_image = './images/job.jpg' %}
+                    {%- endif %}
+
+                    {% include "../src/partials/job_card.html" with {
+                        'link': job.absolute_url,
+                        'image': job_image.value,
+                        'title': job.title,
+                        'subtitle': job.department.name,
+                        'locations': ['Berlin', 'Dublin']
+                    } %}
+
+                    {% set insert_non_tech_job = greenhouse.jobs.length >= 2 && loop.index === 2 %}
+                    {% set append_non_tech_job = greenhouse.jobs.length < 2 && loop.index === greenhouse.jobs.length %}
+                    {% if insert_non_tech_job || append_non_tech_job %}
+                        {% include "../src/partials/joker_card.html" with {
+                            'type': 'non-tech-jobs',
+                            'link': 'http://jobs.zalando.de/en/',
+                            'title': 'Not looking for a tech job?',
+                            'text': 'Have a look in our amazing job opportunities for the non-techies'
+                        } %}
+                    {% endif %}
+
+                    {% set insert_talent_pool = greenhouse.jobs.length >= 5 && loop.index === 5 %}
+                    {% set append_talent_pool = greenhouse.jobs.length < 5 && loop.index === greenhouse.jobs.length %}
+                    {% if insert_talent_pool || append_talent_pool %}
+                        {% include "../src/partials/joker_card.html" with {
+                            'type': 'talent-pool',
+                            'link': 'mailto:jobs@zalando.de?subject=I want to be a Zalando!',
+                            'title': 'Can’t find the right job?',
+                            'text': 'Apply to our talent pool and create your own job'
+                        } %}
+                    {% endif %}
+
+                {%- endfor %}
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
