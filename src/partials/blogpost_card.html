@@ -8,21 +8,7 @@
         </div>
         <div class="content">
             <p class="title"><a href="{{ link }}">{{ title }}</a></p>
-            <p class="subtitle">
-                {% if blogpost.data.authors %}
-                    by 
-                    {%- for post_author in blogpost.data.authors.json.value %}
-                        {%- for author in authors %}
-                            {%- if post_author.fragments.link.value.document.id == author.id %}
-                                {{ author.data.full_name.json.blocks[0].text }}
-                            {%- endif %}
-                        {%- endfor %}
-                    {%- endfor %}
-                {% endif %}
-                {% if date %}
-                     - {{ date }}
-                {% endif %}
-            </p>
+            <p class="subtitle">{{ subtitle }}</p>
             <p class="text bodycopy">{{ text | safe }}</p>
             {%- if tags %}
                 <p class="footer">{{ tags.join(' &middot; ') }}</p>

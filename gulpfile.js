@@ -1,6 +1,11 @@
 // include gulp
 var gulp = require('gulp');
 
+// customize swig
+var swig = require('swig')
+    viewmodel = require('../swig-viewmodel');
+viewmodel.useFilter(swig, 'to_blogposts_viewmodel');
+
 // include gulp plugins
 var fs = require('fs'),
     jshint = require('gulp-jshint'),
@@ -26,7 +31,6 @@ var fs = require('fs'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
     del = require('del');
-
 
 var config = {};
 ['dev', 'qa', 'prod'].forEach(function(env) {

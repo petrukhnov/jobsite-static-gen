@@ -36,6 +36,8 @@
         </div>
     </div>
 
+    {% set blogposts_viewmodel = prismic.blogposts | to_blogposts_viewmodel(prismic.authors) %}
+
     <!-- Tech Blog -->
     <div class="fullsize-container light-gray">
         <div class="container">
@@ -49,20 +51,17 @@
         <div class="container">
             <div class="cards element-spacing">
 
-                {%- for blogpost in prismic.blogposts.results %}
+                {%- for blogpost in blogposts_viewmodel %}
 
                 {% include "../src/partials/blogpost_card.html" with {
                     'link': './blog/' + blogpost.id + '/' + blogpost.slug,
-                    'image': blogpost.data.image.json.main.url,
-                    'title': blogpost.data.title.json.blocks[0].text,
-                    'subtitle': 'by .. - ' + blogpost.data.date.json.value | date('F Y'),
-                    'text': blogpost.data.shortlede.json.blocks[0].text,
+                    'image': blogpost.image,
+                    'title': blogpost.title,
+                    'subtitle': 'by ' + blogpost.authors.join(', ') + ' - ' + blogpost.date,
+                    'text': blogpost.description,
                     'tags': null,
                     'category': null,
-                    'category_link': null,
-                    'blogpost': blogpost,
-                    'authors': prismic.authors.results,
-                    'date': blogpost.data.date.json.value | date('F Y')
+                    'category_link': null
                 } %}
 
                 {%- endfor %}
