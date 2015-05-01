@@ -1,3 +1,5 @@
+{% set blogposts_viewmodel = prismic.blogposts | to_blogposts_viewmodel(prismic.authors) %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -35,8 +37,6 @@
             </div>
         </div>
     </div>
-
-    {% set blogposts_viewmodel = prismic.blogposts | to_blogposts_viewmodel(prismic.authors) %}
 
     <!-- Tech Blog -->
     <div class="fullsize-container light-gray">
