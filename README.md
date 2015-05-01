@@ -18,3 +18,4 @@ Available Filters
 -----------------
 
 * to_blogposts_viewmodel
+* to_authors_viewmodel
