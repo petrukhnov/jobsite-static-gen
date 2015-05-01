@@ -1,0 +1,27 @@
+{
+  "name": "swig-viewmodel",
+  "version": "0.0.1",
+  "description": "A collection of viewmodel filters for Swig Templates.",
+  "main": "index.js",
+  "scripts": {
+    "prepublish": "npm prune"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@code.futurice.com:zalando_tfox/swig-viewmodel.git"
+  },
+  "keywords": [
+    "Swig",
+    "Filters"
+  ],
+  "author": "Michael Tauer <michael.tauer@futurice.com>",
+  "devDependencies": {
+    "nodelint": "~0.6.2",
+    "expect.js": "~0.2.0",
+    "mocha": "~1.12.0",
+    "swig": ">=1"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
