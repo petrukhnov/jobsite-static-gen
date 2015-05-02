@@ -21,3 +21,4 @@ Available Filters
 * to_blogpost_viewmodel
 * to_authors_viewmodel
 * to_doc_viewmodel
+* to_jobs_viewmodel
