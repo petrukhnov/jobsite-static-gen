@@ -1,3 +1,5 @@
+{% set doc = prismic.docs | to_doc_viewmodel %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -12,17 +14,16 @@
 
     {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': '' } %}
 
-    {%- for result in prismic.docs.results %}{# Hack to assign ...results[0] to a named var #}
-
     <div class="fullsize-container light-gray">
         <div class="container">
-            <h1>{{ result.data.title.html|safe }}</h1>
+            <h1>
+                {{ doc.title }}
+            </h1>
             <div class="doc-content">
-                {{ result.data.content.html|safe }}
+                {{ doc.content | safe }}
             </div>
         </div>
     </div>
-    {%- endfor %}
 
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
 
