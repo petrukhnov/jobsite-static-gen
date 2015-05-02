@@ -1,4 +1,5 @@
 {% set blogposts_viewmodel = prismic.blogposts | to_blogposts_viewmodel(prismic.authors) %}
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ limit: 3 }) %}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -185,30 +186,18 @@
         <div class="container">
             <div class="cards element-spacing">
 
-                {%- for job in greenhouse.jobs %}
-                {%- if loop.index <= 3 %}
-
-                {%- if job.metadata && job.metadata[0] %}
-                    {% set job_image = job.metadata[0] %}
-                {%- else %}
-                    {% set job_image = './images/job.jpg' %}
-                {%- endif %}
-
-                {%- if job.metadata && job.metadata[1] %}
-                    {% set category = job.metadata[1] %}
-                {%- endif %}
+                {%- for job in jobs_viewmodel %}
 
                 {% include "../src/partials/job_card.html" with {
-                    'link': job.absolute_url,
-                    'image': job_image.value,
+                    'link': job.link,
+                    'image': job.image,
                     'title': job.title,
-                    'subtitle': job.department.name,
-                    'locations': ['Berlin', 'Dublin'],
-                    'category': category.value,
+                    'subtitle': job.department,
+                    'locations': job.locations,
+                    'category': job.firstCategory,
                     'category_link': './jobs'
                 } %}
 
-                {%- endif %}
                 {%- endfor %}
 
             </div>

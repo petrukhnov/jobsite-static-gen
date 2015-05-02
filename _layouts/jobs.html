@@ -1,3 +1,5 @@
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -19,20 +21,14 @@
         </div>
         <div class="container">
             <div class="cards element-spacing">
-                {%- for job in greenhouse.jobs %}
-
-                    {%- if job.metadata && job.metadata[0] %}
-                        {% set job_image = job.metadata[0] %}
-                    {%- else %}
-                        {% set job_image = './images/job.jpg' %}
-                    {%- endif %}
+                {%- for job in jobs_viewmodel %}
 
                     {% include "../src/partials/job_card.html" with {
-                        'link': job.absolute_url,
-                        'image': job_image.value,
+                        'link': job.link,
+                        'image': job.image,
                         'title': job.title,
-                        'subtitle': job.department.name,
-                        'locations': ['Berlin', 'Dublin']
+                        'subtitle': job.department,
+                        'locations': job.locations
                     } %}
 
                     {% set insert_non_tech_job = greenhouse.jobs.length >= 2 && loop.index === 2 %}
