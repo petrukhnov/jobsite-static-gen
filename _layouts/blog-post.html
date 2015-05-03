@@ -29,7 +29,7 @@
                             {{ blogpost.title }}
                         </h1>
                         <p class="subtitle">
-                            by  {{ blogpost.authors.join(', ') }} - {{ blogpost.date }}
+                            by  {{ blogpost.authorNames.join(', ') }} - {{ blogpost.date }}
                         </p>
                     </div>
                 </div>
@@ -49,6 +49,15 @@
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <div class="blog-post-content">
                         {{ blogpost.content | safe }}
+
+                        {%- for author in blogpost.authors %}
+                            <div class="author">
+                                <div class="picture" style="background-image:url('{{ author.image }}');"></div>
+                                <p>{{ author.fullName }}</p>
+                                <p class="title">{{ author.title }}</p>
+                            </div>
+                        {%- endfor %}
+
                     </div>
                 </div>
             </div>
