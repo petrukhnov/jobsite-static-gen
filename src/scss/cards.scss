@@ -28,6 +28,10 @@
     margin: 8px;
     vertical-align: top;
 
+    @media (max-width: 767px) {
+        margin: 10px 8px;
+    }
+
     .category {
         color: $color-zalando;
         display: inline-block;
@@ -102,9 +106,26 @@
         height: 220px;
         width: 220px;
 
+        .media {
+            height: 120px;
+        }
+
+        .title {
+            text-align: center;
+        }
+
+        .subtitle {
+            color: $color-zalando;
+            text-align: center;
+        }
+
         @media (min-width: 768px) {
             height: 260px;
             width: 260px;
+
+            .media {
+                height: 150px;
+            }
         }
     }
 
@@ -265,6 +286,7 @@
         &:hover,
         &:focus {
             color: $color-zalando-lighter;
+            cursor: pointer;
             text-decoration: none;
         }
     }

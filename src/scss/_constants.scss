@@ -10,7 +10,7 @@ $color-light-gray: #e8eaeb;
 $color-light-gray-darker: #ccc;
 $color-gray: #aaa;
 $color-dark-gray: #555;
-$color-black: #313233;
+$color-black: #333;
 // background colors
 $bg-color-header: #efefef;
 $bg-color-white: #f6f6f6;
@@ -30,6 +30,8 @@ $long-animation-duration: .5s;
 $break-large: 768px;
 $element-spacing: 24px;
 $medium-element-spacing: 32px;
+$card-border-radius: 2px;
+$joker-card-border-radius: 2px;
 
 // font families
 $font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
