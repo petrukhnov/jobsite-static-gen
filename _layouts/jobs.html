@@ -1,4 +1,5 @@
-{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel %}
+{% set total_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id }) %}
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id, limit: 6 }) %}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -7,17 +8,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 minimal-ui" />
     <title>Zalando Tech</title>
     <meta name="description" content="This is the home of Zalando Tech. We dress code! Check out our job page for available positions.">
-    <link href="../images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="../css/tech.zalando-all.css" />
+    <link href="{{ relative_path_to_root }}images/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ relative_path_to_root }}css/tech.zalando-all.css" />
 </head>
 <body>
 
     <!-- Header -->
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'jobs' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'jobs' } %}
 
     <div class="fullsize-container light-gray">
         <div class="container">
-            <h1 class="heading-1 text-center element-spacing">{{ greenhouse.jobs.length }} Jobs</h1>
+            <h1 class="heading-1 text-center element-spacing">{{ total_jobs_viewmodel.length }} Jobs</h1>
         </div>
         <div class="container">
             <div class="cards element-spacing">
@@ -31,8 +32,8 @@
                         'locations': job.locations
                     } %}
 
-                    {% set insert_non_tech_job = greenhouse.jobs.length >= 2 && loop.index === 2 %}
-                    {% set append_non_tech_job = greenhouse.jobs.length < 2 && loop.index === greenhouse.jobs.length %}
+                    {% set insert_non_tech_job = jobs_viewmodel.length >= 2 && loop.index === 2 %}
+                    {% set append_non_tech_job = jobs_viewmodel.length < 2 && loop.index === jobs_viewmodel.length %}
                     {% if insert_non_tech_job || append_non_tech_job %}
                         {% include "../src/partials/joker_card.html" with {
                             'type': 'non-tech-jobs',
@@ -42,8 +43,8 @@
                         } %}
                     {% endif %}
 
-                    {% set insert_talent_pool = greenhouse.jobs.length >= 5 && loop.index === 5 %}
-                    {% set append_talent_pool = greenhouse.jobs.length < 5 && loop.index === greenhouse.jobs.length %}
+                    {% set insert_talent_pool = jobs_viewmodel.length >= 5 && loop.index === 5 %}
+                    {% set append_talent_pool = jobs_viewmodel.length < 5 && loop.index === jobs_viewmodel.length %}
                     {% if insert_talent_pool || append_talent_pool %}
                         {% include "../src/partials/joker_card.html" with {
                             'type': 'talent-pool',
@@ -59,9 +60,9 @@
     </div>
 
     <!-- Footer -->
-    {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
-    <script async src="../js/tech.zalando-all.js"></script>
+    <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
 
 </body>
 </html>
