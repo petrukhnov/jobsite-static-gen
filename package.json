@@ -27,6 +27,7 @@
     "metalsmith-partial": "^0.1.0",
     "metalsmith-permalinks": "^0.4.0",
     "metalsmith-prismic": "^0.7.1",
+    "metalsmith-greenhouse": "file:../metalsmith-greenhouse",
     "metalsmith-s3": "0.0.2",
     "metalsmith-serve": "0.0.3",
     "metalsmith-templates": "^0.6.1",
