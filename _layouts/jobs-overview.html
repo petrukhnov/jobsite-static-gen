@@ -1,6 +1,6 @@
-{% set tech_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Tech' }) %}
-{% set product_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Product' }) %}
-{% set design_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Design' }) %}
+{% set tech_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Engineering & Development' }) %}
+{% set product_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Product & UX' }) %}
+{% set data_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Data Science' }) %}
 {% set others_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Other' }) %}
 
 <!doctype html>
@@ -49,7 +49,7 @@
                     <div class="card job-type">
                         <div class="media"></div>
                         <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/product">Product &amp; Management</a></p>
+                            <p class="title"><a href="{{ relative_path_to_root }}jobs/product">Product &amp; UX</a></p>
                             <p class="subtitle">{{ product_jobs_viewmodel.length }} Jobs</p>
                         </div>
                     </div>
@@ -59,8 +59,8 @@
                     <div class="card job-type">
                         <div class="media"></div>
                         <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/design">UX &amp; UI</a></p>
-                            <p class="subtitle">{{ design_jobs_viewmodel.length }} Jobs</p>
+                            <p class="title"><a href="{{ relative_path_to_root }}jobs/data">Data Science</a></p>
+                            <p class="subtitle">{{ data_jobs_viewmodel.length }} Jobs</p>
                         </div>
                     </div>
                 </div>
