@@ -1,4 +1,4 @@
-# tech.zalando
+# tech.zalando.de
 
 # Core Components
 
@@ -28,40 +28,12 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 7. run `gulp`
 
-# Docker
-
-Docker is used for deployment of the static site generator to AWS Beanstalk. You
-can also use it for local development of course.
-
-1. build docker container `docker build -t zalando/tfox .`
-2. run app from docker container:
-   `docker run -e "PRISMIC_SECRET=<PRISMIC_SECRET>" -e "PRISMIC_APIURL=<PRIMSIC_API_URL>" -p 8080:8080 -i -t zalando/tfox`
-
-   The environment variables used by the node application needs to be passed via
-   the `-e` parameter of `docker run`. You can retrieve the secret and the
-   API-URL from the prismic.io config pages ("API&Security" and "Webhooks").
-
-   If you run docker in Virtualbox (e.g. boot2docker) you may need to forward
-   the port 8080 in virtualbox, too.
-
-# Application Deployment
-
-Deployment can be handled with AWS Beanstalk CLI tools
-([Setup Instructions](http://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-getting-set-up.html)).
-
-To deploy the current git HEAD with the CLI tools, run:
-`eb deploy`
-
-## Configuration
-- The hosting environment needs to specify the following environment variables
-  to deploy to S3: S3SECRET, S3REGION, S3KEY, S3BUCKET
-- The port forwarding for the AWS Beanstalk load balancer is defined in `Dockerrun.aws.json`
-
 # Deploying website
-
-- When updating contents on prismic.io, a webhook triggers a new build of the
-  public website through the integrated NodeJS application and corresponding
-  gulp tasks.
 
 - To generate and deploy the static website from your local machine manually,
   run `gulp deploy:dev`
+
+- For AWS-deployed builds: when updating contents on prismic.io, a webhook
+  would trigger a new build of the public website through the integrated NodeJS
+  application and corresponding gulp tasks.
+
