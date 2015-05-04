@@ -2,8 +2,8 @@
 var gulp = require('gulp');
 
 // customize swig
-var swig = require('swig')
-    viewmodel = require('../swig-viewmodel');
+var swig = require('swig'),
+    viewmodel = require('swig-viewmodel');
 viewmodel.useFilter(swig, 'to_blogpost_viewmodel');
 viewmodel.useFilter(swig, 'to_blogposts_viewmodel');
 viewmodel.useFilter(swig, 'to_doc_viewmodel');
