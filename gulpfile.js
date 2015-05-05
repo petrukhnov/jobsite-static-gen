@@ -3,7 +3,7 @@ var gulp = require('gulp');
 
 // customize swig
 var swig = require('swig'),
-    viewmodel = require('swig-viewmodel');
+    viewmodel = require('../swig-viewmodel');
 viewmodel.useFilter(swig, 'to_blogpost_viewmodel');
 viewmodel.useFilter(swig, 'to_blogposts_viewmodel');
 viewmodel.useFilter(swig, 'to_doc_viewmodel');
@@ -20,7 +20,7 @@ var fs = require('fs'),
     gulp_front_matter = require('gulp-front-matter'),
     assign = require('lodash.assign'),
     prismic = require('metalsmith-prismic'),
-    greenhouse = require('metalsmith-greenhouse'),
+    greenhouse = require('../metalsmith-greenhouse'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
