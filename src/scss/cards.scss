@@ -245,12 +245,74 @@
         }
     }
 
+    &.person {
+        .image {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 50%;
+            height: 140px;
+            margin: 37px auto 0 auto;
+            position: relative;
+            width: 140px;
+        }
+
+        .flag {
+            position: absolute;
+            width: 100px;
+        }
+
+        .title {
+            font-size: 1.8rem;
+            line-height: 2.2rem;
+            margin: 0 16px 12px 16px;
+            text-align: center;
+            text-transform: none;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 400;
+            line-height: 1.4rem;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .text {
+            font-size: 2.0rem;
+            line-height: 2.4rem;
+            max-height: none;
+            text-align: center;
+        }
+
+        .link {
+            display: block;
+        }
+
+        .second-content {
+            padding: 28px 8px;
+        }
+
+        .second-title {
+            color: $color-dark-gray;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+    }
+
     .content {
         border-radius: 0 0 $card-border-radius $card-border-radius;
         color: $color-black;
-        padding: 24px 8px;
+        padding: 28px 8px;
         position: relative;
         text-align: left;
+    }
+
+    .seperator {
+        background-color: $color-light-gray-darker;
+        height: 1px;
+        margin: 0 24px;
+        padding: 0;
     }
 
     .title {
@@ -366,5 +428,17 @@
 
     &.other-jobs {
         background-image: url("/images/jobs-overview_other-jobs.png");
+    }
+}
+
+.col-2-cards {
+    display: inline-block;
+    margin: 8px;
+    text-align: left;
+    vertical-align: top;
+    width: 576px;
+
+    @media (max-width: 991px) {
+        width: auto;
     }
 }
