@@ -23,12 +23,13 @@
             {{ job.content | replace('&lt;','<','g') | replace('&gt;','>','g') | safe }}
         </p>
     {%- endfor %}
+        <div id="grnhse_app"></div>
     </div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
+    <script async src="https://boards.greenhouse.io/embed/job_board/js?for=zalandotest"></script>
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-
 </body>
 </html>
