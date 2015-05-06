@@ -29,7 +29,8 @@
                         'image': job.image,
                         'title': job.title,
                         'subtitle': job.department,
-                        'locations': job.locations
+                        'locations': job.locations,
+                        'relative_path_to_root': relative_path_to_root
                     } %}
 
                     {% set insert_non_tech_job = jobs_viewmodel.length >= 2 && loop.index === 2 %}
