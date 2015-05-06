@@ -110,7 +110,6 @@ gulp.task('sass', function() {
 gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     gulp.src([
         'src/css/vendor/bootstrap.min.css',
-        'src/css/fonts.css',
         'src/css/general.css',
         'src/css/header_footer.css',
         'src/css/cards.css',

@@ -52,7 +52,7 @@
 .card {
     background-color: $color-white;
     border-radius: $card-border-radius;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
     display: block;
     margin: 0;
     overflow: hidden;
@@ -63,7 +63,7 @@
     }
 
     &:hover {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.10);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         transform: scale(1.02, 1.02);
     }
 
@@ -229,6 +229,7 @@
         .title {
             color: $color-zalando;
             font-size: 2.6rem;
+            font-weight: 600;
             margin: 0;
             text-align: center;
             text-transform: uppercase;

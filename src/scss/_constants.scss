@@ -30,11 +30,9 @@ $long-animation-duration: .5s;
 $break-large: 768px;
 $element-spacing: 24px;
 $medium-element-spacing: 32px;
-$card-border-radius: 2px;
-$joker-card-border-radius: 2px;
+$card-border-radius: 0;
+$joker-card-border-radius: 0;
 
 // font families
 $font-regular: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-// $font-bodycopy: "CrimsonText-Regular", "Times New Roman", Times, serif;
-// $font-bodycopy: "Times New Roman", Times, serif;
 $font-bodycopy: Georgia, Times, "Times New Roman", serif;
