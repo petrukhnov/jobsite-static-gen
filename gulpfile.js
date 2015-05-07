@@ -115,7 +115,8 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
         'src/css/header_footer.css',
         'src/css/cards.css',
         'src/css/buttons.css',
-        'src/css/blog_post.css'
+        'src/css/blog_post.css',
+        'src/css/job_ad.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())

@@ -1,4 +1,5 @@
 {% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel %}
+{% set job_viewmodel = jobs_viewmodel[0] %}
 
 <!doctype html>
 <html class="no-js" lang="en">
@@ -15,15 +16,42 @@
     <!-- Header -->
     {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'jobs' } %}
 
-    <div class="fullsize-container light-gray">
-    {%- for job in jobs_viewmodel %}
-        <h1>{{ job.title }} - {{ job.firstCategory }}</h1>
-        <h2>{{ job.department }} / {{ job.location }} ({{ job.id }})</h2>
-        <p>
-            {{ job.content | replace('&lt;','<','g') | replace('&gt;','>','g') | safe }}
-        </p>
-    {%- endfor %}
-        <div id="grnhse_app"></div>
+    <div class="fullsize-container white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+
+                    <div class="application-header">
+                        <p class="locations">
+                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{ job_viewmodel.locations }}
+                        </p>
+                        <h1 class="heading-1">{{ job_viewmodel.title }}</h1>
+                        <h2 class="heading-2">{{ job_viewmodel.department }}</h2>
+                    </div>
+
+                    <a href="#apply" class="default-button color-zalando element-spacing">Apply</a>
+
+                    <div class="application-content">
+                        {{ job_viewmodel.content | safe }}
+                    </div>
+
+                    <a class="anchor" id="apply"></a>
+
+                    <div class="application-header">
+                        <p class="locations">
+                            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{ job_viewmodel.locations }}
+                        </p>
+                        <h1 class="heading-1">{{ job_viewmodel.title }}</h1>
+                        <h2 class="heading-2">{{ job_viewmodel.department }}</h2>
+                    </div>
+
+                    <div class="application-form">
+                        <div id="grnhse_app"></div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->

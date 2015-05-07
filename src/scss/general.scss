@@ -12,6 +12,13 @@ body {
     margin-top: 50px;
 }
 
+a.anchor {
+    display: block;
+    position: relative;
+    top: -70px;
+    visibility: hidden;
+}
+
 .bodycopy {
     font-family: $font-bodycopy;
     font-size: 1.6rem;
@@ -37,9 +44,12 @@ body {
         }
     }
 
-    @media (min-width: 321px) {
+    @media (min-width: 768px) {
         font-size: 3.2rem;
         line-height: 3.6rem;
+    }
+
+    @media (min-width: 321px) {
         text-align: center;
     }
 }

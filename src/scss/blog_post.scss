@@ -78,8 +78,10 @@
 
     a {
         color: $color-zalando;
+        transition: color $animation-duration;
 
         &:hover {
+            color: $color-zalando-lighter;
             text-decoration: none;
         }
     }
