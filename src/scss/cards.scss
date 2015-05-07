@@ -258,8 +258,15 @@
         }
 
         .flag {
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 30px;
+            left: -30px;
             position: absolute;
-            width: 100px;
+            top: 55px;
+            width: 60px;
+            z-index: 1000;
         }
 
         .title {

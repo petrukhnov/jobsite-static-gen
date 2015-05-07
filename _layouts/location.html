@@ -1,3 +1,5 @@
+{% set interview_person = prismic.authors | to_author_viewmodel({ fullName: location.interview_person }) %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -11,7 +13,7 @@
 <body>
 
     <!-- Header -->
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'jobs' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'locations' } %}
 
     <!-- Teaser image -->
     <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/{{ location.image }}')">
@@ -53,11 +55,13 @@
             <div class="cards element-spacing">
 
                 {% include "../src/partials/person_card.html" with {
-                    'image': '../../images/stups.png',
-                    'name': 'Nills Tillsman',
-                    'title': 'Lead Developer',
-                    'quote': 'Berlin is the capital of Germany, and one of the 16 states of Germany',
-                    'links': ['http://www.toytowngermany.com','http://www.expath.de']
+                    'image': interview_person.image,
+                    'name': interview_person.fullName,
+                    'title': interview_person.title,
+                    'quote': interview_person.quote,
+                    'nationality': 'us',
+                    'links': ['http://www.toytowngermany.com','http://www.expath.de'],
+                    'relative_path_to_root': relative_path_to_root
                 } %}
 
                 <div class="col-2-cards">
@@ -109,6 +113,8 @@
             </div>
         </div>
     </div>
+
+    {{ interview_person | json }}
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}

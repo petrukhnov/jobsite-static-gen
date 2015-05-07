@@ -7,7 +7,11 @@ location:
   image: berlin_header.jpg
   summary_partial: berlin_summary
   interview_partial: berlin_interview
-city_links:
-  - test1
-  - test2
+  interview_person: Lauri Apple
+  links:
+    - test1
+    - test2
+prismic:
+  authors:
+    query: '[[:d = at(document.type, "author")]]'
 ---
