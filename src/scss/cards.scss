@@ -403,15 +403,15 @@
         width: 100%;
 
         &.autonomy {
-            background-image: url("/images/ra_autonomy.png");
+            background-image: url("../images/ra_autonomy.png");
         }
 
         &.mastery {
-            background-image: url("/images/ra_mastery.png");
+            background-image: url("../images/ra_mastery.png");
         }
 
         &.purpose {
-            background-image: url("/images/ra_purpose.png");
+            background-image: url("../images/ra_purpose.png");
         }
     }
 }
@@ -422,19 +422,19 @@
     background-size: contain;
 
     &.engineering-development {
-        background-image: url("/images/jobs-overview_engineering-development.png");
+        background-image: url("../images/jobs-overview_engineering-development.png");
     }
 
     &.product-ux {
-        background-image: url("/images/jobs-overview_product-ux.png");
+        background-image: url("../images/jobs-overview_product-ux.png");
     }
 
     &.data-science {
-        background-image: url("/images/jobs-overview_data-science.png");
+        background-image: url("../images/jobs-overview_data-science.png");
     }
 
     &.other-jobs {
-        background-image: url("/images/jobs-overview_other-jobs.png");
+        background-image: url("../images/jobs-overview_other-jobs.png");
     }
 }
 
