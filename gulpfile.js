@@ -121,6 +121,13 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest('build/css'));
+
+    gulp.src([
+        'src/css/greenhouse.css'
+    ])
+    .pipe(concat('tech.zalando-greenhouse.css'))
+    .pipe(minifyCSS())
+    .pipe(gulp.dest('build/css'));
 });
 
 // minify html

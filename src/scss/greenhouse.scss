@@ -1,0 +1,77 @@
+
+// This scss file customizes the greenhouse job application form within an iframe.
+//
+// Documentation from greenhouse (https://app.greenhouse.io/configure/dev_center/css_guide):
+//
+// Hosted Job Board CSS Guide
+// --------------------------
+// Overview
+//
+// Greenhouse allows you to provide a custom CSS stylesheet for your hosted or embedded job board. We provide override-able classes/selectors for most job board elements (e.g., headings, fonts, fields, buttons).
+//
+// Questions? Contact support@greenhouse.io and let us know how we can help.
+//
+// Common Styling
+// --------------
+// The following CSS selectors can be used to override elements on both pages:
+//
+// p – paragraph
+// ul – unordered list
+// ul li – list item
+// .location – location of job
+//
+// Job Board Styling
+// -----------------
+// The following CSS selectors can be used to override elements specific to the job board:
+//
+// #wrapper – wraps the entire job board
+// #board_title – job board title
+// .opening a – job links
+//
+// Job Application Styling
+// -----------------------
+// The following CSS selectors can be used to override elements specific to the job application:
+//
+// #app_body - the application container
+// #application – the application form container
+// .app-title – job name
+// .heading – the "Apply for this job" application container header
+// .company-name – applies to "at YourCo"
+// .field label – field labels (e.g.,"First Name")
+// .field textarea – all textareas
+// .field select – all select boxes
+// .field input[type='text'] – all text boxes
+// .button – applies to "Apply Now" and "Submit Application" buttons
+// (NOTE: set "background-image: none;" to remove existing gradient)
+// a, input[type='button'].link-like-button – applies to all regular page links
+
+@import "constants";
+
+#app_body {
+    font-family: $font-regular;
+}
+
+#application {
+    background-color: $color-white;
+}
+
+.heading {
+    color: $color-zalando;
+}
+
+#main_fields {
+    div.field {
+        label {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        input[type='text'] {
+            border: 2px solid $color-gray;
+        }
+
+        &:nth-child(9) {
+            display: none;
+        }
+    }
+}
