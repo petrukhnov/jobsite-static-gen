@@ -39,18 +39,19 @@ var fs = require('fs'),
     del = require('del');
 
 program
-    .option('-e, --environment [env]',
+    .option('-e, --environment <env>',
             'Environment (dev|qa|prod)',
-            /^(dev|qa|prod)$/i)
+            /^(dev|qa|prod)$/i,
+            false)
     .parse(process.argv);
 
 // -e CLI option overrides a potentially provided environment variable
 var env = program.environment || process.env['TFOX_ENV'];
 
 if (typeof env === 'undefined') {
-    console.log('Error: No environment was specified.\n' +
+    console.log('Error: No valid environment was specified.\n' +
                 'Specify -e option or TFOX_ENV environment variable.\n' +
-                'See `gulp --help` for help.');
+                'See `gulp --help` for help and valid settings.');
     process.exit(1);
 } else {
     console.log("Running in environment:", env);
