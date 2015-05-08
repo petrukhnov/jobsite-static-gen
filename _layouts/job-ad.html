@@ -16,8 +16,17 @@
 
     <div class="fullsize-container white">
         <div class="container">
+
+            <div class="element-spacing">
+                <ul class="breadcrumb">
+                  <li><a href="{{ relative_path_to_root }}jobs">Jobs</a></li>
+                  <li><a href="{{ relative_path_to_root }}jobs/{{ job_viewmodel.firstCategoryId }}">{{ job_viewmodel.firstCategory }}</a></li>
+                  <li class="active">{{ job_viewmodel.title }}</li>
+                </ul>
+            </div>
+
             <div class="row">
-                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="col-md-6">
 
                     <div class="application-header">
                         <p class="locations">
@@ -27,15 +36,23 @@
                         <h2 class="heading-2">{{ job_viewmodel.department }}</h2>
                     </div>
 
-                    <a href="#apply" class="default-button color-zalando element-spacing">Apply</a>
+                    <div class="visible-sm-block visible-xs-block element-spacing">
+                        <a href="#apply" class="default-button color-zalando">Apply</a>
+                    </div>
 
                     <div class="application-content">
                         {{ job_viewmodel.content | safe }}
                     </div>
 
+                </div>
+                <div class="col-md-5 col-md-offset-1">
                     <a class="anchor" id="apply"></a>
 
-                    <div class="application-header">
+                    <div class="application-header apply">
+                        <h1 class="heading-1">Apply Now</h1>
+                    </div>
+
+                    <div class="application-header visible-sm-block visible-xs-block">
                         <p class="locations">
                             <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span> {{ job_viewmodel.locations }}
                         </p>
@@ -46,7 +63,6 @@
                     <div class="application-form">
                         <div id="grnhse_app"></div>
                     </div>
-
                 </div>
             </div>
         </div>

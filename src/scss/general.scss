@@ -12,11 +12,22 @@ body {
     margin-top: 50px;
 }
 
-a.anchor {
-    display: block;
-    position: relative;
-    top: -70px;
-    visibility: hidden;
+a {
+    color: $color-zalando;
+
+    &:hover,
+    &:active,
+    &:focus {
+        color: $color-zalando-lighter;
+        text-decoration: none;
+    }
+
+    .anchor {
+        display: block;
+        position: relative;
+        top: -70px;
+        visibility: hidden;
+    }
 }
 
 .bodycopy {
@@ -34,15 +45,6 @@ a.anchor {
     margin: 0;
     padding: 0 10px;
     text-transform: uppercase;
-
-    a {
-        color: $color-zalando;
-
-        &:hover {
-            color: $color-zalando-lighter;
-            text-decoration: none;
-        }
-    }
 
     @media (min-width: 768px) {
         font-size: 3.2rem;
@@ -367,5 +369,18 @@ a.anchor {
     @media (max-width: 991px) {
         margin-top: 20px;
         padding: 0 2px;
+    }
+}
+
+.breadcrumb {
+    background-color: transparent;
+    border-radius: 0;
+    margin: -20px 0 0 0;
+    padding: 0;
+
+    > li {
+        @media (max-width: 320px) {
+            display: block;
+        }
     }
 }
