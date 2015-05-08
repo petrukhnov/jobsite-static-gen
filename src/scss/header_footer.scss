@@ -50,6 +50,10 @@
         }
     }
 
+    .navbar-nav > li > .dropdown-menu {
+        border-radius: 0;
+    }
+
     .navbar-brand {
         background-image: url("/images/tech_zalando_logo_black.png");
         background-position: left center;
@@ -105,6 +109,25 @@
         .bar-2 {
             opacity: 1.0;
         }
+    }
+}
+
+.navbar-right {
+    .dropdown-menu {
+        left: 0;
+        right: 0;
+    }
+}
+
+.dropdown-menu {
+    border: 0;
+    min-width: auto;
+
+    > li > a {
+        font-family: $font-bodycopy;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 2.0rem;
     }
 }
 

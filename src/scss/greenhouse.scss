@@ -67,11 +67,11 @@ html {
 
 #application {
     background-color: $color-white;
-    padding: 30px 0;
+    padding: 6px 0 0 0;
 }
 
 .heading {
-    color: $color-zalando;
+    display: none;
 }
 
 #main_fields,
@@ -83,7 +83,9 @@ html {
         }
 
         input[type='text'] {
+            -webkit-appearance: none;
             border: 2px solid $color-gray;
+            border-radius: 0;
         }
 
         // hide phone input
@@ -116,16 +118,39 @@ p {
 }
 
 #submit_app {
+    -webkit-appearance: none;
     background-color: $color-zalando;
     background-image: none;
     border: 2px solid $color-zalando;
     border-radius: 0;
     color: $color-white;
-    display: block;
+    display: inline-block;
     font-size: 1.4rem;
     font-weight: 600;
     line-height: 1.8rem;
     padding: 8px;
     text-shadow: none;
     text-transform: uppercase;
+
+    @media (max-width: 640px) {
+        width: 100% !important;
+    }
+}
+
+.attach-or-paste .link-container a {
+    @media (max-width: 640px) {
+        background-color: transparent;
+        background-image: none;
+        border: 2px dotted $color-zalando !important;
+        border-radius: 0;
+        color: $color-zalando !important;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 1.8rem;
+        text-transform: uppercase;
+    }
+}
+
+.required-fields {
+    margin-bottom: 12px;
 }

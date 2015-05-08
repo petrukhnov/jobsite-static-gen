@@ -3,12 +3,11 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 minimal-ui" />
-    <title>Zalando Tech</title>
-    <meta name="description" content="This is the home of Zalando Tech. We dress code! Check out our job page for available positions.">
-    <link href="../../../images/favicon.ico" rel="icon" type="image/x-icon" />
-    <link rel="stylesheet" href="../../../css/tech.zalando-all.css" />
+    {% include "../src/partials/head.html" with {
+        'relative_path_to_root': relative_path_to_root,
+        'title': 'Zalando Tech',
+        'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+    } %}
 </head>
 <body>
 

@@ -1,5 +1,6 @@
 ---
 template: index.html
+relative_path_to_root: ./
 permalink: false
 prismic:
   blogposts:
