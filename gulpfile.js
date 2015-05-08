@@ -286,7 +286,6 @@ function publish(env) {
             }))
             .pipe(publisher.publish(headers))
             .pipe(publisher.sync('/build/latest'))
-            .pipe(publisher.cache())
             .pipe(awspublish.reporter());
     };
 }
