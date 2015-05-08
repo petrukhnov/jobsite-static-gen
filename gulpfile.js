@@ -13,6 +13,7 @@ viewmodel.useFilter(swig, 'to_job_viewmodel');
 
 // include gulp plugins
 var fs = require('fs'),
+    program = require('commander'),
     jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
@@ -37,23 +38,42 @@ var fs = require('fs'),
     connect = require('gulp-connect'),
     del = require('del');
 
+program
+    .option('-e, --environment [env]',
+            'Environment (dev|qa|prod)',
+            /^(dev|qa|prod)$/i)
+    .parse(process.argv);
+
+// -e CLI option overrides a potentially provided environment variable
+var env = program.environment || process.env['TFOX_ENV'];
+
+if (typeof env === 'undefined') {
+    console.log('Error: No environment was specified.\n' +
+                'Specify -e option or TFOX_ENV environment variable.\n' +
+                'See `gulp --help` for help.');
+    process.exit(1);
+} else {
+    console.log("Running in environment:", env);
+}
+
 var config = {};
-['dev', 'qa', 'prod'].forEach(function(env) {
-    try {
-        config[env] = require('./config-' + env).site;
-    } catch (e) {
-        // else: import environment variables
-        var envCaps = env.toUpperCase();
-        config[env] = {
-            'aws': {
-                'key': process.env['S3KEY_' + envCaps],
-                'secret': process.env['S3SECRET_' + envCaps],
-                'bucket': process.env['S3BUCKET_' + envCaps],
-                'region': process.env['S3REGION_' + envCaps]
-            }
-        };
-    }
-});
+try {
+    config = require('./config-' + env).site;
+} catch (e) {
+    // else: import environment variables
+    var envCaps = env.toUpperCase();
+    config = {
+        'googleAnalytics': {
+            'trackingID': process.env['GATRACKINGID_' + envCaps]
+        },
+        'aws': {
+            'key': process.env['S3KEY_' + envCaps],
+            'secret': process.env['S3SECRET_' + envCaps],
+            'bucket': process.env['S3BUCKET_' + envCaps],
+            'region': process.env['S3REGION_' + envCaps]
+        }
+    };
+}
 
 // lint task
 gulp.task('lint', function() {
@@ -208,8 +228,11 @@ gulp.task('metalsmith', function() {
         })
         .pipe(gulpsmith()
               .metadata({
-                  'title': 'Zalando TFox',
-                  'description': 'We dress code!'
+                  'gaTrackingID': config.googleAnalytics.trackingID,
+                  // Default title and description meta tags.
+                  // Can be overridden in page layouts via the head.html partial
+                  'title': 'Zalando Tech',
+                  'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
@@ -265,18 +288,8 @@ gulp.task('build',function(cb) {
 });
 
 // publish to AWS S3
-gulp.task('publish:dev', publish('dev'));
-gulp.task('publish:qa', publish('qa'));
-gulp.task('publish:prod', publish('prod'));
-
-// build + publish tasks, esp. for automated deployments
-gulp.task('deploy:dev', ['build'], publish('dev'));
-gulp.task('deploy:qa', ['build'], publish('qa'));
-gulp.task('deploy:prod', ['build'], publish('prod'));
-
-function publish(env) {
-    return function() {
-        var publisher = awspublish.create(config[env].aws);
+gulp.task('publish', function() {
+        var publisher = awspublish.create(config.aws);
         var headers = {
             // 'Cache-Control': 'max-age=315360000, no-transform, public'
         };
@@ -287,8 +300,13 @@ function publish(env) {
             .pipe(publisher.publish(headers))
             .pipe(publisher.sync('/build/latest'))
             .pipe(awspublish.reporter());
-    };
-}
+    }
+);
+
+// build + publish tasks, esp. for automated deployments
+gulp.task('deploy',function(cb) {
+    runSequence('build', 'publish', cb);
+});
 
 // default task
 gulp.task('default', ['server']);
