@@ -14,13 +14,6 @@
         margin-left: -30px;
         margin-right: -30px;
     }
-
-    &.job-types {
-        margin-left: auto;
-        margin-right: auto;
-        max-width: 592px;
-        width: 100%;
-    }
 }
 
 .card-container {
@@ -71,6 +64,26 @@
         background: $bg-color-card-white-hover;
     }
 
+    &.disabled {
+        .media {
+            opacity: 0.40;
+        }
+
+        .content .title {
+            opacity: 0.50;
+        }
+
+        a {
+            cursor: default;
+            pointer-events: none;
+        }
+
+        &:hover {
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            transform: inherit;
+        }
+    }
+
     .media {
         background-position: center center;
         background-repeat: no-repeat;
@@ -107,7 +120,11 @@
         width: 220px;
 
         .media {
-            height: 120px;
+            height: 80px;
+
+            @media (min-width: 768px) {
+                height: 130px;
+            }
         }
 
         .title {
@@ -116,16 +133,13 @@
 
         .subtitle {
             color: $color-zalando;
+            font-size: 1.6rem;
             text-align: center;
         }
 
         @media (min-width: 768px) {
             height: 260px;
             width: 260px;
-
-            .media {
-                height: 150px;
-            }
         }
     }
 

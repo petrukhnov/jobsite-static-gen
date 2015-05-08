@@ -37,50 +37,71 @@
             <div class="cards job-types element-spacing">
 
                 <div class="card-container">
-                    <div class="card job-type">
-                        <div class="media icon engineering-development"></div>
+                    {%- if tech_jobs_viewmodel.length === 0 %}
+                        {% set disabled = ' disabled' %}
+                    {%- else %}
+                        {% set disabled = '' %}
+                    {%- endif %}
+                    <div class="card job-type{{ disabled }}">
+                        <div class="media icon engineering-development"><a href="{{ relative_path_to_root }}jobs/tech"></a></div>
                         <div class="content">
                             <p class="title"><a href="{{ relative_path_to_root }}jobs/tech">Engineering &amp; Development</a></p>
-                            <p class="subtitle">{{ tech_jobs_viewmodel.length }} Jobs</p>
+                            <p class="subtitle">{{ tech_jobs_viewmodel.length | pluralize('Job', 'Jobs') }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-container">
-                    <div class="card job-type">
-                        <div class="media icon product-ux"></div>
+                    {%- if product_jobs_viewmodel.length === 0 %}
+                        {% set disabled = ' disabled' %}
+                    {%- else %}
+                        {% set disabled = '' %}
+                    {%- endif %}
+                    <div class="card job-type{{ disabled }}">
+                        <div class="media icon product-ux"><a href="{{ relative_path_to_root }}jobs/product"></a></div>
                         <div class="content">
                             <p class="title"><a href="{{ relative_path_to_root }}jobs/product">Product Management / <br/> UX &amp; UI</a></p>
-                            <p class="subtitle">{{ product_jobs_viewmodel.length }} Jobs</p>
+                            <p class="subtitle">{{ product_jobs_viewmodel.length | pluralize('Job', 'Jobs') }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-container">
-                    <div class="card job-type">
-                        <div class="media icon data-science"></div>
+                    {%- if data_jobs_viewmodel.length === 0 %}
+                        {% set disabled = ' disabled' %}
+                    {%- else %}
+                        {% set disabled = '' %}
+                    {%- endif %}
+                    <div class="card job-type{{ disabled }}">
+                        <div class="media icon data-science"><a href="{{ relative_path_to_root }}jobs/data"></a></div>
                         <div class="content">
                             <p class="title"><a href="{{ relative_path_to_root }}jobs/data">Data Science</a></p>
-                            <p class="subtitle">{{ data_jobs_viewmodel.length }} Jobs</p>
+                            <p class="subtitle">{{ data_jobs_viewmodel.length | pluralize('Job', 'Jobs') }}</p>
                         </div>
                     </div>
                 </div>
 
                 <div class="card-container">
-                    <div class="card job-type">
-                        <div class="media icon other-jobs"></div>
+                    {%- if others_jobs_viewmodel.length === 0 %}
+                        {% set disabled = ' disabled' %}
+                    {%- else %}
+                        {% set disabled = '' %}
+                    {%- endif %}
+                    <div class="card job-type{{ disabled }}">
+                        <div class="media icon other-jobs"><a href="{{ relative_path_to_root }}jobs/other"></a></div>
                         <div class="content">
                             <p class="title"><a href="{{ relative_path_to_root }}jobs/other">Other Specialists</a></p>
-                            <p class="subtitle">{{ others_jobs_viewmodel.length }} Jobs</p>
+                            <p class="subtitle">{{ others_jobs_viewmodel.length | pluralize('Job', 'Jobs') }}</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="card-container">
-                    <div class="card job-type-not-looking-for-a-tech-job">
-
-                    </div>
-                </div>
+                {% include "../src/partials/joker_card.html" with {
+                    'type': 'non-tech-jobs job-type',
+                    'link': 'http://jobs.zalando.de/en/',
+                    'title': 'Not looking for a tech job?',
+                    'text': 'Have a look in our amazing job opportunities for the non-techies'
+                } %}
 
             </div>
         </div>
