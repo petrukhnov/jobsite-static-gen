@@ -70,7 +70,7 @@ gulp.task('html-hint', function() {
 
 // lint scss
 gulp.task('scss-lint', function() {
-    gulp.src('./src/scss/*.scss')
+    gulp.src(['./src/scss/*.scss', '!./src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
