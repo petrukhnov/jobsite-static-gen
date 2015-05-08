@@ -73,7 +73,17 @@
     }
 
     ul {
-        padding-left: 20px;
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        background-image: url("../images/zalando_bullet.png");
+        background-position: 2px 8px;
+        background-repeat: no-repeat;
+        background-size: 7px 7px;
+        margin-bottom: 6px;
+        padding-left: 24px;
     }
 
     a {

@@ -82,10 +82,20 @@ html {
             font-weight: 300;
         }
 
-        input[type='text'] {
+        input[type='text'],
+        select {
             -webkit-appearance: none;
+            background-color: $color-white;
             border: 2px solid $color-gray;
             border-radius: 0;
+            font-family: $font-regular;
+            font-size: 1.4rem;
+            font-weight: 400;
+            padding: 5px;
+        }
+
+        select {
+            width: 100% !important;
         }
 
         // hide phone input
