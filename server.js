@@ -12,9 +12,12 @@ var DEPLOY_TASK = 'deploy:' + ENV;
 var PORT   = 8080;
 var SECRET = process.env.PRISMIC_SECRET;
 var APIURL = process.env.PRISMIC_APIURL;
+var DEBUG  = process.env.JOBSITE_GENERATOR_DEBUG;
 
 var TYPE   = "api-update";
 var app    = module.exports = express();
+
+debug('Debug logging enabled');
 
 // parse json on all requests
 app.use(bodyParser.json());
@@ -36,10 +39,15 @@ app.use(expressWinston.logger({
 }));
 
 app.post('/prismic-hook', function (req, res, next) {
+    if (DEBUG) {
+        debug('Got a request, headers:', req.headers, ', body:', req.body);
+    }
+
     var secret = req.body.secret;
     var apiUrl = req.body.apiUrl;
     var type   = req.body.type;
     if (secret === SECRET && apiUrl === APIURL && type === TYPE) {
+        debug('Starting deployment to', ENV);
         gulp.start(DEPLOY_TASK, function(err) {
             if (err === null) {
                 res.json(req.body);
@@ -47,6 +55,7 @@ app.post('/prismic-hook', function (req, res, next) {
                 res.status(500);
                 next(new Error('Website build failed.'));
             }
+            debug('Deployment to', ENV, 'done');
         });
     } else {
         res.status(400);
@@ -82,3 +91,9 @@ var server   = app.listen(PORT, function() {
 
     console.log('Server listening at http://%s:%s', host, port);
 });
+
+function debug(arg1 /*...*/) {
+    if (DEBUG) {
+        console.log.apply(console, arguments);
+    }
+}
