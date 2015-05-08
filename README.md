@@ -23,3 +23,4 @@ Available Filters
 * to_author_viewmodel
 * to_doc_viewmodel
 * to_jobs_viewmodel
+* to_job_viewmodel
