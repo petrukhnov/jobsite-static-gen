@@ -19,9 +19,11 @@
 
             <div class="element-spacing">
                 <ul class="breadcrumb">
-                  <li><a href="{{ relative_path_to_root }}jobs">Jobs</a></li>
-                  <li><a href="{{ relative_path_to_root }}jobs/{{ job_viewmodel.firstCategoryId }}">{{ job_viewmodel.firstCategory }}</a></li>
-                  <li class="active">{{ job_viewmodel.title }}</li>
+                    <li><a href="{{ relative_path_to_root }}jobs">Jobs</a></li>
+                    {%- if job_viewmodel.firstCategoryId!=='hidden' %}
+                        <li><a href="{{ relative_path_to_root }}jobs/{{ job_viewmodel.firstCategoryId }}">{{ job_viewmodel.firstCategory }}</a></li>
+                    {%- endif %}
+                    <li class="active">{{ job_viewmodel.title }}</li>
                 </ul>
             </div>
 
