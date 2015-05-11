@@ -38,6 +38,10 @@ app.use(expressWinston.logger({
     ]
 }));
 
+app.get('/healthcheck', function (req, res, next) {
+    res.send('OK');
+});
+
 app.post('/prismic-hook', function (req, res, next) {
     if (DEBUG) {
         debug('Got a request, headers:', req.headers, ', body:', req.body);
