@@ -15,6 +15,7 @@ var APIURL = process.env.PRISMIC_APIURL;
 var DEBUG  = process.env.JOBSITE_GENERATOR_DEBUG;
 
 var TYPE   = "api-update";
+var TEST_TYPE = "test-trigger";
 var app    = module.exports = express();
 
 debug('Debug logging enabled');
@@ -50,7 +51,7 @@ app.post('/prismic-hook', function (req, res, next) {
     var secret = req.body.secret;
     var apiUrl = req.body.apiUrl;
     var type   = req.body.type;
-    if (secret === SECRET && apiUrl === APIURL && type === TYPE) {
+    if (secret === SECRET && apiUrl === APIURL && (type === TYPE || type === TEST_TYPE)) {
         debug('Starting deployment to', ENV);
         gulp.start(DEPLOY_TASK, function(err) {
             if (err === null) {
