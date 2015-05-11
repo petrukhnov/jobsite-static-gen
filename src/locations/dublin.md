@@ -11,15 +11,20 @@ location:
   links_partial: dublin_links
   links:
     -
-      link: http://www.meetup.com/Zalando-Tech-Events-Berlin/
-      image: meetup.jpg
-      title: Meetup Dublin
-      text: These are just some of the different kinds of Meetup groups you can find near Berlin.
+      link: https://www.startupdigest.com/digests/dublin/
+      image: dublin_startupdigest.png
+      title: Dublin Startup Digest
+      text: The personalized insider newsletter for all things startup in Dublin and around the world.
     -
-      link: http://www.meetup.com/Zalando-Tech-Events-Berlin/
-      image: meetup.jpg
-      title: Meetup Dublin
-      text: These are just some of the different kinds of Meetup groups you can find near Berlin.
+      link: http://www.visitdublin.com/home/
+      image: dublin_visit_dublin.png
+      title: Visit Dublin
+      text: Indulge in the finest restaurants, discover unique cultural gems and top-class attractions.
+    -
+      link: http://www.timeout.com/dublin/
+      image: dublin_timeout.png
+      title: Timeout Dublin
+      text: Your critical guide to hotels, restaurants and going out in Dublin.
 prismic:
   authors:
     query: '[[:d = at(document.type, "author")]]'
