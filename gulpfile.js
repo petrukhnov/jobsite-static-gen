@@ -297,15 +297,16 @@ gulp.task('build',function(cb) {
 // publish to AWS S3
 gulp.task('publish', function() {
         var publisher = awspublish.create(config.aws);
+        var bucketPath = config.aws.bucketPath + '/';
         var headers = {
             // 'Cache-Control': 'max-age=315360000, no-transform, public'
         };
         return gulp.src('./build/**')
             .pipe(rename(function (path) {
-                path.dirname = config.aws.bucketPath + '/' + path.dirname;
+                path.dirname = bucketPath + path.dirname;
             }))
             .pipe(publisher.publish(headers))
-            .pipe(publisher.sync('/build/latest'))
+            .pipe(publisher.sync(bucketPath))
             .pipe(awspublish.reporter());
     }
 );
