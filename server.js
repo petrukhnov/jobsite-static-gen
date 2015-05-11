@@ -4,6 +4,7 @@ var express        = require('express');
 var bodyParser     = require('body-parser');
 var expressWinston = require('express-winston');
 var winston        = require('winston');
+var exec = require('child_process').exec;
 
 require('./gulpfile.js');
 var ENV         = process.env.TFOX_ENV;
@@ -53,7 +54,7 @@ app.post('/prismic-hook', function (req, res, next) {
     var type   = req.body.type;
     if (secret === SECRET && apiUrl === APIURL && (type === TYPE || type === TEST_TYPE)) {
         debug('Starting deployment to', ENV);
-        gulp.start(DEPLOY_TASK, function(err) {
+        var child = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, function(err) {
             if (err === null) {
                 res.json(req.body);
             } else {
