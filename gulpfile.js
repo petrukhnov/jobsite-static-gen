@@ -201,7 +201,7 @@ gulp.task('copy-assets', ['clean:assets'], function() {
 // clean up folders
 gulp.task('clean:all', function (cb) {
     del([
-        './build'
+        './build/**/*'
     ], cb);
 });
 gulp.task('clean:css', function (cb) {
