@@ -99,6 +99,10 @@
     &.blog {
         .content {
             height: 230px;
+
+            @media (max-width: 320px) {
+                height: auto;
+            }
         }
     }
 
@@ -341,7 +345,7 @@
     .content {
         border-radius: 0 0 $card-border-radius $card-border-radius;
         color: $color-black;
-        padding: 28px 8px;
+        padding: 28px 8px 8px 8px;
         position: relative;
         text-align: left;
     }

@@ -11,49 +11,21 @@
 </head>
 <body>
 
+    <!-- Header -->
     {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'blog' } %}
 
-    <!--
-
-        Teaser Video
-
-    -->
-
-    <!-- <div class="fullsize-media visible-lg-block">
+    <!-- Teaser image -->
+    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/blog_header.jpg'); background-position: 5% 15%;">
         <div class="teaser">
             <div class="container">
-                <div class="tech-zalando-logo"></div>
-                <h1>Tech<br/>Blog</h1>
-                <a class="play-button">Play</a>
-            </div>
-        </div> -->
-        <!--
-            supported formats:
-            https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats
-
-            2:35 - 2:50
-        -->
-        <!-- <video autoplay="" loop="loop" class="landing-video" muted="">
-            <source src="http://client.fridolinschoepper.com/ZALANDO/Zalando_2.0_150324.mp4"></source>
-        </video>
-    </div>
-
-    <div class="fullsize-media home-video-bg visible-md-block visible-sm-block visible-xs-block">
-        <div class="teaser">
-            <div class="container">
-                <div class="tech-zalando-logo"></div>
-                <h1>Tech<br/>Blog</h1>
-                <a class="play-button">Play</a>
+                <div class="content">
+                    <h1 class="title">Tech Blog</h1>
+                </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
-    <!--
-
-        Sub Menu
-
-    -->
-
+    <!-- Sub Menu -->
     <!-- <div class="fullsize-container light-gray">
         <div class="container">
             <div class="row sub-menu">
@@ -73,12 +45,7 @@
         </div>
     </div> -->
 
-    <!--
-
-        Tech Blog
-
-    -->
-
+    <!-- Tech Blog -->
     <div class="fullsize-container light-gray">
         <div class="container">
             <div class="cards element-spacing">
@@ -103,12 +70,7 @@
 
     </div>
 
-    <!--
-
-        Footer
-
-    -->
-
+    <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
 
     <script async src="../js/tech.zalando-all.js"></script>
