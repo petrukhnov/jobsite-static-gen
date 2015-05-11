@@ -9,7 +9,7 @@ require('./gulpfile.js');
 var ENV         = process.env.TFOX_ENV;
 var DEPLOY_TASK = 'deploy';
 
-var PORT   = 8080;
+var PORT   = process.env.JOBSITE_GENERATOR_PORT || 8080;
 var SECRET = process.env.PRISMIC_SECRET;
 var APIURL = process.env.PRISMIC_APIURL;
 var DEBUG  = process.env.JOBSITE_GENERATOR_DEBUG;
