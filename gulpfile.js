@@ -92,13 +92,13 @@ gulp.task('lint', function() {
 
 // hint html
 gulp.task('html-hint', function() {
-    return gulp.src(['./src/*.html', './_layouts/*.html'])
+    return gulp.src(['src/*.html', '_layouts/*.html'])
         .pipe(htmlhint());
 });
 
 // lint scss
 gulp.task('scss-lint', function() {
-    gulp.src(['./src/scss/*.scss', '!./src/scss/greenhouse.scss'])
+    gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
@@ -161,7 +161,7 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
 
 // minify html
 gulp.task('minify-html', ['html-hint'], function() {
-    gulp.src('./src/**/*.html')
+    gulp.src('src/**/*.html')
         .pipe(gulpsmith()
               .use(partial({
                 directory: 'src/partials',
@@ -178,22 +178,22 @@ gulp.task('minify-html', ['html-hint'], function() {
 // copy assets
 gulp.task('copy-assets', function() {
     gulp.src([
-        './src/robots.txt'
+        'src/robots.txt'
     ])
     .pipe(gulp.dest('dist'));
     gulp.src([
-        './src/images/*.jpg',
-        './src/images/*.png',
-        './src/images/*.gif',
-        './src/images/*.ico'
+        'src/images/*.jpg',
+        'src/images/*.png',
+        'src/images/*.gif',
+        'src/images/*.ico'
     ])
     .pipe(gulp.dest('dist/images'));
     gulp.src([
-        './src/fonts/**'
+        'src/fonts/**'
     ])
     .pipe(gulp.dest('dist/fonts'));
     gulp.src([
-        './src/videos/**'
+        'src/videos/**'
     ])
     .pipe(gulp.dest('dist/videos'));
 });
@@ -282,7 +282,7 @@ gulp.task('publish', function() {
         var headers = {
             // 'Cache-Control': 'max-age=315360000, no-transform, public'
         };
-        return gulp.src('./dist/**')
+        return gulp.src('dist/**')
             .pipe(rename(function(path) {
                 path.dirname = bucketPath + path.dirname;
             }))
