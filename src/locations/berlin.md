@@ -9,8 +9,11 @@ location:
   interview_partial: berlin_interview
   interview_person: Lauri Apple
   links:
-    - test1
-    - test2
+    -
+      link: http://www.meetup.com/Zalando-Tech-Events-Berlin/
+      image: meetup.jpg
+      title: Meetup Berlin
+      text: These are just some of the different kinds of Meetup groups you can find near Berlin.
 prismic:
   authors:
     query: '[[:d = at(document.type, "author")]]'

@@ -90,18 +90,24 @@
                 </div>
             </div>
         </div>
+
         <div class="container">
             <div class="cards element-spacing">
 
-                {% include "../src/partials/link_card.html" with {
-                    'link': 'http://www.meetup.com/Zalando-Tech-Events-Berlin/',
-                    'image': relative_path_to_root + 'images/meetup.jpg',
-                    'title': 'Meetup Berlin',
-                    'text': 'These are just some of the different kinds of Meetup groups you can find near Berlin.'
-                } %}
+                {%- for link in location.links %}
+
+                    {% include "../src/partials/link_card.html" with {
+                        'link': link.link,
+                        'image': relative_path_to_root + 'images/' + link.image,
+                        'title': link.title,
+                        'text': link.text
+                    } %}
+
+                {%- endfor %}
 
             </div>
         </div>
+
     </div>
 
     <!-- Footer -->

@@ -10,12 +10,14 @@
             <p class="title">{{ name }}</p>
             <p class="subtitle">{{ title }}</p>
         </div>
-        <div class="seperator"></div>
-        <div class="second-content">
-            <p class="second-title">Personal Tips</p>
-            <div class="personal-tips">
-                {{ personalTips | safe }}
+        {%- if personalTips %}
+            <div class="seperator"></div>
+            <div class="second-content">
+                <p class="second-title">Personal Tips</p>
+                <div class="personal-tips">
+                    {{ personalTips | safe }}
+                </div>
             </div>
-        </div>
+        {%- endif %}
     </div>
 </div>
