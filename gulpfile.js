@@ -117,7 +117,7 @@ gulp.task('minify-js', ['lint'], function() {
             compilation_level: 'SIMPLE_OPTIMIZATIONS',
             warning_level: 'QUIET'
         },
-        fileName: 'tech.zalando-all.js'
+        fileName: 'build/tech.zalando-all.js'
     }))
     .pipe(gulp.dest('dist/js'));
 });
