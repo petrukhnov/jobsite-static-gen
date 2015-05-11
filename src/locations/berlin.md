@@ -5,6 +5,7 @@ location:
   name: berlin
   title: Berlin
   image: berlin_header.jpg
+  image_position: 70% 30%
   summary_partial: berlin_summary
   interview_partial: berlin_interview
   interview_person: Lauri Apple

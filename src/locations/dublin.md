@@ -5,6 +5,7 @@ location:
   name: dublin
   title: Dublin
   image: dublin_header.jpg
+  image_position: 70% 53%
   summary_partial: dublin_summary
   interview_partial: dublin_interview
   interview_person: Nils Tillmann

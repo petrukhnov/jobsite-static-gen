@@ -15,7 +15,7 @@
     {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'location' } %}
 
     <!-- Teaser image -->
-    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/{{ location.image }}')">
+    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/{{ location.image }}'); background-position: {{ location.image_position }};">
         <div class="teaser">
             <div class="container">
                 <div class="row">
