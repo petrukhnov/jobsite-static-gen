@@ -224,7 +224,7 @@ gulp.task('metalsmith', function() {
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
-                  'linkResolver': function (ctx, doc) {
+                  'linkResolver': function(ctx, doc) {
                       if (doc.isBroken) return;
                       if (doc.type === 'doc') {
                           return doc.slug;
@@ -261,7 +261,7 @@ gulp.task('watch', function() {
 });
 
 // start a server and watch for changes
-gulp.task('server', ['build', 'watch'], function () {
+gulp.task('server', ['build', 'watch'], function() {
     connect.server({
         port: 4001,
         root: ['dist'],
@@ -293,7 +293,7 @@ gulp.task('publish', function() {
 );
 
 // build + publish tasks, esp. for automated deployments
-gulp.task('deploy',function(cb) {
+gulp.task('deploy', function(cb) {
     runSequence('build', 'publish', cb);
 });
 
