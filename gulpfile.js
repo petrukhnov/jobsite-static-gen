@@ -59,11 +59,11 @@ if (typeof env === 'undefined') {
 }
 
 var config = {};
+var envCaps = env.toUpperCase();
 try {
     config = require('./config-' + env).site;
 } catch (e) {
     // else: import environment variables
-    var envCaps = env.toUpperCase();
     config = {
         'googleAnalytics': {
             'trackingID': process.env['GATRACKINGID_' + envCaps]
@@ -72,9 +72,14 @@ try {
             'key': process.env['S3KEY_' + envCaps],
             'secret': process.env['S3SECRET_' + envCaps],
             'bucket': process.env['S3BUCKET_' + envCaps],
+            'bucketPath': process.env['S3BUCKETPATH_' + envCaps],
             'region': process.env['S3REGION_' + envCaps]
         }
     };
+}
+
+if (config.aws.bucketPath == null) {
+    throw new Error('Config variable aws.bucketPath (or env var S3BUCKETPATH_' + envCaps + ') must be set');
 }
 
 // lint task
@@ -297,7 +302,7 @@ gulp.task('publish', function() {
         };
         return gulp.src('./build/**')
             .pipe(rename(function (path) {
-                path.dirname = '/build/latest/' + path.dirname;
+                path.dirname = config.aws.bucketPath + '/' + path.dirname;
             }))
             .pipe(publisher.publish(headers))
             .pipe(publisher.sync('/build/latest'))
