@@ -29,6 +29,14 @@ NodeJS: Application server to trigger static website builds via webhooks
 7. run `gulp`. The environment needs to be specified via the `-e` option or
    `TFOX_ENV` environment variable.
 
+### Google Analytics config
+
+Property IDs (to be set in config-ENV.js):
+
+- Dev: `UA-62155512-1`
+- QA: `UA-5362052-33`
+
+
 # Deploying website
 
 - To generate and deploy the static website from your local machine manually,
