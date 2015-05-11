@@ -199,34 +199,13 @@ gulp.task('copy-assets', function() {
 });
 
 // clean up folders
-gulp.task('clean:all', function (cb) {
+gulp.task('clean', function(cb) {
     del([
         'build/**/*',
         'dist/**/*'
     ], cb);
 });
-gulp.task('clean:css', function (cb) {
-    del([
-        './build/css/*.css'
-    ], cb);
-});
-gulp.task('clean:js', function (cb) {
-    del([
-        './build/js/*.js'
-    ], cb);
-});
-gulp.task('clean:html', function (cb) {
-    del([
-        './build/*.html'
-    ], cb);
-});
-gulp.task('clean:assets', function (cb) {
-    del([
-        './build/robots.txt',
-        './build/images/**',
-        './build/fonts/**'
-    ], cb);
-});
+gulp.task('clean:all', ['clean']);
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
@@ -292,7 +271,7 @@ gulp.task('server', ['build', 'watch'], function () {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean:all', ['minify-html','metalsmith', 'minify-js',
+    runSequence('clean', ['minify-html','metalsmith', 'minify-js',
                               'minify-css', 'copy-assets'], cb);
 });
 
