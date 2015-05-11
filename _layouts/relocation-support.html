@@ -1,0 +1,52 @@
+{% set interview_person = prismic.authors | to_author_viewmodel({ fullName: location.interview_person }) %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    {% include "../src/partials/head.html" with {
+        'relative_path_to_root': relative_path_to_root,
+        'title': 'Zalando Tech',
+        'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+    } %}
+</head>
+<body>
+
+    <!-- Header -->
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'location' } %}
+
+    <!-- Teaser image -->
+    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/relocation_support.jpg'); background-position: 100% 100%;">
+        <div class="teaser">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <div class="content">
+                            <h1 class="title">Relocation<br/>Support</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullsize-container white">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <div class="blog-post-content">
+                        {% include "../src/partials/relocation_support.html" with {
+                            'relative_path_to_root': relative_path_to_root
+                        } %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
+
+    <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+
+</body>
+</html>
