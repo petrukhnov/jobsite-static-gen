@@ -40,8 +40,11 @@ Property IDs (to be set in config-ENV.js):
 # Deploying website
 
 - To generate and deploy the static website from your local machine manually,
-  run `gulp deploy`. The environment needs to be specified via the `-e` option
-  or `TFOX_ENV` environment variable.
+  run `gulp deploy`. The environment (dev/qa/prod) needs to be specified via
+  the `-e` option or `TFOX_ENV` environment variable:
+
+        gulp deploy -e dev
+        TFOX_ENV=dev gulp deploy
 
 - For AWS-deployed builds: When updating contents on prismic.io, a webhook
   on `POST /prismic-hook` triggers a new build of the public website through the
