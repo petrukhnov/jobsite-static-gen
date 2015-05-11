@@ -32,9 +32,9 @@ NodeJS: Application server to trigger static website builds via webhooks
 # Deploying website
 
 - To generate and deploy the static website from your local machine manually,
-  run `gulp deploy`. The environment needs to be specified via the `-e` option or
-  `TFOX_ENV` environment variable.
+  run `gulp deploy`. The environment needs to be specified via the `-e` option
+  or `TFOX_ENV` environment variable.
 
-- For AWS-deployed builds: when updating contents on prismic.io, a webhook
-  would trigger a new build of the public website through the integrated NodeJS
-  application and corresponding gulp tasks.
+- For AWS-deployed builds: When updating contents on prismic.io, a webhook
+  on `POST /prismic-hook` triggers a new build of the public website through the
+  integrated NodeJS application and the corresponding gulp `deploy` task.

@@ -6,8 +6,8 @@ var expressWinston = require('express-winston');
 var winston        = require('winston');
 
 require('./gulpfile.js');
-var ENV         = process.env.TFOX_ENV || 'dev';
-var DEPLOY_TASK = 'deploy:' + ENV;
+var ENV         = process.env.TFOX_ENV;
+var DEPLOY_TASK = 'deploy';
 
 var PORT   = 8080;
 var SECRET = process.env.PRISMIC_SECRET;

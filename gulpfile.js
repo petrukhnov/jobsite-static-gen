@@ -47,7 +47,7 @@ program
     .parse(process.argv);
 
 // -e CLI option overrides a potentially provided environment variable
-var env = program.environment || process.env['TFOX_ENV'];
+var env = program.environment || process.env.TFOX_ENV;
 
 if (typeof env === 'undefined') {
     console.log('Error: No valid environment was specified.\n' +
