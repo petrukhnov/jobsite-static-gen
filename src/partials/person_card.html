@@ -13,9 +13,9 @@
         <div class="seperator"></div>
         <div class="second-content">
             <p class="second-title">Personal Tips</p>
-            {%- for link in links %}
-                <a class="link" href="{{ link }}">{{ link | replace('(http://|https://)','') | replace('www.','') }}</a>
-            {%- endfor %}
+            <div class="personal-tips">
+                {{ personalTips | safe }}
+            </div>
         </div>
     </div>
 </div>

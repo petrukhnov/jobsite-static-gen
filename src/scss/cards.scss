@@ -56,7 +56,6 @@
     }
 
     &:hover {
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
         transform: scale(1.02, 1.02);
     }
 
@@ -260,6 +259,8 @@
     }
 
     &.person {
+        transform: scale(1, 1);
+
         .image {
             background-position: center center;
             background-repeat: no-repeat;
@@ -276,7 +277,7 @@
             background-repeat: no-repeat;
             background-size: contain;
             height: 30px;
-            left: -30px;
+            left: -40px;
             position: absolute;
             top: 55px;
             width: 60px;
@@ -301,13 +302,21 @@
 
         .text {
             font-size: 2.0rem;
+            font-weight: 300;
             line-height: 2.4rem;
             max-height: none;
             text-align: center;
         }
 
-        .link {
-            display: block;
+        .personal-tips {
+            color: $color-dark-gray;
+            font-family: $font-bodycopy;
+            font-size: 1.6rem;
+            font-weight: 300;
+
+            p {
+                margin: 0 0 3px 0;
+            }
         }
 
         .second-content {
@@ -318,6 +327,13 @@
             color: $color-dark-gray;
             font-size: 1.2rem;
             font-weight: 400;
+        }
+    }
+
+    &.link {
+        .content {
+            height: 145px;
+            padding-bottom: 8px;
         }
     }
 

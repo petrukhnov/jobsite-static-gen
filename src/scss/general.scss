@@ -162,6 +162,7 @@ a {
     }
 
     &.radical-agility {
+        background-attachment: fixed;
         background-image: url("/images/radical_agility_bg.gif");
         background-position: center center;
         background-size: cover;
@@ -193,6 +194,7 @@ a {
     }
 
     &.picture-bg {
+        background-attachment: fixed;
         background-position: center center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -356,7 +358,7 @@ a {
     p {
         font-family: $font-bodycopy;
         font-size: 1.4rem;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 2.2rem;
         margin: 0;
 

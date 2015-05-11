@@ -27,20 +27,20 @@
         color: $color-white;
         font-size: 3.0rem;
         font-weight: 600;
-        line-height: 3.4rem;
+        line-height: 3.3rem;
         margin: 0;
         padding: 0 8px;
 
         @media screen and (min-width: $break-large) {
             font-size: 5.2rem;
-            line-height: 5.6rem;
+            line-height: 5.5rem;
         }
     }
 
     .subtitle {
         color: $color-white;
         font-size: 1.6rem;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 2.0rem;
         margin: 8px 0 0 0;
         padding: 0 8px;
@@ -55,9 +55,9 @@
 
 .blog-post-content {
     color: $color-black;
-    margin: 16px 0 24px 0;
+    margin: 16px 8px 24px 8px;
     overflow: hidden;
-    padding: 0 8px;
+    padding: 0;
 
     p,
     li {
@@ -141,6 +141,12 @@
         font-weight: 400px;
         margin: 20px 0;
     }
+}
+
+.blog-post-authors {
+    border-top: 1px solid $color-gray;
+    margin: 0 8px 0 8px;
+    padding: 16px 0 0 0;
 
     .author {
         padding: 16px 0;
@@ -152,13 +158,17 @@
             box-shadow: 0 2px 3px rgba(0, 0, 0, 0.10);
             display: block;
             float: left;
+            font-size: 1.6rem;
+            font-weight: 600;
             height: 50px;
+            line-height: 2.0rem;
             margin-right: 16px;
             width: 50px;
         }
 
         .title {
             color: $color-gray;
+            font-weight: 300;
         }
 
         p {

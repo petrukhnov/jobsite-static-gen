@@ -12,7 +12,7 @@
 <body>
 
     <!-- Header -->
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'locations' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'location' } %}
 
     <!-- Teaser image -->
     <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/{{ location.image }}')">
@@ -58,8 +58,8 @@
                     'name': interview_person.fullName,
                     'title': interview_person.title,
                     'quote': interview_person.quote,
-                    'nationality': 'us',
-                    'links': ['http://www.toytowngermany.com','http://www.expath.de'],
+                    'nationality': interview_person.nationality,
+                    'personalTips': interview_person.personalTips,
                     'relative_path_to_root': relative_path_to_root
                 } %}
 
@@ -70,6 +70,14 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4 col-xs-8 col-xs-offset-2">
+                <div class="seperator"></div>
             </div>
         </div>
     </div>
@@ -85,35 +93,16 @@
         <div class="container">
             <div class="cards element-spacing">
 
-                {% include "../src/partials/opensource_card.html" with {
-                    'link': 'https://github.com/zalando-stups',
-                    'image': './images/stups.png',
-                    'title': 'STUPS',
-                    'text': 'The STUPS platform is a set of tools and components to provide a convenient and audit-compliant Platform-as-a-Service (PaaS) for multiple autonomous teams on top of Amazon Web Services (AWS). ',
-                    'tags': ['STUPS', 'AWS']
-                } %}
-
-                {% include "../src/partials/opensource_card.html" with {
-                    'link': 'https://github.com/zalando/MapleBacon',
-                    'image': './images/maple.jpg',
-                    'title': 'MapleBacon',
-                    'text': 'MapleBacon is a Swift image download and caching library.',
-                    'tags': ['iOS', 'Swift']
-                } %}
-
-                {% include "../src/partials/opensource_card.html" with {
-                    'link': 'https://github.com/zalando/gulp-check-unused-css',
-                    'image': './images/gulp.png',
-                    'title': 'Check unused CSS',
-                    'text': 'A gulp package to check if all your defined CSS classes are used in your HTML files and vice versa. ',
-                    'tags': ['gulp', 'CSS']
+                {% include "../src/partials/link_card.html" with {
+                    'link': 'http://www.meetup.com/Zalando-Tech-Events-Berlin/',
+                    'image': relative_path_to_root + 'images/meetup.jpg',
+                    'title': 'Meetup Berlin',
+                    'text': 'These are just some of the different kinds of Meetup groups you can find near Berlin.'
                 } %}
 
             </div>
         </div>
     </div>
-
-    {{ interview_person | json }}
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}

@@ -48,7 +48,9 @@
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
                     <div class="blog-post-content">
                         {{ blogpost.content | safe }}
+                    </div>
 
+                    <div class="blog-post-authors">
                         {%- for author in blogpost.authors %}
                             <div class="author">
                                 <div class="picture" style="background-image:url('{{ author.image }}');"></div>
@@ -56,7 +58,6 @@
                                 <p class="title">{{ author.title }}</p>
                             </div>
                         {%- endfor %}
-
                     </div>
                 </div>
             </div>
