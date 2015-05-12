@@ -9,7 +9,6 @@ location:
   summary_partial: dublin_summary
   interview_partial: dublin_interview
   interview_person: Nils Tillmann
-  links_partial: dublin_links
   links:
     -
       link: https://www.startupdigest.com/digests/dublin/
