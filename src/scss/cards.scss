@@ -477,19 +477,19 @@
     background-size: contain;
 
     &.engineering-development {
-        background-image: url("../images/jobs-overview_engineering-development.png");
+        background-image: url("../images/jobs-overview-engineering.png");
     }
 
     &.product-ux {
-        background-image: url("../images/jobs-overview_product-ux.png");
+        background-image: url("../images/jobs-overview-product.png");
     }
 
     &.data-science {
-        background-image: url("../images/jobs-overview_data-science.png");
+        background-image: url("../images/jobs-overview-data-analyst.png");
     }
 
     &.other-jobs {
-        background-image: url("../images/jobs-overview_other-jobs.png");
+        background-image: url("../images/jobs-overview-others.png");
     }
 }
 

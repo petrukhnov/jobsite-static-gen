@@ -10,11 +10,19 @@
         text-align: left;
 
         &.tech {
-            background-image: url("../images/jobs-overview_engineering-development.png");
+            background-image: url("../images/jobs-overview-engineering.png");
+        }
+
+        &.product {
+            background-image: url("../images/jobs-overview-product.png");
         }
 
         &.data {
-            background-image: url("../images/jobs-overview_data-science.png");
+            background-image: url("../images/jobs-overview-data-analyst.png");
+        }
+
+        &.other {
+            background-image: url("../images/jobs-overview-others.png");
         }
     }
 }
