@@ -32,8 +32,8 @@ $(function() {
 
         // Playing the home video differs on mobile and desktop (model popup vs
         // visiting the video URL). Both cases are tracked as identical events.
-        $("#play-home-video").click(eventTracker("Videos", "Play", "Tech Home Video"));
-        $("#goto-home-video").click(linkTracker("Videos", "Play", "Tech Home Video"));
+        $('#play-home-video').click(eventTracker('Videos', 'Play', 'Tech Home Video'));
+        $('#goto-home-video').click(linkTracker('Videos', 'Play', 'Tech Home Video'));
 
     }(jQuery));
 });
