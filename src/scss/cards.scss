@@ -114,7 +114,7 @@
 
     &.job {
         .content {
-            height: 130px;
+            height: 144px;
         }
     }
 
@@ -183,7 +183,7 @@
     &.joker-non-tech-jobs {
         background-color: $color-dark-gray;
         border-radius: $joker-card-border-radius;
-        height: 309px;
+        height: 321px;
 
         .title {
             font-size: 2.4rem;
@@ -221,7 +221,7 @@
     &.joker-talent-pool {
         background-color: $color-zalando;
         border-radius: $joker-card-border-radius;
-        height: 309px;
+        height: 321px;
 
         .title {
             font-size: 2.4rem;
@@ -430,6 +430,7 @@
         font-size: 1.2rem;
         font-weight: 400;
         left: 8px;
+        line-height: 1.5rem;
         margin: 0 16px;
         position: absolute;
         right: 8px;
