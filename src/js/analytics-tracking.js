@@ -59,7 +59,7 @@ $(function() {
             return uri;
         }
 
-        if (currentUrl.hasQuery(GH_QUERYKEY, true)) {
+        if (false /*currentUrl.hasQuery(GH_QUERYKEY, true)*/) {
             var ghSrcValue = getQueryParamValue(currentUrl, GH_QUERYKEY);
 
             // append query string param to all links on the same domain and
