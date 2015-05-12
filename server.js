@@ -1,8 +1,5 @@
-var fs             = require('fs');
 var express        = require('express');
 var bodyParser     = require('body-parser');
-var expressWinston = require('express-winston');
-var winston        = require('winston');
 var exec = require('child_process').exec;
 
 var ENV         = process.env.TFOX_ENV;
@@ -21,22 +18,6 @@ debug('Debug logging enabled');
 
 // parse json on all requests
 app.use(bodyParser.json());
-
-var logDirectory = __dirname + '/log';
-// ensure log directory exists
-fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
-
-// add request body to logging
-expressWinston.requestWhitelist.push('body');
-
-// request logging
-app.use(expressWinston.logger({
-    transports: [
-        new winston.transports.DailyRotateFile({
-            filename: logDirectory + '/access'
-        })
-    ]
-}));
 
 app.get('/healthcheck', function (req, res, next) {
     res.send('OK');
@@ -79,15 +60,6 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
     res.json({error: err.message});
 });
-
-// error logging
-app.use(expressWinston.errorLogger({
-    transports: [
-        new winston.transports.DailyRotateFile({
-            filename: logDirectory + '/error'
-        })
-    ]
-}));
 
 var server   = app.listen(PORT, function() {
     var host = server.address().address;
