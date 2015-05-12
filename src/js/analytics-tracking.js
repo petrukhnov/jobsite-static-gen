@@ -17,8 +17,8 @@ $(function() {
                 // if no label given, use the url
                 label = typeof label !== 'undefined' ? label : url;
 
-                ga('send', 'event', category, action, label,
-                   {'hitCallback': function() {
+                ga('send', 'event', category, action, label, {
+                       'hitCallback': function() {
                        document.location = url;
                    }});
                 // return false to prevent going to the target URL directly
@@ -39,12 +39,16 @@ $(function() {
 
     // Preserving greenhouse tacking query string parameter
     // for reference see https://app.greenhouse.io/jobboard/integration/documentation/api_board_embedded_apps
-    (function($) {
+    (function($, URI) {
         var currentUrl  = new URI();
         var GH_QUERYKEY = 'gh_src';
 
-        if(currentUrl.hasQuery(GH_QUERYKEY, true)) {
-            var ghQueryValue = currentUrl.query(true)[GH_QUERYKEY];
+        function getQueryParamValue(uri, key) {
+            return uri.query(true)[key];
+        }
+
+        if (currentUrl.hasQuery(GH_QUERYKEY, true)) {
+            var ghSrcValue = getQueryParamValue(currentUrl, GH_QUERYKEY);
 
             // append query string param to all links on the same domain and
             // relative links
@@ -52,10 +56,10 @@ $(function() {
                                      'a:uri(is: relative)');
             $sameOriginLinks.each(function(index, element) {
                 var targetUrl = new URI(element);
-                targetUrl.addQuery(GH_QUERYKEY, ghQueryValue);
+                targetUrl.addQuery(GH_QUERYKEY, ghSrcValue);
                 $(element).attr('href', targetUrl);
             });
         }
 
-    }(jQuery));
+    }(jQuery, URI));
 });
