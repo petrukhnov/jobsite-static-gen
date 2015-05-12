@@ -156,7 +156,7 @@ a {
     }
 
     &.philosophy {
-        background-image: url("/images/philosophy.jpg");
+        background-image: url("../images/philosophy.jpg");
         background-position: center top;
         background-size: cover;
         color: $color-white;
@@ -164,7 +164,7 @@ a {
 
     &.radical-agility {
         background-attachment: fixed;
-        background-image: url("/images/radical_agility_bg.gif");
+        background-image: url("../images/radical_agility_bg.gif");
         background-position: center center;
         background-size: cover;
 
