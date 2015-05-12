@@ -476,3 +476,8 @@ a {
     height: 19px;
     width: 19px;
 }
+
+.vjs-default-skin .vjs-play-progress,
+.vjs-default-skin .vjs-volume-level {
+    background-color: $color-zalando;
+}
