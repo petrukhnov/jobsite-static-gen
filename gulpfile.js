@@ -92,18 +92,18 @@ gulp.task('lint', function() {
 
 // hint html
 gulp.task('html-hint', function() {
-    return gulp.src(['./src/*.html', './_layouts/*.html'])
+    return gulp.src(['src/*.html', '_layouts/*.html'])
         .pipe(htmlhint());
 });
 
 // lint scss
 gulp.task('scss-lint', function() {
-    gulp.src(['./src/scss/*.scss', '!./src/scss/greenhouse.scss'])
+    gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
 // concatenate and minify javascript
-gulp.task('minify-js', ['lint', 'clean:js'], function() {
+gulp.task('minify-js', ['lint'], function() {
     gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
@@ -117,9 +117,9 @@ gulp.task('minify-js', ['lint', 'clean:js'], function() {
             compilation_level: 'SIMPLE_OPTIMIZATIONS',
             warning_level: 'QUIET'
         },
-        fileName: 'tech.zalando-all.js'
+        fileName: 'build/tech.zalando-all.js'
     }))
-    .pipe(gulp.dest('build/js'));
+    .pipe(gulp.dest('dist/js'));
 });
 
 // compile sass to css
@@ -133,11 +133,11 @@ gulp.task('sass', function() {
             browsers: ['last 2 versions'],
             cascade: false
         }))
-        .pipe(gulp.dest('src/css'));
+        .pipe(gulp.dest('build/css'));
 });
 
 // concatenate and minify css
-gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
+gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     gulp.src([
         'src/css/vendor/bootstrap.min.css',
         'src/css/general.css',
@@ -149,7 +149,7 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('build/css'));
+    .pipe(gulp.dest('dist/css'));
 
     gulp.src([
         'src/css/greenhouse.css'
@@ -160,8 +160,8 @@ gulp.task('minify-css', ['scss-lint', 'sass', 'clean:css'], function() {
 });
 
 // minify html
-gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
-    gulp.src('./src/**/*.html')
+gulp.task('minify-html', ['html-hint'], function() {
+    gulp.src('src/**/*.html')
         .pipe(gulpsmith()
               .use(partial({
                 directory: 'src/partials',
@@ -172,60 +172,40 @@ gulp.task('minify-html', ['html-hint', 'clean:html'], function() {
                 inPlace: true
               })))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('dist'));
 });
 
 // copy assets
-gulp.task('copy-assets', ['clean:assets'], function() {
+gulp.task('copy-assets', function() {
     gulp.src([
-        './src/robots.txt'
+        'src/robots.txt'
     ])
-    .pipe(gulp.dest('build'));
+    .pipe(gulp.dest('dist'));
     gulp.src([
-        './src/images/*.jpg',
-        './src/images/*.png',
-        './src/images/*.gif',
-        './src/images/*.ico'
+        'src/images/*.jpg',
+        'src/images/*.png',
+        'src/images/*.gif',
+        'src/images/*.ico'
     ])
-    .pipe(gulp.dest('build/images'));
+    .pipe(gulp.dest('dist/images'));
     gulp.src([
-        './src/fonts/**'
+        'src/fonts/**'
     ])
-    .pipe(gulp.dest('build/fonts'));
+    .pipe(gulp.dest('dist/fonts'));
     gulp.src([
-        './src/videos/**'
+        'src/videos/**'
     ])
-    .pipe(gulp.dest('build/videos'));
+    .pipe(gulp.dest('dist/videos'));
 });
 
 // clean up folders
-gulp.task('clean:all', function (cb) {
+gulp.task('clean', function(cb) {
     del([
-        './build'
+        'build/**/*',
+        'dist/**/*'
     ], cb);
 });
-gulp.task('clean:css', function (cb) {
-    del([
-        './build/css/*.css'
-    ], cb);
-});
-gulp.task('clean:js', function (cb) {
-    del([
-        './build/js/*.js'
-    ], cb);
-});
-gulp.task('clean:html', function (cb) {
-    del([
-        './build/*.html'
-    ], cb);
-});
-gulp.task('clean:assets', function (cb) {
-    del([
-        './build/robots.txt',
-        './build/images/**',
-        './build/fonts/**'
-    ], cb);
-});
+gulp.task('clean:all', ['clean']);
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
@@ -244,7 +224,7 @@ gulp.task('metalsmith', function() {
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
-                  'linkResolver': function (ctx, doc) {
+                  'linkResolver': function(ctx, doc) {
                       if (doc.isBroken) return;
                       if (doc.type === 'doc') {
                           return doc.slug;
@@ -268,7 +248,7 @@ gulp.task('metalsmith', function() {
                   'directory': '_layouts'
               })))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build/'));
+        .pipe(gulp.dest('dist'));
 });
 
 // watch files for changes
@@ -281,17 +261,17 @@ gulp.task('watch', function() {
 });
 
 // start a server and watch for changes
-gulp.task('server', ['build', 'watch'], function () {
+gulp.task('server', ['build', 'watch'], function() {
     connect.server({
         port: 4001,
-        root: ['build'],
+        root: ['dist'],
         livereload: true
     });
 });
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean:all', ['minify-html','metalsmith', 'minify-js',
+    runSequence('clean', ['minify-html','metalsmith', 'minify-js',
                               'minify-css', 'copy-assets'], cb);
 });
 
@@ -302,8 +282,8 @@ gulp.task('publish', function() {
         var headers = {
             // 'Cache-Control': 'max-age=315360000, no-transform, public'
         };
-        return gulp.src('./build/**')
-            .pipe(rename(function (path) {
+        return gulp.src('dist/**')
+            .pipe(rename(function(path) {
                 path.dirname = bucketPath + path.dirname;
             }))
             .pipe(publisher.publish(headers))
@@ -313,7 +293,7 @@ gulp.task('publish', function() {
 );
 
 // build + publish tasks, esp. for automated deployments
-gulp.task('deploy',function(cb) {
+gulp.task('deploy', function(cb) {
     runSequence('build', 'publish', cb);
 });
 

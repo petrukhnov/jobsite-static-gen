@@ -1,20 +1,20 @@
 var fs             = require('fs');
-var gulp           = require('gulp');
 var express        = require('express');
 var bodyParser     = require('body-parser');
 var expressWinston = require('express-winston');
 var winston        = require('winston');
+var exec = require('child_process').exec;
 
-require('./gulpfile.js');
 var ENV         = process.env.TFOX_ENV;
 var DEPLOY_TASK = 'deploy';
 
-var PORT   = 8080;
+var PORT   = process.env.JOBSITE_GENERATOR_PORT || 8080;
 var SECRET = process.env.PRISMIC_SECRET;
 var APIURL = process.env.PRISMIC_APIURL;
 var DEBUG  = process.env.JOBSITE_GENERATOR_DEBUG;
 
 var TYPE   = "api-update";
+var TEST_TYPE = "test-trigger";
 var app    = module.exports = express();
 
 debug('Debug logging enabled');
@@ -38,6 +38,10 @@ app.use(expressWinston.logger({
     ]
 }));
 
+app.get('/healthcheck', function (req, res, next) {
+    res.send('OK');
+});
+
 app.post('/prismic-hook', function (req, res, next) {
     if (DEBUG) {
         debug('Got a request, headers:', req.headers, ', body:', req.body);
@@ -46,9 +50,9 @@ app.post('/prismic-hook', function (req, res, next) {
     var secret = req.body.secret;
     var apiUrl = req.body.apiUrl;
     var type   = req.body.type;
-    if (secret === SECRET && apiUrl === APIURL && type === TYPE) {
+    if (secret === SECRET && apiUrl === APIURL && (type === TYPE || type === TEST_TYPE)) {
         debug('Starting deployment to', ENV);
-        gulp.start(DEPLOY_TASK, function(err) {
+        var child = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, function(err) {
             if (err === null) {
                 res.json(req.body);
             } else {
