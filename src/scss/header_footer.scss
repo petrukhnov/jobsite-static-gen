@@ -50,6 +50,14 @@
         }
     }
 
+    .navbar-nav > li.open {
+        >a,
+        >a:focus,
+        >a:hover {
+            border-color: $color-light-gray;
+        }
+    }
+
     .navbar-nav > li > .dropdown-menu {
         border-radius: 0;
     }
@@ -124,10 +132,16 @@
     min-width: auto;
 
     > li > a {
-        font-family: $font-bodycopy;
         font-size: 1.6rem;
-        font-weight: 400;
+        font-weight: 300;
         line-height: 2.0rem;
+        padding: 10px 12px;
+        transition: color $animation-duration;
+
+        &:hover {
+            background-color: $color-white;
+            color: $color-zalando;
+        }
     }
 }
 
@@ -145,7 +159,7 @@ footer {
     padding: 0 20px;
 
     .title {
-        border-bottom: 1px solid $color-gray;
+        border-bottom: 2px solid $color-dark-gray;
         color: $color-gray;
         display: block;
         font-size: 1.4rem;
