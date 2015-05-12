@@ -113,7 +113,11 @@ $(function() {
     //     });
     // }
     if (videoOverlay) {
-        videoOverlay.click(closeHomeVideo);
+        videoOverlay.click(function (e) {
+            if (e.target===videoOverlay.get(0)) {
+                closeHomeVideo();
+            }
+        });
     }
     if (stopHomeButton) {
         stopHomeButton.click(closeHomeVideo);
