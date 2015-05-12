@@ -36,4 +36,26 @@ $(function() {
         $('#goto-home-video').click(linkTracker('Videos', 'Play', 'Tech Home Video'));
 
     }(jQuery));
+
+    // Preserving greenhouse tacking query string parameter
+    // for reference see https://app.greenhouse.io/jobboard/integration/documentation/api_board_embedded_apps
+    (function($) {
+        var currentUrl  = new URI();
+        var GH_QUERYKEY = 'gh_src';
+
+        if(currentUrl.hasQuery(GH_QUERYKEY, true)) {
+            var ghQueryValue = currentUrl.query(true)[GH_QUERYKEY];
+
+            // append query string param to all links on the same domain and
+            // relative links
+            var $sameOriginLinks = $('a:uri(domain = ' + currentUrl.domain() + '),' +
+                                     'a:uri(is: relative)');
+            $sameOriginLinks.each(function(index, element) {
+                var targetUrl = new URI(element);
+                targetUrl.addQuery(GH_QUERYKEY, ghQueryValue);
+                $(element).attr('href', targetUrl);
+            });
+        }
+
+    }(jQuery));
 });

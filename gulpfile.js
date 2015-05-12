@@ -108,6 +108,7 @@ gulp.task('minify-js', ['lint'], function() {
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
+        'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
     ])
