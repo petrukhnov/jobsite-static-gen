@@ -47,6 +47,18 @@ $(function() {
             return uri.query(true)[key];
         }
 
+        function appendTrailingSlash(uri) {
+            uri.segment("");
+            return uri;
+        }
+
+        function sanitizePathsForS3(uri) {
+            if(uri.suffix() === '') {
+                appendTrailingSlash(uri);
+            }
+            return uri;
+        }
+
         if (currentUrl.hasQuery(GH_QUERYKEY, true)) {
             var ghSrcValue = getQueryParamValue(currentUrl, GH_QUERYKEY);
 
@@ -55,7 +67,7 @@ $(function() {
             var $sameOriginLinks = $('a:uri(domain = ' + currentUrl.domain() + '),' +
                                      'a:uri(is: relative)');
             $sameOriginLinks.each(function(index, element) {
-                var targetUrl = new URI(element);
+                var targetUrl = sanitizePathsForS3(new URI(element));
                 targetUrl.addQuery(GH_QUERYKEY, ghSrcValue);
                 $(element).attr('href', targetUrl);
             });
