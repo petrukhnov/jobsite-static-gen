@@ -1,12 +1,10 @@
 var fs             = require('fs');
-var gulp           = require('gulp');
 var express        = require('express');
 var bodyParser     = require('body-parser');
 var expressWinston = require('express-winston');
 var winston        = require('winston');
 var exec = require('child_process').exec;
 
-require('./gulpfile.js');
 var ENV         = process.env.TFOX_ENV;
 var DEPLOY_TASK = 'deploy';
 
