@@ -5,7 +5,7 @@ $(function() {
 
         function eventTracker (category, action, label) {
             return function (event) {
-                _gaq.push(['_trackEvent', category, action, label]);
+                ga('send', 'event', category, action, label);
             };
         }
 
