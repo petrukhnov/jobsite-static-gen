@@ -225,6 +225,10 @@ a {
         height: 380px;
         position: relative;
 
+        &.video {
+            height: 500px;
+        }
+
         @media (max-width: 767px) {
             height: 320px;
         }
