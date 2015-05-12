@@ -141,12 +141,12 @@ gulp.task('sass', function() {
 gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     gulp.src([
         'src/css/vendor/bootstrap.min.css',
-        'src/css/general.css',
-        'src/css/header_footer.css',
-        'src/css/cards.css',
-        'src/css/buttons.css',
-        'src/css/blog_post.css',
-        'src/css/job_ad.css'
+        'build/css/general.css',
+        'build/css/header_footer.css',
+        'build/css/cards.css',
+        'build/css/buttons.css',
+        'build/css/blog_post.css',
+        'build/css/job_ad.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
