@@ -179,15 +179,43 @@ footer {
     }
 }
 
+.social-icons {
+    background-color: $color-dark-gray;
+    padding: 10px 20px;
+    text-align: center;
+
+    @media (max-width: 320px) {
+        text-align: left;
+    }
+
+    .title {
+        color: $color-light-gray-darker;
+        display: inline-block;
+        font-size: 1.4rem;
+        font-weight: 600;
+        line-height: 42px;
+        margin: 0 12px 0 0;
+        text-transform: uppercase;
+        vertical-align: top;
+    }
+}
+
 .social-icon {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
-    display: block;
+    display: inline-block;
     height: 30px;
-    margin: 5px auto 0 auto;
+    line-height: 42px;
+    margin: 6px 4px 6px 4px;
     text-indent: -9999px;
+    transition: transform $animation-duration;
+    vertical-align: top;
     width: 30px;
+
+    &:hover {
+        transform: scale(1.2, 1.2);
+    }
 
     &.twitter {
         background-image: url("/images/social_icon_twitter.png");
