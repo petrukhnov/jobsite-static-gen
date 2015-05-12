@@ -1,7 +1,7 @@
-{% set tech_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Engineering & Development' }) %}
-{% set product_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Product & UX' }) %}
-{% set data_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Data Science' }) %}
-{% set others_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Other' }) %}
+{% set tech_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Engineering & Development', sortOrder: 'updated' }) %}
+{% set product_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Product & UX', sortOrder: 'updated' }) %}
+{% set data_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Data Science', sortOrder: 'updated' }) %}
+{% set others_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: 'Other', sortOrder: 'updated' }) %}
 
 <!doctype html>
 <html class="no-js" lang="en">

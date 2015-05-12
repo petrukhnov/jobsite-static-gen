@@ -1,5 +1,5 @@
 {% set blogposts_viewmodel = prismic.blogposts | to_blogposts_viewmodel(prismic.authors) %}
-{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ limit: 3 }) %}
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ limit: 3, sortOrder: 'updated'}) %}
 
 <!doctype html>
 <html class="no-js" lang="en">
