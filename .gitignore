@@ -11,6 +11,3 @@ config-*.js
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
-watch-welcome-de-20150323_848x480.mp4
-zalando_tech_home.mp4
-zalando_tech_home_MOBILE_RB.mp4

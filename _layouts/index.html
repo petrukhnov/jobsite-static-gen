@@ -25,8 +25,8 @@
                 </div>
             </div>
         </div>
-        <video autoplay="" loop="loop" class="landing-video" muted="">
-            <source src="./videos/zalando_tech_home_loop.mp4"></source>
+        <video id="background-video" autoplay="" loop="loop" class="landing-video" muted="">
+            <source src="../videos/zalando_tech_home_loop.mp4"></source>
         </video>
     </div>
     <!-- On mobile just show a background picture -->
@@ -35,8 +35,24 @@
             <div class="container">
                 <div class="tech-zalando-logo"></div>
                 <h1 class="title with-logo">WE DRESS<br/>CODE!</h1>
-                <a href="./videos/zalando_tech_home_MOBILE_RB.mp4" id="goto-home-video" class="play-button">Play</a>
+                <!-- <a href="#" id="play-home-video-mobile" class="play-button">Play</a> -->
             </div>
+        </div>
+        <!-- <video id="home-video-mobile" class="mobile video-js vjs-default-skin" preload="none" poster="http://video-js.zencoder.com/oceans-clip.png">
+            <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+            <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+            <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video> -->
+    </div>
+
+    <div class="overlay-background" id="video-overlay">
+        <div class="video">
+            <video id="home-video" class="video-js vjs-default-skin" controls preload="auto">
+                <source src="../videos/zalando_tech_home.mp4" type='video/mp4' />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+            <a href="#" class="close-button" id="stop-home-video"></a>
         </div>
     </div>
 

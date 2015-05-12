@@ -40,4 +40,89 @@ $(function() {
         var parallax = new Parallax(scene);
     }
 
+    var videoOpen = false;
+    var backgroundVideo = $('#background-video');
+    var homeVideo;// = $('#home-video');
+    var homeVideoMobile = $('#home-video-mobile');
+    var videoOverlay = $('#video-overlay');
+    var playHomeButton = $('#play-home-video');
+    var playHomeMobileButton = $('#play-home-video-mobile');
+    var stopHomeButton = $('#stop-home-video');
+
+    function openHomeVideo() {
+
+        // pause background video
+        if (backgroundVideo) {
+            backgroundVideo.get(0).pause();
+        }
+
+        // show overlay
+        if (videoOverlay) {
+            videoOverlay.show();
+        }
+
+        // create player
+        $( "#video-overlay" ).show();
+        videojs("home-video", {
+            "width": 716,
+            "height": 404
+        }, function(){
+          // Player (this) is initialized and ready.
+          homeVideo = this;
+        });
+
+        // resume playing
+        if (homeVideo) {
+            homeVideo.play();
+        }
+
+        videoOpen = true;
+
+        return false;
+    }
+
+    function closeHomeVideo() {
+        videoOpen = false;
+
+        // stop home video
+        if (homeVideo) {
+            homeVideo.pause();
+        }
+
+        // hide overlay
+        if (videoOverlay) {
+            videoOverlay.hide();
+        }
+
+        // replay background video
+        if (backgroundVideo) {
+            backgroundVideo.get(0).play();
+        }
+
+        return false;
+    }
+
+
+    if (playHomeButton) {
+        playHomeButton.click(openHomeVideo);
+    }
+    // if (playHomeMobileButton) {
+    //     playHomeMobileButton.click(function() {
+    //         alert('test');
+    //         homeVideoMobile.get(0).play();
+    //     });
+    // }
+    if (videoOverlay) {
+        videoOverlay.click(closeHomeVideo);
+    }
+    if (stopHomeButton) {
+        stopHomeButton.click(closeHomeVideo);
+    }
+
+    $(document).keyup(function(e) {
+        if (e.which == 27 && videoOpen) {
+            closeHomeVideo();
+        }
+    });
+
 });
