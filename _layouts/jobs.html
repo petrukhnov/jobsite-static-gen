@@ -1,5 +1,5 @@
 {% set total_jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id, sortOrder: 'updated' }) %}
-{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id, limit: 6, sortOrder: 'updated' }) %}
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id, sortOrder: 'updated' }) %}
 
 <!doctype html>
 <html class="no-js" lang="en">
