@@ -64,8 +64,8 @@ $(function() {
 
             // append query string param to all links on the same domain and
             // relative links
-            var $sameOriginLinks = $('a:uri(domain = ' + currentUrl.domain() + '),' +
-                                     'a:uri(is: relative)');
+            var $sameOriginLinks = $('a:uri(is: relative)')
+                    .add('a:uri(domain = ' + currentUrl.domain() + ')');
             $sameOriginLinks.each(function(index, element) {
                 var targetUrl = sanitizePathsForS3(new URI(element));
                 targetUrl.addQuery(GH_QUERYKEY, ghSrcValue);
