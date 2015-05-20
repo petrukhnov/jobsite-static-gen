@@ -129,4 +129,11 @@ $(function() {
         }
     });
 
+    var cards = $(".card");
+    if (cards) {
+        cards.each(function(i, c) {
+            window.setTimeout(function(){$(c).removeClass("shrunken");}, i * 30);
+        });
+    }
+
 });

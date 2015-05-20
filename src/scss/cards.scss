@@ -55,7 +55,13 @@
     display: block;
     margin: 0;
     overflow: hidden;
+    transition: transform .3s, opacity .44s;
     width: 280px;
+
+    &.shrunken {
+        opacity: 0.0;
+        transform: scale(0.9, 0.9);
+    }
 
     &.white {
         background: $bg-color-card-white;

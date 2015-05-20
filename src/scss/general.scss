@@ -474,7 +474,12 @@ a {
     background-size: contain;
     display: block;
     height: 19px;
+    transition: transform $animation-duration;
     width: 19px;
+
+    &:hover {
+        transform: scale(1.2, 1.2);
+    }
 }
 
 .vjs-default-skin .vjs-play-progress,

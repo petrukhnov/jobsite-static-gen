@@ -2,7 +2,7 @@
     {%- if category && category_link %}
         <a href="{{ category_link }}" class="category">{{ category }}</a>
     {%- endif %}
-    <div class="card job">
+    <div class="card job shrunken">
         <div class="media" style="background-image: url('{{ image }}')"><a href="{{ relative_path_to_root }}{{ link }}"></a></div>
         <div class="content">
             <p class="title"><a href="{{ relative_path_to_root }}{{ link }}">{{ title }}</a></p>
