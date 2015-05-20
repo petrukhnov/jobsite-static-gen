@@ -54,8 +54,8 @@
                         } %}
                     {% endif %}
 
-                    {% set insert_talent_pool = jobs_viewmodel.length >= 5 && loop.index === 5 %}
-                    {% set append_talent_pool = jobs_viewmodel.length < 5 && loop.index === jobs_viewmodel.length %}
+                    {% set insert_talent_pool = jobs_viewmodel.length >= 8 && loop.index === 8 %}
+                    {% set append_talent_pool = jobs_viewmodel.length < 8 && loop.index === jobs_viewmodel.length %}
                     {% if insert_talent_pool || append_talent_pool %}
                         {% include "../src/partials/joker_card.html" with {
                             'type': 'talent-pool',
