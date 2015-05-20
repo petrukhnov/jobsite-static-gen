@@ -4,13 +4,13 @@ var gulp = require('gulp');
 // customize swig
 var swig = require('swig'),
     viewmodel = require('../swig-viewmodel');
-viewmodel.useFilter(swig, 'to_blogpost_viewmodel');
-viewmodel.useFilter(swig, 'to_blogposts_viewmodel');
-viewmodel.useFilter(swig, 'to_author_viewmodel');
-viewmodel.useFilter(swig, 'to_doc_viewmodel');
-viewmodel.useFilter(swig, 'to_jobs_viewmodel');
-viewmodel.useFilter(swig, 'to_job_viewmodel');
-viewmodel.useFilter(swig, 'pluralize');
+    viewmodel.useFilter(swig, 'to_blogpost_viewmodel');
+    viewmodel.useFilter(swig, 'to_blogposts_viewmodel');
+    viewmodel.useFilter(swig, 'to_author_viewmodel');
+    viewmodel.useFilter(swig, 'to_doc_viewmodel');
+    viewmodel.useFilter(swig, 'to_jobs_viewmodel');
+    viewmodel.useFilter(swig, 'to_job_viewmodel');
+    viewmodel.useFilter(swig, 'pluralize');
 
 // include gulp plugins
 var fs = require('fs'),
@@ -200,11 +200,11 @@ gulp.task('copy-assets', function() {
 });
 
 // clean up folders
-gulp.task('clean', function(cb) {
-    del([
+gulp.task('clean', function() {
+    del.sync([
         'build/**/*',
         'dist/**/*'
-    ], cb);
+    ]);
 });
 gulp.task('clean:all', ['clean']);
 
@@ -252,6 +252,16 @@ gulp.task('metalsmith', function() {
         .pipe(gulp.dest('dist'));
 });
 
+// rename generated javascript files with html extension to back js files
+gulp.task('rename-js', ['metalsmith'], function() {
+    gulp.src("./dist/js/data/*.html")
+      .pipe(rename(function (path) {
+        path.dirname = "js/data";
+        path.extname = ".js";
+      }))
+      .pipe(gulp.dest("./dist"));
+});
+
 // watch files for changes
 gulp.task('watch', function() {
     gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
@@ -272,7 +282,7 @@ gulp.task('server', ['build', 'watch'], function() {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean', ['minify-html','metalsmith', 'minify-js',
+    runSequence('clean', ['minify-html','metalsmith', 'rename-js', 'minify-js',
                               'minify-css', 'copy-assets'], cb);
 });
 
