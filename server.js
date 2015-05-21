@@ -14,6 +14,8 @@ var TYPE   = "api-update";
 var TEST_TYPE = "test-trigger";
 var app    = module.exports = express();
 
+var deployProcess = null;
+
 debug('Debug logging enabled');
 
 // parse json on all requests
@@ -31,20 +33,37 @@ app.post('/prismic-hook', function (req, res, next) {
     var secret = req.body.secret;
     var apiUrl = req.body.apiUrl;
     var type   = req.body.type;
+
     if (secret === SECRET && apiUrl === APIURL && (type === TYPE || type === TEST_TYPE)) {
+        if (deployProcess) {
+            res.status(503);
+            next(new Error('Deployment already in progress'));
+            return;
+        }
+
         debug('Starting deployment to', ENV);
-        var child = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, function(err) {
-            if (err === null) {
-                res.json(req.body);
+        res.status(202).json({ status: 'Deployment started' });
+
+        deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV);
+
+        deployProcess.on('exit', function(code) {
+            deployProcess = null;
+            if (code === 0) {
+                debug('Deployment to', ENV, 'succeeded');
+            } else if (code === null) {
+                console.log('Deployment process ended abnormally.')
             } else {
-                res.status(500);
-                next(new Error('Website build failed.'));
+                console.log('Deployment process ended with exit code', code);
             }
-            debug('Deployment to', ENV, 'done');
         });
+
+        deployProcess.stderr.on('data', logDataLine);
+        if (DEBUG) {
+            deployProcess.stdout.on('data', logDataLine);
+        }
     } else {
         res.status(400);
-        next(new Error('Invalid POST data on prismic hook.'));
+        next(new Error('Invalid POST data on prismic hook'));
     }
 });
 
@@ -72,4 +91,12 @@ function debug(arg1 /*...*/) {
     if (DEBUG) {
         console.log.apply(console, arguments);
     }
+}
+
+function logDataLine(data) {
+    process.stdout.write(data.toString());
+}
+
+function toString(obj) {
+    return obj.toString();
 }
