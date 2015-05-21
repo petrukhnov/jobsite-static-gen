@@ -98,29 +98,29 @@ gulp.task('html-hint', function() {
 
 // lint scss
 gulp.task('scss-lint', function() {
-    gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
+    return gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
 // concatenate and minify javascript
 gulp.task('minify-js', ['lint'], function() {
-    gulp.src([
+    return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
-    ])
-    .pipe(closureCompiler({
-        compilerPath: 'lib/closure-compiler/compiler.jar',
-        compilerFlags: {
-            compilation_level: 'SIMPLE_OPTIMIZATIONS',
-            warning_level: 'QUIET'
-        },
-        fileName: 'build/tech.zalando-all.js'
-    }))
-    .pipe(gulp.dest('dist/js'));
+        ])
+        .pipe(closureCompiler({
+            compilerPath: 'lib/closure-compiler/compiler.jar',
+            compilerFlags: {
+                compilation_level: 'SIMPLE_OPTIMIZATIONS',
+                warning_level: 'QUIET'
+            },
+            fileName: 'build/tech.zalando-all.js'
+        }))
+        .pipe(gulp.dest('./'));
 });
 
 // compile sass to css
@@ -138,8 +138,8 @@ gulp.task('sass', function() {
 });
 
 // concatenate and minify css
-gulp.task('minify-css', ['scss-lint', 'sass'], function() {
-    gulp.src([
+gulp.task('minify-main-css', function() {
+    return gulp.src([
         'src/css/vendor/bootstrap.min.css',
         'build/css/general.css',
         'build/css/header_footer.css',
@@ -150,9 +150,11 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('build/css'));
+});
 
-    gulp.src([
+gulp.task('minify-greenhouse-css', function() {
+    return gulp.src([
         'src/css/greenhouse.css'
     ])
     .pipe(concat('tech.zalando-greenhouse.css'))
@@ -160,52 +162,53 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     .pipe(gulp.dest('build/css'));
 });
 
-// minify html
-gulp.task('minify-html', ['html-hint'], function() {
-    gulp.src('src/**/*.html')
-        .pipe(gulpsmith()
-              .use(partial({
-                directory: 'src/partials',
-                engine: 'swig'
-              }))
-              .use(templates({
-                engine: 'swig',
-                inPlace: true
-              })))
-        .pipe(minifyHTML())
-        .pipe(gulp.dest('dist'));
+gulp.task('minify-css', function(cb) {
+    runSequence('scss-lint', 'sass', ['minify-main-css',
+                                      'minify-greenhouse-css'], cb);
 });
 
-// copy assets
-gulp.task('copy-assets', function() {
-    gulp.src([
-        'src/robots.txt'
-    ])
-    .pipe(gulp.dest('dist'));
-    gulp.src([
-        'src/images/*.jpg',
-        'src/images/*.png',
-        'src/images/*.gif',
-        'src/images/*.ico'
-    ])
-    .pipe(gulp.dest('dist/images'));
-    gulp.src([
-        'src/blog/images/**/*'
-    ])
-    .pipe(gulp.dest('dist/blog/images'));
-    gulp.src([
-        'src/fonts/**'
-    ])
-    .pipe(gulp.dest('dist/fonts'));
-    gulp.src([
+// copy assets to build
+gulp.task('copy-assets', function () {
+    return gulp.src([
+        'src/robots.txt',
+        'src/images/*.{jpg,png,gif,ico}',
+        'src/blog/images/**/*',
+        'src/fonts/**',
         'src/videos/**'
+    ], {base: 'src'})
+    .pipe(gulp.dest('build'));
+});
+
+// copy production files from build to dist
+gulp.task('minified-js-to-dist', function() {
+    return gulp.src([
+        'build/tech.zalando-all.js'
     ])
-    .pipe(gulp.dest('dist/videos'));
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('build-to-dist', ['minified-js-to-dist'], function() {
+    return gulp.src([
+        'build/css/tech.zalando-all.css',
+        'build/index.html',
+        'build/robots.txt',
+        'build/js/**/*.js',
+        'build/fonts/**',
+        'build/images/**',
+        'build/videos/**',
+        'build/blog/**',
+        'build/jobs/**',
+        'build/locations/**',
+        'build/legal-notice/**',
+        'build/privacy-policy/**',
+        'build/terms-of-use/**'
+    ], {base: 'build'})
+    .pipe(gulp.dest('dist'));
 });
 
 // clean up folders
 gulp.task('clean', function() {
-    del.sync([
+    return del.sync([
         'build/**/*',
         'dist/**/*'
     ]);
@@ -256,17 +259,17 @@ gulp.task('metalsmith', function() {
                   'directory': '_layouts'
               })))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('build'));
 });
 
 // rename generated javascript files with html extension to back js files
 gulp.task('rename-js', ['metalsmith'], function() {
-    gulp.src("./dist/js/data/*.html")
+    return gulp.src("build/js/data/*.html")
       .pipe(rename(function (path) {
         path.dirname = "js/data";
         path.extname = ".js";
       }))
-      .pipe(gulp.dest("./dist"));
+      .pipe(gulp.dest("build"));
 });
 
 // watch files for changes
@@ -274,7 +277,7 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
-    gulp.watch(['src/*.html', 'src/partials/*.html'], ['minify-html', 'html-hint']);
+    gulp.watch(['src/*.html', 'src/partials/*.html'], ['html-hint']);
     gulp.watch('src/images/*.*', ['copy-assets']);
 });
 
@@ -289,26 +292,25 @@ gulp.task('server', ['build', 'watch'], function() {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean', ['minify-html','metalsmith', 'rename-js', 'minify-js',
-                              'minify-css', 'copy-assets'], cb);
+    runSequence('clean', ['metalsmith', 'rename-js', 'minify-js',
+                          'minify-css', 'copy-assets'], 'build-to-dist', cb);
 });
 
 // publish to AWS S3
 gulp.task('publish', function() {
-        var publisher = awspublish.create(config.aws);
-        var bucketPath = config.aws.bucketPath + '/';
-        var headers = {
-            // 'Cache-Control': 'max-age=315360000, no-transform, public'
-        };
-        return gulp.src('dist/**')
-            .pipe(rename(function(path) {
-                path.dirname = bucketPath + path.dirname;
-            }))
-            .pipe(publisher.publish(headers))
-            .pipe(publisher.sync(bucketPath))
-            .pipe(awspublish.reporter());
-    }
-);
+    var publisher = awspublish.create(config.aws);
+    var bucketPath = config.aws.bucketPath + '/';
+    var headers = {
+        // 'Cache-Control': 'max-age=315360000, no-transform, public'
+    };
+    return gulp.src('dist/**')
+        .pipe(rename(function(path) {
+            path.dirname = bucketPath + path.dirname;
+        }))
+        .pipe(publisher.publish(headers))
+        .pipe(publisher.sync(bucketPath))
+        .pipe(awspublish.reporter());
+});
 
 // build + publish tasks, esp. for automated deployments
 gulp.task('deploy', function(cb) {
