@@ -190,6 +190,10 @@ gulp.task('copy-assets', function() {
     ])
     .pipe(gulp.dest('dist/images'));
     gulp.src([
+        'src/blog/images/**/*'
+    ])
+    .pipe(gulp.dest('dist/blog/images'));
+    gulp.src([
         'src/fonts/**'
     ])
     .pipe(gulp.dest('dist/fonts'));
@@ -231,9 +235,9 @@ gulp.task('metalsmith', function() {
                           return doc.slug;
                       }
                       if (doc.type === 'blog-rst') {
-                          return '/blog/' + doc.id + '/' +  doc.slug;
+                          return '/blog/' + doc.slug;
                       }
-                      return '/' + doc.type + '/' + doc.id + '/' +  doc.slug;
+                      return '/' + doc.type + '/' +  doc.slug;
                   }
               }))
               .use(greenhouse({
