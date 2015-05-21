@@ -1,6 +1,6 @@
 ---
 template: blog-post.html
-relative_path_to_root: ../../../
+relative_path_to_root: ../../
 prismic:
   rstblogpost:
     query: '[[:d = at(document.type, "blog-rst")]]'
