@@ -181,22 +181,6 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     gulp.run('minify-main-css', 'minify-greenhouse-css');
 });
 
-// minify html
-gulp.task('minify-html', ['html-hint'], function() {
-    return gulp.src('src/**/*.html')
-        .pipe(gulpsmith()
-              .use(partial({
-                directory: 'src/partials',
-                engine: 'swig'
-              }))
-              .use(templates({
-                engine: 'swig',
-                inPlace: true
-              })))
-        .pipe(minifyHTML())
-        .pipe(gulp.dest('dist'));
-});
-
 // copy assets
 gulp.task('copy-assets-robots', function () {
     return gulp.src([
@@ -315,7 +299,7 @@ gulp.task('watch', function() {
     gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
     gulp.watch('src/js/*.js', ['minify-js']);
     gulp.watch('src/scss/*.scss', ['minify-css']);
-    gulp.watch(['src/*.html', 'src/partials/*.html'], ['minify-html', 'html-hint']);
+    gulp.watch(['src/*.html', 'src/partials/*.html'], ['html-hint']);
     gulp.watch('src/images/*.*', ['copy-assets']);
 });
 
@@ -330,7 +314,7 @@ gulp.task('server', ['build', 'watch'], function() {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean', ['minify-html', 'metalsmith', 'rename-js', 'minify-js',
+    runSequence('clean', ['metalsmith', 'rename-js', 'minify-js',
                               'minify-css', 'copy-assets'], cb);
 });
 
