@@ -177,8 +177,9 @@ gulp.task('minify-greenhouse-css', function() {
     .pipe(gulp.dest('build/css'));
 });
 
-gulp.task('minify-css', ['scss-lint', 'sass'], function() {
-    gulp.run('minify-main-css', 'minify-greenhouse-css');
+gulp.task('minify-css', function(cb) {
+    runSequence('scss-lint', 'sass', ['minify-main-css',
+                                      'minify-greenhouse-css'], cb);
 });
 
 // copy assets
@@ -220,13 +221,11 @@ gulp.task('copy-assets-videos', function() {
     .pipe(gulp.dest('dist/videos'));
 });
 
-gulp.task('copy-assets', function() {
-    gulp.run('copy-assets-robots',
-             'copy-assets-images',
-             'copy-assets-blog-images',
-             'copy-assets-fonts',
-             'copy-assets-videos');
-});
+gulp.task('copy-assets', ['copy-assets-robots',
+                          'copy-assets-images',
+                          'copy-assets-blog-images',
+                          'copy-assets-fonts',
+                          'copy-assets-videos']);
 
 // clean up folders
 gulp.task('clean', function() {
