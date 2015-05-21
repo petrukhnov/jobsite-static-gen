@@ -230,6 +230,9 @@ gulp.task('metalsmith', function() {
                       if (doc.type === 'doc') {
                           return doc.slug;
                       }
+                      if (doc.type === 'blog-rst') {
+                          return '/blog/' + doc.id + '/' +  doc.slug;
+                      }
                       return '/' + doc.type + '/' + doc.id + '/' +  doc.slug;
                   }
               }))
