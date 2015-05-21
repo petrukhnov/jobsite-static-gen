@@ -37,7 +37,6 @@ var fs = require('fs'),
     awspublish = require('gulp-awspublish'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
-    vinylPaths = require('vinyl-paths'),
     del = require('del');
 
 program
@@ -104,11 +103,7 @@ gulp.task('scss-lint', function() {
 });
 
 // concatenate and minify javascript
-// to prevent conflicts with default Docker filesystem permissions (no write
-// access to project root directory) and Google Closure, the minified js gets
-// written to the 'build' subdirectory and moved to the final directory via
-// the gulp task `move-closure-artifacts`
-gulp.task('closure-minification', ['lint'], function() {
+gulp.task('minify-js', ['lint'], function() {
     return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
@@ -125,17 +120,7 @@ gulp.task('closure-minification', ['lint'], function() {
             },
             fileName: 'build/tech.zalando-all.js'
         }))
-        .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('move-closure-artifacts', function() {
-    return gulp.src(['dist/js/build/**'])
-        .pipe(vinylPaths(del))
-        .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('minify-js', function(cb) {
-    runSequence('closure-minification', 'move-closure-artifacts', cb);
+        .pipe(gulp.dest('./'));
 });
 
 // compile sass to css
@@ -165,7 +150,7 @@ gulp.task('minify-main-css', function() {
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
-    .pipe(gulp.dest('dist/css'));
+    .pipe(gulp.dest('build/css'));
 });
 
 gulp.task('minify-greenhouse-css', function() {
@@ -182,12 +167,12 @@ gulp.task('minify-css', function(cb) {
                                       'minify-greenhouse-css'], cb);
 });
 
-// copy assets
+// copy assets to build
 gulp.task('copy-assets-robots', function () {
     return gulp.src([
         'src/robots.txt'
     ])
-    .pipe(gulp.dest('dist'));
+    .pipe(gulp.dest('build'));
 });
 
 gulp.task('copy-assets-images', function() {
@@ -197,28 +182,28 @@ gulp.task('copy-assets-images', function() {
         'src/images/*.gif',
         'src/images/*.ico'
     ])
-    .pipe(gulp.dest('dist/images'));
+    .pipe(gulp.dest('build/images'));
 });
 
 gulp.task('copy-assets-blog-images', function() {
     return gulp.src([
         'src/blog/images/**/*'
     ])
-    .pipe(gulp.dest('dist/blog/images'));
+    .pipe(gulp.dest('build/blog/images'));
 });
 
 gulp.task('copy-assets-fonts', function() {
     return gulp.src([
         'src/fonts/**'
     ])
-    .pipe(gulp.dest('dist/fonts'));
+    .pipe(gulp.dest('build/fonts'));
 });
 
 gulp.task('copy-assets-videos', function() {
     return gulp.src([
         'src/videos/**'
     ])
-    .pipe(gulp.dest('dist/videos'));
+    .pipe(gulp.dest('build/videos'));
 });
 
 gulp.task('copy-assets', ['copy-assets-robots',
@@ -226,6 +211,33 @@ gulp.task('copy-assets', ['copy-assets-robots',
                           'copy-assets-blog-images',
                           'copy-assets-fonts',
                           'copy-assets-videos']);
+
+// copy production files from build to dist
+gulp.task('minified-js-to-dist', function() {
+    return gulp.src([
+        'build/tech.zalando-all.js'
+    ])
+    .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('build-to-dist', ['minified-js-to-dist'], function() {
+    return gulp.src([
+        'build/css/tech.zalando-all.css',
+        'build/index.html',
+        'build/robots.txt',
+        'build/js/**/*.js',
+        'build/fonts/**',
+        'build/images/**',
+        'build/videos/**',
+        'build/blog/**',
+        'build/jobs/**',
+        'build/locations/**',
+        'build/legal-notice/**',
+        'build/privacy-policy/**',
+        'build/terms-of-use/**'
+    ], {base: 'build'})
+    .pipe(gulp.dest('dist'));
+});
 
 // clean up folders
 gulp.task('clean', function() {
@@ -280,17 +292,17 @@ gulp.task('metalsmith', function() {
                   'directory': '_layouts'
               })))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('dist'));
+        .pipe(gulp.dest('build'));
 });
 
 // rename generated javascript files with html extension to back js files
 gulp.task('rename-js', ['metalsmith'], function() {
-    return gulp.src("./dist/js/data/*.html")
+    return gulp.src("build/js/data/*.html")
       .pipe(rename(function (path) {
         path.dirname = "js/data";
         path.extname = ".js";
       }))
-      .pipe(gulp.dest("./dist"));
+      .pipe(gulp.dest("build"));
 });
 
 // watch files for changes
@@ -314,7 +326,7 @@ gulp.task('server', ['build', 'watch'], function() {
 // build static website from sources
 gulp.task('build',function(cb) {
     runSequence('clean', ['metalsmith', 'rename-js', 'minify-js',
-                              'minify-css', 'copy-assets'], cb);
+                          'minify-css', 'copy-assets'], 'build-to-dist', cb);
 });
 
 // publish to AWS S3
