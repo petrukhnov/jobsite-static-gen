@@ -37,6 +37,7 @@ var fs = require('fs'),
     awspublish = require('gulp-awspublish'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
+    vinylPaths = require('vinyl-paths'),
     del = require('del');
 
 program
@@ -103,24 +104,38 @@ gulp.task('scss-lint', function() {
 });
 
 // concatenate and minify javascript
-gulp.task('minify-js', ['lint'], function() {
-    gulp.src([
+// to prevent conflicts with default Docker filesystem permissions (no write
+// access to project root directory) and Google Closure, the minified js gets
+// written to the 'build' subdirectory and moved to the final directory via
+// the gulp task `move-closure-artifacts`
+gulp.task('closure-minification', ['lint'], function() {
+    return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
-    ])
-    .pipe(closureCompiler({
-        compilerPath: 'lib/closure-compiler/compiler.jar',
-        compilerFlags: {
-            compilation_level: 'SIMPLE_OPTIMIZATIONS',
-            warning_level: 'QUIET'
-        },
-        fileName: 'build/tech.zalando-all.js'
-    }))
-    .pipe(gulp.dest('dist/js'));
+        ])
+        .pipe(closureCompiler({
+            compilerPath: 'lib/closure-compiler/compiler.jar',
+            compilerFlags: {
+                compilation_level: 'SIMPLE_OPTIMIZATIONS',
+                warning_level: 'QUIET'
+            },
+            fileName: 'build/tech.zalando-all.js'
+        }))
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('move-closure-artifacts', function() {
+    return gulp.src(['dist/js/build/**'])
+        .pipe(vinylPaths(del))
+        .pipe(gulp.dest('dist/js'));
+});
+
+gulp.task('minify-js', function(cb) {
+    runSequence('closure-minification', 'move-closure-artifacts', cb);
 });
 
 // compile sass to css
