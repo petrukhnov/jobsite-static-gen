@@ -99,7 +99,7 @@ gulp.task('html-hint', function() {
 
 // lint scss
 gulp.task('scss-lint', function() {
-    gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
+    return gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
@@ -177,7 +177,7 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
 
 // minify html
 gulp.task('minify-html', ['html-hint'], function() {
-    gulp.src('src/**/*.html')
+    return gulp.src('src/**/*.html')
         .pipe(gulpsmith()
               .use(partial({
                 directory: 'src/partials',
@@ -220,7 +220,7 @@ gulp.task('copy-assets', function() {
 
 // clean up folders
 gulp.task('clean', function() {
-    del.sync([
+    return del.sync([
         'build/**/*',
         'dist/**/*'
     ]);
@@ -276,7 +276,7 @@ gulp.task('metalsmith', function() {
 
 // rename generated javascript files with html extension to back js files
 gulp.task('rename-js', ['metalsmith'], function() {
-    gulp.src("./dist/js/data/*.html")
+    return gulp.src("./dist/js/data/*.html")
       .pipe(rename(function (path) {
         path.dirname = "js/data";
         path.extname = ".js";
