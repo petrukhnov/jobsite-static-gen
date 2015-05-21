@@ -15,6 +15,7 @@ var TEST_TYPE = "test-trigger";
 var app    = module.exports = express();
 
 var deployProcess = null;
+var deployProcessStartTime = null;
 
 debug('Debug logging enabled');
 
@@ -44,18 +45,20 @@ app.post('/prismic-hook', function (req, res, next) {
         debug('Starting deployment to', ENV);
         res.status(202).json({ status: 'Deployment started' });
 
+        deployProcessStartTime = Date.now();
         deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, {
             timeout: 30*60*1000  // 30 mins
         });
 
-        deployProcess.on('exit', function(code) {
+        deployProcess.on('exit', function(code, signal) {
             deployProcess = null;
+            runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
             if (code === 0) {
-                debug('Deployment to', ENV, 'succeeded');
+                debug('Deployment to', ENV, 'succeeded in', runtimeSec);
             } else if (code === null) {
-                console.log('Deployment process ended abnormally.')
+                console.log('Deployment process ended abnormally after', runtimeSec, 'with signal', signal);
             } else {
-                console.log('Deployment process ended with exit code', code);
+                console.log('Deployment process ended after', runtimeSec, 'with exit code', code);
             }
         });
 
