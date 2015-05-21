@@ -153,8 +153,8 @@ gulp.task('sass', function() {
 });
 
 // concatenate and minify css
-gulp.task('minify-css', ['scss-lint', 'sass'], function() {
-    gulp.src([
+gulp.task('minify-main-css', function() {
+    return gulp.src([
         'src/css/vendor/bootstrap.min.css',
         'build/css/general.css',
         'build/css/header_footer.css',
@@ -166,13 +166,19 @@ gulp.task('minify-css', ['scss-lint', 'sass'], function() {
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest('dist/css'));
+});
 
-    gulp.src([
+gulp.task('minify-greenhouse-css', function() {
+    return gulp.src([
         'src/css/greenhouse.css'
     ])
     .pipe(concat('tech.zalando-greenhouse.css'))
     .pipe(minifyCSS())
     .pipe(gulp.dest('build/css'));
+});
+
+gulp.task('minify-css', ['scss-lint', 'sass'], function() {
+    gulp.run('minify-main-css', 'minify-greenhouse-css');
 });
 
 // minify html
@@ -192,30 +198,50 @@ gulp.task('minify-html', ['html-hint'], function() {
 });
 
 // copy assets
-gulp.task('copy-assets', function() {
-    gulp.src([
+gulp.task('copy-assets-robots', function () {
+    return gulp.src([
         'src/robots.txt'
     ])
     .pipe(gulp.dest('dist'));
-    gulp.src([
+});
+
+gulp.task('copy-assets-images', function() {
+    return gulp.src([
         'src/images/*.jpg',
         'src/images/*.png',
         'src/images/*.gif',
         'src/images/*.ico'
     ])
     .pipe(gulp.dest('dist/images'));
-    gulp.src([
+});
+
+gulp.task('copy-assets-blog-images', function() {
+    return gulp.src([
         'src/blog/images/**/*'
     ])
     .pipe(gulp.dest('dist/blog/images'));
-    gulp.src([
+});
+
+gulp.task('copy-assets-fonts', function() {
+    return gulp.src([
         'src/fonts/**'
     ])
     .pipe(gulp.dest('dist/fonts'));
-    gulp.src([
+});
+
+gulp.task('copy-assets-videos', function() {
+    return gulp.src([
         'src/videos/**'
     ])
     .pipe(gulp.dest('dist/videos'));
+});
+
+gulp.task('copy-assets', function() {
+    gulp.run('copy-assets-robots',
+             'copy-assets-images',
+             'copy-assets-blog-images',
+             'copy-assets-fonts',
+             'copy-assets-videos');
 });
 
 // clean up folders
