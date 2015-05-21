@@ -330,26 +330,25 @@ gulp.task('server', ['build', 'watch'], function() {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean', ['minify-html','metalsmith', 'rename-js', 'minify-js',
+    runSequence('clean', ['minify-html', 'metalsmith', 'rename-js', 'minify-js',
                               'minify-css', 'copy-assets'], cb);
 });
 
 // publish to AWS S3
 gulp.task('publish', function() {
-        var publisher = awspublish.create(config.aws);
-        var bucketPath = config.aws.bucketPath + '/';
-        var headers = {
-            // 'Cache-Control': 'max-age=315360000, no-transform, public'
-        };
-        return gulp.src('dist/**')
-            .pipe(rename(function(path) {
-                path.dirname = bucketPath + path.dirname;
-            }))
-            .pipe(publisher.publish(headers))
-            .pipe(publisher.sync(bucketPath))
-            .pipe(awspublish.reporter());
-    }
-);
+    var publisher = awspublish.create(config.aws);
+    var bucketPath = config.aws.bucketPath + '/';
+    var headers = {
+        // 'Cache-Control': 'max-age=315360000, no-transform, public'
+    };
+    return gulp.src('dist/**')
+        .pipe(rename(function(path) {
+            path.dirname = bucketPath + path.dirname;
+        }))
+        .pipe(publisher.publish(headers))
+        .pipe(publisher.sync(bucketPath))
+        .pipe(awspublish.reporter());
+});
 
 // build + publish tasks, esp. for automated deployments
 gulp.task('deploy', function(cb) {
