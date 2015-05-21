@@ -44,7 +44,9 @@ app.post('/prismic-hook', function (req, res, next) {
         debug('Starting deployment to', ENV);
         res.status(202).json({ status: 'Deployment started' });
 
-        deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV);
+        deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, {
+            timeout: 30*60*1000  // 30 mins
+        });
 
         deployProcess.on('exit', function(code) {
             deployProcess = null;
