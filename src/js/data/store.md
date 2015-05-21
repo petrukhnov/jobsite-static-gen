@@ -1,5 +1,5 @@
 ---
-template: storage.js
+template: store.js
 permalink: false
 prismic:
   blogposts:

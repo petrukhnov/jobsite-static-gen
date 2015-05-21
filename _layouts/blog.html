@@ -53,7 +53,8 @@
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
-    <script async src="../js/tech.zalando-all.js"></script>
+    <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+    <script async src="{{ relative_path_to_root }}js/data/store.js"></script>
 
 </body>
 </html>
