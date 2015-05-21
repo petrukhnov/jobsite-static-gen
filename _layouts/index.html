@@ -12,7 +12,7 @@
 </head>
 <body>
 
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': './', 'active': 'home' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'home' } %}
 
     <!-- Background video -->
     <div class="fullsize-media visible-lg-block">
@@ -225,7 +225,7 @@
     </div>
 
     <!-- Footer -->
-    {% include "../src/partials/footer.html" with { 'relative_path_to_root': './' } %}
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script async src="./js/tech.zalando-all.js"></script>
     <script async src="./js/data/storage.js"></script>

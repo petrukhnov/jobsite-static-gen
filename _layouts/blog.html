@@ -12,7 +12,7 @@
 <body>
 
     <!-- Header -->
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': '../', 'active': 'blog' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'blog' } %}
 
     <!-- Teaser image -->
     <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/blog_header.jpg'); background-position: 5% 15%;">
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Footer -->
-    {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../' } %}
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script async src="../js/tech.zalando-all.js"></script>
 

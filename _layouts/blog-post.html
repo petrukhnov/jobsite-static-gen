@@ -11,7 +11,7 @@
 </head>
 <body>
 
-    {% include "../src/partials/header.html" with { 'relative_path_to_root': '../../../', 'active': 'blog-post' } %}
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'blog-post' } %}
 
 
     <div class="fullsize-media">
@@ -70,7 +70,7 @@
 
     -->
 
-    {% include "../src/partials/footer.html" with { 'relative_path_to_root': '../../../' } %}
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script async src="../../../js/tech.zalando-all.js"></script>
 
