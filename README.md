@@ -17,7 +17,12 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 2. Install Java 7 or higher (required by Google Closure)
 
-3. Install the RST converter tool with `pip install rst2html5`
+3. Install the RST converter tool with Pip and alias it to `rst2html` to match
+   the Dockerized installation:
+
+        sudo easy_install pip
+        pip install rst2html5
+        ln -s /usr/local/bin/rst2html5 /usr/local/bin/rst2html
 
 4. Copy and update the default config file `cp config.default.js config-ENV.js`
    (ENV needs to be replaced with the environment string, "dev", "qa" or "prod")
