@@ -6,4 +6,6 @@ prismic:
     query: '[[:d = at(document.type, "blog")]]'
   authors:
     query: '[[:d = at(document.type, "author")]]'
+  rstblogposts:
+    query: '[[:d = at(document.type, "blog-rst")]]'
 ---

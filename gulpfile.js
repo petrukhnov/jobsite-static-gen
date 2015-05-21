@@ -37,7 +37,8 @@ var fs = require('fs'),
     awspublish = require('gulp-awspublish'),
     rename = require('gulp-rename'),
     connect = require('gulp-connect'),
-    del = require('del');
+    del = require('del'),
+    react = require('gulp-react');
 
 program
     .option('-e, --environment <env>',
@@ -102,8 +103,15 @@ gulp.task('scss-lint', function() {
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
 
+// precompile JSX
+gulp.task('compile-jsx', function () {
+    return gulp.src('src/js/**/*.jsx')
+        .pipe(react())
+        .pipe(gulp.dest('build/js'));
+});
+
 // concatenate and minify javascript
-gulp.task('minify-js', ['lint'], function() {
+gulp.task('minify-js', ['compile-jsx', 'lint'], function() {
     return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',

@@ -26,35 +26,14 @@
     </div>
 
     <!-- Tech Blog -->
-    <div class="fullsize-container light-gray">
-        <div class="container">
-            <div class="cards element-spacing">
-
-                {%- for blogpost in blogposts_viewmodel %}
-
-                {% include "../src/partials/blogpost_card.html" with {
-                    'link': '../blog/' + blogpost.slug,
-                    'image': blogpost.image,
-                    'title': blogpost.title,
-                    'subtitle': 'by ' + blogpost.authorNames.join(', ') + ' - ' + blogpost.date,
-                    'text': blogpost.description,
-                    'tags': null,
-                    'category': null,
-                    'category_link': null
-                } %}
-
-                {%- endfor %}
-
-            </div>
-        </div>
-
-    </div>
+    <div id="blog-posts-content"></div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
+    <script src="https://fb.me/react-0.13.3.js"></script>
+    <script src="{{ relative_path_to_root }}js/data/store.js"></script>
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-    <script async src="{{ relative_path_to_root }}js/data/store.js"></script>
 
 </body>
 </html>
