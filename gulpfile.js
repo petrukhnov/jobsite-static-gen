@@ -168,49 +168,16 @@ gulp.task('minify-css', function(cb) {
 });
 
 // copy assets to build
-gulp.task('copy-assets-robots', function () {
+gulp.task('copy-assets', function () {
     return gulp.src([
-        'src/robots.txt'
-    ])
+        'src/robots.txt',
+        'src/images/*.{jpg,png,gif,ico}',
+        'src/blog/images/**/*',
+        'src/fonts/**',
+        'src/videos/**'
+    ], {base: 'src'})
     .pipe(gulp.dest('build'));
 });
-
-gulp.task('copy-assets-images', function() {
-    return gulp.src([
-        'src/images/*.jpg',
-        'src/images/*.png',
-        'src/images/*.gif',
-        'src/images/*.ico'
-    ])
-    .pipe(gulp.dest('build/images'));
-});
-
-gulp.task('copy-assets-blog-images', function() {
-    return gulp.src([
-        'src/blog/images/**/*'
-    ])
-    .pipe(gulp.dest('build/blog/images'));
-});
-
-gulp.task('copy-assets-fonts', function() {
-    return gulp.src([
-        'src/fonts/**'
-    ])
-    .pipe(gulp.dest('build/fonts'));
-});
-
-gulp.task('copy-assets-videos', function() {
-    return gulp.src([
-        'src/videos/**'
-    ])
-    .pipe(gulp.dest('build/videos'));
-});
-
-gulp.task('copy-assets', ['copy-assets-robots',
-                          'copy-assets-images',
-                          'copy-assets-blog-images',
-                          'copy-assets-fonts',
-                          'copy-assets-videos']);
 
 // copy production files from build to dist
 gulp.task('minified-js-to-dist', function() {
