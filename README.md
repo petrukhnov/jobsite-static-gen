@@ -17,16 +17,18 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 2. Install Java 7 or higher (required by Google Closure)
 
-3. Copy and update the default config file `cp config.default.js config-ENV.js`
+3. Install the RST converter tool with `pip install rst2html5`
+
+4. Copy and update the default config file `cp config.default.js config-ENV.js`
    (ENV needs to be replaced with the environment string, "dev", "qa" or "prod")
 
-4. Edit the `config-ENV.js` file and fill in your credentials and configurations
+5. Edit the `config-ENV.js` file and fill in your credentials and configurations
 
-5. Install Ruby (required by SASS)
+6. Install Ruby (required by SASS)
 
-6. run `gem install scss-lint`
+7. run `gem install scss-lint`
 
-7. run `gulp`. The environment needs to be specified via the `-e` option or
+8. run `gulp`. The environment needs to be specified via the `-e` option or
    `TFOX_ENV` environment variable.
 
 ### Google Analytics config
