@@ -18,7 +18,8 @@ var JOB_CATEGORY_IDS = {
 
 module.exports = {
 
-    getBlogpost: function(input, authorsViewmodel) {
+    getBlogpost: function(input, authorsViewmodel, options) {
+        options = options || {};
         var authors = authorsViewmodel.filter(containsAuthorIdFrom(input));
         var inputDate = prismic.getValue(input, 'date');
 
@@ -32,17 +33,22 @@ module.exports = {
             rawDate: Date.parse(inputDate),
             authors: authors,
             authorNames: authors.map(getFullName),
-            content: getFormattedContent()
+            content: getContent()
         };
 
-        function getFormattedContent() {
-            return prismic.getHtml(input, 'body')
-                .replace(/``([^`]*)``/g, '<code>$1</code>')
-                .replace(/<p>\.\. code:: (.*?)<\/p><p>(.*?)<\/p>/g, '<pre><code data-lang="$1">$2</code></pre>');
+        function getContent() {
+            if (options.ignoreContent && options.ignoreContent === true) {
+                return prismic.getHtml(input, 'body')
+                    .replace(/``([^`]*)``/g, '<code>$1</code>')
+                    .replace(/<p>\.\. code:: (.*?)<\/p><p>(.*?)<\/p>/g, '<pre><code data-lang="$1">$2</code></pre>');
+            } else {
+                return '';
+            }
         }
     },
 
-    getRstBlogpost: function(input, authorsViewmodel) {
+    getRstBlogpost: function(input, authorsViewmodel, options) {
+        options = options || {};
         var metaData = prismicRst.getMetaData(input);
         var rstBody  = prismicRst.getRstBody(input);
         var authors = authorsViewmodel.filter(metadataContainsFullName);
@@ -58,11 +64,19 @@ module.exports = {
             rawDate: Date.parse(inputDate),
             authors: authors,
             authorNames: metaData.authorNames,
-            content: rst2html(rstBody)
+            content: getContent()
         };
 
         function metadataContainsFullName(author) {
             return _.contains(metaData.authorNames, author.fullName);
+        }
+
+        function getContent() {
+            if (options.ignoreContent && options.ignoreContent === true) {
+                return rst2html(rstBody);
+            } else {
+                return '';
+            }
         }
     },
 

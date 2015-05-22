@@ -15,27 +15,29 @@ var _ = require('underscore'),
  * @param  {object} authors Raw authors model.
  * @return {*}
  */
-module.exports = function (blogposts, authors, rst_blogposts) {
+module.exports = function (blogposts, authors, rst_blogposts, options) {
     blogposts = (blogposts && blogposts.results) || [];
     rst_blogposts = (rst_blogposts && rst_blogposts.results) || [];
 
     return _.chain([])
         .concat(
-            blogposts.map(blogpostIntoViewmodel),
-            rst_blogposts.map(rstBlogpostIntoViewmodel)
+            blogposts.map(blogpostIntoViewmodel, options),
+            rst_blogposts.map(rstBlogpostIntoViewmodel, options)
         )
         .sortBy(publishDate)
         .value();
 
-    function blogpostIntoViewmodel(blogpost_input) {
+    function blogpostIntoViewmodel(blogpost_input, options) {
         return viewmodel.getBlogpost(
             blogpost_input,
-            to_authors_viewmodel(authors));
+            to_authors_viewmodel(authors),
+            options);
     }
-    function rstBlogpostIntoViewmodel(rst_blogpost_input) {
+    function rstBlogpostIntoViewmodel(rst_blogpost_input, options) {
         return viewmodel.getRstBlogpost(
             rst_blogpost_input,
-            to_authors_viewmodel(authors));
+            to_authors_viewmodel(authors),
+            options);
     }
     function publishDate(blogpost) {
         return -blogpost.rawDate;
