@@ -13,6 +13,12 @@
     padding: 8px;
     text-decoration: none;
     text-transform: uppercase;
+    transition: background-color $animation-duration, color $animation-duration, border-color $animation-duration;
+
+    &:hover,
+    &:focus {
+        outline: 0;
+    }
 
     &:hover {
         background-color: $color-dark-gray;
@@ -39,6 +45,11 @@
         &:hover {
             background-color: $color-zalando;
             color: $color-white;
+        }
+
+        &:active {
+            background-color: $color-zalando-lighter;
+            border-color: $color-zalando-lighter;
         }
     }
 

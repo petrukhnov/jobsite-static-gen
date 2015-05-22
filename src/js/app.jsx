@@ -57,7 +57,7 @@ var app = app || {};
                 if (this.props.viewModels.length > this.state.shownPosts) {
                     return (
                         <button onClick={this.onClickMore} className="default-button color-zalando element-spacing">
-                            Show Older Posts
+                            Show More
                         </button>
                     );
                 } else {
