@@ -298,33 +298,6 @@ gulp.task('rename-js', ['metalsmith'], function() {
       .pipe(gulp.dest("build"));
 });
 
-// watch files for changes
-gulp.task('watch', function() {
-    function appendBuildUpdate(tasks) {
-        return function(event) {
-            console.log('File ' + event.path + ' was ' + event.type +
-                        ', updating build and dist...');
-            runSequence(tasks, 'build-to-dist');
-        };
-    }
-
-    gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
-    gulp.watch('src/js/*.js', appendBuildUpdate(['minify-js']));
-    gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
-    gulp.watch(['src/*.html', 'src/partials/*.html'],
-               appendBuildUpdate (['html-hint']));
-    gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
-});
-
-// start a server and watch for changes
-gulp.task('server', ['build', 'watch'], function() {
-    connect.server({
-        port: 4001,
-        root: ['dist'],
-        livereload: true
-    });
-});
-
 // build static website from sources
 gulp.task('build',function(cb) {
     runSequence('clean', ['metalsmith', 'rename-js', 'minify-js',
@@ -350,6 +323,33 @@ gulp.task('publish', function() {
 // build + publish tasks, esp. for automated deployments
 gulp.task('deploy', function(cb) {
     runSequence('build', 'publish', cb);
+});
+
+// watch files for changes
+gulp.task('watch', function() {
+    function appendBuildUpdate(tasks) {
+        return function(event) {
+            console.log('File ' + event.path + ' was ' + event.type +
+                        ', updating build and dist...');
+            runSequence(tasks, 'build-to-dist');
+        };
+    }
+
+    gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
+    gulp.watch('src/js/*.js', appendBuildUpdate(['minify-js']));
+    gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
+    gulp.watch(['src/*.html', 'src/partials/*.html'],
+               appendBuildUpdate (['html-hint']));
+    gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
+});
+
+// start a server and watch for changes
+gulp.task('server', ['build', 'watch'], function() {
+    connect.server({
+        port: 4001,
+        root: ['dist'],
+        livereload: true
+    });
 });
 
 // default task
