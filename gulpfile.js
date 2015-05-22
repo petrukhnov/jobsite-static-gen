@@ -297,11 +297,20 @@ gulp.task('rename-js', ['metalsmith'], function() {
 
 // watch files for changes
 gulp.task('watch', function() {
-    gulp.watch('src/**/*.md', ['html-hint', 'metalsmith']);
-    gulp.watch('src/js/*.js', ['minify-js']);
-    gulp.watch('src/scss/*.scss', ['minify-css']);
-    gulp.watch(['src/*.html', 'src/partials/*.html'], ['html-hint']);
-    gulp.watch('src/images/*.*', ['copy-assets']);
+    function appendBuildUpdate(tasks) {
+        return function(event) {
+            console.log('File ' + event.path + ' was ' + event.type +
+                        ', updating build and dist...');
+            runSequence(tasks, 'build-to-dist');
+        };
+    }
+
+    gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
+    gulp.watch('src/js/*.js', appendBuildUpdate(['minify-js']));
+    gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
+    gulp.watch(['src/*.html', 'src/partials/*.html'],
+               appendBuildUpdate (['html-hint']));
+    gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
 });
 
 // start a server and watch for changes
