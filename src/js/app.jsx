@@ -4,8 +4,9 @@ var app = app || {};
     'use strict';
 
     app.INITIAL_SHOWN_POSTS  = 4;
-    app.SHOWN_POSTS_INCREASE = 1;
+    app.SHOWN_POSTS_INCREASE = 4;
 
+    var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
     var BlogpostCard = app.BlogpostCard;
     var viewModels = store.blogposts;
 
@@ -37,9 +38,9 @@ var app = app || {};
             return (
                 <div className="fullsize-container light-gray">
                     <div className="container">
-                        <div className="cards element-spacing">
+                        <ReactCSSTransitionGroup transitionName="fade" component="div" className="cards element-spacing">
                             {blogpostsCards}
-                        </div>
+                        </ReactCSSTransitionGroup>
                     </div>
                     <div className="container text-center">
                         {showMoreButton.call(this)}

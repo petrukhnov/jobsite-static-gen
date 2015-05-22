@@ -31,6 +31,20 @@
         margin: 10px 8px;
     }
 
+    &.fade-enter {
+        .card.blog {
+            opacity: 0.01;
+            height: 0;
+        }
+    }
+
+    &.fade-enter-active {
+        .card.blog {
+            opacity: 1.0;
+            height: auto;
+        }
+    }
+
     .category {
         color: $color-zalando;
         display: inline-block;
@@ -55,7 +69,7 @@
     display: block;
     margin: 0;
     overflow: hidden;
-    transition: transform .3s, opacity .44s;
+    transition: opacity .4s ease-in;
     width: 280px;
 
     &.shrunken {
