@@ -190,14 +190,14 @@ gulp.task('copy-assets', function () {
 });
 
 // copy production files from build to dist
-gulp.task('minified-js-to-dist', function() {
+gulp.task('build-to-dist:closure-js', function() {
     return gulp.src([
         'build/tech.zalando-all.js'
     ])
     .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('build-to-dist', ['minified-js-to-dist'], function() {
+gulp.task('build-to-dist:bulk', function() {
     return gulp.src([
         'build/css/tech.zalando-all.css',
         'build/index.html',
@@ -216,14 +216,27 @@ gulp.task('build-to-dist', ['minified-js-to-dist'], function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('build-to-dist', function(cb) {
+    runSequence('clean:dist', ['build-to-dist:bulk', 'build-to-dist:closure-js'], cb);
+});
+
 // clean up folders
-gulp.task('clean', function() {
+gulp.task('clean:build', function() {
     return del.sync([
         'build/**/*',
+    ]);
+});
+
+gulp.task('clean:dist', function() {
+    return del.sync([
         'dist/**/*'
     ]);
 });
-gulp.task('clean:all', ['clean']);
+
+gulp.task('clean', ['clean:build', 'clean:dist']);
+gulp.task('clean:all', ['clean'], function() {
+    console.log('clean:all is deprecated, please use `clean` instead.');
+});
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
