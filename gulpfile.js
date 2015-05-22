@@ -111,16 +111,14 @@ gulp.task('compile-jsx', function () {
 });
 
 // concatenate and minify javascript
-gulp.task('minify-js', ['compile-jsx', 'lint-js'], function() {
+gulp.task('minify-js', ['lint-js'], function() {
     return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
-        'src/js/analytics-tracking.js',
-        'build/js/blogpostCard.js',
-        'build/js/app.js'
+        'src/js/analytics-tracking.js'
         ])
         .pipe(closureCompiler({
             compilerPath: 'lib/closure-compiler/compiler.jar',
@@ -129,6 +127,22 @@ gulp.task('minify-js', ['compile-jsx', 'lint-js'], function() {
                 warning_level: 'QUIET'
             },
             fileName: 'build/tech.zalando-all.js'
+        }))
+        .pipe(gulp.dest('./'));
+});
+
+gulp.task('minify-js:react', ['compile-jsx'], function() {
+    return gulp.src([
+        'build/js/blogpostCard.js',
+        'build/js/itemsContainer.js',
+        'build/js/app.js'])
+        .pipe(closureCompiler({
+            compilerPath: 'lib/closure-compiler/compiler.jar',
+            compilerFlags: {
+                compilation_level: 'SIMPLE_OPTIMIZATIONS',
+                warning_level: 'QUIET'
+            },
+            fileName: 'build/tech.zalando-app.js'
         }))
         .pipe(gulp.dest('./'));
 });
@@ -192,7 +206,8 @@ gulp.task('copy-assets', function () {
 // copy production files from build to dist
 gulp.task('build-to-dist:closure-js', function() {
     return gulp.src([
-        'build/tech.zalando-all.js'
+        'build/tech.zalando-all.js',
+        'build/tech.zalando-app.js'
     ])
     .pipe(gulp.dest('dist/js'));
 });
@@ -300,7 +315,7 @@ gulp.task('rename-js', ['metalsmith'], function() {
 
 // build static website from sources
 gulp.task('build',function(cb) {
-    runSequence('clean', ['metalsmith', 'rename-js', 'minify-js',
+    runSequence('clean', ['metalsmith', 'rename-js', 'minify-js', 'minify-js:react',
                           'minify-css', 'copy-assets'], 'build-to-dist', cb);
 });
 
@@ -336,7 +351,7 @@ gulp.task('watch', function() {
     }
 
     gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
-    gulp.watch('src/js/*.{js,jsx}', appendBuildUpdate(['minify-js']));
+    gulp.watch('src/js/*.{js,jsx}', appendBuildUpdate(['build']));
     gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
     gulp.watch(['src/*.html', 'src/partials/*.html'],
                appendBuildUpdate (['html-hint']));
