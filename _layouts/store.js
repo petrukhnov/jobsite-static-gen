@@ -2,5 +2,3 @@
 
 var store = store || {};
 store.blogposts = {{ JSON.stringify(blogposts_viewmodel) }};
-
-console.log('Data loaded:', store);
