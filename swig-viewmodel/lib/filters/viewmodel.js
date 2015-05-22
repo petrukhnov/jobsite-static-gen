@@ -59,7 +59,7 @@ module.exports = {
             slug: metaData.slug,
             title: metaData.title,
             description: metaData.description,
-            image: 'images/' + metaData.image,
+            image: '../images/' + metaData.image,
             date: getFormattedDate(inputDate),
             rawDate: Date.parse(inputDate),
             authors: authors,
