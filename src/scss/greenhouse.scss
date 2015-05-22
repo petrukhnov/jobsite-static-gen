@@ -99,13 +99,12 @@ html {
         }
 
         // hide phone input
-        &:nth-child(7) {
-            display: none;
+        &#phone { 
+            display: none; 
         }
 
-        // hide cover letter input
-        &:nth-child(9) {
-            display: none;
+        &label[for=phone] { 
+            display: none; 
         }
     }
 }
