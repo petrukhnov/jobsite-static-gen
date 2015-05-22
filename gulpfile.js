@@ -118,7 +118,9 @@ gulp.task('minify-js', ['compile-jsx', 'lint'], function() {
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
-        'src/js/analytics-tracking.js'
+        'src/js/analytics-tracking.js',
+        'build/js/blogpostCard.js',
+        'build/js/app.js'
         ])
         .pipe(closureCompiler({
             compilerPath: 'lib/closure-compiler/compiler.jar',
