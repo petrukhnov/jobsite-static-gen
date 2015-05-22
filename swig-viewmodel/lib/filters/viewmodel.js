@@ -38,11 +38,11 @@ module.exports = {
 
         function getContent() {
             if (options.ignoreContent && options.ignoreContent === true) {
+                return '';
+            } else {
                 return prismic.getHtml(input, 'body')
                     .replace(/``([^`]*)``/g, '<code>$1</code>')
                     .replace(/<p>\.\. code:: (.*?)<\/p><p>(.*?)<\/p>/g, '<pre><code data-lang="$1">$2</code></pre>');
-            } else {
-                return '';
             }
         }
     },
@@ -73,9 +73,9 @@ module.exports = {
 
         function getContent() {
             if (options.ignoreContent && options.ignoreContent === true) {
-                return rst2html(rstBody);
-            } else {
                 return '';
+            } else {
+                return rst2html(rstBody);
             }
         }
     },
