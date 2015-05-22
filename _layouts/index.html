@@ -72,7 +72,7 @@
                 {%- for blogpost in blogposts_viewmodel %}
 
                 {% include "../src/partials/blogpost_card.html" with {
-                    'link': './blog/' + blogpost.id + '/' + blogpost.slug,
+                    'link': './blog/' + blogpost.slug,
                     'image': blogpost.image,
                     'title': blogpost.title,
                     'subtitle': 'by ' + blogpost.authorNames.join(', ') + ' - ' + blogpost.date,
