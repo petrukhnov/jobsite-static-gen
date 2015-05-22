@@ -24,6 +24,12 @@ NodeJS: Application server to trigger static website builds via webhooks
         pip install rst2html5
         ln -s /usr/local/bin/rst2html5 /usr/local/bin/rst2html
 
+   Make sure that you actually can run `rst2html` now. If you get an UTF-8
+   error, you probably need to set the following environment variables:
+
+        export LC_ALL=en_US.UTF-8
+        export LANG=en_US.UTF-8
+
 4. Copy and update the default config file `cp config.default.js config-ENV.js`
    (ENV needs to be replaced with the environment string, "dev", "qa" or "prod")
 
