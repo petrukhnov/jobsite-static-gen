@@ -34,14 +34,12 @@
     &.fade-enter {
         .card.blog {
             opacity: 0.01;
-            height: 0;
         }
     }
 
     &.fade-enter-active {
         .card.blog {
             opacity: 1.0;
-            height: auto;
         }
     }
 
