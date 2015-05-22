@@ -233,7 +233,10 @@ gulp.task('clean:dist', function() {
     ]);
 });
 
-gulp.task('clean', ['clean:build', 'clean:dist']);
+gulp.task('clean', function(cb) {
+    runSequence(['clean:build', 'clean:dist'], cb);
+});
+
 gulp.task('clean:all', ['clean'], function() {
     console.log('clean:all is deprecated, please use `clean` instead.');
 });
@@ -350,4 +353,6 @@ gulp.task('deploy', function(cb) {
 });
 
 // default task
-gulp.task('default', ['server']);
+gulp.task('default', function(cb) {
+    runSequence('server', cb);
+});
