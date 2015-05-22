@@ -101,7 +101,3 @@ function debug(arg1 /*...*/) {
 function logDataLine(data) {
     process.stdout.write(data.toString());
 }
-
-function toString(obj) {
-    return obj.toString();
-}
