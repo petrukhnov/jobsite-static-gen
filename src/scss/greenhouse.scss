@@ -82,6 +82,13 @@ html {
             font-weight: 300;
         }
 
+        // hide phone input
+        label[for=phone] {
+            @media (max-width: 640px){
+                display: none !important;
+            }
+        }
+        
         input[type='text'],
         select {
             -webkit-appearance: none;
@@ -97,17 +104,20 @@ html {
         select {
             width: 100% !important;
         }
-
-        // hide phone input
-        &#phone { 
-            display: none; 
-        }
-
-        &label[for=phone] { 
-            display: none; 
-        }
     }
 }
+
+// hide phone input
+#phone {
+    display: none;
+}
+
+#main_fields div.field label[for=phone] {
+    @media (max-width: 640px){
+        display: none !important;
+    }
+}
+
 
 .required-fields {
     font-size: 1.2rem;
