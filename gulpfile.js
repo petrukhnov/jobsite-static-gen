@@ -84,7 +84,7 @@ if (config.aws.bucketPath == null) {
 }
 
 // lint task
-gulp.task('lint', function() {
+gulp.task('lint-js', function() {
     return gulp.src('src/js/*.js')
         .pipe(jshint())
         .pipe(jshint.reporter('default'))
@@ -98,7 +98,7 @@ gulp.task('html-hint', function() {
 });
 
 // lint scss
-gulp.task('scss-lint', function() {
+gulp.task('lint-scss', function() {
     return gulp.src(['src/scss/*.scss', '!src/scss/greenhouse.scss'])
         .pipe(scsslint({'config': 'scsslint.yml'}));
 });
@@ -111,7 +111,7 @@ gulp.task('compile-jsx', function () {
 });
 
 // concatenate and minify javascript
-gulp.task('minify-js', ['compile-jsx', 'lint'], function() {
+gulp.task('minify-js', ['compile-jsx', 'lint-js'], function() {
     return gulp.src([
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
@@ -148,7 +148,7 @@ gulp.task('sass', function() {
 });
 
 // concatenate and minify css
-gulp.task('minify-main-css', function() {
+gulp.task('minify-css:main', function() {
     return gulp.src([
         'src/css/vendor/bootstrap.min.css',
         'build/css/general.css',
@@ -163,7 +163,7 @@ gulp.task('minify-main-css', function() {
     .pipe(gulp.dest('build/css'));
 });
 
-gulp.task('minify-greenhouse-css', function() {
+gulp.task('minify-css:greenhouse', function() {
     return gulp.src([
         'src/css/greenhouse.css'
     ])
@@ -173,8 +173,8 @@ gulp.task('minify-greenhouse-css', function() {
 });
 
 gulp.task('minify-css', function(cb) {
-    runSequence('scss-lint', 'sass', ['minify-main-css',
-                                      'minify-greenhouse-css'], cb);
+    runSequence('lint-scss', 'sass', ['minify-css:main',
+                                      'minify-css:greenhouse'], cb);
 });
 
 // copy assets to build
