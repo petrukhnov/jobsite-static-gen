@@ -336,7 +336,7 @@ gulp.task('watch', function() {
     }
 
     gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
-    gulp.watch('src/js/*.js', appendBuildUpdate(['minify-js']));
+    gulp.watch('src/js/*.{js,jsx}', appendBuildUpdate(['minify-js']));
     gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
     gulp.watch(['src/*.html', 'src/partials/*.html'],
                appendBuildUpdate (['html-hint']));
