@@ -22,10 +22,6 @@
     }
 }
 
-#blog-posts-content {
-    min-height: 597px;
-}
-
 .card-container {
     display: inline-block;
     margin: 8px;
@@ -49,8 +45,8 @@
 
             &:hover,
             &:active {
-                transform: scale(1.02, 1.02);
                 cursor: pointer;
+                transform: scale(1.02, 1.02);
             }
         }
     }
@@ -92,8 +88,8 @@
     }
 
     &:hover {
-        transform: scale(1.02, 1.02);
         cursor: pointer;
+        transform: scale(1.02, 1.02);
     }
 
     &.white:hover {
