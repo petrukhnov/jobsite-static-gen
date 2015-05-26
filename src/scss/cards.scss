@@ -132,6 +132,10 @@
                 height: auto;
             }
         }
+
+        .media {
+            background-color: $color-light-gray-lighter;
+        }
     }
 
     &.job {

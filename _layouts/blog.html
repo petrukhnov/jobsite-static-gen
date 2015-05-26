@@ -26,7 +26,25 @@
     </div>
 
     <!-- Tech Blog -->
-    <div id="blog-posts-content"></div>
+    <div id="blog-posts-content">
+        <div class="fullsize-container light-gray">
+            <div class="container">
+                <div class="cards elements-spacing">
+                    {% set emptyCardsArray = Array(8) %}
+                    {% for _ in emptyCardsArray %}
+                        <div class="card-container">
+                            <div class="card blog">
+                                <div class="media">
+                                </div>
+                                <div class="content">
+                                </div>
+                            </div>
+                        </div>
+                    {%- endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
