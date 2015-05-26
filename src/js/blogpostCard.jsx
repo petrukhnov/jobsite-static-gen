@@ -7,7 +7,7 @@ var app = app || {};
         render: function () {
             var model = this.props.viewModel,
                 link = '../blog/' + model.slug,
-                mediaStyle = { backgroundImage: 'url(' + model.image + ')' },
+                mediaStyle = { backgroundImage: 'url(' + model.thumbnail + ')' },
                 categoryLink = '',
                 subTitle = 'by ' + model.authorNames.join(', ') + ' - ' + model.date;
 
