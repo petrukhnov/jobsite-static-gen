@@ -273,16 +273,7 @@ gulp.task('metalsmith', function() {
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
-                  'linkResolver': function(ctx, doc) {
-                      if (doc.isBroken) return;
-                      if (doc.type === 'doc') {
-                          return doc.slug;
-                      }
-                      if (doc.type === 'blog-rst') {
-                          return '/blog/' + doc.slug;
-                      }
-                      return '/' + doc.type + '/' +  doc.slug;
-                  }
+                  'linkResolver': prismicLinkResolver
               }))
               .use(greenhouse({
                   'apiHost': 'boards.api.greenhouse.io',
@@ -371,3 +362,20 @@ gulp.task('server', ['build', 'watch'], function() {
 gulp.task('default', function(cb) {
     runSequence('server', cb);
 });
+
+/*
+ * Helpers
+ */
+
+function prismicLinkResolver(ctx, doc) {
+    if (doc.isBroken) {
+        return;
+    }
+    if (doc.type === 'doc') {
+        return doc.slug;
+    }
+    if (doc.type === 'blog-rst') {
+        return '/blog/' + doc.slug;
+    }
+    return '/' + doc.type + '/' +  doc.slug;
+}
