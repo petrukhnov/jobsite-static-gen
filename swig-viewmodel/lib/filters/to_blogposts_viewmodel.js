@@ -21,19 +21,19 @@ module.exports = function (blogposts, authors, rst_blogposts, options) {
 
     return _.chain([])
         .concat(
-            blogposts.map(blogpostIntoViewmodel, options),
-            rst_blogposts.map(rstBlogpostIntoViewmodel, options)
+            blogposts.map(blogpostIntoViewmodel),
+            rst_blogposts.map(rstBlogpostIntoViewmodel)
         )
         .sortBy(publishDate)
         .value();
 
-    function blogpostIntoViewmodel(blogpost_input, options) {
+    function blogpostIntoViewmodel(blogpost_input) {
         return viewmodel.getBlogpost(
             blogpost_input,
             to_authors_viewmodel(authors),
             options);
     }
-    function rstBlogpostIntoViewmodel(rst_blogpost_input, options) {
+    function rstBlogpostIntoViewmodel(rst_blogpost_input) {
         return viewmodel.getRstBlogpost(
             rst_blogpost_input,
             to_authors_viewmodel(authors),
