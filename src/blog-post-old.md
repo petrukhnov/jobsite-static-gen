@@ -6,7 +6,6 @@ prismic:
     query: '[[:d = at(document.type, "blog-rst")]]'
     collection:
       fileExtension: 'html'
-    pageSize: 100
   authors:
     query: '[[:d = at(document.type, "author")]]'
 ---
