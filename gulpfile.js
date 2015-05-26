@@ -222,6 +222,7 @@ gulp.task('build-to-dist:bulk', function() {
         'build/images/**',
         'build/videos/**',
         'build/blog/**',
+        'build/posts/**',
         'build/jobs/**',
         'build/locations/**',
         'build/legal-notice/**',
@@ -258,6 +259,7 @@ gulp.task('clean:all', ['clean'], function() {
 
 // pull contents from prismic and generate static html
 gulp.task('metalsmith', function() {
+    try { fs.mkdirSync('build/posts', 0755); } catch (e) {}
     return gulp.src(['src/**/*.md'])
         .pipe(gulp_front_matter()).on('data', function(file) {
             assign(file, file.frontMatter);
@@ -273,7 +275,11 @@ gulp.task('metalsmith', function() {
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
-                  'linkResolver': prismicLinkResolver
+                  'linkResolver': function(ctx, doc) {
+                      var resolvedLink = prismicLinkResolver(ctx, doc);
+                      generateOldBlogpostUrl(doc, resolvedLink);
+                      return resolvedLink;
+                  }
               }))
               .use(greenhouse({
                   'apiHost': 'boards.api.greenhouse.io',
@@ -378,4 +384,27 @@ function prismicLinkResolver(ctx, doc) {
         return '/blog/' + doc.slug;
     }
     return '/' + doc.type + '/' +  doc.slug;
+}
+
+function generateOldBlogpostUrl(doc, resolvedLink) {
+    var oldSlug;
+    switch (doc.type) {
+        case 'blog':
+            oldSlug = doc.data.oldname.json.asText();
+            break;
+        case 'blog-rst':
+        case 'blog-md':
+            oldSlug = doc.slug;
+            break;
+        default:
+            return;
+    }
+
+    if (oldSlug) {
+        var oldUrl = 'build/posts/' + oldSlug + '.html';
+        var redir = '../blog/' + doc.slug;
+        var html = '<meta http-equiv="refresh"content="0;url=' + redir + '">';
+
+        fs.writeFileSync(oldUrl, html, { mode: 0644 });
+    }
 }
