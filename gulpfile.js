@@ -227,6 +227,7 @@ gulp.task('build-to-dist:bulk', function() {
         'build/locations/**',
         'build/legal-notice/**',
         'build/privacy-policy/**',
+        'build/redirect/**',
         'build/terms-of-use/**'
     ], {base: 'build'})
     .pipe(gulp.dest('dist'));
