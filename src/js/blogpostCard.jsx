@@ -24,9 +24,13 @@ var techZalando = techZalando || {};
                     <div className="card blog" onClick={this.onCardClick}>
                         <div className="media" style={mediaStyle}></div>
                         <div className="content">
-                            <p className="title">{model.title}</p>
-                            <p className="subtitle">{subTitle}</p>
-                            <p className="text bodycopy">{model.description}</p>
+                            <div className="content-header">
+                                <p className="title">{model.title}</p>
+                                <p className="subtitle">{subTitle}</p>
+                            </div>
+                            <div className="text bodycopy">
+                                <p>{model.description}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
