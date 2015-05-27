@@ -347,7 +347,7 @@ gulp.task('watch', function() {
         };
     }
 
-    gulp.watch('src/**/*.md', appendBuildUpdate(['html-hint', 'metalsmith']));
+    gulp.watch(['src/**/*.md', '_layouts/**/*.html'], appendBuildUpdate(['html-hint', 'metalsmith']));
     gulp.watch('src/js/*.{js,jsx}', appendBuildUpdate(['build']));
     gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
     gulp.watch(['src/*.html', 'src/partials/*.html'],
