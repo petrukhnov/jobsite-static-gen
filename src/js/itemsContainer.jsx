@@ -3,8 +3,8 @@ var techZalando = techZalando || {};
 (function () {
     'use strict';
 
-    var INITIAL_SHOWN_ITEMS  = 8;
-    var SHOWN_ITEMS_INCREASE = 8;
+    var INITIAL_SHOWN_ITEMS  = 12;
+    var SHOWN_ITEMS_INCREASE = 12;
 
     var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
