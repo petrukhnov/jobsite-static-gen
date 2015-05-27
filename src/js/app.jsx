@@ -1,11 +1,11 @@
-var app = app || {};
+var techZalando = techZalando || {};
 
 (function () {
     'use strict';
 
-    var ItemsContainer = app.ItemsContainer,
-        BlogpostCard = app.BlogpostCard,
-        viewModels = store.blogposts;
+    var ItemsContainer = techZalando.ItemsContainer,
+        BlogpostCard = techZalando.BlogpostCard,
+        viewModels = techZalando.Store.blogposts;
 
     function render() {
         React.render(

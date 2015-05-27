@@ -1,9 +1,9 @@
-var app = app || {};
+var techZalando = techZalando || {};
 
 (function () {
     'use strict';
 
-    app.BlogpostCard = React.createClass({
+    techZalando.BlogpostCard = React.createClass({
         render: function () {
             var model = this.props.viewModel,
                 link = '../blog/' + model.slug,

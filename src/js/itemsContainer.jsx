@@ -1,4 +1,4 @@
-var app = app || {};
+var techZalando = techZalando || {};
 
 (function () {
     'use strict';
@@ -8,7 +8,7 @@ var app = app || {};
 
     var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
 
-    app.ItemsContainer = React.createClass({
+    techZalando.ItemsContainer = React.createClass({
 
         getInitialState: function() {
             return {
