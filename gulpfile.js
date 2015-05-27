@@ -351,12 +351,10 @@ gulp.task('watch', function() {
     }
 
     gulp.watch(['src/**/*.md', '_layouts/**/*.html'], appendBuildUpdate(['html-hint', 'metalsmith']));
-    gulp.watch('src/js/*.{js,jsx}', appendBuildUpdate(['build']));
     gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
-    gulp.watch(['src/*.html', 'src/partials/*.html'],
-               appendBuildUpdate (['html-hint']));
+    gulp.watch(['src/*.html', 'src/partials/*.html'], appendBuildUpdate (['html-hint']));
     gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
-    gulp.watch('lib/**/*.{js,jsx}', appendBuildUpdate(['build']));
+    gulp.watch(['src/js/*.{js,jsx}', 'lib/**/*.{js,jsx}'], appendBuildUpdate(['build']));
 });
 
 gulp.task('simulate-failed-build', notifyFailedBuild);
