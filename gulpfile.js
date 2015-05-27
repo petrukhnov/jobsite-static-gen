@@ -356,6 +356,7 @@ gulp.task('watch', function() {
     gulp.watch(['src/*.html', 'src/partials/*.html'],
                appendBuildUpdate (['html-hint']));
     gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
+    gulp.watch('lib/**/*.{js,jsx}', appendBuildUpdate(['build']));
 });
 
 gulp.task('simulate-failed-build', notifyFailedBuild);
