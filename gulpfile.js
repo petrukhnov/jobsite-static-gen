@@ -389,24 +389,24 @@ function prismicLinkResolver(ctx, doc) {
 }
 
 function generateOldBlogpostUrl(doc, resolvedLink) {
-    var oldSlug;
-    switch (doc.type) {
-        case 'blog':
-            oldSlug = doc.data.oldname.json.asText();
-            break;
-        case 'blog-rst':
-        case 'blog-md':
-            oldSlug = doc.slug;
-            break;
-        default:
-            return;
-    }
-
+    var oldSlug = getOldSlug(doc);
     if (oldSlug) {
         var oldUrl = 'build/posts/' + oldSlug + '.html';
         var redir = '../blog/' + doc.slug;
         var html = '<meta http-equiv="refresh"content="0;url=' + redir + '">';
 
         fs.writeFileSync(oldUrl, html, { mode: 0644 });
+    }
+}
+
+function getOldSlug(doc) {
+    switch (doc.type) {
+        case 'blog':
+            return doc.data.oldname.json.asText();
+        case 'blog-rst':
+        case 'blog-md':
+            return doc.slug;
+        default:
+            return null;
     }
 }
