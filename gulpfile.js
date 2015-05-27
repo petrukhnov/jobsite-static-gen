@@ -228,7 +228,8 @@ gulp.task('build-to-dist:bulk', function() {
         'build/legal-notice/**',
         'build/privacy-policy/**',
         'build/redirect/**',
-        'build/terms-of-use/**'
+        'build/terms-of-use/**',
+        'build/working-at-z/**'
     ], {base: 'build'})
     .pipe(gulp.dest('dist'));
 });

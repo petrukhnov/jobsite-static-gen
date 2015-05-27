@@ -1,0 +1,26 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    {% include "../src/partials/head.html" with {
+        'relative_path_to_root': relative_path_to_root,
+        'title': 'Zalando Tech',
+        'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+    } %}
+</head>
+<body>
+
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'working-at-z' } %}
+
+    <div class="fullsize-container white">
+        <div class="container">
+            Working at Z ...
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
+
+    <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+
+</body>
+</html>
