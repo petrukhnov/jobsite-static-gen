@@ -39,7 +39,11 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 7. run `gem install scss-lint`
 
-8. run `gulp`. The environment needs to be specified via the `-e` option or
+8. (Optional/OSX only) Get terminal-notifier by `brew install terminal-notifier`
+   from https://github.com/alloy/terminal-notifier to get notifications on
+   failed `gulp watch` builds.
+
+9. run `gulp`. The environment needs to be specified via the `-e` option or
    `TFOX_ENV` environment variable.
 
 ### Google Analytics config

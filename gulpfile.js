@@ -14,6 +14,7 @@ var swig = require('swig'),
 
 // include gulp plugins
 var fs = require('fs'),
+    execSync = require('child_process').execSync,
     program = require('commander'),
     jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
@@ -345,7 +346,7 @@ gulp.task('watch', function() {
         return function(event) {
             console.log('File ' + event.path + ' was ' + event.type +
                         ', updating build and dist...');
-            runSequence(tasks, 'build-to-dist');
+            runSequence(tasks, 'build-to-dist', notifyFailedBuild);
         };
     }
 
@@ -356,6 +357,8 @@ gulp.task('watch', function() {
                appendBuildUpdate (['html-hint']));
     gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
 });
+
+gulp.task('simulate-failed-build', notifyFailedBuild);
 
 // start a server and watch for changes
 gulp.task('server', ['build', 'watch'], function() {
@@ -410,5 +413,15 @@ function getOldSlug(doc) {
             return doc.slug;
         default:
             return null;
+    }
+}
+
+function notifyFailedBuild() {
+    var msg = 'Build failed (ノಠ益ಠ)ノ彡┻━┻';
+    console.log(msg);
+    try {
+        execSync('terminal-notifier', { input: msg });
+    } catch(e) {
+
     }
 }
