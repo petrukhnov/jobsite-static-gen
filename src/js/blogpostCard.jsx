@@ -4,9 +4,12 @@ var techZalando = techZalando || {};
     'use strict';
 
     techZalando.BlogpostCard = React.createClass({
+        onCardClick: function() {
+            location.href = '../blog/' + this.props.viewModel.slug;
+        },
+
         render: function () {
             var model = this.props.viewModel,
-                link = '../blog/' + model.slug,
                 mediaStyle = { backgroundImage: 'url(' + model.thumbnail + ')' },
                 categoryLink = '',
                 subTitle = 'by ' + model.authorNames.join(', ') + ' - ' + model.date;
@@ -18,12 +21,10 @@ var techZalando = techZalando || {};
             return (
                 <div className="card-container">
                     {categoryLink}
-                    <div className="card blog">
-                        <div className="media" style={mediaStyle}>
-                            <a href={link}></a>
-                        </div>
+                    <div className="card blog" onClick={this.onCardClick}>
+                        <div className="media" style={mediaStyle}></div>
                         <div className="content">
-                            <p className="title"><a href={link}>{model.title}</a></p>
+                            <p className="title">{model.title}</p>
                             <p className="subtitle">{subTitle}</p>
                             <p className="text bodycopy">{model.description}</p>
                         </div>
