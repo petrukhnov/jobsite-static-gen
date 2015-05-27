@@ -379,13 +379,15 @@ function prismicLinkResolver(ctx, doc) {
     if (doc.isBroken) {
         return;
     }
-    if (doc.type === 'doc') {
-        return doc.slug;
+    switch (doc.type) {
+        case 'doc':
+            return doc.slug;
+        case 'blog-rst':
+        case 'blog-md':
+            return '/blog/' + doc.slug;
+        default:
+            return '/' + doc.type + '/' +  doc.slug;
     }
-    if (doc.type === 'blog-rst') {
-        return '/blog/' + doc.slug;
-    }
-    return '/' + doc.type + '/' +  doc.slug;
 }
 
 function generateOldBlogpostUrl(doc, resolvedLink) {
