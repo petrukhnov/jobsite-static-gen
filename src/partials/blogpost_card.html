@@ -2,17 +2,18 @@
     {%- if category && category_link %}
         <a href="{{ category_link }}" class="category">{{ category }}</a>
     {%- endif %}
-    <div class="card blog">
-        <div class="media" style="background-image: url('{{ image }}')">
-            <a href="{{ link }}"></a>
+    <a href="{{ link }}">
+        <div class="card blog">
+            <div class="media" style="background-image: url('{{ image }}')">
+            </div>
+            <div class="content">
+                <p class="title">{{ title }}</p>
+                <p class="subtitle">{{ subtitle }}</p>
+                <p class="text bodycopy">{{ text | safe }}</p>
+                {%- if tags %}
+                    <p class="footer">{{ tags.join(' &middot; ') }}</p>
+                {%- endif %}
+            </div>
         </div>
-        <div class="content">
-            <p class="title"><a href="{{ link }}">{{ title }}</a></p>
-            <p class="subtitle">{{ subtitle }}</p>
-            <p class="text bodycopy">{{ text | safe }}</p>
-            {%- if tags %}
-                <p class="footer">{{ tags.join(' &middot; ') }}</p>
-            {%- endif %}
-        </div>
-    </div>
+    </a>
 </div>
