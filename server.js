@@ -5,6 +5,9 @@ var exec = require('child_process').exec;
 var ENV         = process.env.TFOX_ENV;
 var DEPLOY_TASK = 'deploy';
 
+var DEPLOY_INTERVAL  = process.env.JOBSITE_DEPLOY_INTERVAL || 30*60*1000; // 30 mins
+var DEPLOY_SCHEDULED = process.env.JOBSITE_DEPLOY_SCHEDULED;
+
 var PORT   = process.env.JOBSITE_GENERATOR_PORT || 8080;
 var SECRET = process.env.PRISMIC_SECRET;
 var APIURL = process.env.PRISMIC_APIURL;
@@ -18,6 +21,14 @@ var deployProcess = null;
 var deployProcessStartTime = null;
 
 debug('Debug logging enabled');
+
+// scheduled update of the site, to work around Greenhouse's limited webhooks
+if (DEPLOY_SCHEDULED) {
+    console.log('Scheduled deployment for every', DEPLOY_INTERVAL/1000, 'seconds');
+    setInterval(startDeploy, DEPLOY_INTERVAL);
+} else {
+    debug('Scheduled deployment disabled');
+}
 
 // parse json on all requests
 app.use(bodyParser.json());
