@@ -41,6 +41,13 @@ samp {
     word-wrap: normal;
 }
 
+blockquote {
+    border: 0;
+    font-size: 1.0em;
+    margin: 0;
+    padding: 0;
+}
+
 .bodycopy {
     font-family: $font-bodycopy;
     font-size: 1.6rem;
