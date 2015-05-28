@@ -9,4 +9,5 @@ prismic:
     pageSize: 3
   authors:
     query: '[[:d = at(document.type, "author")]]'
+    allPages: true
 ---
