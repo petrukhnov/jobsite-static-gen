@@ -42,13 +42,15 @@
                     {%- else %}
                         {% set disabled = '' %}
                     {%- endif %}
-                    <div class="card job-type{{ disabled }}">
-                        <div class="media icon engineering-development"><a href="{{ relative_path_to_root }}jobs/tech"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/tech">Software Engineering</a></p>
-                            <p class="subtitle">{{ tech_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                    <a href="{{ relative_path_to_root }}jobs/tech">
+                        <div class="card job-type{{ disabled }}">
+                            <div class="media icon engineering-development"></div>
+                            <div class="content">
+                                <p class="title">Software Engineering</p>
+                                <p class="subtitle">{{ tech_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="card-container">
@@ -57,13 +59,15 @@
                     {%- else %}
                         {% set disabled = '' %}
                     {%- endif %}
-                    <div class="card job-type{{ disabled }}">
-                        <div class="media icon product-ux"><a href="{{ relative_path_to_root }}jobs/product"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/product">Product Management &amp; UX / UI</a></p>
-                            <p class="subtitle">{{ product_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                    <a href="{{ relative_path_to_root }}jobs/product">
+                        <div class="card job-type{{ disabled }}">
+                            <div class="media icon product-ux"></div>
+                            <div class="content">
+                                <p class="title">Product Management &amp; UX / UI</p>
+                                <p class="subtitle">{{ product_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="card-container">
@@ -72,13 +76,15 @@
                     {%- else %}
                         {% set disabled = '' %}
                     {%- endif %}
-                    <div class="card job-type{{ disabled }}">
-                        <div class="media icon data-science"><a href="{{ relative_path_to_root }}jobs/data"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/data">Data Science</a></p>
-                            <p class="subtitle">{{ data_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                    <a href="{{ relative_path_to_root }}jobs/data">
+                        <div class="card job-type{{ disabled }}">
+                            <div class="media icon data-science"></div>
+                            <div class="content">
+                                <p class="title">Data Science</p>
+                                <p class="subtitle">{{ data_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="card-container">
@@ -87,13 +93,15 @@
                     {%- else %}
                         {% set disabled = '' %}
                     {%- endif %}
-                    <div class="card job-type{{ disabled }}">
-                        <div class="media icon other-jobs"><a href="{{ relative_path_to_root }}jobs/other"></a></div>
-                        <div class="content">
-                            <p class="title"><a href="{{ relative_path_to_root }}jobs/other">Other Specialists</a></p>
-                            <p class="subtitle">{{ others_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                    <a href="{{ relative_path_to_root }}jobs/other">
+                        <div class="card job-type{{ disabled }}">
+                            <div class="media icon other-jobs"></div>
+                            <div class="content">
+                                <p class="title">Other Specialists</p>
+                                <p class="subtitle">{{ others_jobs_viewmodel.length | pluralize('Job Profile', 'Job Profiles') }}</p>
+                            </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 {% include "../src/partials/joker_card.html" with {
