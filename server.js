@@ -36,41 +36,50 @@ app.post('/prismic-hook', function (req, res, next) {
     var type   = req.body.type;
 
     if (secret === SECRET && apiUrl === APIURL && (type === TYPE || type === TEST_TYPE)) {
-        if (deployProcess) {
+        if (startDeploy()) {
+            res.status(202).json({ status: 'Deployment started' });
+        } else {
             res.status(503);
             next(new Error('Deployment already in progress'));
-            return;
-        }
-
-        debug('Starting deployment to', ENV);
-        res.status(202).json({ status: 'Deployment started' });
-
-        deployProcessStartTime = Date.now();
-        deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, {
-            timeout: 30*60*1000  // 30 mins
-        });
-
-        deployProcess.on('exit', function(code, signal) {
-            deployProcess = null;
-            runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
-            if (code === 0) {
-                debug('Deployment to', ENV, 'succeeded in', runtimeSec);
-            } else if (code === null) {
-                console.log('Deployment process ended abnormally after', runtimeSec, 'with signal', signal);
-            } else {
-                console.log('Deployment process ended after', runtimeSec, 'with exit code', code);
-            }
-        });
-
-        deployProcess.stderr.on('data', logDataLine);
-        if (DEBUG) {
-            deployProcess.stdout.on('data', logDataLine);
         }
     } else {
         res.status(400);
         next(new Error('Invalid POST data on prismic hook'));
     }
 });
+
+function startDeploy() {
+    if (deployProcess) {
+        debug('Deployment already in progress');
+        return false;
+    }
+    debug('Starting deployment to', ENV);
+
+    deployProcessStartTime = Date.now();
+    deployProcess = exec('./node_modules/.bin/gulp ' + DEPLOY_TASK + ' -e ' + ENV, {
+        timeout: 30*60*1000  // 30 mins
+    });
+
+    deployProcess.on('exit', function(code, signal) {
+        deployProcess = null;
+        runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
+        if (code === 0) {
+            debug('Deployment to', ENV, 'succeeded in', runtimeSec);
+        } else if (code === null) {
+            console.log('Deployment process ended abnormally after', runtimeSec, 'with signal', signal);
+        } else {
+            console.log('Deployment process ended after', runtimeSec, 'with exit code', code);
+        }
+    });
+
+    deployProcess.stderr.on('data', logDataLine);
+    if (DEBUG) {
+        deployProcess.stdout.on('data', logDataLine);
+    }
+
+    return true;
+}
+
 
 // TODO add hook for app upgrade via Gitlab webhook
 // app.use('/gitlab-hook', function (req, res, next) {});
