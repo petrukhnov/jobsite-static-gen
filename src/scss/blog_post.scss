@@ -96,6 +96,10 @@
         }
     }
 
+    ol {
+        padding-left: 24px;
+    }
+
     a {
         color: $color-zalando;
         transition: color $animation-duration;
