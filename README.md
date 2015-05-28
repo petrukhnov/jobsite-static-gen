@@ -17,15 +17,16 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 2. Install Java 7 or higher (required by Google Closure)
 
-3. Install the RST converter tool with Pip and alias it to `rst2html` to match
-   the Dockerized installation:
+3. Install the RST and MD converter tools with Pip and create an alias `rst2html`
+   to match the Dockerized installation:
 
         sudo easy_install pip
-        pip install rst2html5
+        sudo pip install rst2html5
+        sudo pip install markdown
         ln -s /usr/local/bin/rst2html5 /usr/local/bin/rst2html
 
-   Make sure that you actually can run `rst2html` now. If you get an UTF-8
-   error, you probably need to set the following environment variables:
+   Make sure that you actually can run `rst2html` and `markdown_py` now. If you
+   get a UTF-8 error, you may need to set the following environment variables:
 
         export LC_ALL=en_US.UTF-8
         export LANG=en_US.UTF-8

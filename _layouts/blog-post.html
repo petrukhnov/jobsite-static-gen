@@ -1,4 +1,4 @@
-{% set blogpost = prismic.blogpost | to_blogpost_viewmodel(prismic.authors, prismic.rstblogpost) %}
+{% set blogpost = prismic.blogpost | to_blogpost_viewmodel(prismic.authors, prismic.rstblogpost, prismic.mdblogpost) %}
 
 <!doctype html>
 <html class="no-js" lang="en">
