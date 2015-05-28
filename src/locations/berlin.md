@@ -28,4 +28,5 @@ location:
 prismic:
   authors:
     query: '[[:d = at(document.type, "author")]]'
+    allPages: true
 ---
