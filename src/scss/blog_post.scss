@@ -59,6 +59,7 @@
     margin: 16px 8px 24px 8px;
     overflow: hidden;
     padding: 0;
+    text-rendering: optimizeLegibility;
 
     table {
         width: 100%;
@@ -160,20 +161,15 @@
         padding-bottom: 10px;
     }
 
-    code {
-        background-color: $color-light-gray-lighter;
-        border-radius: 2px;
+    code,
+    tt {
         color: $color-black;
+        display: inline-block;
+        font-size: 0.90em;
         font-weight: 400;
-    }
-
-    pre {
-        background-color: $color-light-gray-lighter;
-        border: 0;
-        border-radius: 2px;
-        color: $color-black;
-        font-weight: 400px;
-        margin: 20px 0;
+        margin: 0 3px;
+        padding: 1px 5px 0 5px;
+        white-space: pre;
     }
 }
 
@@ -211,5 +207,83 @@
             line-height: 1.6rem;
             margin: 5px 0 0 66px;
         }
+    }
+}
+
+.code {
+    background-color: $color-light-gray-lighter-blue;
+    border: 0;
+    border-radius: 0;
+    margin: 24px 0;
+    overflow: auto;
+    padding: 16px 24px;
+
+    .comment {
+        color: $color-code-comment;
+        font-style: italic;
+    }
+
+    .name {
+        &.attribute {
+            color: $color-code-attribute;
+        }
+
+        &.builtin {
+            color: $color-code-keyword;
+        }
+
+        &.class {
+            color: $color-code-class;
+        }
+
+        &.constant {
+            color: $color-code-variable;
+        }
+
+        &.decorator {
+            color: $color-code-decorator;
+        }
+
+        &.function {
+            color: $color-code-class;
+        }
+
+        &.namespace {
+            color: $color-code-class;
+        }
+
+        &.tag {
+            color: $color-code-keyword;
+        }
+
+        &.variable {
+            color: $color-code-variable;
+        }
+    }
+
+    .literal {
+        &.string {
+            color: $color-code-string;
+
+            &.escape {
+                color: $color-code-escape;
+            }
+
+            &.other {
+                color: $color-code-keyword;
+            }
+
+            &.single {
+                color: $color-code-string;
+            }
+
+            &.symbol {
+                color: $color-code-variable;
+            }
+        }
+    }
+
+    .keyword {
+        color: $color-code-keyword;
     }
 }

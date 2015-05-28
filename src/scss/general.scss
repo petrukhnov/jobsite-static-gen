@@ -31,6 +31,16 @@ a {
     }
 }
 
+code,
+kbd,
+pre,
+samp {
+    font-family: Menlo, monospace;
+    font-weight: 400;
+    white-space: pre;
+    word-wrap: normal;
+}
+
 .bodycopy {
     font-family: $font-bodycopy;
     font-size: 1.6rem;
