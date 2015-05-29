@@ -317,13 +317,9 @@ blockquote {
         display: block;
         float: right;
         height: 140px;
-        margin: 0 50px 0 0;
+        margin: 180px 40px 0 0;
         opacity: 0.75;
-        position: absolute;
-        right: 0;
         text-indent: -9999px;
-        top: 50%;
-        transform: translateY(-50%);
         transition: height $animation-duration, width $animation-duration, opacity $animation-duration;
         width: 140px;
 
