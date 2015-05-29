@@ -86,6 +86,11 @@ blockquote {
         margin-top: -16px;
     }
 
+    &.large {
+        font-size: 2.0rem;
+        line-height: 2.8rem;
+    }
+
     @media (min-width: 321px) {
         text-align: center;
     }
@@ -98,10 +103,28 @@ blockquote {
 }
 
 .element-spacing {
-    margin: 0 0 $element-spacing 0;
+    margin-bottom: $element-spacing;
 
     @media (min-width: 768px) {
-        margin: 0 0 $medium-element-spacing 0;
+        margin-bottom: $medium-element-spacing;
+    }
+}
+
+.element-spacing-2 {
+    margin-bottom: $element-spacing-2;
+
+    @media (min-width: 768px) {
+        margin-bottom: $medium-element-spacing-2;
+    }
+}
+
+.spacing-top-bottom {
+    margin-bottom: $element-spacing;
+    margin-top: $element-spacing;
+
+    @media (min-width: 768px) {
+        margin-bottom: $medium-element-spacing;
+        margin-top: $medium-element-spacing;
     }
 }
 
@@ -195,7 +218,6 @@ blockquote {
 .fullsize-media {
     height: auto;
     max-height: 500px;
-    min-height: 200px;
     overflow: hidden;
     position: relative;
     width: 100%;
@@ -225,6 +247,14 @@ blockquote {
             height: 320px;
         }
 
+        &.large {
+            height: 500px;
+
+            @media (max-width: 767px) {
+                height: 320px;
+            }
+        }
+
         &.home {
             background-image: url("../images/home-header-bg.jpg");
         }
@@ -247,8 +277,13 @@ blockquote {
         height: 380px;
         position: relative;
 
-        &.video {
+        &.video,
+        &.large {
             height: 500px;
+
+            @media (max-width: 767px) {
+                height: 320px;
+            }
         }
 
         @media (max-width: 767px) {
@@ -498,4 +533,22 @@ blockquote {
 .vjs-default-skin .vjs-play-progress,
 .vjs-default-skin .vjs-volume-level {
     background-color: $color-zalando;
+}
+
+.blog-post-content.column-block {
+    h1 {
+        color: $color-zalando;
+        margin-top: 0;
+    }
+
+    p,
+    li {
+        font-size: 1.4rem;
+        line-height: 2.0rem;
+    }
+
+    ul li {
+        background-position: 2px 8px;
+        padding-left: 24px;
+    }
 }

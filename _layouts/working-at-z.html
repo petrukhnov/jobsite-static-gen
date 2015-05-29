@@ -1,3 +1,7 @@
+{% set person1 = prismic.authors | to_author_viewmodel({ fullName: 'Lauri Apple' }) %}
+{% set person2 = prismic.authors | to_author_viewmodel({ fullName: 'Lauri Apple' }) %}
+{% set person3 = prismic.authors | to_author_viewmodel({ fullName: 'Lauri Apple' }) %}
+
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -10,6 +14,22 @@
 <body>
 
     {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'working-at-z' } %}
+
+    <!-- Background video -->
+    <div class="fullsize-media visible-lg-block">
+        <div class="teaser">
+            <div class="content video">
+                <div class="container">
+                    <h1 class="title">WORKING @<br/>ZALANDO</h1>
+                    <!-- <a href="#" id="play-home-video" class="play-button">Play</a> -->
+                </div>
+            </div>
+        </div>
+        <video id="background-video" autoplay="" loop="loop" class="landing-video" muted="">
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z_loop.mp4"></source>
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z_loop.webm"></source>
+        </video>
+    </div>
 
     <div class="fullsize-container white">
         <div class="container">
@@ -25,55 +45,174 @@
 
     <!-- Radical Agility -->
     <div class="fullsize-container radical-agility">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                    <h1 class="heading-1 element-spacing">What is Zalando?</h1>
-                    <h2 class="heading-2 element-spacing">Building the world’s most innovative online fashion platform isn’t where our common purpose ends, however. Zalandos are driven to build a tech culture that reinforces <strong>Autonomy</strong>, <strong>Mastery</strong> and <strong>Purpose</strong>. With these three principles to guide us, we can ensure that each Zalando continues to grow, learn and thrive.</h2>
+        <div class="spacing-top-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <h1 class="heading-1 element-spacing">Radical Agility</h1>
+                        <h2 class="heading-2 large element-spacing">Building the world’s most innovative online fashion platform isn’t where our common purpose ends, however. Zalandos are driven to build a tech culture that reinforces <strong>Purpose</strong>, <strong>Autonomy</strong> and <strong>Mastery</strong>. With these three principles to guide us, we can ensure that each Zalando continues to grow, learn and thrive.</h2>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container">
-            <div class="cards element-spacing">
+            <div class="container">
+                <div class="cards element-spacing">
 
-                <div class="card-container">
-                    <div class="card radical-agility">
-                        <div class="icon purpose"></div>
-                        <div class="content">
-                            <p class="title">Purpose</p>
-                            <p class="text">Every Zalando technologist needs to know the WHY behind what they do; answering the WHY is how we achieve purpose. We have created a framework to help you find your purpose with us, to be your best, and to achieve great things.</p>
+                    <div class="card-container">
+                        <div class="card radical-agility-2">
+                            <div class="content">
+                                <p class="title">Purpose</p>
+                                <p class="text">Every Zalando technologist needs to know the WHY behind what they do; answering the WHY is how we achieve purpose. We have created a framework to help you find your purpose with us, to be your best, and to achieve great things.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-container">
-                    <div class="card radical-agility">
-                        <div class="icon autonomy"></div>
-                        <div class="content">
-                            <p class="title">Autonomy</p>
-                            <p class="text">Zalando promotes autonomy for both individuals and teams. As individuals, we pick our teams, create our own personal growth and development paths, and give each person a voice. At the team level, we self-organize. It’s how we foster trust and respect.</p>
+                    <div class="card-container">
+                        <div class="card radical-agility-2">
+                            <div class="content">
+                                <p class="title">Autonomy</p>
+                                <p class="text">Zalando promotes autonomy for both individuals and teams. As individuals, we pick our teams, create our own personal growth and development paths, and give each person a voice. At the team level, we self-organize. It’s how we foster trust and respect.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="card-container">
-                    <div class="card radical-agility">
-                        <div class="icon mastery"></div>
-                        <div class="content">
-                            <p class="title">Mastery</p>
-                            <p class="text">Our passion ultimately focuses on investing in our people. We strive to give Zalandos the best support we can: to help you grow, to provide a place where you can achieve mastery and greatness, and where you are inspired every day to do what you do best--both for Zalando and for yourself.</p>
+                    <div class="card-container">
+                        <div class="card radical-agility-2">
+                            <div class="content">
+                                <p class="title">Mastery</p>
+                                <p class="text">Our passion ultimately focuses on investing in our people. We strive to give Zalandos the best support we can: to help you grow, to provide a place where you can achieve mastery and greatness, and where you are inspired every day to do what you do best--both for Zalando and for yourself.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
 
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Methods & Ethics -->
-    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/work_methods.jpg'); background-position: 50% 40%;">
+    <div class="fullsize-media picture-bg large" style="background-image: url('{{ relative_path_to_root }}images/work_methods.jpg'); background-position: 50% 40%;">
         <div class="teaser">
             <div class="container">
-                <div class="content">
+                <div class="content large">
                     <h1 class="title">Methods &amp;<br/>Ethics</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullsize-container white">
+        <div class="spacing-top-bottom">
+            <div class="container">
+                <div class="row element-spacing">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 spacing-top-bottom">
+                        <h2 class="heading-2 large">Okay, so “autonomy, mastery and purpose” are some pretty lofty ideals. You might be wondering now how Zalandos implement these principles in practice. How do we give meaning to these ideals? Here are some examples:</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>Tools</h1>
+                            <p>We follow methodologies and practices that we know free up technologists to work as efficiently, creatively and meaningfully as possible.</p>
+                            <ul>
+                                <li>Agile Coachings</li>
+                                <li>Design Thinking</li>
+                                <li>Lean Startup</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>Environment</h1>
+                            <p>We are constantly introducing new ways to help our team stretch and grow in new directions. One important leverage is the creation of a working environment, which is hands-on, but also inspiring and a product of collaboration with our team.</p>
+                            <ul>
+                                <li>InnovationLab</li>
+                                <li>Eat, chill and play areas</li>
+                                <li>UserLabs &amp; Lab Insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>Tech Constitution</h1>
+                            <p>We think it’s important to make sure every Zalando understands his or her rights and responsibilities--as well as the rights and responsibilities of our leadership and the entire technology team. Some of our guiding principles:</p>
+                            <ul>
+                                <li>To trust instead of control</li>
+                                <li>To build a personal brand related to work</li>
+                                <li>To make informed decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community -->
+    <div class="fullsize-media picture-bg large" style="background-image: url('{{ relative_path_to_root }}images/community.jpg'); background-position: 50% 30%;">
+        <div class="teaser">
+            <div class="container">
+                <div class="content large">
+                    <h1 class="title">Community</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullsize-container white">
+        <div class="spacing-top-bottom">
+            <div class="container">
+                <div class="row element-spacing">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 spacing-top-bottom">
+                        <h2 class="heading-2 large">Zalandos are proud of the strong community we’ve built. Our self-organized guilds, tech talks, training initiatives, and other efforts give us opportunities to build community around the technologies and topics we love. Want to share your knowledge with others? We’ll help you make it happen.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row element-spacing">
+                    <div class="col-sm-3">
+                        <div class="blog-post-content column-block">
+                            <h1>Events</h1>
+                            <p>Our events give us opportunities to share our insights and expertise with each other and with the communities at large to which we belong.</p>
+                            <ul>
+                                <li>Hack week</li>
+                                <li>Meetups</li>
+                                <li>Game Night</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blog-post-content column-block">
+                            <h1>Guilds</h1>
+                            <p>We’ve self-organized +70 internal guilds to trade knowledge on our myriad interests: Scala, Clojure, open source, parenting, music, tea, gaming etc. If we don’t see a guild we want, we just make one!</p>
+                            <ul>
+                                <li>Technical Guilds</li>
+                                <li>Fun Guilds</li>
+                                <li>Team &amp; Role Guilds</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blog-post-content column-block">
+                            <h1>Knowledge Sharing</h1>
+                            <p>We know that every new technology and methodology we implement involves a learning curve. We’re dedicated to helping everyone on our team get up to speed on using the tools they need to work successfully.</p>
+                            <ul>
+                                <li>Tech Talks</li>
+                                <li>Product Demos</li>
+                                <li>Coder Dojos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="blog-post-content column-block">
+                            <h1>Personal Branding</h1>
+                            <p>We support your efforts to build your reputation as a tech leader--not only among your Zalando peers, but in the tech industry at large. That’s why we have people on the team to help you.</p>
+                            <ul>
+                                <li>Mentoring</li>
+                                <li>Coachings</li>
+                                <li>Trainings</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -81,31 +220,89 @@
 
     <div class="fullsize-container light-gray">
         <div class="container">
-            <div class="row">
+            <div class="row element-spacing">
                 <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-                    <h2 class="heading-2">Okay, so “autonomy, mastery and purpose” are some pretty lofty ideals. You might be wondering now how Zalandos implement these principles in practice. How do we give meaning to these ideals? Here are some examples:</h2>
+                    <h1 class="heading-1 element-spacing">Multi Culti Family</h1>
+                    <h2 class="heading-2 large element-spacing">Zalando technologists come from more than 50 countries around the world. With so many languages, backgrounds, beliefs and ideas, how do we make it work? By celebrating our diversity and learning from each other. We are all different, but we are all Zalandos.</h2>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Community -->
-    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/community.jpg'); background-position: 50% 30%;">
-        <div class="teaser">
-            <div class="container">
-                <div class="content">
-                    <h1 class="title">Community</h1>
-                </div>
+        <div class="container">
+            <div class="cards element-spacing-2">
+
+                {% include "../src/partials/person_card.html" with {
+                    'thumbnail': person1.thumbnail,
+                    'name': person1.fullName,
+                    'title': person1.title,
+                    'quote': person1.quote,
+                    'nationality': person1.nationality,
+                    'relative_path_to_root': relative_path_to_root
+                } %}
+
+                {% include "../src/partials/person_card.html" with {
+                    'thumbnail': person2.thumbnail,
+                    'name': person2.fullName,
+                    'title': person2.title,
+                    'quote': person2.quote,
+                    'nationality': person2.nationality,
+                    'relative_path_to_root': relative_path_to_root
+                } %}
+
+                {% include "../src/partials/person_card.html" with {
+                    'thumbnail': person3.thumbnail,
+                    'name': person3.fullName,
+                    'title': person3.title,
+                    'quote': person3.quote,
+                    'nationality': person3.nationality,
+                    'relative_path_to_root': relative_path_to_root
+                } %}
+
             </div>
         </div>
+
     </div>
 
     <!-- Our perks -->
-    <div class="fullsize-media picture-bg" style="background-image: url('{{ relative_path_to_root }}images/our_perks.jpg'); background-position: 50% 24%;">
+    <div class="fullsize-media picture-bg large" style="background-image: url('{{ relative_path_to_root }}images/our_perks.jpg'); background-position: 50% 24%;">
         <div class="teaser">
             <div class="container">
-                <div class="content">
+                <div class="content large">
                     <h1 class="title">Our Perks</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="fullsize-container white">
+        <div class="spacing-top-bottom">
+            <div class="container">
+                <div class="row element-spacing">
+                    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 spacing-top-bottom">
+                        <h2 class="heading-2 large">We want to build a strong tech community, where knowledge is shared equally and where anyone has space to grow, be supported and evolve in this great adventure.</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>Food &amp; Drinks</h1>
+                            <p>We want every Zalando to be as comfortable as possible during the work day. That’s why we supply lots of beverages, fresh fruit and cereals for everyone’s enjoyment. For the truly hungry, our brand-new food court serves great and healthy food in a relaxed atmosphere.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>40% Shopping Discount</h1>
+                            <p>Our 40% shopping voucher is one of our greatest benefits. Grow your wardrobe while you grow on the job! And the best thing about shopping at Zalando is that you’re actively testing our shop and providing feedback for improvement.</p>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="blog-post-content column-block">
+                            <h1>Lots of fun</h1>
+                            <p>Zalandos love to have fun together. Parties, ping pong, video games, shooting pool, movie nights, jamming out in our band rehearsal room, launching shoes into space--we come up with lots of activities to take time out, relax and get to know each other.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

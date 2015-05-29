@@ -56,7 +56,7 @@
 
 .blog-post-content {
     color: $color-black;
-    margin: 16px 8px 24px 8px;
+    margin: 16px 10px 24px 10px;
     overflow: hidden;
     padding: 0;
     text-rendering: optimizeLegibility;
@@ -125,12 +125,12 @@
             outline: 0;
 
             &:before {
-                content: '';
+                content: "";
                 display: inline-block;
-                position: relative;
-                width: 0;
                 height: 70px;
                 margin-top: -70px;
+                position: relative;
+                width: 0;
             }
         }
     }
