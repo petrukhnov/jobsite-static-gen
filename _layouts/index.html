@@ -21,12 +21,13 @@
                 <div class="container">
                     <div class="tech-zalando-logo"></div>
                     <h1 class="title with-logo">WE DRESS<br/>CODE!</h1>
-                    <a href="#" id="play-home-video" class="play-button">Play</a>
+                    <a href="#" id="play-home-video" class="default-button color-transparent play">Watch Video</a>
                 </div>
             </div>
         </div>
         <video id="background-video" autoplay="" loop="loop" class="landing-video" muted="">
-            <source src="videos/zalando_tech_home_loop.mp4"></source>
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_home_loop.mp4" type='video/mp4'></source>
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_home_loop.webm" type='video/webm'></source>
         </video>
     </div>
     <!-- On mobile just show a background picture -->
@@ -49,7 +50,8 @@
     <div class="overlay-background" id="video-overlay">
         <div class="video">
             <video id="home-video" class="video-js vjs-default-skin" controls preload="auto">
-                <source src="videos/zalando_tech_home.mp4" type='video/mp4' />
+                <source src="{{ relative_path_to_root }}videos/zalando_tech_home.mp4" type='video/mp4' />
+                <source src="{{ relative_path_to_root }}videos/zalando_tech_home.webm" type='video/webm' />
                 <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
             </video>
             <a href="#" class="close-button" id="stop-home-video"></a>
