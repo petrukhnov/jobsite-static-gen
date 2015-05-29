@@ -21,7 +21,7 @@
             <div class="content video">
                 <div class="container">
                     <h1 class="title">WORKING @<br/>ZALANDO</h1>
-                    <!-- <a href="#" id="play-home-video" class="play-button">Play</a> -->
+                    <a href="#" id="play-home-video" class="default-button color-transparent play">Watch Video</a>
                 </div>
             </div>
         </div>
@@ -29,6 +29,17 @@
             <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z_loop.mp4"></source>
             <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z_loop.webm"></source>
         </video>
+    </div>
+    <!-- Video Overlay -->
+    <div class="overlay-background" id="video-overlay">
+        <div class="video">
+            <video id="home-video" class="video-js vjs-default-skin" controls preload="auto">
+                <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z.mp4" type='video/mp4' />
+                <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z.webm" type='video/mp4' />
+                <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+            </video>
+            <a href="#" class="close-button" id="stop-home-video"></a>
+        </div>
     </div>
 
     <div class="fullsize-container white">

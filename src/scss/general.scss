@@ -344,6 +344,11 @@ blockquote {
         }
     }
 
+    .default-button.play {
+        float: right;
+        margin: 232px 10px 0 0;
+    }
+
     .play-button {
         background-image: url("/images/play_button.png");
         background-position: center center;
