@@ -238,13 +238,10 @@
             line-height: 2.8rem;
             text-align: center;
             text-transform: none;
+            color: $color-white;
 
-            a {
-                color: $color-white;
-
-                &:hover {
-                    color: $color-zalando-lighter;
-                }
+            &:hover {
+                color: $color-zalando-lighter;
             }
         }
 
@@ -276,13 +273,10 @@
             line-height: 2.8rem;
             text-align: center;
             text-transform: none;
+            color: $color-white;
 
-            a {
-                color: $color-white;
-
-                &:hover {
-                    color: $color-zalando-lighter;
-                }
+            &:hover {
+                color: $color-zalando-lighter;
             }
         }
 

@@ -1,11 +1,12 @@
 <div class="card-container">
-    <div class="card joker-{{ type }} shrunken">
-        <div class="media">
-            <a href="{{ link }}"></a>
+    <a href="{{ link }}">
+        <div class="card joker-{{ type }} shrunken">
+            <div class="media">
+            </div>
+            <div class="content">
+                <p class="title">{{ title }}</p>
+                <p class="text">{{ text }}</p>
+            </div>
         </div>
-        <div class="content">
-            <p class="title"><a href="{{ link }}">{{ title }}</a></p>
-            <p class="text">{{ text }}</p>
-        </div>
-    </div>
+    </a>
 </div>
