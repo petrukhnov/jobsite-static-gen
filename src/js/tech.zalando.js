@@ -106,12 +106,12 @@ $(function() {
     if (playHomeButton) {
         playHomeButton.click(openHomeVideo);
     }
-    // if (playHomeMobileButton) {
-    //     playHomeMobileButton.click(function() {
-    //         alert('test');
-    //         homeVideoMobile.get(0).play();
-    //     });
-    // }
+    if (playHomeMobileButton) {
+        playHomeMobileButton.click(function() {
+            // alert('test');
+            homeVideoMobile.get(0).play();
+        });
+    }
     if (videoOverlay) {
         videoOverlay.click(function (e) {
             if (e.target===videoOverlay.get(0)) {

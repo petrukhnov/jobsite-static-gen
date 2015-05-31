@@ -30,6 +30,20 @@
             <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z_loop.webm" type='video/webm'></source>
         </video>
     </div>
+    <!-- On mobile just show a background picture -->
+    <div class="fullsize-media picture-bg home visible-md-block visible-sm-block visible-xs-block">
+        <div class="teaser">
+            <div class="container">
+                <h1 class="title">WE DRESS<br/>CODE!</h1>
+                <a href="#" id="play-home-video-mobile" class="default-button color-transparent play">Watch Video</a>
+            </div>
+        </div>
+        <video id="home-video-mobile" class="mobile video-js vjs-default-skin" preload="none" controls poster="{{ relative_path_to_root }}images/working_at_z_video_poster.jpg">
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z.mp4" type='video/mp4' />
+            <source src="{{ relative_path_to_root }}videos/zalando_tech_working_at_z.webm" type='video/webm' />
+            <p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+        </video>
+    </div>
     <!-- Video Overlay -->
     <div class="overlay-background" id="video-overlay">
         <div class="video">
@@ -290,7 +304,7 @@
             <div class="container">
                 <div class="row element-spacing">
                     <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2 spacing-top-bottom">
-                        <h2 class="heading-2 large">We want to build a strong tech community, where knowledge is shared equally and where anyone has space to grow, be supported and evolve in this great adventure.</h2>
+                        <h2 class="heading-2 large">Zalando’s comprehensive array of benefits emphasize value and fun. Here are some of the perks you’ll get when you join the team:</h2>
                     </div>
                 </div>
             </div>
@@ -324,7 +338,7 @@
         <div class="teaser">
             <div class="container">
                 <div class="content">
-                    <h1 class="title">Make Mr.<br/>Spock happy!</h1>
+                    <h1 class="title"></h1>
                 </div>
             </div>
         </div>
