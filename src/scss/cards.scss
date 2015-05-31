@@ -363,6 +363,14 @@
     &.person {
         transform: scale(1, 1);
 
+        .content {
+            min-height: 220px;
+
+            @media (max-width: 320px) {
+                min-height: initial;
+            }
+        }
+
         .image {
             background-position: center center;
             background-repeat: no-repeat;
