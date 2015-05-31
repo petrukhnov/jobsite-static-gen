@@ -26,7 +26,8 @@
   "dependencies": {},
   "devDependencies": {
     "metalsmith": "^1.6.0",
-    "mocha": "^2.1.0"
+    "mocha": "^2.1.0",
+    "typeof": "^1.0.0"
   },
   "maintainers": [
     {
