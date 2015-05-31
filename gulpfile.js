@@ -26,6 +26,7 @@ var fs = require('fs'),
     assign = require('lodash.assign'),
     prismic = require('./lib/metalsmith-prismic'),
     greenhouse = require('../metalsmith-greenhouse'),
+    greenhouseImgurl = require('./lib/metalsmith-greenhouse-imgurl'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
@@ -289,6 +290,7 @@ gulp.task('metalsmith', function() {
                   'apiEndpointPath': '/v1/boards',
                   'boardName': 'zalandotech'
               }))
+              .use(greenhouseImgurl())
               .use(markdown())
               .use(permalinks())
               .use(partial({

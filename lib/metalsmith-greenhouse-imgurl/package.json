@@ -1,0 +1,38 @@
+{
+  "name": "metalsmith-greenhouse-imgurl",
+  "version": "0.1.0",
+  "description": "Extract images from metalsmith-greenhouse jobs into imgurls",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zalando/metalsmith-greenhouse-imgurl"
+  },
+  "keywords": [
+    "package",
+    "Metalsmith.io",
+    "Greenhouse.io"
+  ],
+  "author": {
+    "name": "Eemeli Kantola"
+  },
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/zalando/metalsmith-greenhouse-imgurl/issues"
+  },
+  "homepage": "https://github.com/ekantola/metalsmith-greenhouse-imgurl",
+  "dependencies": {},
+  "devDependencies": {
+    "metalsmith": "^1.6.0",
+    "mocha": "^2.1.0"
+  },
+  "maintainers": [
+    {
+      "name": "ekantola",
+      "email": "eemeli.kantola@futurice.com"
+    }
+  ],
+  "directories": {}
+}
