@@ -239,6 +239,7 @@
         &.job-type {
             @media (min-width: 502px) {
                 .media {
+                    background-position: center center;
                     float: left;
                     width: 30%;
                 }
@@ -246,6 +247,11 @@
                 .content {
                     float: right;
                     width: 70%;
+                }
+
+                .title,
+                .text {
+                    text-align: left;
                 }
             }
 
@@ -255,7 +261,7 @@
             }
 
             @media (min-width: 768px) {
-                height: 185px;
+                height: 154px;
                 width: 536px;
             }
         }
@@ -298,6 +304,7 @@
         &.job-type {
             @media (min-width: 502px) {
                 .media {
+                    background-position: center center;
                     float: left;
                     width: 30%;
                 }
@@ -305,6 +312,11 @@
                 .content {
                     float: right;
                     width: 70%;
+                }
+
+                .title,
+                .text {
+                    text-align: left;
                 }
             }
 
@@ -314,7 +326,7 @@
             }
 
             @media (min-width: 768px) {
-                height: 185px;
+                height: 154px;
                 width: 536px;
             }
         }
