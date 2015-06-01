@@ -200,6 +200,7 @@ gulp.task('copy-assets', function () {
         'src/robots.txt',
         'src/images/*.{jpg,png,gif,ico}',
         'src/blog/images/**/*',
+        'src/blog/files/**/*',
         'src/fonts/**',
         'src/videos/**'
     ], {base: 'src'})
@@ -223,6 +224,7 @@ gulp.task('build-to-dist:bulk', function() {
         'build/js/**/*.js',
         'build/fonts/**',
         'build/images/**',
+        'build/files/**',
         'build/videos/**',
         'build/blog/**',
         'build/posts/**',
