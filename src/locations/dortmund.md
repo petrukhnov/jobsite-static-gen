@@ -7,6 +7,8 @@ location:
   image: dortmund_header.jpg
   image_position: 50% 50%
   summary_partial: dortmund_summary
+  interview_partial: dortmund_interview
+  interview_person: Dimitrij Holev
   links:
     -
       link: http://www.lonelyplanet.com/germany/north-rhine-westphalia/dortmund
