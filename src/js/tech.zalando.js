@@ -118,11 +118,11 @@ $(function() {
 
     function updateLoopVideoPlaying() {
         if (loopVideoVisible && !loopVideoScrolledAway) {
-            if (backgroundVideo && backgroundVideo.get(0).paused) {
+            if (backgroundVideo && backgroundVideo.get(0) && backgroundVideo.get(0).paused) {
                 backgroundVideo.get(0).play();
             }
         } else {
-            if (backgroundVideo && !backgroundVideo.get(0).paused) {
+            if (backgroundVideo && backgroundVideo.get(0) && !backgroundVideo.get(0).paused) {
                 backgroundVideo.get(0).pause();
             }
         }
