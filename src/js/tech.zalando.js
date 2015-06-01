@@ -102,6 +102,31 @@ $(function() {
         return false;
     }
 
+    var loopVideoScrolledAway = false;
+    var loopVideoVisible = true;
+
+    function windowOnResize() {
+        loopVideoVisible = $(window).width() >= 1200;
+        updateLoopVideoPlaying();
+    }
+
+    function windowOnScroll() {
+        var scrollTop = $(window).scrollTop();
+        loopVideoScrolledAway = scrollTop > 500;
+        updateLoopVideoPlaying();
+    }
+
+    function updateLoopVideoPlaying() {
+        if (loopVideoVisible && !loopVideoScrolledAway) {
+            if (backgroundVideo && backgroundVideo.get(0).paused) {
+                backgroundVideo.get(0).play();
+            }
+        } else {
+            if (backgroundVideo && !backgroundVideo.get(0).paused) {
+                backgroundVideo.get(0).pause();
+            }
+        }
+    }
 
     if (playHomeButton) {
         playHomeButton.click(openHomeVideo);
@@ -128,6 +153,13 @@ $(function() {
             closeHomeVideo();
         }
     });
+
+    $(window).scroll(windowOnScroll);
+    $(window).resize(windowOnResize);
+    windowOnScroll();
+    windowOnResize();
+
+    window.setTimeout(updateLoopVideoPlaying, 2000);
 
     var cards = $(".card");
     if (cards) {
