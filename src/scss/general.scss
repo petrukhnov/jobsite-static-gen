@@ -360,12 +360,25 @@ blockquote {
         }
     }
 
-    .default-button.play {
-        float: right;
-        margin: 232px 10px 0 0;
+    .default-button {
+        display: block;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
 
-        @media (max-width: 767px) {
-            display: none;
+        &.join {
+            font-size: 2.0rem;
+            line-height: 2.4rem;
+        }
+
+        &.play {
+            float: right;
+            margin: 232px 10px 0 0;
+            position: relative;
+
+            @media (max-width: 767px) {
+                display: none;
+            }
         }
     }
 }
