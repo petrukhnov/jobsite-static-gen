@@ -27,6 +27,7 @@ var fs = require('fs'),
     prismic = require('./lib/metalsmith-prismic'),
     greenhouse = require('../metalsmith-greenhouse'),
     greenhouseImgurl = require('./lib/metalsmith-greenhouse-imgurl'),
+    imgurlReprocessor = require('./lib/imgurl-reprocessor'),
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
@@ -291,6 +292,15 @@ gulp.task('metalsmith', function() {
                   'boardName': 'zalandotech'
               }))
               .use(greenhouseImgurl())
+              .use(imgurlReprocessor({
+                  outputBasePath: 'build/images',
+                  outputSizes: [
+                      '1440x500',  // desktop hero images
+                      '640x640',   // mobile hero images
+                      '280x177',   // normal thumbnails
+                      '560x354'    // retina thumbnails
+                  ]
+              }))
               .use(markdown())
               .use(permalinks())
               .use(partial({
