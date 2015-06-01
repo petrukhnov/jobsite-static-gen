@@ -425,7 +425,14 @@
     }
 
     &.person {
-        transform: scale(1, 1);
+        &:hover {
+            cursor: default;
+            transform: scale(1, 1);
+
+            .title {
+                color: $color-black;
+            }
+        }
 
         .content {
             min-height: 220px;
