@@ -68,9 +68,14 @@
         margin-left: auto;
         margin-right: auto;
     }
-    
+
     &.full-size {
         margin: 0 0 10px;
         width: 100%;
+    }
+
+    &.large {
+        font-size: 2.0rem;
+        line-height: 2.4rem;
     }
 }

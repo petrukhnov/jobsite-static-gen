@@ -57,7 +57,7 @@ var techZalando = techZalando || {};
             function showMoreButton() {
                 if (this.props.viewModels.length > this.state.shownItems) {
                     return (
-                        <button onClick={this.onClickMore} className="default-button color-zalando element-spacing">
+                        <button onClick={this.onClickMore} className="default-button large color-zalando element-spacing">
                             Show More
                         </button>
                     );

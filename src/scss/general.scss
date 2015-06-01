@@ -366,9 +366,8 @@ blockquote {
         top: 50%;
         transform: translateY(-50%);
 
-        &.join {
-            font-size: 2.0rem;
-            line-height: 2.4rem;
+        &.color-zalando {
+            background-color: $color-white;
         }
 
         &.play {
