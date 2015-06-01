@@ -105,6 +105,13 @@
                 </div>
 
                 {% include "../src/partials/joker_card.html" with {
+                    'type': 'talent-pool job-type',
+                    'link': relative_path_to_root + 'jobs/65731/?gh_jid=65731',
+                    'title': 'Can’t find the right job?',
+                    'text': 'Apply to our talent pool and create your own job'
+                } %}
+
+                {% include "../src/partials/joker_card.html" with {
                     'type': 'non-tech-jobs job-type',
                     'link': 'http://jobs.zalando.de/en/',
                     'title': 'Not looking for a tech job?',
