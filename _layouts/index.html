@@ -202,7 +202,7 @@
 
                 {% include "../src/partials/job_card.html" with {
                     'link': job.link,
-                    'thumbnail': job.thumbnail,
+                    'thumbnail': relative_path_to_root + job.thumbnail,
                     'title': job.title,
                     'subtitle': job.department,
                     'locations': job.locations,
