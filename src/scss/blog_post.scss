@@ -395,7 +395,7 @@
 
     .tag {
         &:after {
-            content: " · ";
+            content: " \00b7 ";
         }
 
         &:last-child:after {
