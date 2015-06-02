@@ -62,28 +62,10 @@ if (typeof env === 'undefined') {
     console.log("Running in environment:", env);
 }
 
-var config = {};
-var envCaps = env.toUpperCase();
-try {
-    config = require('./config-' + env).site;
-} catch (e) {
-    // else: import environment variables
-    config = {
-        'googleAnalytics': {
-            'trackingID': process.env['GATRACKINGID_' + envCaps]
-        },
-        'aws': {
-            'key': process.env['S3KEY_' + envCaps],
-            'secret': process.env['S3SECRET_' + envCaps],
-            'bucket': process.env['S3BUCKET_' + envCaps],
-            'bucketPath': process.env['S3BUCKETPATH_' + envCaps],
-            'region': process.env['S3REGION_' + envCaps]
-        }
-    };
-}
+var config = require('./config-' + env).site;
 
 if (config.aws.bucketPath == null) {
-    throw new Error('Config variable aws.bucketPath (or env var S3BUCKETPATH_' + envCaps + ') must be set');
+    throw new Error('Config variable aws.bucketPath must be set');
 }
 
 // lint task
