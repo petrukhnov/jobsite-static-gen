@@ -92,6 +92,10 @@
     dd {
         margin-bottom: 8px;
         padding-left: $special-indent;
+
+        @media (max-width: 767px) {
+            padding-left: $special-indent-mobile;
+        }
     }
 
     ul {
@@ -105,11 +109,20 @@
             background-size: 7px 7px;
             margin-bottom: 6px;
             padding-left: $special-indent;
+
+            @media (max-width: 767px) {
+                background-position: 2px 8px;
+                padding-left: $special-indent-mobile;
+            }
         }
     }
 
     ol {
         padding-left: $special-indent;
+
+        @media (max-width: 767px) {
+            padding-left: $special-indent-mobile;
+        }
     }
 
     a {
@@ -217,7 +230,13 @@
     border-radius: 0;
     margin: 40px 0;
     overflow: auto;
+    -webkit-overflow-scrolling: touch;
     padding: 16px 24px;
+
+    @media (max-width: 767px) {
+        margin: 30px 0;
+        padding: 12px 16px;
+    }
 
     .comment {
         color: $color-code-comment;
@@ -292,7 +311,18 @@
 .math {
     color: $color-dark-gray;
     font-size: 1.7rem;
-    margin: 50px 0;
+    margin: 20px 0 30px 0;
+
+    @media (max-width: 767px) {
+        font-size: 1.3rem;
+        margin: 10px 0 20px 0;
+    }
+}
+
+.MathJax_Display {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    padding: 20px 0;
 }
 
 .citation,
@@ -357,9 +387,9 @@
 
 .tags {
     color: $color-black;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.5rem;
+    font-size: 1.4rem;
+    font-weight: 300;
+    line-height: 1.7rem;
     margin: 10px 0;
 
     .tag {
