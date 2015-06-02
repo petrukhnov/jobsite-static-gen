@@ -377,8 +377,7 @@ gulp.task('simulate-failed-build', notifyFailedBuild);
 gulp.task('server', ['build', 'watch'], function() {
     connect.server({
         port: 4001,
-        root: ['dist'],
-        livereload: true
+        root: ['dist']
     });
 });
 
