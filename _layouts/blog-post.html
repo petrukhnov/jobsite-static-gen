@@ -49,15 +49,25 @@
                     <div class="blog-post-content">
                         {{ blogpost.content | safe }}
                     </div>
-
-                    <div class="blog-post-authors">
-                        {%- for author in blogpost.authors %}
-                            <div class="author">
-                                <div class="picture" style="background-image:url('{{ author.thumbnail }}');"></div>
-                                <p>{{ author.fullName }}</p>
-                                <p class="title">{{ author.title }}</p>
+                    <div class="blog-post-footer">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                {%- for author in blogpost.authors %}
+                                    <div class="author">
+                                        <div class="picture" style="background-image:url('{{ author.thumbnail }}');"></div>
+                                        <p>{{ author.fullName }}</p>
+                                        <p class="title">{{ author.title }}</p>
+                                    </div>
+                                {%- endfor %}
                             </div>
-                        {%- endfor %}
+                            <div class="col-sm-8">
+                                <div class="tags">
+                                    {%- for tag in blogpost.tags %}
+                                        <span class="tag">{{ tag }}</span>
+                                    {%- endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

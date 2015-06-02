@@ -211,43 +211,6 @@
     }
 }
 
-.blog-post-authors {
-    border-top: 1px solid $color-gray;
-    margin: 0 8px 0 8px;
-    padding: 16px 0 0 0;
-
-    .author {
-        padding: 16px 0;
-
-        .picture {
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.10);
-            display: block;
-            float: left;
-            font-size: 1.6rem;
-            font-weight: 600;
-            height: 50px;
-            line-height: 2.0rem;
-            margin-right: 16px;
-            width: 50px;
-        }
-
-        .title {
-            color: $color-gray;
-            font-weight: 300;
-        }
-
-        p {
-            font-family: $font-regular;
-            font-size: 1.6rem;
-            line-height: 1.6rem;
-            margin: 5px 0 0 66px;
-        }
-    }
-}
-
 .code {
     background-color: $color-light-gray-lighter-blue;
     border: 0;
@@ -339,6 +302,7 @@
     font-style: italic;
     font-weight: 400;
     line-height: 1.8rem;
+    margin-bottom: -8px;
 
     td {
         padding-bottom: 8px;
@@ -350,5 +314,61 @@
         font-style: normal;
         font-weight: 400;
         line-height: 1.8rem;
+    }
+}
+
+.blog-post-footer {
+    border-top: 1px solid $color-gray;
+    margin: 0 8px 4px 8px;
+    padding: 20px 0 0 0;
+}
+
+.author {
+    overflow: auto;
+    padding: 10px 0;
+
+    .picture {
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        box-shadow: 0 2px 3px rgba(0, 0, 0, 0.10);
+        display: block;
+        float: left;
+        font-size: 1.6rem;
+        font-weight: 600;
+        height: 50px;
+        line-height: 2.0rem;
+        margin-right: 16px;
+        width: 50px;
+    }
+
+    .title {
+        color: $color-gray;
+        font-weight: 300;
+    }
+
+    p {
+        font-family: $font-regular;
+        font-size: 1.6rem;
+        line-height: 1.6rem;
+        margin: 5px 0 0 66px;
+    }
+}
+
+.tags {
+    color: $color-black;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin: 10px 0;
+
+    .tag {
+        &:after {
+            content: " · ";
+        }
+
+        &:last-child:after {
+            content: "";
+        }
     }
 }
