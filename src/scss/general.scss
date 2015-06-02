@@ -459,40 +459,28 @@ blockquote {
     }
 }
 
-.relocation-service {
-    h1 {
-        font-size: 2.2rem;
-        font-weight: 600;
-        line-height: 2.6rem;
-        margin: 10px 0 16px 0;
-        text-align: center;
-        text-transform: uppercase;
-    }
+.icon-relocation-service {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 160px;
+    margin: 20px auto 0 auto;
+    width: 160px;
 
-    p {
-        font-family: $font-bodycopy;
-        font-size: 1.6rem;
-        font-weight: 400;
-        line-height: 2.0rem;
-        text-align: center;
-    }
 
-    .icon {
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: contain;
-        display: block;
-        height: 160px;
-        margin: 40px auto 0 auto;
-        width: 160px;
-    }
-
-    &.housing .icon {
+    &.housing {
         background-image: url("../images/relocation_housing.png");
     }
 
-    &.visa .icon {
+    &.visa {
         background-image: url("../images/relocation_visa.png");
+    }
+}
+
+.column-block.relocation-service {
+    h1 {
+        text-align: center;
     }
 }
 
