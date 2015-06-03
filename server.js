@@ -84,7 +84,7 @@ function startDeploy() {
 
     deployProcess.on('exit', function(code, signal) {
         deployProcess = null;
-        runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
+        var runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
         if (code === 0) {
             debug('Deployment to', ENV, 'succeeded in', runtimeSec);
         } else if (code === null) {
