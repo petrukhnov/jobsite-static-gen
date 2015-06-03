@@ -20,8 +20,9 @@ var BRANCH_FOR_ENV = {
     qa: 'qa',
     prod: 'master'
 };
+var BRANCH = BRANCH_FOR_ENV[ENV];
 
-if (!BRANCH_FOR_ENV[ENV]) {
+if (!BRANCH) {
     console.error('Environment variable TFOX_ENV needs to be one of: dev, qa, prod');
     process.exit(1);
 }
@@ -123,9 +124,9 @@ function startDeploy() {
 
 function codeUpdate() {
     var gitUpdate = exec(
-        'git checkout ' + branch + ' && ' +
+        'git checkout ' + BRANCH + ' && ' +
         'git fetch --all && ' +
-        'git reset --hard origin/' + branch + ' && ' +
+        'git reset --hard origin/' + BRANCH + ' && ' +
         'git clean --force', {
 
         timeout: 5*60*1000  // 5 mins
