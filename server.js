@@ -13,6 +13,17 @@ var SECRET = process.env.PRISMIC_SECRET;
 var APIURL = process.env.PRISMIC_APIURL;
 var DEBUG  = process.env.JOBSITE_GENERATOR_DEBUG;
 
+var BRANCH_FOR_ENV = {
+    dev: 'develop',
+    qa: 'qa',
+    prod: 'master'
+};
+
+if (!BRANCH_FOR_ENV[ENV]) {
+    console.error('Environment variable TFOX_ENV needs to be one of: dev, qa, prod');
+    process.exit(1);
+}
+
 var TYPE   = "api-update";
 var TEST_TYPE = "test-trigger";
 var app    = module.exports = express();
