@@ -72,6 +72,23 @@ app.post('/prismic-hook', function (req, res, next) {
     }
 });
 
+app.post('/github-hook', function (req, res, next) {
+    if (DEBUG) {
+        debug('Got a request, headers:', req.headers, ', body:', req.body);
+    }
+
+    var type = req.get('X-Github-Event');
+    var branch = BRANCH_FOR_ENV[ENV];
+
+    if (type === 'push' && req.body.ref === 'refs/heads/' + branch) {
+        codeUpdate();
+        res.status(202).json({ status: 'Code update and deployment started' });
+    } else {
+        res.status(400);
+        next(new Error('Invalid request'));
+    }
+});
+
 function startDeploy() {
     if (deployProcess) {
         debug('Deployment already in progress');
@@ -104,6 +121,33 @@ function startDeploy() {
     return true;
 }
 
+function codeUpdate() {
+    var gitUpdate = exec(
+        'git checkout ' + branch + ' && ' +
+        'git fetch --all && ' +
+        'git reset --hard origin/' + branch + ' && ' +
+        'git clean --force', {
+
+        timeout: 5*60*1000  // 5 mins
+    });
+
+    gitUpdate.on('exit', function(code, signal) {
+        var runtimeSec = parseInt((Date.now() - deployProcessStartTime) / 1000, 10) + 's';
+        if (code === 0) {
+            debug('Code update for', ENV, 'succeeded in', runtimeSec);
+            startDeploy();
+        } else if (code === null) {
+            console.log('Code update ended abnormally after', runtimeSec, 'with signal', signal);
+        } else {
+            console.log('Code update ended after', runtimeSec, 'with exit code', code);
+        }
+    });
+
+    gitUpdate.stderr.on('data', logDataLine);
+    if (DEBUG) {
+        gitUpdate.stdout.on('data', logDataLine);
+    }
+}
 
 // TODO add hook for app upgrade via Gitlab webhook
 // app.use('/gitlab-hook', function (req, res, next) {});
