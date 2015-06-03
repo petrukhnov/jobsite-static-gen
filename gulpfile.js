@@ -202,6 +202,7 @@ gulp.task('build-to-dist:bulk', function() {
     return gulp.src([
         'build/css/tech.zalando-all.css',
         'build/index.html',
+        'build/404.html',
         'build/robots.txt',
         'build/js/**/*.js',
         'build/fonts/**',
