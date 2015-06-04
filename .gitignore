@@ -6,6 +6,7 @@ dist
 .awspublish-zalando-tfox-dev
 config.js
 config-*.js
+/server.js
 
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
