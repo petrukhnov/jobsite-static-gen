@@ -28,6 +28,7 @@ var fs = require('fs'),
     greenhouse = require('../metalsmith-greenhouse'),
     greenhouseImgurl = require('./lib/metalsmith-greenhouse-imgurl'),
     imgurlReprocessor = require('./lib/imgurl-reprocessor'),
+    greenhouseIndexing = require('./lib/metalsmith-greenhouse-indexing')
     markdown = require('metalsmith-markdown'),
     permalinks = require('metalsmith-permalinks'),
     templates = require('metalsmith-templates'),
@@ -281,6 +282,9 @@ gulp.task('metalsmith', function() {
                       '280x177',   // normal thumbnails
                       '560x354'    // retina thumbnails
                   ]
+              }))
+              .use(greenhouseIndexing({
+                  outputPath: 'build/js'
               }))
               .use(markdown())
               .use(permalinks())

@@ -1,0 +1,42 @@
+{
+  "name": "metalsmith-greenhouse-indexing",
+  "version": "0.1.0",
+  "description": "Make an indexing json file for greenhouse job ads",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zalando/jobsite-static-gen/tree/develop/lib/metalsmith-greenhouse-indexing"
+  },
+  "keywords": [
+    "package",
+    "Metalsmith.io",
+    "Greenhouse.io"
+  ],
+  "author": {
+    "name": "Michael Tauer"
+  },
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/zalando/jobsite-static-gen/issues"
+  },
+  "dependencies": {
+    "lunr": "^0.5.9",
+    "fs-extra": "^0.18.4"
+  },
+  "devDependencies": {
+    "metalsmith": "^1.6.0",
+    "mocha": "^2.1.0",
+    "chai": "^3.0.0",
+    "typeof": "^1.0.0"
+  },
+  "maintainers": [
+    {
+      "name": "mtauer",
+      "email": "michael.tauer@futurice.com"
+    }
+  ],
+  "directories": {}
+}
