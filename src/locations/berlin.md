@@ -19,7 +19,7 @@ location:
       link: https://www.startupdigest.com/digests/berlin
       image: dublin_startupdigest.png
       title: Berlin Start-up Digest
-      text: The personalized insider newsletter for all things startup in Dublin and around the world.
+      text: The personalized insider newsletter for all things startup in Berlin and around the world.
     -
       link: http://www.residentadvisor.net/events.aspx?ai=34
       image: berlin_resident_advisor.png
