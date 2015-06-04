@@ -15,6 +15,7 @@
     "Filters"
   ],
   "author": "Michael Tauer <michael.tauer@futurice.com>",
+  "license": "Apache-2.0",
   "devDependencies": {
     "nodelint": "~0.6.2",
     "expect.js": "~0.2.0",
