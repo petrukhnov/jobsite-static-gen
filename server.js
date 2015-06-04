@@ -124,12 +124,17 @@ function startDeploy() {
 
 function codeUpdate() {
     var gitUpdate = exec(
+        'git fetch origin ' + BRANCH + ' && ' +
         'git checkout ' + BRANCH + ' && ' +
-        'git fetch --all && ' +
         'git reset --hard origin/' + BRANCH + ' && ' +
-        'git clean --force', {
+        'git clean --force && ' +
+        'npm install && ' +
+        'cd lib/imgurl-reprocessor && npm install && ' +
+        'cd ../metalsmith-greenhouse-imgurl && npm install && ' +
+        'cd ../metalsmith-prismic && npm install && ' +
+        'cd ../swig-viewmodel && npm install', {
 
-        timeout: 5*60*1000  // 5 mins
+        timeout: 10*60*1000  // 10 mins
     });
 
     gitUpdate.on('exit', function(code, signal) {
