@@ -161,6 +161,8 @@ $(function() {
 
     window.setTimeout(updateLoopVideoPlaying, 2000);
 
+    
+
     // var cards = $(".card");
     // if (cards) {
     //     cards.each(function(i, c) {

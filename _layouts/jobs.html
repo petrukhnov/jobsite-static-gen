@@ -23,8 +23,15 @@
                 </ul>
             </div>
 
-            <div class="jobs-header element-spacing">
-                <h1 class="heading-1 {{ jobs_category.name }}">{{ jobs_category.title }}</h1>
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="jobs-header element-spacing">
+                        <h1 class="heading-1 {{ jobs_category.name }}">{{ jobs_category.title }}</h1>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div id="searchField"></div>
+                </div>
             </div>
         </div>
         <div class="container">
@@ -70,7 +77,9 @@
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
-    <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-
+    <script src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+    <script src="https://fb.me/react-with-addons-0.13.3.min.js"></script>
+    <script src="{{ relative_path_to_root }}js/tech.zalando-app.js"></script>
+    <script>new techZalando.App({ relative_path_to_root: '{{ relative_path_to_root }}',page: 'jobs' });</script>
 </body>
 </html>
