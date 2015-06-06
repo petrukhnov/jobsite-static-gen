@@ -103,6 +103,8 @@ gulp.task('minify-js', ['lint-js'], function() {
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
+        'src/js/vendor/lunr.min.js',
+        'src/js/vendor/rx.lite.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
         ])
@@ -121,6 +123,8 @@ gulp.task('minify-js:react', ['compile-jsx'], function() {
     return gulp.src([
         'build/js/blogpostCard.js',
         'build/js/itemsContainer.js',
+        'build/js/searchField.js',
+        'build/js/jobsPage.js',
         'build/js/app.js'])
         .pipe(closureCompiler({
             compilerPath: 'lib/closure-compiler/compiler.jar',
@@ -202,6 +206,7 @@ gulp.task('build-to-dist:bulk', function() {
         'build/404.html',
         'build/robots.txt',
         'build/js/**/*.js',
+        'build/js/**/*.json',
         'build/fonts/**',
         'build/images/**',
         'build/files/**',
@@ -219,8 +224,20 @@ gulp.task('build-to-dist:bulk', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('build-to-dist:js', function() {
+    return gulp.src([
+        'build/js/**/*.js',
+        'build/js/**/*.json',
+    ], { base: 'build' })
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('build-to-dist', function(cb) {
     runSequence('clean:dist', ['build-to-dist:bulk', 'build-to-dist:closure-js'], cb);
+});
+
+gulp.task('build-to-dist-js', function(cb) {
+    runSequence(['build-to-dist:js', 'build-to-dist:closure-js'], cb);
 });
 
 // clean up folders
@@ -316,6 +333,10 @@ gulp.task('build',function(cb) {
                           'minify-css', 'copy-assets'], 'build-to-dist', cb);
 });
 
+gulp.task('build-js', function(cb) {
+    runSequence(['minify-js', 'minify-js:react'], 'build-to-dist-js', cb);
+});
+
 // publish to AWS S3
 gulp.task('publish', function() {
     var publisher = awspublish.create(config.aws);
@@ -352,6 +373,19 @@ gulp.task('watch', function() {
     gulp.watch(['src/*.html', 'src/partials/*.html'], appendBuildUpdate (['html-hint']));
     gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
     gulp.watch(['src/js/*.{js,jsx}', 'lib/**/*.{js,jsx}'], appendBuildUpdate(['build']));
+});
+
+// watch files for changes
+gulp.task('watch-js', function() {
+    function appendBuildUpdate(tasks) {
+        return function(event) {
+            console.log('File ' + event.path + ' was ' + event.type +
+                        ', updating build and dist...');
+            runSequence(tasks, 'build-to-dist-js', notifyFailedBuild);
+        };
+    }
+
+    gulp.watch(['src/js/*.{js,jsx}'], appendBuildUpdate(['build-js']));
 });
 
 gulp.task('simulate-failed-build', notifyFailedBuild);

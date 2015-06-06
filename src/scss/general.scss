@@ -557,3 +557,31 @@ blockquote {
         padding-left: 24px;
     }
 }
+
+.search-field {
+    background-color: $color-white;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    transition: opacity .2s ease-in;
+
+    .input {
+        background-color: $color-white;
+        border: 0;
+        color: $color-black;
+        font-size: 1.6rem;
+        font-weight: 300;
+        line-height: 2.4rem;
+        // margin-right: 30px;
+        outline: 0;
+        padding: 6px 0 6px 10px;
+        width: 80%;
+    }
+
+    &.fade-enter {
+        opacity: 0.01;
+    }
+
+    &.fade-enter-active {
+        opacity: 1.0;
+    }
+}
