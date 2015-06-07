@@ -10,45 +10,43 @@ var techZalando = techZalando || {};
         getInitialState: function() {
             return {
                 visible: false,
-                inputText: ''
+                inputText: '',
+                showClearButton: false
             };
         },
 
         componentWillMount: function() {
             var setState = this.setState.bind(this),
                 enableSignal = this.props.actions.enableSignal,
-                updateTextSignal = this.props.actions.updateTextSignal,
-                inputFieldValueSignal;
+                searchTextSignal = this.props.actions.searchTextSignal;
 
             this.inputFieldChangeSignal = new Rx.Subject();
-            inputFieldValueSignal = this.inputFieldChangeSignal
+            this.inputFieldChangeSignal
                 .map(function (e) {
                     return e.target.value;
                 })
-                .startWith('');
+                .subscribe(searchTextSignal);
 
-            inputFieldValueSignal
-                .filter(function(text) {
-                    return text==='' || text.length > 1;
-                })
-                .debounce(500 /* ms */)
-                .subscribe(function(search) {
-                    console.log('search:', search);
-                });
-
-            Rx.Observable
-                .combineLatest(
-                    enableSignal,
-                    inputFieldValueSignal,
-                    function(enable, text) {
-                        return {
-                            visible: enable,
-                            showClearButton: text.length > 0,
-                            inputText: text
-                        }
+            // set enabled/disabled related states
+            enableSignal
+                .map(function(enable) {
+                    return {
+                        visible: enable
                     }
-                )
-                .subscribe(this.setState.bind(this));
+                })
+                .subscribe(setState);
+
+            // set search field value related states
+            searchTextSignal
+                .map(function(text) {
+                    return {
+                        showClearButton: text.length > 0,
+                        inputText: text
+                    }
+                })
+                .distinctUntilChanged()
+                .subscribe(setState);
+
         },
 
         inputFieldChange: function(e) {
