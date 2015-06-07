@@ -524,6 +524,7 @@ blockquote {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: contain;
+    border: 0;
     display: block;
     height: 19px;
     transition: transform $animation-duration;
@@ -560,8 +561,8 @@ blockquote {
 
 .search-field {
     background-color: $color-white;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    border: 2px solid $color-light-gray-darker;
+    margin: 30px 5px;
     transition: opacity .2s ease-in;
 
     .input {
@@ -571,7 +572,6 @@ blockquote {
         font-size: 1.6rem;
         font-weight: 300;
         line-height: 2.4rem;
-        // margin-right: 30px;
         outline: 0;
         padding: 6px 0 6px 10px;
         width: 80%;
@@ -583,5 +583,19 @@ blockquote {
 
     &.fade-enter-active {
         opacity: 1.0;
+    }
+
+    .close-button-wrapper {
+        float: right;
+    }
+
+    .close-button {
+        background-color: transparent;
+        background-image: url("../images/close_button_black.png");
+        background-size: 12px 12px;
+        border: 0;
+        height: 36px;
+        outline: 0;
+        width: 36px;
     }
 }

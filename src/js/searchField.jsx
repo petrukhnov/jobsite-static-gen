@@ -45,12 +45,30 @@ var techZalando = techZalando || {};
             this.inputFieldChangeSignal.onNext(e);
         },
 
+        clearButtonClick: function() {
+            this.props.searchTextSignal.onNext('');
+        },
+
         render: function() {
-            var searchField = '';
+            var searchField = '',
+                clearButton = '';
+
+            if (this.state.showClearButton) {
+                clearButton = (
+                    <button
+                        key="clearButton"
+                        className="close-button"
+                        onClick={this.clearButtonClick}>
+                    </button>
+                );
+            }
 
             if (this.state.visible) {
                 searchField = (
                     <div key="searchField" className="search-field">
+                        <div className="close-button-wrapper">
+                            {clearButton}
+                        </div>
                         <input
                             type="text"
                             className="input"
