@@ -7,18 +7,10 @@ var techZalando = techZalando || {};
 
     techZalando.SearchField = React.createClass({
 
-        // getInitialState: function() {
-        //     return {
-        //         visible: false,
-        //         inputText: this.props.actions.searchTextSignal.getValue(),
-        //         showClearButton: false
-        //     };
-        // },
-
         componentWillMount: function() {
             var setState = this.setState.bind(this),
-                enableSignal = this.props.actions.enableSignal,
-                searchTextSignal = this.props.actions.searchTextSignal;
+                enableSignal = this.props.enableSignal,
+                searchTextSignal = this.props.searchTextSignal;
 
             this.inputFieldChangeSignal = new Rx.Subject();
             this.inputFieldChangeSignal
