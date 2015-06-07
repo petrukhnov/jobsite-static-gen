@@ -22,26 +22,27 @@ var techZalando = techZalando || {};
             searchTextSignal: new Rx.BehaviorSubject(''),
             locationHashSignal: Rx.Observable.fromEvent(window, 'hashchange')
                 .map(function(hashEvent) {
-                    return hashEvent.target.location.hash.replace('#', '');
+                    return hashEvent.target.location.hash;
                 })
-                .startWith(window.location.hash.replace('#', ''))
+                .startWith(window.location.hash)
         }
-
-        this.model.searchTextSignal
-            .filter(function(text) { return text==='' || text.length > 1; })
-            .distinctUntilChanged()
-            .debounce(400 /* ms */)
-            .subscribe(this.search.bind(this));
-
-        this.model.searchTextSignal
-            .skip(1)
-            .distinctUntilChanged()
-            .debounce(3000 /* ms */)
-            .filter(function(text) { return text.length > 1; })
-            .subscribe(this.logSearch.bind(this));
 
         this.model.locationHashSignal
             .subscribe(this.updateHash.bind(this));
+
+        this.model.searchTextSignal
+            .distinctUntilChanged()
+            .debounce(400 /* ms */)
+            .filter(function(text) { return text==='' || text.length > 1; })
+            .subscribe(this.search.bind(this));
+
+        this.model.searchTextSignal
+            // skip first value to ignore searches that were triggered by direct URL input
+            .skip(1)
+            .distinctUntilChanged()
+            .debounce(2000 /* ms */)
+            .filter(function(text) { return text.length > 1; })
+            .subscribe(this.logSearch.bind(this));
 
         this.createJobsIndex();
     };
@@ -78,8 +79,6 @@ var techZalando = techZalando || {};
     };
 
     JobsPage.prototype.search = function(text) {
-        console.log('Search for:', text);
-
         document.location.hash = text==='' ? '/' : '/' + SEARCH_URL_STRING + '/' + encodeURIComponent(text);
     };
 
@@ -91,7 +90,7 @@ var techZalando = techZalando || {};
     };
 
     JobsPage.prototype.updateHash = function(hash) {
-        var regex = new RegExp('^\/' + SEARCH_URL_STRING + '\/([^\/]*)'),
+        var regex = new RegExp('^#\/' + SEARCH_URL_STRING + '\/([^\/]*)'),
             match = hash.match(regex),
             search = match ? match[1] : '';
 
