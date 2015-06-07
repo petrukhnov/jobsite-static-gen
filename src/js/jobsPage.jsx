@@ -4,6 +4,8 @@ var techZalando = techZalando || {};
 (function () {
     'use strict';
 
+    var SEARCH_URL_STRING = "search";
+
     var SearchField = techZalando.SearchField;
 
     var JobsPage = techZalando.JobsPage = function(options) {
@@ -15,27 +17,36 @@ var techZalando = techZalando || {};
 
     JobsPage.prototype.init = function() {
 
+        this.model = {
+            locationHashSignal: Rx.Observable.fromEvent(window, 'hashchange')
+                .map(function(hashEvent) {
+                    return hashEvent.target.location.hash.replace('#', '');
+                })
+                .startWith(window.location.hash.replace('#', ''))
+        }
+
         this.searchFieldActions = {
             enableSignal: new Rx.BehaviorSubject(false),
             searchTextSignal: new Rx.BehaviorSubject('')
         }
 
         this.searchFieldActions.searchTextSignal
-            .filter(function(text) {
-                return text==='' || text.length > 1;
-            })
+            .filter(function(text) { return text==='' || text.length > 1; })
+            .distinctUntilChanged()
             .debounce(400 /* ms */)
-            .subscribe(this.search);
+            .subscribe(this.search.bind(this));
 
-        this.getJobsIndex();
+        this.searchFieldActions.searchTextSignal
+            .skip(1)
+            .distinctUntilChanged()
+            .debounce(3000 /* ms */)
+            .filter(function(text) { return text.length > 1; })
+            .subscribe(this.logSearch.bind(this));
 
-        // this.router = Router({
-        //     '/': this.search2.bind(this, ''),
-        //     '/search/:text': this.search2
-        // });
-        // this.router.init('/');
+        this.model.locationHashSignal
+            .subscribe(this.updateHash.bind(this));
 
-        console.log('after router');
+        this.createJobsIndex();
     };
 
     JobsPage.prototype.render = function() {
@@ -48,7 +59,7 @@ var techZalando = techZalando || {};
         // TODO
     };
 
-    JobsPage.prototype.getJobsIndex = function() {
+    JobsPage.prototype.createJobsIndex = function() {
         $.get(this.options.relative_path_to_root + 'js/indexableJobs.json', function(data, status) {
             var lunrIndex = lunr(function () {
                 this.field('title', { boost: 10 });
@@ -68,12 +79,23 @@ var techZalando = techZalando || {};
     };
 
     JobsPage.prototype.search = function(text) {
-        console.log('search for:', text);
-        document.location.hash = text==='' ? '/' : '/search/' + encodeURIComponent(text);
+        console.log('Search for:', text);
+
+        document.location.hash = text==='' ? '/' : '/' + SEARCH_URL_STRING + '/' + encodeURIComponent(text);
     };
 
-    // JobsPage.prototype.search2 = function(text) {
-    //     console.log('search2 for:', text);
-    // };
+    JobsPage.prototype.logSearch = function(text) {
+        console.log('Log search for:', text);
+
+        // TODO
+    };
+
+    JobsPage.prototype.updateHash = function(hash) {
+        var regex = new RegExp('^\/' + SEARCH_URL_STRING + '\/([^\/]*)'),
+            match = hash.match(regex),
+            search = match ? match[1] : '';
+
+        this.searchFieldActions.searchTextSignal.onNext(decodeURIComponent(search));
+    };
 
 })();
