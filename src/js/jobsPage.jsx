@@ -18,6 +18,8 @@ var techZalando = techZalando || {};
     JobsPage.prototype.init = function() {
 
         this.model = {
+            enableSearchSignal: new Rx.BehaviorSubject(false),
+            searchTextSignal: new Rx.BehaviorSubject(''),
             locationHashSignal: Rx.Observable.fromEvent(window, 'hashchange')
                 .map(function(hashEvent) {
                     return hashEvent.target.location.hash.replace('#', '');
@@ -25,18 +27,13 @@ var techZalando = techZalando || {};
                 .startWith(window.location.hash.replace('#', ''))
         }
 
-        this.searchFieldActions = {
-            enableSignal: new Rx.BehaviorSubject(false),
-            searchTextSignal: new Rx.BehaviorSubject('')
-        }
-
-        this.searchFieldActions.searchTextSignal
+        this.model.searchTextSignal
             .filter(function(text) { return text==='' || text.length > 1; })
             .distinctUntilChanged()
             .debounce(400 /* ms */)
             .subscribe(this.search.bind(this));
 
-        this.searchFieldActions.searchTextSignal
+        this.model.searchTextSignal
             .skip(1)
             .distinctUntilChanged()
             .debounce(3000 /* ms */)
@@ -52,7 +49,9 @@ var techZalando = techZalando || {};
     JobsPage.prototype.render = function() {
         // render search field
         React.render(
-            <SearchField actions={this.searchFieldActions} />,
+            <SearchField
+                enableSignal={this.model.enableSearchSignal}
+                searchTextSignal={this.model.searchTextSignal} />,
             document.getElementById('searchField')
         );
         // render jobs container
@@ -73,7 +72,7 @@ var techZalando = techZalando || {};
 
             var search = lunrIndex.search('berlin');
 
-            this.searchFieldActions.enableSignal.onNext(true);
+            this.model.enableSearchSignal.onNext(true);
 
         }.bind(this));
     };
@@ -88,6 +87,7 @@ var techZalando = techZalando || {};
         console.log('Log search for:', text);
 
         // TODO
+        // send event to google analytics
     };
 
     JobsPage.prototype.updateHash = function(hash) {
@@ -95,7 +95,7 @@ var techZalando = techZalando || {};
             match = hash.match(regex),
             search = match ? match[1] : '';
 
-        this.searchFieldActions.searchTextSignal.onNext(decodeURIComponent(search));
+        this.model.searchTextSignal.onNext(decodeURIComponent(search));
     };
 
 })();
