@@ -24,6 +24,14 @@
         &.other {
             background-image: url("../images/jobs-overview-others.png");
         }
+
+        @media (max-width: 767px) {
+            background-size: 50px 50px;
+            font-size: 2.4rem;
+            line-height: 3.0rem;
+            min-height: 50px;
+            padding: 10px 0 10px 60px;
+        }
     }
 }
 
