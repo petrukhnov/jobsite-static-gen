@@ -1,5 +1,6 @@
 var techZalando = techZalando || {};
 
+/* global React */
 (function () {
     'use strict';
 
@@ -8,31 +9,46 @@ var techZalando = techZalando || {};
     var JobsPage = techZalando.JobsPage = function(options) {
         this.options = options || {};
 
-        this.searchFieldActions = {
-            enableSignal: new Rx.BehaviorSubject(false),
-            updateTextSignal: new Rx.BehaviorSubject('')
-        }
-
         this.init();
+        this.render();
     };
 
     JobsPage.prototype.init = function() {
 
-        this.searchField = React.createElement(
-            SearchField, {});
+        this.searchFieldActions = {
+            enableSignal: new Rx.BehaviorSubject(false),
+            searchTextSignal: new Rx.BehaviorSubject('')
+        }
 
-        // render search field and jobs container
+        this.searchFieldActions.searchTextSignal
+            .filter(function(text) {
+                return text==='' || text.length > 1;
+            })
+            .debounce(400 /* ms */)
+            .subscribe(this.search);
+
+        this.getJobsIndex();
+
+        // this.router = Router({
+        //     '/': this.search2.bind(this, ''),
+        //     '/search/:text': this.search2
+        // });
+        // this.router.init('/');
+
+        console.log('after router');
+    };
+
+    JobsPage.prototype.render = function() {
+        // render search field
         React.render(
             <SearchField actions={this.searchFieldActions} />,
             document.getElementById('searchField')
         );
-
-        console.log('this1', this);
-        this.getJobsIndex();
+        // render jobs container
+        // TODO
     };
 
     JobsPage.prototype.getJobsIndex = function() {
-        console.log('this2', this);
         $.get(this.options.relative_path_to_root + 'js/indexableJobs.json', function(data, status) {
             var lunrIndex = lunr(function () {
                 this.field('title', { boost: 10 });
@@ -46,12 +62,18 @@ var techZalando = techZalando || {};
 
             var search = lunrIndex.search('berlin');
 
-            console.log('this3', this.searchFieldActions);
-            console.log('search', search);
-
             this.searchFieldActions.enableSignal.onNext(true);
 
         }.bind(this));
     };
+
+    JobsPage.prototype.search = function(text) {
+        console.log('search for:', text);
+        document.location.hash = text==='' ? '/' : '/search/' + encodeURIComponent(text);
+    };
+
+    // JobsPage.prototype.search2 = function(text) {
+    //     console.log('search2 for:', text);
+    // };
 
 })();
