@@ -101,6 +101,7 @@ gulp.task('minify-js', ['lint-js'], function() {
         'src/js/vendor/URI.min.js',
         'src/js/vendor/lunr.min.js',
         'src/js/vendor/rx.lite.min.js',
+        'src/js/vendor/rx.dom.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
         ])
@@ -322,7 +323,7 @@ gulp.task('rename-js', ['metalsmith'], function() {
     return gulp.src("build/js/data/*.html")
       .pipe(rename(function (path) {
         path.dirname = "js/data";
-        path.extname = ".js";
+        path.extname = ".json";
       }))
       .pipe(gulp.dest("build"));
 });
