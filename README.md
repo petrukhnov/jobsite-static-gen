@@ -5,9 +5,19 @@
 Gulp: Build and deployment script
 Closure Compiler: Compiles javascript files (requires Java 7 or higher)
 SASS: CSS Preprocessor
-Metalsmith: Static website generator
+Metalsmith: Static website generator (receives data from Prismic and Greenhouse)
 Docker: Containers for consistent runtime environments
 NodeJS: Application server to trigger static website builds via webhooks
+- Bootstrap: Responsive framework
+- jQuery: (required by Bootstrap)
+- React.js: Virtual DOM library
+- RxJS + RxJS-DOM: FRP framework that provides observable sequences
+- lunr.js: client side indexing and search engine (similar to solr)
+
+# CMS Services
+
+- Prismic.io: Provides content for blog posts, authors and some special pages is managed here
+- Greenhouse.io: Provides content for job applications
 
 
 
