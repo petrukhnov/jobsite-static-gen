@@ -59,6 +59,9 @@ NodeJS: Application server to trigger static website builds via webhooks
 In Command Line
 npm install
 
+11. MacOs - brew install imagemagick
+Ubuntu-based system - apt-get install imagemagick
+
 11. Run `gulp`. The environment needs to be specified via the `-e` option or
    `TFOX_ENV` environment variable.
 
