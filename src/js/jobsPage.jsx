@@ -9,16 +9,15 @@ var techZalando = techZalando || {};
         JOKER_TALENT_POOL_POSITION = 10
 
     var SearchField = techZalando.SearchField,
-        ItemsContainer = techZalando.ItemsContainer;
-        // JobCard = techZalando.JobCard,
-        // jobViewModels = techZalando.Store.jobs;
+        ItemsContainer = techZalando.ItemsContainer,
+        JobCard = techZalando.JobCard;
 
     var JobsPage = techZalando.JobsPage = function(options) {
-        this.options = options || {};
+            this.options = options || {};
 
-        this.init();
-        this.render();
-    };
+            this.init();
+            this.render();
+        };
 
     JobsPage.prototype.init = function() {
 
@@ -32,7 +31,7 @@ var techZalando = techZalando || {};
                 })
                 .startWith(window.location.hash),
             jobsStoreSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + 'js/data/jobsStore.json'),
-            jobViewModelsSignal: new Rx.BehaviorSubject([])
+            jobViewModelsSignal: undefined
         }
 
         this.model.locationHashSignal
@@ -40,8 +39,7 @@ var techZalando = techZalando || {};
 
         this.model.searchSignal = this.model.searchTextSignal
             .distinctUntilChanged()
-            .debounce(200 /* ms */)
-            .filter(function(text) { return text==='' || text.length > 2; });
+            .debounce(200 /* ms */);
 
         this.model.searchSignal
             .subscribe(this.search.bind(this));
@@ -57,16 +55,13 @@ var techZalando = techZalando || {};
         this.model.jobsStoreSignal
             .subscribe(this.createJobsIndex.bind(this));
 
-        Rx.Observable
+        this.model.jobViewModelsSignal = Rx.Observable
             .combineLatest(
                 this.model.searchSignal,
-                this.model.jobsStoreSignal.map(function(__) { return true; }),
-                this.searchJobs.bind(this)
-            )
-            .subscribe(function(jobs) {
-                console.log('jobs signal', jobs);
-            });
+                this.model.jobsStoreSignal,
 
+                this.searchJobs.bind(this)
+            );
     };
 
     JobsPage.prototype.render = function() {
@@ -74,16 +69,19 @@ var techZalando = techZalando || {};
         React.render(
             <SearchField
                 enableSignal={this.model.enableSearchSignal}
-                searchTextSignal={this.model.searchTextSignal} />,
+                searchTextSignal={this.model.searchTextSignal}
+                relativePathToRoot={this.options.relative_path_to_root} />,
             document.getElementById('searchField')
         );
 
         // render jobs container
-        // TODO
-        // React.render(
-        //     <ItemsContainer viewModelsSignal={jobViewModelsSignal} itemComponent={JobCard} />,
-        //     document.getElementById('jobs-content')
-        // );
+        React.render(
+            <ItemsContainer
+                viewModelsSignal={this.model.jobViewModelsSignal}
+                itemComponent={JobCard}
+                relativePathToRoot={this.options.relative_path_to_root} />,
+            document.getElementById('jobs-content')
+        );
     };
 
     JobsPage.prototype.createJobsIndex = function(data) {
@@ -93,10 +91,11 @@ var techZalando = techZalando || {};
             this.field('content');
         });
 
-        this.jobsStore = data;
+        this.jobsStore = data.filter(function(job) {
+            return job.categories.indexOf(this.options.category) > -1;
+        }.bind(this));
 
-        data.forEach(function(job) {
-            console.log(job);
+        this.jobsStore.forEach(function(job) {
             this.jobsIndex.add({
                 id: job.id,
                 title: job.title,
@@ -104,8 +103,6 @@ var techZalando = techZalando || {};
                 content: ''
             });
         }.bind(this));
-
-        console.log('jobs:', this.jobsStore);
 
         // enable search field
         this.model.enableSearchSignal.onNext(true);
@@ -134,16 +131,20 @@ var techZalando = techZalando || {};
         var foundJobIds = [],
             filteredJobs;
 
-        if (text === '') {
+        if (text.length < 3) {
             filteredJobs = this.jobsStore.slice();
 
             // add 'we also have non-tech jobs'-card
-            // filteredJobs.splice(
-            //     Math.min(JOKER_NON_TECH_JOBS_POSITION, filteredJobs.length),
-            //     0,
-            //     {
-            //         jokerCard: 'non-tech-jobs'
-            //     });
+            filteredJobs.splice(
+                Math.min(JOKER_NON_TECH_JOBS_POSITION, filteredJobs.length),
+                0,
+                {
+                    id: 'JokerCardNonTechJobs',
+                    jokerCard: 'non-tech-jobs',
+                    link: 'http://jobs.zalando.de/en/',
+                    title: 'We also have non-tech jobs!',
+                    text: 'Have a look at our amazing job opportunities for non-techies'
+                });
 
         } else {
             foundJobIds = this.jobsIndex
@@ -156,12 +157,16 @@ var techZalando = techZalando || {};
         }
 
         // add 'we also have non-tech jobs'-card
-        // filteredJobs.splice(
-        //     Math.min(JOKER_TALENT_POOL_POSITION, filteredJobs.length),
-        //     0,
-        //     {
-        //         jokerCard: 'talent-pool'
-        //     });
+        filteredJobs.splice(
+            Math.min(JOKER_TALENT_POOL_POSITION, filteredJobs.length),
+            0,
+            {
+                id: 'JokerCardTalentPool',
+                jokerCard: 'talent-pool',
+                link: this.options.relative_path_to_root + 'jobs/65731/?gh_jid=65731',
+                title: 'Can’t find the right job?',
+                text: 'Apply to our talent pool and create your own job'
+            });
 
         return filteredJobs;
     };

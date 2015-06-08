@@ -119,6 +119,7 @@ gulp.task('minify-js', ['lint-js'], function() {
 gulp.task('minify-js:react', ['compile-jsx'], function() {
     return gulp.src([
         'build/js/blogpostCard.js',
+        'build/js/jobCard.js',
         'build/js/itemsContainer.js',
         'build/js/searchField.js',
         'build/js/jobsPage.js',
