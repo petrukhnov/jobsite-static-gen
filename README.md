@@ -53,7 +53,10 @@ NodeJS: Application server to trigger static website builds via webhooks
    from https://github.com/alloy/terminal-notifier to get notifications on
    failed `gulp watch` builds.
 
-9. Run `gulp`. The environment needs to be specified via the `-e` option or
+9. npm install -g gulp
+10. Go into project_root/lib/<lib_name>
+npm install
+11. Run `gulp`. The environment needs to be specified via the `-e` option or
    `TFOX_ENV` environment variable.
 
 
