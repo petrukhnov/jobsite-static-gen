@@ -37,14 +37,13 @@ NodeJS: Application server to trigger static website builds via webhooks
    environment produce same output as the Dockerized version. For reliable
    testing, you would need to deploy from a real Docker container.
 
-4. Copy and update the default config file `cp config.default.js config-ENV.js`
+4. <Optional for deployment> Copy and update the default config file `cp config.default.js config-ENV.js`
    (substitute ENV with either "dev", "qa", or "prod").
 
-5. Edit the `config-ENV.js` file and fill in your credentials and configurations
+5. <Optional for deployment> Edit the `config-ENV.js` file and fill in your credentials and configurations
 
    NOTE: You need all three environments configured before building the Docker
    image. See the project jobsite-generator-host README for more details.
-
 6. Install Ruby (required by SASS).
 
 7. Install SCSS linter by `gem install scss-lint`.
