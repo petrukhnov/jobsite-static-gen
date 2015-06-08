@@ -8,9 +8,7 @@ var techZalando = techZalando || {};
 
         switch(options.page) {
             case 'jobs':
-                new techZalando.JobsPage({
-                    relative_path_to_root: options.relative_path_to_root
-                });
+                new techZalando.JobsPage(options);
                 break;
         }
     }

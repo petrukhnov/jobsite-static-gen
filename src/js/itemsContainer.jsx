@@ -12,15 +12,26 @@ var techZalando = techZalando || {};
 
         getInitialState: function() {
             return {
-                shownItems: INITIAL_SHOWN_ITEMS
+                shownItems: INITIAL_SHOWN_ITEMS,
+                viewModels: []
             };
         },
 
+        componentWillMount: function() {
+            // set states for viewModels signal
+            this.props.viewModelsSignal
+                .map(function(viewModels) {
+                    return {
+                        viewModels: viewModels
+                    }
+                })
+                .subscribe(this.setState.bind(this));
+        },
+
         increaseShownItems: function() {
-            this.setState({ shownItems: Math.min(
-                this.state.shownItems + SHOWN_ITEMS_INCREASE,
-                this.props.viewModels.length
-            ) });
+            this.setState({
+                shownItems: this.state.shownItems + SHOWN_ITEMS_INCREASE
+            });
         },
 
         onClickMore: function(e) {
@@ -28,15 +39,16 @@ var techZalando = techZalando || {};
         },
 
         render: function() {
-            var shownViewModels = this.props.viewModels.filter(function(_, index) {
+            var shownViewModels = this.state.viewModels.filter(function(_, index) {
                     return index < this.state.shownItems;
                 }, this),
                 items = shownViewModels.map(renderItem(), this);
 
+
             return (
                 <div className="fullsize-container light-gray">
                     <div className="container">
-                        <ReactCSSTransitionGroup transitionName="fade" component="div" className="cards element-spacing">
+                        <ReactCSSTransitionGroup transitionName="card-fade" component="div" className="cards element-spacing">
                             {items}
                         </ReactCSSTransitionGroup>
                     </div>
@@ -50,12 +62,16 @@ var techZalando = techZalando || {};
                 return function(viewModel) {
                     return React.createElement(
                         this.props.itemComponent,
-                        {key: viewModel.id, viewModel: viewModel});
+                        {
+                            key: viewModel.id,
+                            viewModel: viewModel,
+                            relativePathToRoot: this.props.relativePathToRoot
+                        });
                 }
             }
 
             function showMoreButton() {
-                if (this.props.viewModels.length > this.state.shownItems) {
+                if (this.state.viewModels.length > this.state.shownItems) {
                     return (
                         <button onClick={this.onClickMore} className="default-button large color-zalando element-spacing">
                             Show More

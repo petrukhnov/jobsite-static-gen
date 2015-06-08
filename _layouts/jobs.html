@@ -8,6 +8,12 @@
         'title': jobs_category.title,
         'description': 'Open job positions for ' + jobs_category.title
     } %}
+    <style>
+    .card-fade-enter { opacity: 0.01; }
+    .card-fade-enter-active { opacity: 1.0; }
+    .card-fade-leave { opacity: 1.0; }
+    .card-fade-leave-active { opacity: 0.01; }
+    </style>
 </head>
 <body>
 
@@ -74,12 +80,25 @@
         </div>
     </div>
 
+    <div id="jobs-content" class="jobs-content">
+        <div class="fullsize-container light-gray">
+            <div class="container">
+                
+            </div>
+        </div>
+    </div>
+
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-    <script src="https://fb.me/react-with-addons-0.13.3.min.js"></script>
+    <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
     <script src="{{ relative_path_to_root }}js/tech.zalando-app.js"></script>
-    <script>new techZalando.App({ relative_path_to_root: '{{ relative_path_to_root }}',page: 'jobs' });</script>
+    <script>
+        new techZalando.App({
+            relative_path_to_root: '{{ relative_path_to_root }}',
+            page: 'jobs',
+            category: '{{ jobs_category.id }}'
+        });</script>
 </body>
 </html>
