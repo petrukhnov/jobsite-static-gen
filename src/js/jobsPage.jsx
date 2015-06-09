@@ -98,9 +98,9 @@ var techZalando = techZalando || {};
         this.jobsStore.forEach(function(job) {
             this.jobsIndex.add({
                 id: job.id,
-                title: job.title,
-                locations: job.locations.replace(/\s*,\s*/g,' '),
-                content: ''
+                title: job.title.replace(/[^a-zA-Z,\d,\s]/g, ' '),
+                locations: job.locations.replace(/[^a-zA-Z,\d,\s]/g,' '),
+                content: job.content.replace(/[^a-zA-Z,\d,\s]/g,' ')
             });
         }.bind(this));
 
@@ -131,6 +131,11 @@ var techZalando = techZalando || {};
         var foundJobIds = [],
             filteredJobs;
 
+        // Workaround for lunr.js to search for 2 letter words
+        if (text.length === 2) {
+            text = text + ' ';
+        }
+
         if (text.length < 3) {
             filteredJobs = this.jobsStore.slice();
 
@@ -158,7 +163,7 @@ var techZalando = techZalando || {};
 
         // add 'we also have non-tech jobs'-card
         filteredJobs.splice(
-            Math.min(JOKER_TALENT_POOL_POSITION, filteredJobs.length),
+            Math.min(JOKER_TALENT_POOL_POSITION - 1, filteredJobs.length),
             0,
             {
                 id: 'JokerCardTalentPool',

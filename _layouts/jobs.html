@@ -40,53 +40,9 @@
                 </div>
             </div>
         </div>
-        <div class="container">
-            <div class="cards element-spacing">
-                {%- for job in jobs_viewmodel %}
-
-                    {% include "../src/partials/job_card.html" with {
-                        'link': job.link,
-                        'thumbnail': relative_path_to_root + job.thumbnail,
-                        'title': job.title,
-                        'subtitle': job.department,
-                        'locations': job.locations,
-                        'relative_path_to_root': relative_path_to_root
-                    } %}
-
-                    {% set insert_non_tech_job = jobs_viewmodel.length >= 2 && loop.index === 2 %}
-                    {% set append_non_tech_job = jobs_viewmodel.length < 2 && loop.index === jobs_viewmodel.length %}
-                    {% if insert_non_tech_job || append_non_tech_job %}
-                        {% include "../src/partials/joker_card.html" with {
-                            'type': 'non-tech-jobs',
-                            'link': 'http://jobs.zalando.de/en/',
-                            'title': 'We also have non-tech jobs!',
-                            'text': 'Have a look at our amazing job opportunities for non-techies'
-                        } %}
-                    {% endif %}
-
-                    {% set insert_talent_pool = jobs_viewmodel.length >= 8 && loop.index === 8 %}
-                    {% set append_talent_pool = jobs_viewmodel.length < 8 && loop.index === jobs_viewmodel.length %}
-                    {% if insert_talent_pool || append_talent_pool %}
-                        {% include "../src/partials/joker_card.html" with {
-                            'type': 'talent-pool',
-                            'link': relative_path_to_root + 'jobs/65731/?gh_jid=65731',
-                            'title': 'Can’t find the right job?',
-                            'text': 'Apply to our talent pool and create your own job'
-                        } %}
-                    {% endif %}
-
-                {%- endfor %}
-            </div>
-        </div>
     </div>
 
-    <div id="jobs-content" class="jobs-content">
-        <div class="fullsize-container light-gray">
-            <div class="container">
-                
-            </div>
-        </div>
-    </div>
+    <div id="jobs-content" class="jobs-content"></div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
@@ -98,7 +54,7 @@
         new techZalando.App({
             relative_path_to_root: '{{ relative_path_to_root }}',
             page: 'jobs',
-            category: '{{ jobs_category.id }}'
+            category: '{{ jobs_category.id | safe }}'
         });</script>
 </body>
 </html>

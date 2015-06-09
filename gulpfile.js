@@ -234,6 +234,13 @@ gulp.task('build-to-dist:js', function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('build-to-dist:css', function() {
+    return gulp.src([
+        'build/css/tech.zalando-all.css',
+    ], { base: 'build' })
+    .pipe(gulp.dest('dist'));
+});
+
 gulp.task('build-to-dist', function(cb) {
     runSequence('clean:dist', ['build-to-dist:bulk', 'build-to-dist:closure-js'], cb);
 });
@@ -371,13 +378,12 @@ gulp.task('watch', function() {
     }
 
     gulp.watch(['src/**/*.md', '_layouts/**/*.html'], appendBuildUpdate(['html-hint', 'metalsmith']));
-    gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
     gulp.watch(['src/*.html', 'src/partials/*.html'], appendBuildUpdate (['html-hint']));
     gulp.watch('src/images/*.*', appendBuildUpdate(['copy-assets']));
     gulp.watch(['src/js/*.{js,jsx}', 'lib/**/*.{js,jsx}'], appendBuildUpdate(['build']));
 });
 
-// watch files for changes
+// watch js/jsx files for changes
 gulp.task('watch-js', function() {
     function appendBuildUpdate(tasks) {
         return function(event) {
@@ -386,8 +392,19 @@ gulp.task('watch-js', function() {
             runSequence(tasks, 'build-to-dist-js', notifyFailedBuild);
         };
     }
-
     gulp.watch(['src/js/*.{js,jsx}'], appendBuildUpdate(['build-js']));
+});
+
+// watch scss files for changes
+gulp.task('watch-scss', function() {
+    function appendBuildUpdate(tasks) {
+        return function(event) {
+            console.log('File ' + event.path + ' was ' + event.type +
+                        ', updating build and dist...');
+            runSequence(tasks, 'build-to-dist:css', notifyFailedBuild);
+        };
+    }
+    gulp.watch('src/scss/*.scss', appendBuildUpdate(['minify-css']));
 });
 
 gulp.task('simulate-failed-build', notifyFailedBuild);
