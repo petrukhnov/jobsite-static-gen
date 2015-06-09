@@ -48,9 +48,9 @@ var techZalando = techZalando || {};
             return (
                 <div className="fullsize-container light-gray">
                     <div className="container">
-                        <ReactCSSTransitionGroup transitionName="card-fade" component="div" className="cards element-spacing">
+                        <div className="cards element-spacing">
                             {items}
-                        </ReactCSSTransitionGroup>
+                        </div>
                     </div>
                     <div className="container text-center">
                         {showMoreButton.call(this)}
