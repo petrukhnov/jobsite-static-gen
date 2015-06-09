@@ -38,14 +38,18 @@
 
     &.card-fade-enter {
         .card.blog,
-        .card.job {
-            transform: scale(0.85, 0.85);
+        .card.job,
+        .card.joker-non-tech-jobs,
+        .card.joker-talent-pool {
+            transform: scale(0.80, 0.80);
         }
     }
 
     &.card-fade-enter-active {
         .card.blog,
-        .card.job {
+        .card.job,
+        .card.joker-non-tech-jobs,
+        .card.joker-talent-pool {
             transform: scale(1, 1);
 
             &:hover,
@@ -58,14 +62,18 @@
 
     &.card-fade-leave {
         .card.blog,
-        .card.job {
+        .card.job,
+        .card.joker-non-tech-jobs,
+        .card.joker-talent-pool {
             transform: scale(1, 1);
         }
     }
 
     &.card-fade-leave-active {
         .card.blog,
-        .card.job {
+        .card.job,
+        .card.joker-non-tech-jobs,
+        .card.joker-talent-pool {
             transform: scale(1, 1);
 
             &:hover,
