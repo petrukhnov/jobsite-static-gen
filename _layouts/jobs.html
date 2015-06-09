@@ -1,5 +1,3 @@
-{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ category: jobs_category.id, sortOrder: 'updated' }) %}
-
 <!doctype html>
 <html class="no-js" lang="en">
 <head prefix="og: http://ogp.me/ns#">
@@ -8,12 +6,6 @@
         'title': jobs_category.title,
         'description': 'Open job positions for ' + jobs_category.title
     } %}
-    <style>
-    .card-fade-enter { opacity: 0.01; }
-    .card-fade-enter-active { opacity: 1.0; }
-    .card-fade-leave { opacity: 1.0; }
-    .card-fade-leave-active { opacity: 0.01; }
-    </style>
 </head>
 <body>
 
