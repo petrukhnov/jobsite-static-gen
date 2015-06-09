@@ -17,7 +17,6 @@ var techZalando = techZalando || {};
             this.options = options || {};
 
             this.init();
-            this.render();
         };
 
     JobsPage.prototype.init = function() {
@@ -31,7 +30,7 @@ var techZalando = techZalando || {};
                     return hashEvent.target.location.hash;
                 })
                 .startWith(window.location.hash),
-            jobsStoreSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + JOBS_DATA_RELATIVE_URL),
+            jobsDataSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + JOBS_DATA_RELATIVE_URL),
             jobViewModelsSignal: undefined
         }
 
@@ -53,16 +52,22 @@ var techZalando = techZalando || {};
             .filter(function(text) { return text.length > 2; })
             .subscribe(this.logSearch.bind(this));
 
-        this.model.jobsStoreSignal
+        this.model.jobsDataSignal
             .subscribe(this.createJobsIndex.bind(this));
 
         this.model.jobViewModelsSignal = Rx.Observable
             .combineLatest(
                 this.model.searchSignal,
-                this.model.jobsStoreSignal,
+                this.model.jobsDataSignal,
 
                 this.searchJobs.bind(this)
             );
+
+        this.model.jobViewModelsSignal
+            .take(1)
+            .subscribe(function(__) {
+                this.render();
+            }.bind(this));
     };
 
     JobsPage.prototype.render = function() {
