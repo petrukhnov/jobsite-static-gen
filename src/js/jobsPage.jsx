@@ -123,10 +123,10 @@ var techZalando = techZalando || {};
     };
 
     JobsPage.prototype.logSearch = function(text) {
-        console.log('Log search for:', text);
-
-        // TODO
-        // send event to google analytics
+        // track event with category, action and label
+        if (techZalando.App && techZalando.App.eventTracker) {
+            techZalando.App.eventTracker('JobsSearch', 'applied', text);
+        }
     };
 
     JobsPage.prototype.onHashChanged = function(hash) {
