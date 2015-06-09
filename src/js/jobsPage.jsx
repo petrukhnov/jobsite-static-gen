@@ -104,14 +104,19 @@ var techZalando = techZalando || {};
         this.jobsStore.forEach(function(job) {
             this.jobsIndex.add({
                 id: job.id,
-                title: job.title.replace(/[^a-zA-Z,\d,\s]/g, ' '),
-                locations: job.locations.replace(/[^a-zA-Z,\d,\s]/g,' '),
-                content: job.content.replace(/[^a-zA-Z,\d,\s]/g,' ')
+                title: processForLunr(job.title),
+                locations: processForLunr(job.locations),
+                content: processForLunr(job.content)
             });
         }.bind(this));
 
         // enable search field
         this.model.enableSearchSignal.onNext(true);
+
+
+        function processForLunr(text) {
+            return text.replace(/[^a-zA-Z,\d,\s]/g,' ');
+        }
     };
 
     JobsPage.prototype.search = function(text) {
@@ -149,13 +154,7 @@ var techZalando = techZalando || {};
             filteredJobs.splice(
                 Math.min(JOKER_NON_TECH_JOBS_POSITION, filteredJobs.length),
                 0,
-                {
-                    id: 'JokerCardNonTechJobs',
-                    jokerCard: 'non-tech-jobs',
-                    link: 'http://jobs.zalando.de/en/',
-                    title: 'We also have non-tech jobs!',
-                    text: 'Have a look at our amazing job opportunities for non-techies'
-                });
+                jokerCardNonTechJobs());
 
         } else {
             foundJobIds = this.jobsIndex
@@ -171,15 +170,30 @@ var techZalando = techZalando || {};
         filteredJobs.splice(
             Math.min(JOKER_TALENT_POOL_POSITION - 1, filteredJobs.length),
             0,
-            {
+            JokerCardTalentPool());
+
+        return filteredJobs;
+
+
+        function jokerCardNonTechJobs() {
+            return {
+                id: 'JokerCardNonTechJobs',
+                jokerCard: 'non-tech-jobs',
+                link: 'http://jobs.zalando.de/en/',
+                title: 'We also have non-tech jobs!',
+                text: 'Have a look at our amazing job opportunities for non-techies'
+            };
+        }
+
+        function JokerCardTalentPool() {
+            return {
                 id: 'JokerCardTalentPool',
                 jokerCard: 'talent-pool',
                 link: this.options.relative_path_to_root + 'jobs/65731/?gh_jid=65731',
                 title: 'Can’t find the right job?',
                 text: 'Apply to our talent pool and create your own job'
-            });
-
-        return filteredJobs;
+            };
+        }
     };
 
 })();
