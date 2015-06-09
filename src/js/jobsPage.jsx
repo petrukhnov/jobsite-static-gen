@@ -169,7 +169,7 @@ var techZalando = techZalando || {};
         filteredJobs.splice(
             Math.min(JOKER_TALENT_POOL_POSITION - 1, filteredJobs.length),
             0,
-            JokerCardTalentPool());
+            JokerCardTalentPool(this.options));
 
         return filteredJobs;
 
@@ -184,11 +184,11 @@ var techZalando = techZalando || {};
             };
         }
 
-        function JokerCardTalentPool() {
+        function JokerCardTalentPool(options) {
             return {
                 id: 'JokerCardTalentPool',
                 jokerCard: 'talent-pool',
-                link: this.options.relative_path_to_root + 'jobs/65731/?gh_jid=65731',
+                link: options.relative_path_to_root + 'jobs/65731/?gh_jid=65731',
                 title: 'Can’t find the right job?',
                 text: 'Apply to our talent pool and create your own job'
             };
