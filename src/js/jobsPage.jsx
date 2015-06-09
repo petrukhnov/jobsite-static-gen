@@ -5,7 +5,7 @@ var techZalando = techZalando || {};
     'use strict';
 
     var SEARCH_URL_STRING = "search",
-        JOBS_DATA_RELATIVE_URL = 'js/data/jobsData.json'
+        RELATIVE_URL_TO_JOBS_DATA = 'js/data/jobsData.json'
         JOKER_NON_TECH_JOBS_POSITION = 2,
         JOKER_TALENT_POOL_POSITION = 10
 
@@ -30,19 +30,19 @@ var techZalando = techZalando || {};
                     return hashEvent.target.location.hash;
                 })
                 .startWith(window.location.hash),
-            jobsDataSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + JOBS_DATA_RELATIVE_URL),
+            jobsDataSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + RELATIVE_URL_TO_JOBS_DATA),
             jobViewModelsSignal: undefined
         }
 
         this.model.locationHashSignal
-            .subscribe(this.updateHash.bind(this));
+            .subscribe(this.onHashChanged.bind(this));
 
         this.model.searchSignal = this.model.searchTextSignal
             .distinctUntilChanged()
             .debounce(200 /* ms */);
 
         this.model.searchSignal
-            .subscribe(this.search.bind(this));
+            .subscribe(this.updateHash.bind(this));
 
         this.model.searchTextSignal
             // skip first value to ignore searches that were triggered by direct URL input
@@ -63,11 +63,10 @@ var techZalando = techZalando || {};
                 this.searchJobs.bind(this)
             );
 
+        // render components after data was loaded
         this.model.jobViewModelsSignal
             .take(1)
-            .subscribe(function(__) {
-                this.render();
-            }.bind(this));
+            .subscribe(this.render.bind(this));
     };
 
     JobsPage.prototype.render = function() {
@@ -98,7 +97,7 @@ var techZalando = techZalando || {};
         });
 
         this.jobsStore = data.filter(function(job) {
-            return job.categories.indexOf(this.options.category) > -1;
+            return job.categories.indexOf(this.options.category) >= 0;
         }.bind(this));
 
         this.jobsStore.forEach(function(job) {
@@ -115,11 +114,11 @@ var techZalando = techZalando || {};
 
 
         function processForLunr(text) {
-            return text.replace(/[^a-zA-Z,\d,\s]/g,' ');
+            return text.replace(/[^a-zA-Z\d\s]+/g,' ');
         }
     };
 
-    JobsPage.prototype.search = function(text) {
+    JobsPage.prototype.updateHash = function(text) {
         document.location.hash = text==='' ? '/' : '/' + SEARCH_URL_STRING + '/' + encodeURIComponent(text);
     };
 
@@ -130,7 +129,7 @@ var techZalando = techZalando || {};
         // send event to google analytics
     };
 
-    JobsPage.prototype.updateHash = function(hash) {
+    JobsPage.prototype.onHashChanged = function(hash) {
         var regex = new RegExp('^#\/' + SEARCH_URL_STRING + '\/([^\/]*)'),
             match = hash.match(regex),
             search = match ? match[1] : '';
@@ -148,7 +147,7 @@ var techZalando = techZalando || {};
         }
 
         if (text.length < 3) {
-            filteredJobs = this.jobsStore.slice();
+            filteredJobs = this.jobsStore.slice(); // fast copy array
 
             // add 'we also have non-tech jobs'-card
             filteredJobs.splice(
@@ -159,14 +158,14 @@ var techZalando = techZalando || {};
         } else {
             foundJobIds = this.jobsIndex
                 .search(text)
-                .map(function(foundItem) { return parseInt(foundItem.ref); });
+                .map(function(foundItem) { return parseInt(foundItem.ref, 10); });
 
             filteredJobs = this.jobsStore.filter(function(job) {
                 return foundJobIds.indexOf(job.id) > -1;
             });
         }
 
-        // add 'we also have non-tech jobs'-card
+        // add 'Can't find the right job'-card
         filteredJobs.splice(
             Math.min(JOKER_TALENT_POOL_POSITION - 1, filteredJobs.length),
             0,

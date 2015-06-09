@@ -4,7 +4,7 @@ var techZalando = techZalando || {};
 (function () {
     'use strict';
 
-    var BLOG_POSTS_DATA_RELATIVE_URL = 'js/data/blogPostsData.json';
+    var RELATIVE_URL_TO_BLOG_POSTS_DATA = 'js/data/blogPostsData.json';
 
     var ItemsContainer = techZalando.ItemsContainer,
         BlogpostCard = techZalando.BlogpostCard;
@@ -18,13 +18,12 @@ var techZalando = techZalando || {};
     BlogPage.prototype.init = function() {
         this.model = {
             blogpostViewModelsSignal: Rx.DOM.getJSON(
-                this.options.relative_path_to_root + BLOG_POSTS_DATA_RELATIVE_URL)
+                this.options.relative_path_to_root + RELATIVE_URL_TO_BLOG_POSTS_DATA)
         }
 
+        // render components after data was loaded
         this.model.blogpostViewModelsSignal
-            .subscribe(function(__) {
-                this.render();
-            }.bind(this))
+            .subscribe(this.render.bind(this));
     };
 
     BlogPage.prototype.render = function() {
