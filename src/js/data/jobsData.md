@@ -1,4 +1,4 @@
 ---
-template: jobsStore.json
+template: jobsData.json
 permalink: false
 ---

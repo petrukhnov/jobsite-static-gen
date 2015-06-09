@@ -5,6 +5,7 @@ var techZalando = techZalando || {};
     'use strict';
 
     var SEARCH_URL_STRING = "search",
+        JOBS_DATA_RELATIVE_URL = 'js/data/jobsData.json'
         JOKER_NON_TECH_JOBS_POSITION = 2,
         JOKER_TALENT_POOL_POSITION = 10
 
@@ -30,7 +31,7 @@ var techZalando = techZalando || {};
                     return hashEvent.target.location.hash;
                 })
                 .startWith(window.location.hash),
-            jobsStoreSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + 'js/data/jobsStore.json'),
+            jobsStoreSignal: Rx.DOM.getJSON(this.options.relative_path_to_root + JOBS_DATA_RELATIVE_URL),
             jobViewModelsSignal: undefined
         }
 
