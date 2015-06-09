@@ -1,5 +1,5 @@
 ---
-template: store.js
+template: blogPostsData.json
 permalink: false
 prismic:
   blogposts:
