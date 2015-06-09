@@ -126,6 +126,7 @@ gulp.task('minify-js:react', ['compile-jsx'], function() {
         'build/js/itemsContainer.js',
         'build/js/searchField.js',
         'build/js/jobsPage.js',
+        'build/js/blogPage.js',
         'build/js/app.js'])
         .pipe(closureCompiler({
             compilerPath: 'lib/closure-compiler/compiler.jar',

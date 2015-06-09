@@ -10,32 +10,10 @@ var techZalando = techZalando || {};
             case 'jobs':
                 new techZalando.JobsPage(options);
                 break;
+            case 'blog':
+                new techZalando.BlogPage(options);
+                break;
         }
     }
-
-    App.prototype.initJobs = function() {
-        
-
-        console.log(this.searchField);
-    };
-
-    App.prototype.getJobsIndex = function() {
-        
-    };
-
-    /*
-    var ItemsContainer = techZalando.ItemsContainer,
-        BlogpostCard = techZalando.BlogpostCard,
-        viewModels = techZalando.Store.blogposts;
-
-    function render() {
-        React.render(
-            <ItemsContainer viewModels={viewModels} itemComponent={BlogpostCard} />,
-            document.getElementById('blog-posts-content')
-        );
-    }
-
-    render();
-    */
 
 })();
