@@ -41,5 +41,6 @@
   "scripts": {
     "build": "metalsmith"
   },
-  "engine": "node 0.12.2"
+  "engine": "node >=0.12.2",
+  "engine-strict" : true
 }
