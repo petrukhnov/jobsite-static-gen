@@ -15,6 +15,8 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 ## Setup
 
+0. git clone project
+
 1. Install npm packages `npm install`
 
 2. Install Java 7 or higher (required by Google Closure)
@@ -54,8 +56,8 @@ NodeJS: Application server to trigger static website builds via webhooks
 
 9. npm install -g gulp
 
-10. Go into project_root/lib/<lib_name>
-In Command Line
+10. Go into project_root/lib/each_lib
+
 npm install
 
 11. MacOs - brew install imagemagick
