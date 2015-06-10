@@ -62,7 +62,11 @@ if (typeof env === 'undefined') {
     console.log("Running in environment:", env);
 }
 
-var config = { googleAnalytics: {/*dummy conf for local builds*/} };
+var config = require('./config-' + env).site;
+
+if (config.aws.bucketPath == null) {
+    throw new Error('Config variable aws.bucketPath must be set');
+}
 
 // lint task
 gulp.task('lint-js', function() {
@@ -314,12 +318,6 @@ gulp.task('build',function(cb) {
 
 // publish to AWS S3
 gulp.task('publish', function() {
-    var config = require('./config-' + env).site;
-
-    if (config.aws.bucketPath == null) {
-        throw new Error('Config variable aws.bucketPath must be set');
-    }
-
     var publisher = awspublish.create(config.aws);
     var bucketPath = config.aws.bucketPath + '/';
     var headers = {
