@@ -402,7 +402,7 @@ function generateOldBlogpostUrl(doc, resolvedLink) {
 function getOldSlug(doc) {
     switch (doc.type) {
         case 'blog':
-            return doc.data.oldname.json.asText();
+            return (doc.data.oldname) ? doc.data.oldname.json.asText() : null;
         case 'blog-rst':
         case 'blog-md':
             return doc.slug;
