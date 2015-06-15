@@ -1,1 +1,0 @@
-<p>.. math::Z_j mid X_{1j},dots,X_{L_jj} = sum_{l=1}^{L_j} X_{lj} + varepsilon_j</p>
