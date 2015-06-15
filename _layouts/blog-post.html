@@ -8,6 +8,10 @@
         'title': 'Zalando Tech',
         'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
     } %}
+    <meta property="og:title" content="{{ blogpost.title }}">
+    <meta property="og:description" content="{{ blogpost.locations }}">
+    <meta property="og:url" content="https://tech.zalando.com/jobs/{{ blogpost.id }}">
+    <meta property="og:image" content="{{ blogpost.thumbnail }}">
 </head>
 <body>
 
@@ -72,8 +76,11 @@
                 </div>
             </div>
             <div class="row">
-                <div class="fb-like" data-href="https://tech.zalando.de/blog/{{ author.blogpost.slug }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
-                <a class="twitter-share-button" href="https://tech.zalando.de/blog/{{ author.blogpost.slug }}">Tweet ZalandoTech Blog</a>
+                <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <div class="col-sm-6 fb-like" data-href="https://tech.zalando.de/blog/{{ author.blogpost.slug }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                    <a href="https://tech.zalando.de/blog/{{ author.blogpost.slug }}" class="twitter-share-button">Tweet Zalando Tech Article</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+                </div>
             </div>
         </div>
     </div>
