@@ -69,17 +69,23 @@
                     <div class="application-form">
                         <div id="grnhse_app"></div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-10 col-md-8">
-                            <div class="col-sm-6 fb-like" data-href="https://tech.zalando.com/jobs/{{ job_viewmodel.id }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
-                            <a href="https://tech.zalando.com/jobs/{{ job_viewmodel.id }}" class="twitter-share-button">Tweet Zalando Tech Article</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-10 col-md-8">
+                    <div class="fb-like" data-href="https://tech.zalando.com/jobs/{{ job_viewmodel.id }}" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+                </div>
+                <br /><br />
+                <div class="col-sm-10 col-md-8">
+                    <a href="https://tech.zalando.de/blog/{{ author.blogpost.slug }}" class="twitter-share-button">Tweet Zalando Tech Article</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
                 </div>
             </div>
         </div>
     </div>
+
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}

@@ -7,7 +7,7 @@ dist
 config-*.js
 /server.js
 .idea
-
+/*.iml
 # Elastic Beanstalk Files
 .elasticbeanstalk/*
 !.elasticbeanstalk/*.cfg.yml
