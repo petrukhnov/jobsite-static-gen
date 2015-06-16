@@ -15,6 +15,27 @@ body.tour-of-mastery {
     }
 }
 
+.scene-caption {
+    .container {
+        height: 20vh;
+        position: relative;
+    }
+
+    .heading-2 {
+        color: $color-white;
+        display: block;
+        font-size: 2.6rem;
+        line-height: 3.0rem;
+        width: 100%;
+
+        @media (min-width: 768px) {
+            font-size: 3.2rem;
+            line-height: 3.6rem;
+        }
+    }
+}
+
+.text-wrapper,
 .sprite-wrapper {
     height: 100%;
     position: absolute;
@@ -77,9 +98,9 @@ body.tour-of-mastery {
         background-image: url("../images/tour_of_mastery/asteroid.svg");
         height: 9vh;
         left: 70%;
-        width: 9vw;
         top: 16vh;
         transform: rotate(-20deg);
+        width: 9vw;
     }
 
     &.asteroid-7 {
@@ -113,13 +134,178 @@ body.tour-of-mastery {
         width: 60%;
     }
 
-    // &.rocket-full {
-    //     background-image: url("../images/tour_of_mastery/space_station.svg");
-    //     height: 10vh;
-    //     left: 40%;
-    //     top: 25vh;
-    //     width: 60%;
-    // }
+    &.rocket-fire {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: start-engine;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/rocket_fire.svg");
+        height: 10vh;
+        left: 50%;
+        top: 30vh;
+        width: 30%;
+    }
+
+    &.rocket-empty {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: prepare-engine;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/rocket_empty.svg");
+        height: 20vh;
+        left: 35%;
+        top: 18vh;
+        width: 60%;
+    }
+
+    &.astronaut-2 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: astronaut-getting-in;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/astronaut.svg");
+        height: 12vh;
+        left: 35%;
+        top: 24vh;
+        width: 60%;
+    }
+
+    // flying rocket
+
+    &.rocket-2-fire {
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        animation-name: burning-fire;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/rocket_fire.svg");
+        height: 10vh;
+        left: 35%;
+        top: 24vh;
+        width: 30%;
+    }
+
+    &.rocket-2-full {
+        background-image: url("../images/tour_of_mastery/rocket_empty.svg");
+        height: 20vh;
+        left: 20%;
+        top: 8vh;
+        width: 60%;
+    }
+
+    &.yellow-glow {
+        background-image: url("../images/tour_of_mastery/yellow_glowing.svg");
+        height: 40vh;
+        left: 20%;
+        top: 10vh;
+        width: 60%;
+    }
+
+    &.smoke-1 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: floating-smoke-1;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/smoke_grey.svg");
+        height: 30vh;
+        left: 10%;
+        top: 15vh;
+        width: 80%;
+    }
+
+    &.smoke-2 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: floating-smoke-2;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/smoke_white.svg");
+        height: 30vh;
+        left: 15%;
+        top: 15vh;
+        width: 70%;
+    }
+
+    // planets
+
+    &.blue-glow {
+        background-image: url("../images/tour_of_mastery/blue_glowing.svg");
+        height: 50vh;
+        left: 10%;
+        top: 5vh;
+        width: 80%;
+    }
+
+    &.main-planet {
+        background-image: url("../images/tour_of_mastery/main_planet.svg");
+        height: 40vh;
+        left: 20%;
+        top: 10vh;
+        width: 60%;
+    }
+
+    &.planet-1 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: planet-jump-in-2;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/planet_1.svg");
+        height: 15vh;
+        left: 70%;
+        opacity: 0;
+        top: 35vh;
+        width: 25%;
+    }
+
+    &.planet-2 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: planet-jump-in-1;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/planet_2.svg");
+        height: 10vh;
+        left: 2%;
+        opacity: 0;
+        top: 25vh;
+        width: 18%;
+    }
+
+    &.planet-3 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: planet-jump-in-4;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/planet_3.svg");
+        height: 8vh;
+        left: 75%;
+        opacity: 0;
+        top: 17vh;
+        width: 15%;
+    }
+
+    &.planet-4 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: planet-jump-in-3;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/planet_4.svg");
+        height: 8vh;
+        left: 23%;
+        opacity: 0;
+        top: 8vh;
+        width: 15%;
+    }
+
+    &.planet-5 {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: planet-jump-in-5;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/planet_5.svg");
+        height: 4vh;
+        left: 30%;
+        opacity: 0;
+        top: 42vh;
+        width: 7%;
+    }
 }
 
 // animations
@@ -145,5 +331,344 @@ body.tour-of-mastery {
 
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes astronaut-getting-in {
+    0% {
+        opacity: 0;
+        transform: translateX(-50%);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateX(-50%);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateX(0%);
+    }
+
+    40% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes prepare-engine {
+    40% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(-0.5px);
+    }
+
+    52% {
+        transform: translateX(1px);
+    }
+
+    54% {
+        transform: translateX(-1px);
+    }
+
+    56% {
+        transform: translateX(1px);
+    }
+
+    58% {
+        transform: translateX(-2px);
+    }
+
+    60% {
+        transform: translateX(2px);
+    }
+
+    62% {
+        transform: translateX(-2px);
+    }
+
+    64% {
+        transform: translateX(2px);
+    }
+
+    66% {
+        transform: translateX(-3px);
+    }
+
+    68% {
+        transform: translateX(3px);
+    }
+
+    70% {
+        transform: translateX(-2px);
+    }
+
+    72% {
+        transform: translateX(2px);
+    }
+
+    74% {
+        transform: translateX(-1px);
+    }
+
+    76% {
+        transform: translateX(0.5px);
+    }
+
+    78% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes start-engine {
+    0% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    60% {
+        opacity: 0;
+        transform: translateY(-40px);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floating-smoke-1 {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    25% {
+        opacity: 0.8;
+        transform: translateX(5px) rotate(-1deg);
+    }
+
+    75% {
+        opacity: 0.6;
+        transform: translateX(-5px) rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes floating-smoke-2 {
+    0% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    25% {
+        opacity: 0.6;
+        transform: translateX(-5px) rotate(2deg);
+    }
+
+    75% {
+        opacity: 0.8;
+        transform: translateX(5px) rotate(-2deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes burning-fire {
+    0% {
+        opacity: 1;
+        transform: rotate(0);
+    }
+
+    10% {
+        opacity: 0.8;
+        transform: rotate(2deg);
+    }
+
+    20% {
+        opacity: 1.0;
+        transform: rotate(-2deg);
+    }
+
+    30% {
+        opacity: 0.6;
+        transform: rotate(1deg);
+    }
+
+    40% {
+        opacity: 1.0;
+        transform: rotate(-1deg);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: rotate(1deg);
+    }
+
+    60% {
+        opacity: 1.0;
+        transform: rotate(-1deg);
+    }
+
+    70% {
+        opacity: 0.8;
+        transform: rotate(2deg);
+    }
+
+    80% {
+        opacity: 1.0;
+        transform: rotate(-2deg);
+    }
+
+    90% {
+        opacity: 0.6;
+        transform: rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: rotate(0);
+    }
+}
+
+@keyframes planet-jump-in-1 {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    5% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes planet-jump-in-2 {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    5% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes planet-jump-in-3 {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    10% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes planet-jump-in-4 {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    15% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+}
+
+@keyframes planet-jump-in-5 {
+    0% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    20% {
+        opacity: 0;
+        transform: translateY(-200%);
+    }
+
+    25% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(0);
     }
 }
