@@ -101,6 +101,7 @@ gulp.task('minify-js', ['lint-js'], function() {
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
+        'src/js/vendor/skrollr.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
@@ -176,7 +177,7 @@ gulp.task('minify-css', function(cb) {
 gulp.task('copy-assets', function () {
     return gulp.src([
         'src/robots.txt',
-        'src/images/*.{jpg,png,gif,ico}',
+        'src/images/**/*.{jpg,png,gif,ico,svg}',
         'src/blog/images/**/*',
         'src/blog/files/**/*',
         'src/fonts/**',

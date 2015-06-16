@@ -39,8 +39,9 @@
     "winston": "^1.0.0"
   },
   "scripts": {
+    "gulp": "gulp",
     "build": "metalsmith"
   },
   "engine": "node >=0.12.2",
-  "engine-strict" : true
+  "engine-strict": true
 }
