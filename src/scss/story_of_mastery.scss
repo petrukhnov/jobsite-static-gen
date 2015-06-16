@@ -1,0 +1,129 @@
+
+@import "constants";
+
+body.tour-of-mastery {
+    background-image: url("../images/tour_of_mastery/space_background.svg");
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.scene {
+    .container {
+        height: 60vh;
+        position: relative;
+    }
+}
+
+.sprite-wrapper {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+
+.sprite {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+
+    &.asteroid-1 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 20vh;
+        left: 2%;
+        top: 16vh;
+        transform: rotate(-30deg);
+        width: 20vw;
+    }
+
+    &.asteroid-2 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 8vh;
+        left: 24%;
+        top: 28vh;
+        transform: rotate(40deg);
+        width: 8vw;
+    }
+
+    &.asteroid-3 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 5vh;
+        left: 34%;
+        top: 20vh;
+        transform: rotate(-10deg);
+        width: 5vw;
+    }
+
+    &.asteroid-4 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 9vh;
+        left: 42%;
+        top: 20vh;
+        width: 9vw;
+    }
+
+    &.asteroid-5 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 7vh;
+        left: 63%;
+        top: 25vh;
+        transform: rotate(-100deg);
+        width: 7vw;
+    }
+
+    &.asteroid-6 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 9vh;
+        left: 70%;
+        width: 9vw;
+        top: 16vh;
+        transform: rotate(-20deg);
+    }
+
+    &.asteroid-7 {
+        background-image: url("../images/tour_of_mastery/asteroid.svg");
+        height: 16vh;
+        left: 76%;
+        top: 21vh;
+        transform: rotate(50deg);
+        width: 16%;
+    }
+
+    &.flying-asteroid {
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: flying-asteroid;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/flying-asteroid.svg");
+        height: 16vh;
+        left: 40%;
+        top: 25vh;
+        width: 16%;
+    }
+}
+
+// animations
+
+@keyframes flying-asteroid {
+    0% {
+        opacity: 0;
+        transform: translate(-120px, 80px);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    30% {
+        opacity: 1;
+    }
+
+    40% {
+        opacity: 0;
+        transform: translate(240px, -160px);
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

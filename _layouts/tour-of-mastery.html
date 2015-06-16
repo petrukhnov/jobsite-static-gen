@@ -1,0 +1,53 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    {% include "../src/partials/head.html" with {
+        'relative_path_to_root': relative_path_to_root,
+        'title': 'Zalando Tech',
+        'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+    } %}
+</head>
+<body class="tour-of-mastery">
+
+    <!-- Header -->
+    {% include "../src/partials/header.html" with { 'relative_path_to_root': relative_path_to_root, 'active': 'working-at-z' } %}
+
+    <!-- Teaser -->
+    <div class="fullsize-media picture-bg large">
+        <div class="teaser">
+            <div class="content large">
+                <div class="container">
+                    <h1 class="title">TOUR OF<br/>MASTERY</h1>
+                    <a href="#" id="play-home-video" class="default-button color-transparent play">Take the tour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scene parallax asteroids" id="asteroids">
+        <div class="container">
+            <div class="sprite-wrapper" data-top-bottom="transform: translateY(-5vh);" data-bottom-top="transform: translateY(5vh);" data-anchor-target="#asteroids">
+                <div class="sprite asteroid-3"></div>
+                <div class="sprite asteroid-5"></div>
+            </div>
+            <div class="sprite-wrapper" data-top-bottom="transform: translateY(-10vh);" data-bottom-top="transform: translateY(10vh);" data-anchor-target="#asteroids">
+                <div class="sprite asteroid-2"></div>
+                <div class="sprite asteroid-4"></div>
+                <div class="sprite asteroid-6"></div>
+            </div>
+            <div class="sprite-wrapper" data-top-bottom="transform: translateY(-20vh);" data-bottom-top="transform: translateY(20vh);" data-anchor-target="#asteroids">
+                <div class="sprite asteroid-1"></div>
+                <div class="sprite asteroid-7"></div>
+                <div class="sprite flying-asteroid"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
+
+    <script src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+    <script type="text/javascript">var s = skrollr.init();</script>
+
+</body>
+</html>

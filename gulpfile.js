@@ -97,6 +97,7 @@ gulp.task('minify-js', ['lint-js'], function() {
         'src/js/vendor/jquery.min.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
+        'src/js/vendor/skrollr.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/tech.zalando.js',
         'src/js/analytics-tracking.js'
@@ -151,7 +152,8 @@ gulp.task('minify-css:main', function() {
         'build/css/cards.css',
         'build/css/buttons.css',
         'build/css/blog_post.css',
-        'build/css/job_ad.css'
+        'build/css/job_ad.css',
+        'build/css/story_of_mastery.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
@@ -176,7 +178,7 @@ gulp.task('minify-css', function(cb) {
 gulp.task('copy-assets', function () {
     return gulp.src([
         'src/robots.txt',
-        'src/images/*.{jpg,png,gif,ico}',
+        'src/images/**/*.{jpg,png,gif,ico,svg}',
         'src/blog/images/**/*',
         'src/blog/files/**/*',
         'src/fonts/**',
@@ -259,29 +261,29 @@ gulp.task('metalsmith', function() {
                   'title': 'Zalando Tech',
                   'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
               })
-              .use(prismic({
-                  'url': 'https://zalando-jobsite.prismic.io/api',
-                  'linkResolver': function(ctx, doc) {
-                      var resolvedLink = prismicLinkResolver(ctx, doc);
-                      generateOldBlogpostUrl(doc, resolvedLink);
-                      return resolvedLink;
-                  }
-              }))
-              .use(greenhouse({
-                  'apiHost': 'boards.api.greenhouse.io',
-                  'apiEndpointPath': '/v1/boards',
-                  'boardName': 'zalandotech'
-              }))
-              .use(greenhouseImgurl())
-              .use(imgurlReprocessor({
-                  outputBasePath: 'build/images',
-                  outputSizes: [
-                      '1440x500',  // desktop hero images
-                      '640x640',   // mobile hero images
-                      '280x177',   // normal thumbnails
-                      '560x354'    // retina thumbnails
-                  ]
-              }))
+              // .use(prismic({
+              //     'url': 'https://zalando-jobsite.prismic.io/api',
+              //     'linkResolver': function(ctx, doc) {
+              //         var resolvedLink = prismicLinkResolver(ctx, doc);
+              //         generateOldBlogpostUrl(doc, resolvedLink);
+              //         return resolvedLink;
+              //     }
+              // }))
+              // .use(greenhouse({
+              //     'apiHost': 'boards.api.greenhouse.io',
+              //     'apiEndpointPath': '/v1/boards',
+              //     'boardName': 'zalandotech'
+              // }))
+              // .use(greenhouseImgurl())
+              // .use(imgurlReprocessor({
+              //     outputBasePath: 'build/images',
+              //     outputSizes: [
+              //         '1440x500',  // desktop hero images
+              //         '640x640',   // mobile hero images
+              //         '280x177',   // normal thumbnails
+              //         '560x354'    // retina thumbnails
+              //     ]
+              // }))
               .use(markdown())
               .use(permalinks())
               .use(partial({
