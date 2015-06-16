@@ -27,6 +27,8 @@ body.tour-of-mastery {
     background-size: contain;
     position: absolute;
 
+    // asteroids scene
+
     &.asteroid-1 {
         background-image: url("../images/tour_of_mastery/asteroid.svg");
         height: 20vh;
@@ -94,12 +96,30 @@ body.tour-of-mastery {
         animation-iteration-count: infinite;
         animation-name: flying-asteroid;
         animation-timing-function: linear;
-        background-image: url("../images/tour_of_mastery/flying-asteroid.svg");
+        background-image: url("../images/tour_of_mastery/flying_asteroid.svg");
         height: 16vh;
         left: 40%;
         top: 25vh;
         width: 16%;
     }
+
+    // rocket launch scene
+
+    &.space-station {
+        background-image: url("../images/tour_of_mastery/space_station.svg");
+        height: 10vh;
+        left: 20%;
+        top: 35vh;
+        width: 60%;
+    }
+
+    // &.rocket-full {
+    //     background-image: url("../images/tour_of_mastery/space_station.svg");
+    //     height: 10vh;
+    //     left: 40%;
+    //     top: 25vh;
+    //     width: 60%;
+    // }
 }
 
 // animations
