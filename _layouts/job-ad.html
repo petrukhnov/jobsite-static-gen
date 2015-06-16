@@ -119,9 +119,15 @@
 
         {% for question in job_viewmodel.questions -%}
         <div>
-          <label for="{{ question.fields[0].name }}">{{ question.label }}
-          {%- if question.required %} <span class="asterisk">*</span>{% endif %}</label>
-          <input id="{{ question.fields[0].name }}" name="{{ question.fields[0].name }}" type="text">
+          <label>{{ question.label }}{%- if question.required %} <span class="asterisk">*</span>{% endif %}</label>
+          {%- for field in question.fields %}
+          {%- if field.type === 'input_file' %}
+          <input id="{{ field.name }}" name="{{ field.name }}" type="file">
+          {%- endif %}
+          {%- if field.type !== 'input_file' %}
+          <input id="{{ field.name }}" name="{{ field.name }}" type="text">
+          {%- endif %}
+          {%- endfor %}
         </div>
         {%- endfor -%}
 
