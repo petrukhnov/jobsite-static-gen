@@ -102,43 +102,56 @@
 
 <div class="ng-scope" ng-app="greenhouse">
 <div id="app_body">
-  <div id="application">
+<div id="application">
     <a name="app"></a>
     <form class="ng-pristine ng-valid" accept-charset="UTF-8" action="{{ relative_path_to_root }}jobs/apply" enctype="multipart/form-data" id="application_form" method="post">
-      <input type="hidden" name="id" value="{{ job_viewmodel.id }}" />
-      <input type="hidden" name="mapped_url_token" value="{{ job_viewmodel.id }}" />
-      <div id="main_fields">
-        <div class="heading">Apply for this Job</div>
-        <div class="required-fields">
-          <span class="asterisk">*</span> Required
-        </div>
+        <input type="hidden" name="id" value="{{ job_viewmodel.id }}" />
+        <input type="hidden" name="mapped_url_token" value="{{ job_viewmodel.id }}" />
 
-        <div class="clear"></div>
+        <div class="required-fields-hint">
+            <span class="required-field-asterisk">*</span> Required
+        </div>
 
         <hr>
 
         {% for question in job_viewmodel.questions -%}
-        <div>
-          <label>{{ question.label }}{%- if question.required %} <span class="asterisk">*</span>{% endif %}</label>
-          {%- for field in question.fields %}
-          {%- if field.type === 'input_file' %}
-          <input id="{{ field.name }}" name="{{ field.name }}" type="file">
-          {%- endif %}
-          {%- if field.type !== 'input_file' %}
-          <input id="{{ field.name }}" name="{{ field.name }}" type="text">
-          {%- endif %}
-          {%- endfor %}
+        <div class="job-application-field">
+            <label class="job-application-label">
+                {{ question.label }}
+                {%- if question.required %} <span class="required-field-asterisk">*</span>{% endif %}
+            </label>
+            {%- for field in question.fields %}
+
+            {%- if field.type === 'input_text' %}
+            <input id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input" type="text">
+            {%- endif %}
+
+            {%- if field.type === 'textarea' %}
+            <textarea id="{{ field.name }}" name="{{ field.name }}" class="job-application-input"></textarea>
+            {%- endif %}
+
+            {%- if field.type === 'input_file' %}
+            <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file">
+            {%- endif %}
+
+            {%- if field.type === 'multi_value_single_select' %}
+            <select id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input" type="text">
+                <option disabled="disabled">Please select</option>
+                {%- for option in field.values %}
+                <option value="{{ option.value }}">{{ option.label }}</option>
+                {%- endfor %}
+            </select>
+            {%- endif %}
+
+            {%- endfor %}
         </div>
         {%- endfor -%}
 
-      <div id="error_message"></div>
-      <input type="submit" value="Submit Application">
-
-      <!--div id="submit_buttons">
-        <input value="Submit Application" id="submit_app" class="button" type="button">
-      </div-->
+        <div id="error_message"></div>
+        <input type="submit" class="job-application-submit" value="Submit Application">
     </form>
-  </div>
+</div>
+</div>
 </div>
 
 <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="mh9jyh4mfwjnfhj"></script>
