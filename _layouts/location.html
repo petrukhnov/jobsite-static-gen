@@ -1,5 +1,3 @@
-{% set interview_person = prismic.authors | to_author_viewmodel({ fullName: location.interview_person }) %}
-
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
@@ -53,6 +51,7 @@
         </div>
         <div class="container">
             <div class="cards element-spacing">
+                {% set interview_person = prismic.authors | to_author_viewmodel({ fullName: location.interview_person }) %}
 
                 {% include "../src/partials/person_card.html" with {
                     'thumbnail': interview_person.thumbnail,
