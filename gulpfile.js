@@ -357,7 +357,7 @@ gulp.task('watch', function() {
 gulp.task('simulate-failed-build', notifyFailedBuild);
 
 // start a server and watch for changes
-gulp.task('server', ['build', 'watch'], function() {
+gulp.task('server', ['build'], function() {
     connect.server({
         port: 4001,
         root: ['dist']
