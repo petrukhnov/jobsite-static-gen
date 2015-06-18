@@ -1,4 +1,4 @@
-(function ($) {
+;(function ($) {
     var cookieName = "zalandoCookieWarning";
 
     var hideCookieBar = function () {
