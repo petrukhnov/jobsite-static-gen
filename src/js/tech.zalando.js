@@ -108,12 +108,16 @@ $(function() {
     function windowOnResize() {
         loopVideoVisible = $(window).width() >= 1200;
         updateLoopVideoPlaying();
-        // iframe fix
-        var $iframes = $( ".blog-post-content iframe" ),
-            ratio = 0.5625; // 4x3 format
-        $iframes.each( function() {
-            var width = $( this ).parent().width();
-            $( this ).width( width ).height( width * ratio );
+        resizeBlogContentIframes();
+    }
+
+    function resizeBlogContentIframes() {
+        var $iframes = $(".blog-post-content iframe");
+        var heightToWidthRatio = 3/4;
+
+        $iframes.each(function() {
+            var width = $(this).parent().width();
+            $(this).width(width).height(width * heightToWidthRatio);
         });
     }
 
