@@ -69,6 +69,16 @@
             </div>
         </div>
     </div>
+    <div class="fullsize-container white">
+        <div class="row share-links jobs-share">
+            <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+                <a class="col-xs-5 col-sm-2 col-md-2 share-fb" onclick="event.preventDefault(); window.open('http://www.facebook.com/sharer.php?u=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_blank" href="http://www.facebook.com/sharer.php?u=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}"><i>Share</i></a>
+                <a class="col-xs-5 col-sm-2 col-md-2 share-tw" onclick="event.preventDefault(); window.open('https://twitter.com/intent/tweet?text={{ blogpost.title}}&amp;url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="https://twitter.com/intent/tweet?text={{ blogpost.title }}&amp;url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}"><i>Tweet</i></a>
+                <a class="col-xs-5 col-sm-2 col-md-2 share-gp" onclick="event.preventDefault(); window.open('https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}&amp;title={{ blogpost.title }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}&amp;title={{ blogpost.title }}"><i>Share</i></a>
+                <a class="col-xs-5 col-sm-2 col-md-2 share-in" onclick="event.preventDefault(); window.open('https://plus.google.com/share?url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="https://plus.google.com/share?url=http%3A%2F%2Ftech.zalando.net%2Fblog%2F{{ blogpost.slug }}"><i>Share</i></a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
