@@ -145,6 +145,21 @@
         </div>
         {%- endfor -%}
 
+        <hr></hr>
+        <div>
+            <label>
+                <input id="eu-privacy-consent-accept" required="required" value="Yes" type="checkbox">&nbsp;&nbsp;<strong>I Accept</strong>
+            </label>
+            the <a class="eu-privacy-consent-toggle" onclick="$('.eu-privacy-consent').toggleClass('hide')">Application Consent for Zalando</a>
+
+            <div class="eu-privacy-consent hide">
+                <p>By clicking the “I Accept” button you expressly make the following representations and warranties and give your consents as described below:</p>
+                <p>Zalando collects your personal data for the purposes of managing Zalando’s recruitment related activities as well as for organizational planning purposes globally. Consequently, Zalando may use your personal data in relation to the evaluation and selection of applicants including for example setting up and conducting interviews and tests, evaluating and assessing the results thereto and as is otherwise needed in the recruitment processes including the final recruitment.</p>
+                <p>Zalando does not disclose your personal data to unauthorized third parties. However, as a global corporation consisting of multiple affiliated companies in various countries, Zalando has international sites and Zalando uses resources located throughout the world. Zalando may from time to time also use third parties to act on Zalando’s behalf. You agree to the fact that to the extent necessary your personal data may be transferred and/or disclosed to any company within Zalando group of companies as well as to third parties acting on Zalando’s behalf, including also transfers to servers and databases outside the country where you provided Zalando with your personal data. Such transfers may include for example transfers and/or disclosures outside the European Economic Area and in the United States of America.</p>
+            </div>
+        </div>
+        <hr></hr>
+
         <div id="error_message"></div>
         <input type="submit" class="job-application-submit" value="Submit Application">
     </form>

@@ -187,3 +187,14 @@
     text-transform: uppercase;
     width: 100%;
 }
+
+.eu-privacy-consent-toggle {
+    cursor: pointer;
+}
+
+.eu-privacy-consent {
+    font-family: $font-bodycopy;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.9rem;
+}
