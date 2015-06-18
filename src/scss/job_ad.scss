@@ -132,7 +132,7 @@
 .required-fields-hint {
     font-size: 1.2rem;
     font-weight: 300;
-    text-align: right
+    text-align: right;
 }
 
 .required-field-asterisk {
@@ -167,8 +167,8 @@
 
 .job-application-error {
     color: $color-required-field;
-    width: 60%;
     margin-bottom: 1rem;
+    width: 60%;
 }
 
 .job-application-submit {
