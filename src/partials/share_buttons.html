@@ -1,18 +1,18 @@
-<div class="row share-links">
+<div class="row share-buttons">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
         {% set share_url_encoded = share_url | url_encode %}
         {% set title_encoded = share_title | url_encode %}
 
         {% set fb_url = 'http://www.facebook.com/sharer.php?u=' + share_url_encoded %}
-        <a class="col-xs-5 col-sm-2 col-md-2 share-fb" onclick="event.preventDefault(); window.open('{{ fb_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_blank" href="{{ fb_url }}">Share</a>
+        <a class="col-xs-5 col-sm-2 col-md-2 share-button share-button-fb" onclick="event.preventDefault(); window.open('{{ fb_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_blank" href="{{ fb_url }}">Share</a>
 
         {% set tw_url = 'https://twitter.com/intent/tweet?text=' + title_encoded + '&url=' + share_url_encoded %}
-        <a class="col-xs-5 col-sm-2 col-md-2 share-tw" onclick="event.preventDefault(); window.open('{{ tw_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ tw_url }}">Tweet</a>
+        <a class="col-xs-5 col-sm-2 col-md-2 share-button share-button-tw" onclick="event.preventDefault(); window.open('{{ tw_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ tw_url }}">Tweet</a>
 
         {% set gp_url = 'https://plus.google.com/share?url=' + share_url_encoded %}
-        <a class="col-xs-5 col-sm-2 col-md-2 share-gp" onclick="event.preventDefault(); window.open('{{ gp_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ gp_url }}">Share</a>
+        <a class="col-xs-5 col-sm-2 col-md-2 share-button share-button-gp" onclick="event.preventDefault(); window.open('{{ gp_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ gp_url }}">Share</a>
 
         {% set li_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + title_encoded + '&url=' + share_url_encoded + '&title=' + title_encoded %}
-        <a class="col-xs-5 col-sm-2 col-md-2 share-li" onclick="event.preventDefault(); window.open('{{ li_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ li_url }}">Share</a>
+        <a class="col-xs-5 col-sm-2 col-md-2 share-button share-button-li" onclick="event.preventDefault(); window.open('{{ li_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ li_url }}">Share</a>
     </div>
 </div>
