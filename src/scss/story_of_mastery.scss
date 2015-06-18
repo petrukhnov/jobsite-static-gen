@@ -6,17 +6,24 @@ body.tour-of-mastery {
     background-position: center top;
     background-repeat: no-repeat;
     background-size: cover;
+    overflow-x: hidden;
 }
 
 .scene {
-    .container {
+    .scene-wrapper {
         height: 60vh;
         position: relative;
+
+        &.square {
+            width: 60vh;
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
 
 .scene-caption {
-    .container {
+    .scene-wrapper {
         height: 20vh;
         position: relative;
     }
@@ -24,13 +31,20 @@ body.tour-of-mastery {
     .heading-2 {
         color: $color-white;
         display: block;
+        font-family: $font-bodycopy;
         font-size: 2.6rem;
-        line-height: 3.0rem;
+        font-weight: 300;
+        line-height: 3.8rem;
         width: 100%;
+
+        strong {
+            color: $color-zalando;
+            font-weight: 600;
+        }
 
         @media (min-width: 768px) {
             font-size: 3.2rem;
-            line-height: 3.6rem;
+            line-height: 4.6rem;
         }
     }
 }
@@ -305,6 +319,167 @@ body.tour-of-mastery {
         opacity: 0;
         top: 42vh;
         width: 7%;
+    }
+
+    // filling helmet
+
+    &.helmet-1 {
+        background-image: url("../images/tour_of_mastery/helmet_knowledge.svg");
+        height: 20vh;
+        left: 35%;
+        top: 20vh;
+        width: 30%;
+    }
+
+    // satellite
+
+    &.earth {
+        background-image: url("../images/tour_of_mastery/planet_earth.svg");
+        height: 24vh;
+        left: 35%;
+        top: 18vh;
+        width: 30%;
+    }
+
+    &.satellite {
+        background-image: url("../images/tour_of_mastery/satellite.svg");
+        height: 24vh;
+        left: 60%;
+        top: 0;
+        width: 30%;
+    }
+
+    &.moon-1 {
+        background-image: url("../images/tour_of_mastery/moon_small.svg");
+        height: 7vh;
+        left: 25%;
+        top: 40vh;
+        width: 11%;
+    }
+
+    // ufo
+
+    &.ufo {
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-name: ufo-fly-in;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/ufo.svg");
+        height: 40%;
+        left: 20%;
+        top: 6%;
+        width: 60%;
+    }
+
+    &.laser-beam {
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-name: ufo-laser;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/laser_up.svg");
+        height: 70%;
+        left: 25%;
+        top: 25.5%;
+        width: 50%;
+    }
+
+    
+    &.astronaut-beamed-up {
+        animation-duration: 10s;
+        animation-iteration-count: infinite;
+        animation-name: ufo-beaming;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/astronaut.svg");
+        height: 20%;
+        left: 40%;
+        top: 65%;
+        width: 20%;
+    }
+
+    // aliens
+
+    &.alien-1 {
+        background-image: url("../images/tour_of_mastery/alien_1.svg");
+        height: 30%;
+        left: 15%;
+        top: 50%;
+        width: 20%;
+    }
+
+    &.alien-2 {
+        background-image: url("../images/tour_of_mastery/alien_2.svg");
+        height: 40%;
+        left: 37%;
+        top: 35%;
+        width: 15%;
+    }
+
+    &.alien-3 {
+        background-image: url("../images/tour_of_mastery/alien_3.svg");
+        height: 50%;
+        left: 45%;
+        top: 40%;
+        width: 40%;
+    }
+
+    // moon walk
+
+    &.blue-glow-2 {
+        background-image: url("../images/tour_of_mastery/blue_glowing.svg");
+        height: 70%;
+        left: 15%;
+        top: 25%;
+        width: 70%;
+    }
+
+    &.moon-2 {
+        animation-duration: 15s;
+        animation-iteration-count: infinite;
+        animation-name: rotate;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/moon_small.svg");
+        height: 40%;
+        left: 30%;
+        top: 40%;
+        width: 40%;
+    }
+
+    &.astronaut-with-flag {
+        background-image: url("../images/tour_of_mastery/astronaut_with_flag.svg");
+        height: 40%;
+        left: 25%;
+        top: 6%;
+        width: 40%;
+    }
+
+    // Helmet
+
+    &.helmet-2 {
+        background-image: url("../images/tour_of_mastery/helmet_knowledge.svg");
+        height: 50%;
+        left: 25%;
+        top: 25%;
+        width: 50%;
+    }
+
+    &.reflection-1 {
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-name: scale-up;
+        animation-timing-function: ease-in;
+        background-image: url("../images/tour_of_mastery/universe_reflection.svg");
+        height: 34%;
+        left: 32.5%;
+        top: 35%;
+        width: 34%;
+    }
+
+    &.reflection-2 {
+        background-image: url("../images/tour_of_mastery/helmet_knowledge_refelction.svg");
+        height: 17%;
+        left: 32%;
+        top: 42%;
+        width: 17%;
     }
 }
 
@@ -670,5 +845,100 @@ body.tour-of-mastery {
     100% {
         opacity: 0;
         transform: translateY(0);
+    }
+}
+
+// ufo
+
+@keyframes ufo-fly-in {
+    0% {
+        opacity: 1;
+        transform: translateX(-400%);
+    }
+
+    10%, 98% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateX(0);
+    }
+}
+
+@keyframes ufo-laser {
+    0%, 10% {
+        opacity: 0;
+    }
+
+    20%, 98% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes ufo-beaming {
+    0% {
+        opacity: 0;
+        transform: translateY(0) rotate(0) scale(1, 1);
+    }
+
+    2%, 25% {
+        opacity: 1;
+        transform: translateY(0) rotate(0) scale(1, 1);
+    }
+
+    60% {
+        opacity: 1;
+        transform: translateY(-250%) rotate(70deg) scale(0.6, 0.6);
+    }
+
+    62%, 100% {
+        opacity: 0;
+        transform: translateY(-250%) rotate(70deg) scale(0.6, 0.6);
+    }
+}
+
+// moon walk
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+// helmet
+
+@keyframes scale-up {
+    0% {
+        opacity: 1;
+        transform: scale(0, 0);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+
+    98% {
+        opacity: 1;
+        transform: scale(1, 1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1, 1);
     }
 }
