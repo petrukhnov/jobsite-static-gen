@@ -6,6 +6,9 @@
 <meta property="og:title" content="{{ title }}">
 <meta property="og:description" content="{{ description }}">
 <meta property="og:site_name" content="Zalando Tech">
+{%- for value in meta_properties %}
+<meta property="{{ loop.key }}" content="{{ value }}">
+{%- endfor %}
 
 <link href="{{ relative_path_to_root }}images/favicon.ico" rel="icon" type="image/x-icon" />
 <link href="//vjs.zencdn.net/4.12/video-js.css" rel="stylesheet">

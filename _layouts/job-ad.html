@@ -6,11 +6,12 @@
     {% include "../src/partials/head.html" with {
         'relative_path_to_root': relative_path_to_root,
         'title': job_viewmodel.title,
-        'description': job_viewmodel.locations
+        'description': job_viewmodel.locations,
+        'meta_properties': {
+            'og:url': 'https://tech.zalando.com/jobs/' + job_viewmodel.id,
+            'og:image': 'https://tech.zalando.com/' + job_viewmodel.thumbnail
+        }
     } %}
-
-    <meta property="og:url" content="https://tech.zalando.com/jobs/{{ job_viewmodel.id }}">
-    <meta property="og:image" content="https://tech.zalando.com/{{ job_viewmodel.thumbnail }}">
 </head>
 <body>
 

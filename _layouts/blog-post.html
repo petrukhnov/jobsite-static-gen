@@ -6,12 +6,13 @@
     {% include "../src/partials/head.html" with {
         'relative_path_to_root': relative_path_to_root,
         'title': blogpost.title,
-        'description': blogpost.description
+        'description': blogpost.description,
+        'meta_properties': {
+            'og:type': 'article',
+            'og:url': 'https://tech.zalando.com/blog/' + blogpost.slug,
+            'og:image': blogpost.thumbnail
+        }
     } %}
-
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://tech.zalando.com/blog/{{ blogpost.slug }}">
-    <meta property="og:image" content="{{ blogpost.thumbnail }}">
 </head>
 <body>
 
