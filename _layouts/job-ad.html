@@ -134,7 +134,7 @@
 
             {%- if field.type === 'multi_value_single_select' %}
             <select id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input" type="text">
-                <option disabled="disabled">Please select</option>
+                <option>Please select</option>
                 {%- for option in field.values %}
                 <option value="{{ option.value }}">{{ option.label }}</option>
                 {%- endfor %}
