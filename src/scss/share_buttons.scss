@@ -1,32 +1,41 @@
 @import "constants";
 
 .share-buttons {
-    margin-bottom: 20px;
+    border-top: 1px solid $color-gray;
+    margin: 8px;
+    padding: 20px 0px 0px;
 }
 
 .share-button {
+    background-position: 0.5rem center;
+    background-repeat: no-repeat;
     color: $color-white;
-    display: inline-block;
+    display: block;
     font-family: $font-regular;
-    font-size: 8px;
-    font-weight: lighter;
-    margin: 5px 5% 0 8px;
-    padding: 5px 10px;
+    font-size: 1rem;
+    font-weight: 300;
+    margin-bottom: 15px;
+    padding: 0.8rem 0.8rem 0.8rem 1.8rem;
+    text-align: center;
     text-transform: uppercase;
 }
 
 .share-button-fb {
-    background: $share-button-fb url("../images/fb.png") no-repeat 0 0;
+    background-color: $share-button-fb;
+    background-image: url("../images/share_fb.png");
 }
 
 .share-button-tw {
-    background: $share-button-tw url("../images/tw.png") no-repeat 0 0;
+    background-color: $share-button-tw;
+    background-image: url("../images/share_tw.png");
 }
 
 .share-button-gp {
-    background: $share-button-gp url("../images/gp.png") no-repeat 0 0;
+    background-color: $share-button-gp;
+    background-image: url("../images/share_gp.png");
 }
 
-.share-button-in {
-    background: $share-button-in url("../images/in.png") no-repeat 0 0;
+.share-button-li {
+    background-color: $share-button-li;
+    background-image: url("../images/share_li.png");
 }
