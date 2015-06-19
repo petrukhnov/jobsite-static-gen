@@ -145,9 +145,17 @@
     <!-- filling helmet scene -->
 
     <div class="scene filling_helmet" id="filling_helmet">
-        <div class="container scene-wrapper">
+        <div class="container scene-wrapper square">
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-10vh);" data-bottom-top="transform: translateY(10vh);" data-anchor-target="#filling_helmet">
+                <div class="sprite bottle-1"></div>
+                <div class="sprite liquid-1"></div>
+                <div class="sprite pipe-1"></div>
+                <div class="sprite bottle-2"></div>
+                <div class="sprite liquid-2"></div>
+                <div class="sprite pipe-2"></div>
                 <div class="sprite helmet-1"></div>
+                <div class="sprite helmet-filling"></div>
+                <div class="sprite helmet-reflection"></div>
             </div>
         </div>
     </div>
@@ -169,9 +177,9 @@
     <!-- satellite scene -->
 
     <div class="scene satellite" id="satellite">
-        <div class="container scene-wrapper">
+        <div class="container scene-wrapper square">
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-5vh);" data-bottom-top="transform: translateY(5vh);" data-anchor-target="#satellite">
-                <div class="sprite blue-glow"></div>
+                <div class="sprite blue-glow-2"></div>
             </div>
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-10vh);" data-bottom-top="transform: translateY(10vh);" data-anchor-target="#satellite">
                 <div class="sprite earth"></div>
@@ -181,6 +189,9 @@
             </div>
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-25vh);" data-bottom-top="transform: translateY(25vh);" data-anchor-target="#satellite">
                 <div class="sprite satellite"></div>
+                <div class="sprite satellite-circle-1"></div>
+                <div class="sprite satellite-circle-2"></div>
+                <div class="sprite satellite-circle-3"></div>
             </div>
         </div>
     </div>
@@ -237,6 +248,12 @@
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-15vh);" data-bottom-top="transform: translateY(15vh);" data-anchor-target="#aliens">
                 <div class="sprite alien-1"></div>
                 <div class="sprite alien-3"></div>
+                <div class="sprite eye-1"></div>
+                <div class="sprite eye-2"></div>
+                <div class="sprite eye-3"></div>
+                <div class="sprite eye-4"></div>
+                <div class="sprite eye-5"></div>
+                <div class="sprite eye-6"></div>
             </div>
         </div>
     </div>
@@ -288,6 +305,11 @@
     <div class="scene astronauts" id="astronauts">
         <div class="container scene-wrapper">
             <div class="sprite-wrapper" data-top-bottom="transform: translateY(-10vh);" data-bottom-top="transform: translateY(10vh);" data-anchor-target="#astronauts">
+                <div class="sprite space-station"></div>
+                <div class="sprite rocket-empty-2"></div>
+                <div class="sprite astronaut-6"></div>
+                <div class="sprite astronaut-5"></div>
+                <div class="sprite astronaut-4"></div>
                 <div class="sprite astronaut-3"></div>
             </div>
         </div>
@@ -337,7 +359,7 @@
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-    <script type="text/javascript">var s = skrollr.init({forceHeight:false});</script>
+    <script type="text/javascript">var s = skrollr.init({forceHeight:false, mobileCheck: function() {return false;}});</script>
 
 </body>
 </html>
