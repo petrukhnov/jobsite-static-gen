@@ -1,8 +1,6 @@
 @import "constants";
 
 .share-buttons {
-    border-top: 1px solid $color-gray;
-    margin: 8px;
     padding: 20px 0 0;
 }
 
@@ -38,4 +36,12 @@
 .share-button-li {
     background-color: $share-button-li;
     background-image: url("../images/share_li.png");
+}
+
+.share-button-separator {
+    background-color: $color-gray;
+    display: block;
+    height: 1px;
+    line-height: 1px;
+    margin-top: 10px;
 }

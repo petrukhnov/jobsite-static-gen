@@ -49,6 +49,10 @@
                         {{ job_viewmodel.content | safe }}
                     </div>
 
+                    {% include '../src/partials/share_buttons.html' with {
+                        share_url: 'http://tech.zalando.com/jobs/' + job_viewmodel.id,
+                        share_title: job_viewmodel.title
+                    } %}
                 </div>
                 <div class="col-md-5 col-md-offset-1">
                     <a class="anchor" id="apply"></a>
@@ -71,12 +75,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="fullsize-container white">
-        {% include '../src/partials/share_buttons.html' with {
-            share_url: 'http://tech.zalando.com/jobs/' + job_viewmodel.id,
-            share_title: job_viewmodel.title
-        } %}
     </div>
 
     <!-- Footer -->

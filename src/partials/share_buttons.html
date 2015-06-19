@@ -1,26 +1,23 @@
 {% set share_url_encoded = share_url | url_encode %}
 {% set title_encoded = share_title | url_encode %}
+<div class="share-button-separator"></div>
 <div class="row">
-    <div class="col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
-        <div class="share-buttons">
-            <div class="row">
-                <div class="col-sm-3 col-xs-6">
-                    {% set fb_url = 'http://www.facebook.com/sharer.php?u=' + share_url_encoded %}
-                    <a class="share-button share-button-fb" onclick="event.preventDefault(); window.open('{{ fb_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_blank" href="{{ fb_url }}">Share</a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    {% set tw_url = 'https://twitter.com/intent/tweet?text=' + title_encoded + '&url=' + share_url_encoded %}
-                    <a class="share-button share-button-tw" onclick="event.preventDefault(); window.open('{{ tw_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ tw_url }}">Tweet</a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    {% set gp_url = 'https://plus.google.com/share?url=' + share_url_encoded %}
-                    <a class="share-button share-button-gp" onclick="event.preventDefault(); window.open('{{ gp_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ gp_url }}">Share</a>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                    {% set li_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + share_url_encoded + '&title=' + title_encoded %}
-                    <a class="share-button share-button-li" onclick="event.preventDefault(); window.open('{{ li_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ li_url }}">Share</a>
-                </div>
-            </div>
+    <div class="share-buttons">
+        <div class="col-sm-3 col-xs-6">
+            {% set fb_url = 'http://www.facebook.com/sharer.php?u=' + share_url_encoded %}
+            <a class="share-button share-button-fb" onclick="event.preventDefault(); window.open('{{ fb_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=325');" target="_blank" href="{{ fb_url }}">Share</a>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            {% set tw_url = 'https://twitter.com/intent/tweet?text=' + title_encoded + '&url=' + share_url_encoded %}
+            <a class="share-button share-button-tw" onclick="event.preventDefault(); window.open('{{ tw_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ tw_url }}">Tweet</a>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            {% set gp_url = 'https://plus.google.com/share?url=' + share_url_encoded %}
+            <a class="share-button share-button-gp" onclick="event.preventDefault(); window.open('{{ gp_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ gp_url }}">Share</a>
+        </div>
+        <div class="col-sm-3 col-xs-6">
+            {% set li_url = 'https://www.linkedin.com/shareArticle?mini=true&url=' + share_url_encoded + '&title=' + title_encoded %}
+            <a class="share-button share-button-li" onclick="event.preventDefault(); window.open('{{ li_url }}', 'sharer', 'toolbar=0,status=0,width=548,height=525');" target="_blank" href="{{ li_url }}">Share</a>
         </div>
     </div>
 </div>

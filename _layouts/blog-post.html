@@ -72,13 +72,13 @@
                                 </div>
                             </div>
                         </div>
+                        {% include '../src/partials/share_buttons.html' with {
+                            share_url: 'http://tech.zalando.com/blog/' + blogpost.slug,
+                            share_title: blogpost.title
+                        } %}
                     </div>
                 </div>
             </div>
-            {% include '../src/partials/share_buttons.html' with {
-                share_url: 'http://tech.zalando.com/blog/' + blogpost.slug,
-                share_title: blogpost.title
-            } %}
         </div>
     </div>
 
