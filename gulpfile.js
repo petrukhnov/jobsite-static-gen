@@ -150,12 +150,8 @@ gulp.task('sass', function() {
 gulp.task('minify-css:main', function() {
     return gulp.src([
         'src/css/vendor/bootstrap.min.css',
-        'build/css/general.css',
-        'build/css/header_footer.css',
-        'build/css/cards.css',
-        'build/css/buttons.css',
-        'build/css/blog_post.css',
-        'build/css/job_ad.css'
+        'build/css/*.css',
+        '!build/css/greenhouse.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
