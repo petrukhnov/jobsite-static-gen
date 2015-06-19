@@ -5,9 +5,12 @@
 <head>
     {% include "../src/partials/head.html" with {
         'relative_path_to_root': relative_path_to_root,
-        'title': 'Zalando Tech',
-        'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+        'title': job_viewmodel.title,
+        'description': job_viewmodel.locations
     } %}
+
+    <meta property="og:url" content="https://tech.zalando.com/jobs/{{ job_viewmodel.id }}">
+    <meta property="og:image" content="https://tech.zalando.com/{{ job_viewmodel.thumbnail }}">
 </head>
 <body>
 
