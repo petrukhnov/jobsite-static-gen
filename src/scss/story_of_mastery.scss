@@ -33,7 +33,6 @@ body.tour-of-mastery {
     .heading-2 {
         color: $color-white;
         display: block;
-        font-family: $font-bodycopy;
         font-size: 2.2rem;
         font-weight: 300;
         line-height: 3.2rem;
@@ -63,6 +62,20 @@ body.tour-of-mastery {
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
+
+    // teaser
+
+    &.astronaut-1 {
+        animation-duration: 30s;
+        animation-iteration-count: infinite;
+        animation-name: astronaut-flying;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/astronaut.svg");
+        height: 20vh;
+        left: 30%;
+        top: 3vh;
+        width: 60%;
+    }
 
     // asteroids scene
 
@@ -614,32 +627,46 @@ body.tour-of-mastery {
         width: 4%;
     }
 
-    &.eye-5 {
-        // animation-delay: 2s;
-        // animation-duration: 5s;
-        // animation-iteration-count: infinite;
-        // animation-name: alien-eye-close;
-        // animation-timing-function: linear;
+    &.eye-7 {
+        animation-delay: 3.8s;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: alien-eye-close;
+        animation-timing-function: linear;
         background-image: url("../images/tour_of_mastery/alien_eye_closed.svg");
-        height: 9%;
-        left: 28.8%;
+        height: 6%;
+        left: 41.5%;
         opacity: 0;
-        top: 50.4%;
-        width: 9%;
+        top: 43.1%;
+        width: 6%;
     }
 
-    &.eye-6 {
-        // animation-delay: 2s;
-        // animation-duration: 5s;
-        // animation-iteration-count: infinite;
-        // animation-name: alien-eye-close;
-        // animation-timing-function: linear;
+    &.eye-8 {
+        animation-delay: 3.8s;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: alien-eye-close;
+        animation-timing-function: linear;
         background-image: url("../images/tour_of_mastery/alien_eye_closed.svg");
-        height: 9%;
-        left: 28.8%;
+        height: 6%;
+        left: 41.5%;
         opacity: 0;
-        top: 50.4%;
-        width: 9%;
+        top: 49.9%;
+        width: 6%;
+    }
+
+    &.eye-9 {
+        animation-delay: 3.8s;
+        animation-duration: 5s;
+        animation-iteration-count: infinite;
+        animation-name: alien-eye-close;
+        animation-timing-function: linear;
+        background-image: url("../images/tour_of_mastery/alien_eye_closed.svg");
+        height: 6%;
+        left: 41.5%;
+        opacity: 0;
+        top: 56.2%;
+        width: 6%;
     }
 
     // moon walk
@@ -742,6 +769,26 @@ body.tour-of-mastery {
         left: 32%;
         top: 42%;
         width: 17%;
+    }
+}
+
+// teaser
+
+@keyframes astronaut-flying {
+    0% {
+        transform: translate(40%, 0) rotate(0deg);
+    }
+
+    33% {
+        transform: translate(0, 120%) rotate(-120deg);
+    }
+
+    66% {
+        transform: translate(-40%, 0) rotate(-240deg);
+    }
+
+    100% {
+        transform: translate(40%, 0) rotate(-360deg);
     }
 }
 
