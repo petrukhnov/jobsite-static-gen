@@ -125,11 +125,15 @@
             {%- endif %}
 
             {%- if field.type === 'textarea' %}
-            <textarea id="{{ field.name }}" name="{{ field.name }}" class="job-application-input"></textarea>
+            <div class="job-application-btn" onclick="$('#{{ field.name }}').toggleClass('hide')">Paste</div>
+            <textarea id="{{ field.name }}" name="{{ field.name }}" class="job-application-input job-application-textarea hide"></textarea>
             {%- endif %}
 
             {%- if field.type === 'input_file' %}
-            <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file">
+            <div class="job-application-btn">
+                <span>Upload</span>
+                <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file">
+            </div>
             {%- endif %}
 
             {%- if field.type === 'multi_value_single_select' %}
@@ -161,7 +165,7 @@
         <hr></hr>
 
         <div id="error_message"></div>
-        <input type="submit" class="job-application-submit" value="Submit Application">
+        <input type="submit" class="job-application-btn" value="Submit Application">
     </form>
 </div>
 </div>
