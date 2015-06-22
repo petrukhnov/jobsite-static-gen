@@ -22,12 +22,12 @@
             </div>
 
             <div class="row">
-                <div class="col-sm-8">
+                <div class="col-sm-7">
                     <div class="jobs-header element-spacing">
                         <h1 class="heading-1 {{ jobs_category.name }}">{{ jobs_category.title }}</h1>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-5">
                     <div id="searchField"></div>
                 </div>
             </div>
@@ -58,7 +58,6 @@
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
     <script src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
-    <script src="https://fb.me/react-with-addons-0.13.3.js"></script>
     <script src="{{ relative_path_to_root }}js/tech.zalando-app.js"></script>
     <script>
         new techZalando.App({

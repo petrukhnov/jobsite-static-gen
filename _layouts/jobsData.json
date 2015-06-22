@@ -1,3 +1,3 @@
-{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ preprocessContent: true, sortOrder: 'updated' }) %}
+{% set jobs_viewmodel = greenhouse.jobs | to_jobs_viewmodel({ ignoreContent: true, sortOrder: 'updated' }) %}
 
 {{ JSON.stringify(jobs_viewmodel) }}

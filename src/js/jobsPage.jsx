@@ -7,7 +7,8 @@ var techZalando = techZalando || {};
     var SEARCH_URL_STRING = "search",
         RELATIVE_URL_TO_JOBS_DATA = 'js/data/jobsData.json'
         JOKER_NON_TECH_JOBS_POSITION = 2,
-        JOKER_TALENT_POOL_POSITION = 10
+        JOKER_TALENT_POOL_POSITION = 10,
+        ENTER_KEY = 13;
 
     var SearchField = techZalando.SearchField,
         ItemsContainer = techZalando.ItemsContainer,
@@ -24,6 +25,9 @@ var techZalando = techZalando || {};
         this.model = {
             enableSearchSignal: new Rx.BehaviorSubject(false),
             searchTextSignal: new Rx.BehaviorSubject(''),
+            searchButtonSignal: new Rx.Subject(),
+            searchKeyDownSignal: new Rx.Subject(),
+            clearButtonSignal: new Rx.Subject(),
             searchSignal: undefined,
             locationHashSignal: Rx.Observable.fromEvent(window, 'hashchange')
                 .map(function(hashEvent) {
@@ -38,17 +42,20 @@ var techZalando = techZalando || {};
             .subscribe(this.onHashChanged.bind(this));
 
         this.model.searchSignal = this.model.searchTextSignal
-            .distinctUntilChanged()
-            .debounce(200 /* ms */);
+            .sample(Rx.Observable.merge(
+                this.model.searchButtonSignal,
+                this.model.searchKeyDownSignal.filter(function(e) { return e.keyCode === ENTER_KEY }),
+                this.model.clearButtonSignal,
+                this.model.locationHashSignal
+            ));
 
         this.model.searchSignal
             .subscribe(this.updateHash.bind(this));
 
-        this.model.searchTextSignal
+        this.model.searchSignal
             // skip first value to ignore searches that were triggered by direct URL input
             .skip(1)
             .distinctUntilChanged()
-            .debounce(2000 /* ms */)
             .filter(function(text) { return text.length > 2; })
             .subscribe(this.logSearch.bind(this));
 
@@ -75,6 +82,9 @@ var techZalando = techZalando || {};
             <SearchField
                 enableSignal={this.model.enableSearchSignal}
                 searchTextSignal={this.model.searchTextSignal}
+                searchButtonSignal={this.model.searchButtonSignal}
+                searchKeyDownSignal={this.model.searchKeyDownSignal}
+                clearButtonSignal={this.model.clearButtonSignal}
                 relativePathToRoot={this.options.relative_path_to_root} />,
             document.getElementById('searchField')
         );
@@ -93,7 +103,7 @@ var techZalando = techZalando || {};
         this.jobsIndex = lunr(function () {
             this.field('title', { boost: 10 });
             this.field('locations', { boost: 5 });
-            this.field('content');
+            this.field('tags'), { boost: 10 };
         });
 
         this.jobsStore = data.filter(function(job) {
@@ -105,7 +115,7 @@ var techZalando = techZalando || {};
                 id: job.id,
                 title: processForLunr(job.title),
                 locations: processForLunr(job.locations),
-                content: processForLunr(job.content)
+                tags: processForLunr(job.tags)
             });
         }.bind(this));
 
