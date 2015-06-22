@@ -99,6 +99,7 @@ gulp.task('minify-js', ['lint-js'], function() {
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/URI.min.js',
         'src/js/vendor/lunr.min.js',
+        'src/js/vendor/react_with_addons.min.js',
         'src/js/vendor/rx.lite.min.js',
         'src/js/vendor/rx.dom.min.js',
         'src/js/tech.zalando.js',
@@ -153,12 +154,8 @@ gulp.task('sass', function() {
 gulp.task('minify-css:main', function() {
     return gulp.src([
         'src/css/vendor/bootstrap.min.css',
-        'build/css/general.css',
-        'build/css/header_footer.css',
-        'build/css/cards.css',
-        'build/css/buttons.css',
-        'build/css/blog_post.css',
-        'build/css/job_ad.css'
+        'build/css/*.css',
+        '!build/css/greenhouse.css'
     ])
     .pipe(concat('tech.zalando-all.css'))
     .pipe(minifyCSS())
@@ -183,7 +180,7 @@ gulp.task('minify-css', function(cb) {
 gulp.task('copy-assets', function () {
     return gulp.src([
         'src/robots.txt',
-        'src/images/*.{jpg,png,gif,ico}',
+        'src/images/**/*.{jpg,png,gif,ico,svg}',
         'src/blog/images/**/*',
         'src/blog/files/**/*',
         'src/fonts/**',
@@ -458,7 +455,7 @@ function generateOldBlogpostUrl(doc, resolvedLink) {
 function getOldSlug(doc) {
     switch (doc.type) {
         case 'blog':
-            return doc.data.oldname.json.asText();
+            return doc.data && doc.data.oldname && doc.data.oldname.json.asText();
         case 'blog-rst':
         case 'blog-md':
             return doc.slug;

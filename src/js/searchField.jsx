@@ -45,13 +45,23 @@ var techZalando = techZalando || {};
             this.inputFieldChangeSignal.onNext(e);
         },
 
-        clearButtonClick: function() {
+        inputFieldKeyDown: function(e) {
+            this.props.searchKeyDownSignal.onNext(e);
+        },
+
+        clearButtonClick: function(e) {
             this.props.searchTextSignal.onNext('');
+            this.props.clearButtonSignal.onNext(e);
+        },
+
+        searchButtonClick: function(e) {
+            this.props.searchButtonSignal.onNext(e);
         },
 
         render: function() {
             var searchField = '',
-                clearButton = '';
+                clearButton = '',
+                searchButton = '';
 
             if (this.state.showClearButton) {
                 clearButton = (
@@ -63,9 +73,22 @@ var techZalando = techZalando || {};
                 );
             }
 
+            if (this.props.searchButtonSignal) {
+                searchButton = (
+                    <button
+                        className="default-button"
+                        onClick={this.searchButtonClick}>
+                        search
+                    </button>
+                );
+            }
+
             if (this.state.visible) {
                 searchField = (
                     <div key="searchField" className="search-field">
+                        <div className="search-button-wrapper">
+                            {searchButton}
+                        </div>
                         <div className="close-button-wrapper">
                             {clearButton}
                         </div>
@@ -74,7 +97,8 @@ var techZalando = techZalando || {};
                             className="input"
                             placeholder="Search for a job"
                             value={this.state.inputText}
-                            onChange={this.inputFieldChange} />
+                            onChange={this.inputFieldChange}
+                            onKeyDown={this.inputFieldKeyDown} />
                     </div>
                 );
             }
