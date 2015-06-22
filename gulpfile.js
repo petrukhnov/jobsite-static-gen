@@ -271,7 +271,8 @@ gulp.task('metalsmith', function() {
               .use(greenhouse({
                   'apiHost': 'boards.api.greenhouse.io',
                   'apiEndpointPath': '/v1/boards',
-                  'boardName': 'zalandotech'
+                  'boardName': 'zalandotech',
+                  'getJobQuestions': true
               }))
               .use(greenhouseImgurl())
               .use(imgurlReprocessor({
