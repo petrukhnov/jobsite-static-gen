@@ -124,7 +124,7 @@ var techZalando = techZalando || {};
 
 
         function processForLunr(text) {
-            return text.replace(/[^a-zA-Z\d\s]+/g,' ');
+            return text ? text.replace(/[^a-zA-Z\d\s]+/g,' ') : text;
         }
     };
 
