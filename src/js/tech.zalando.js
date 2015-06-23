@@ -3,16 +3,23 @@
 
     $(document).ready(function() {
         var $jobAppError = $('.job-application-error');
+        var $jobAppStatus = $('.job-application-status');
+        var $jobAppSubmit = $('.job-application-submit');
 
         $('.job-application-form').ajaxForm({
+            dataType: 'json',
             beforeSubmit: function() {
+                $jobAppSubmit.hide();
                 $jobAppError.text('').hide();
+                $jobAppStatus.text('Sending...').hide();
             },
             success: function(response, statusText) {
-                alert(response, statusText);
+                $jobAppStatus.text('Thank you for you application!').show();
             },
             error: function(xhr, name, error) {
+                $jobAppStatus.text('').hide();
                 $jobAppError.text('Sorry, your application could not be sent right now. Please try again later.').show();
+                $jobAppSubmit.show();
             }
         });
     });
