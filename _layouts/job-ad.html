@@ -6,7 +6,7 @@
     {% include "../src/partials/head.html" with {
         'relative_path_to_root': relative_path_to_root,
         'title': job_viewmodel.title,
-        'description': 'Come work as a ' job_viewmodel.title + ' at Zalando Tech in ' + job_viewmodel.locations,
+        'description': 'Come work as a ' + job_viewmodel.title + ' at Zalando Tech in ' + job_viewmodel.locations,
         'keywords': 'Zalando Tech, ' + job_viewmodel.title + ', ' + job_viewmodel.locations,
         'meta_properties': {
             'og:url': 'https://tech.zalando.com/jobs/' + job_viewmodel.id,
