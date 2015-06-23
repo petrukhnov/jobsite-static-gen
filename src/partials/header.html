@@ -15,21 +15,22 @@
         </div>
         <div class="navbar-collapse collapse" id="zalando-navbar-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="{{ relative_path_to_root }}working-at-z"
-                    {%- if active==='working-at-z' %} class="active" {%- endif %}
-                    >Working @ Z</a>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle {%- if active==='working-at-z' %} active {%- endif %}" data-toggle="dropdown" role="button" aria-expanded="false">Culture</a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ relative_path_to_root }}working-at-z">Working</a>
+                        </li>
+                        <li>
+                            <a href="{{ relative_path_to_root }}working-at-z/tour-of-mastery">Mastery</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="{{ relative_path_to_root }}jobs"
                     {%- if active==='jobs' || active==="jobs-overview" %} class="active" {%- endif %}
                     >Jobs</a>
                 </li>
-<!--
-                <li>
-                    <a href="working.html">Working @ Z</a>
-                </li>
--->
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle {%- if active==='locations' || active==='location' %} active {%- endif %}" data-toggle="dropdown" role="button" aria-expanded="false">Locations</a>
                     <ul class="dropdown-menu" role="menu">
