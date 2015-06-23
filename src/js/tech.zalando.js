@@ -1,6 +1,22 @@
 ;(function ($) {
     var cookieName = "zalandoCookieWarning";
 
+    $(document).ready(function() {
+        var $jobAppError = $('.job-application-error');
+
+        $('.job-application-form').ajaxForm({
+            beforeSubmit: function() {
+                $jobAppError.text('').hide();
+            },
+            success: function(response, statusText) {
+                alert(response, statusText);
+            },
+            error: function(xhr, name, error) {
+                $jobAppError.text('Sorry, your application could not be sent right now. Please try again later.').show();
+            }
+        });
+    });
+
     var hideCookieBar = function () {
         $(".cookie-bar").toggleClass("table-hidden", "none");
     };

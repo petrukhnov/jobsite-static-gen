@@ -99,6 +99,7 @@ gulp.task('compile-jsx', function () {
 gulp.task('minify-js', ['lint-js'], function() {
     return gulp.src([
         'src/js/vendor/jquery.min.js',
+        'src/js/vendor/jquery.form.js',
         'src/js/vendor/bootstrap.min.js',
         'src/js/vendor/parallax.min.js',
         'src/js/vendor/skrollr.min.js',
