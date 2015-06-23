@@ -140,7 +140,7 @@
     font-size: 1.4rem;
 }
 
-.job-application-field {
+.job-application-question {
     margin-bottom: 15px;
     overflow: auto;
 }
@@ -190,6 +190,20 @@
     color: $color-required-field;
     margin-bottom: 1rem;
     width: 60%;
+}
+
+.jobapp-filename {
+    font-weight: 300;
+    margin-left: 1rem;
+}
+
+.jobapp-removefile {
+    color: $color-gray;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 12px;
+    text-align: center;
+    width: 14px;
 }
 
 .job-application-btn {

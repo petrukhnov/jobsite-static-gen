@@ -84,7 +84,8 @@
         <hr>
 
         {% for question in job_viewmodel.questions -%}
-        <div class="job-application-field">
+        {% set question_class = 'job-application-question-' + loop.index -%}
+        <div class="job-application-question {{ question_class }}">
             <label class="job-application-label">
                 {{ question.label }}
                 {%- if question.required %} <span class="required-field-asterisk">*</span>{% endif %}
@@ -92,23 +93,25 @@
             {%- for field in question.fields %}
 
             {%- if field.type === 'input_text' %}
-            <input id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input" type="text">
+            <input id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input job-application-field" type="text">
             {%- endif %}
 
             {%- if field.type === 'textarea' %}
-            <div class="job-application-btn" onclick="$('#{{ field.name }}').toggleClass('hide')">Paste</div>
-            <textarea id="{{ field.name }}" name="{{ field.name }}" class="job-application-input job-application-textarea hide"></textarea>
+            <div class="job-application-field">
+                <div class="job-application-btn" onclick="$('#{{ field.name }}').toggleClass('hide')">Paste</div>
+                <textarea id="{{ field.name }}" name="{{ field.name }}" class="job-application-input job-application-textarea hide"></textarea>
+            </div>
             {%- endif %}
 
             {%- if field.type === 'input_file' %}
-            <div class="job-application-btn">
-                <span>Upload</span>
-                <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file">
+            <div class="job-application-btn job-application-field">
+                <span>Attach</span>
+                <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file" onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
             </div>
             {%- endif %}
 
             {%- if field.type === 'multi_value_single_select' || field.type === 'multi_value_multi_select' %}
-            <select id="{{ field.name }}" name="{{ field.name }}"{%- if field.type === 'multi_value_multi_select' %} multiple="multiple"{% endif %} {%- if question.required %} required="required"{% endif %} class="job-application-input" type="text">
+            <select id="{{ field.name }}" name="{{ field.name }}"{%- if field.type === 'multi_value_multi_select' %} multiple="multiple"{% endif %} {%- if question.required %} required="required"{% endif %} class="job-application-input  job-application-field" type="text">
                 {%- if field.type === 'multi_value_single_select' %}<option disabled="disabled" selected="selected">Please select</option>{% endif %}
                 {%- for option in field.values %}
                 <option value="{{ option.value }}">{{ option.label }}</option>
@@ -116,6 +119,11 @@
             </select>
             {%- endif %}
             {%- endfor %}
+
+            <div class="jobapp-chosen-file hide">
+                <span class="jobapp-filename"></span>
+                <span class="jobapp-removefile" onclick="var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').addClass('hide'); $q.find('.job-application-field').removeClass('hide'); $q.find('input[type=file]').val('');">x</span>
+            </div>
         </div>
         {%- endfor -%}
 
