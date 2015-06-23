@@ -31,8 +31,8 @@
                 </li>
 -->
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle {%- if active==='locations' || active==='location' %} active {%- endif %}" data-toggle="dropdown" role="button" aria-expanded="false">Locations</a>
-                    <ul class="dropdown-menu" role="menu">
+                    <a href="#" onclick="event.preventDefault();" class="dropdown-toggle {%- if active==='locations' || active==='location' %} active {%- endif %}">Locations</a>
+                    <ul class="dropdown-menu">
                         <li>
                             <a href="{{ relative_path_to_root }}locations/berlin">Berlin</a>
                         </li>

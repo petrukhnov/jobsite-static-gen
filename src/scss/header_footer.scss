@@ -27,7 +27,7 @@
         font-weight: 600;
         padding: 15px 12px 11px 12px;
         text-transform: uppercase;
-        transition: border $medium-animation-duration, color $animation-duration, background-color $animation-duration;
+        transition: border $medium-animation-duration, color $animation-duration, background-color $medium-animation-duration;
 
         @media (max-width: 767px) {
             border-bottom: 0;
@@ -47,6 +47,14 @@
                 border-bottom: 0;
                 border-left: 4px solid $color-zalando;
             }
+        }
+    }
+
+    .navbar-nav > li.dropdown > a {
+        &:hover {
+            background-color: $color-light-gray;
+            border-color: $color-light-gray;
+            color: $color-black;
         }
     }
 
@@ -148,6 +156,12 @@
             color: $color-zalando;
         }
     }
+}
+
+@media (min-width: 979px) {
+  ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+  }
 }
 
 // footer
