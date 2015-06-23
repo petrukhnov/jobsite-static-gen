@@ -5,8 +5,9 @@
 <head prefix="og: http://ogp.me/ns#">
     {% include "../src/partials/head.html" with {
         'relative_path_to_root': relative_path_to_root,
-        'title': jobs_category.title,
-        'description': 'Open job positions for ' + jobs_category.title
+        'title': jobs_category.title + ' jobs at Zalando Tech.',
+        'description': 'Open job positions for ' + jobs_category.title + ' at Zalando Tech. We dress code!',
+        'keywords': 'Zalando Tech, careers, jobs, working, positions, ' + jobs_category.title
     } %}
 </head>
 <body>
