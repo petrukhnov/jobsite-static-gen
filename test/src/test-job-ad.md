@@ -37,4 +37,18 @@ greenhouse:
                 label: 'Media'
               - value: 3
                 label: 'Search engine'
+        - label: 'Preferred job locations'
+          required: true
+          fields:
+            - type: 'multi_value_multi_select'
+              name: 'applicant_locations'
+              values:
+              - value: 1
+                label: 'Berlin'
+              - value: 2
+                label: 'Helsinki'
+              - value: 3
+                label: 'London'
+              - value: 4
+                label: 'New York'
 ---
