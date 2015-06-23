@@ -73,9 +73,17 @@
                         <h2 class="heading-2">{{ job_viewmodel.department }}</h2>
                     </div>
 
-    <form class="job-application-form" accept-charset="UTF-8" action="https://tech.workplace.zalan.do/jobs/apply" enctype="multipart/form-data" id="application_form" method="post">
+    <form class="job-application-form" accept-charset="UTF-8" action="{{ relative_path_to_root }}jobs/apply" enctype="multipart/form-data" id="application_form" method="post">
         <input type="hidden" name="id" value="{{ job_viewmodel.id }}" />
         <input type="hidden" name="mapped_url_token" value="{{ job_viewmodel.id }}" />
+
+        <script type="text/javascript" src="//platform.linkedin.com/in.js">
+            api_key: 77tqnlah0k64tk
+            authorize: true
+            onLoad: onLinkedInLoad
+            scope: r_emailaddress
+        </script>
+        <script type="in/Login"></script>
 
         <div class="required-fields-hint">
             <span class="required-field-asterisk">*</span> Required
@@ -93,7 +101,7 @@
             {%- for field in question.fields %}
 
             {%- if field.type === 'input_text' %}
-            <input id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input job-application-field" type="text">
+            <input id="{{ field.name }}" name="{{ field.name }}"{%- if question.required %} required="required"{% endif %} class="job-application-input job-application-field{% if question.label|replace('^.*linkedin.*$', 'YES!', 'i') === 'YES!' %} job-application-linkedin{% endif %}" type="text">
             {%- endif %}
 
             {%- if field.type === 'textarea' %}
@@ -157,5 +165,58 @@
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="mh9jyh4mfwjnfhj"></script>
 
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
+
+    <script async type="text/javascript">
+        function onLinkedInLoad() {
+            $('.IN-widget').find(':contains(with LinkedIn)').last().text('Apply with LinkedIn');
+            IN.Event.on(IN, "auth", getLinkedinProfileData);
+        }
+
+        function getLinkedinProfileData() {
+            IN.API.Raw("/people/~:(first-name,last-name,email-address,phone-numbers,headline,location,summary,specialties,positions,public-profile-url)").result(onLinkedinSuccess);
+        }
+
+        function onLinkedinSuccess(data) {
+            console.log(data);
+            var $jobappForm = $('.job-application-form');
+            $.each(data, function(key, value) {
+                if (LINKEDIN_FIELDS_MAP[key]) {
+                    $jobappForm.find(LINKEDIN_FIELDS_MAP[key]).val(value);
+                }
+            });
+
+            var resume =
+                data.firstName + ' ' + data.lastName + '\n' +
+                (data.location ? data.location.name + '\n' : '') +
+                data.headline  + '\n\n' +
+                '-------------------------------------------\nSummary\n\n' +
+                data.summary + '\n\n' +
+                '-------------------------------------------\nExperience\n\n' +
+                $.map(data.positions.values, positionIntoText).join('\n\n');
+
+            $jobappForm.find('textarea[name=resume_text]').removeClass('hide').val(resume);
+        }
+
+        function positionIntoText(pos) {
+            try {
+                return '- ' + pos.title + ' at ' + pos.company.name + '\n' +
+                    dateIntoText(pos.startDate) + ' - ' + dateIntoText(pos.endDate) + '\n' +
+                    pos.summary;
+            } catch (e) {
+                return '';
+            }
+        }
+
+        function dateIntoText(date) {
+            return date ? date.month + '/' + date.year : 'Present';
+        }
+
+        var LINKEDIN_FIELDS_MAP = {
+            firstName: 'input[name=first_name]',
+            lastName: 'input[name=last_name]',
+            emailAddress: 'input[name=email]',
+            publicProfileUrl: '.job-application-linkedin'
+        };
+    </script>
 </body>
 </html>

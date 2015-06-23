@@ -14,22 +14,40 @@ greenhouse:
       firstCategory: 'Testing'
       content: '<p>It is a nice job, please apply now!</p>'
       questions:
-        - label: 'Name'
+        - label: 'First name'
           required: true
           fields:
             - type: 'input_text'
-              name: 'applicant_name'
+              name: 'first_name'
+        - label: 'Last name'
+          required: true
+          fields:
+            - type: 'input_text'
+              name: 'last_name'
+        - label: 'Email'
+          required: true
+          fields:
+            - type: 'input_text'
+              name: 'email'
+        - label: 'Phone'
+          fields:
+            - type: 'input_text'
+              name: 'phone'
         - label: 'CV'
           fields:
             - type: 'input_file'
-              name: 'applicant_cv_file'
+              name: 'resume'
             - type: 'textarea'
-              name: 'applicant_cv_text'
+              name: 'resume_text'
+        - label: 'Public LinkedIn profile'
+          fields:
+            - type: 'input_text'
+              name: 'linkedin'
         - label: 'How did you hear about this job?'
           required: true
           fields:
             - type: 'multi_value_single_select'
-              name: 'applicant_referrer'
+              name: 'referrer'
               values:
               - value: 1
                 label: 'Friend'
@@ -41,7 +59,7 @@ greenhouse:
           required: true
           fields:
             - type: 'multi_value_multi_select'
-              name: 'applicant_locations'
+              name: 'locations'
               values:
               - value: 1
                 label: 'Berlin'
