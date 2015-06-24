@@ -2,6 +2,12 @@
     var cookieName = "zalandoCookieWarning";
 
     $(document).ready(function() {
+        if ($('.job-application-form').length === 0) {
+            return;
+        }
+
+        $('.IN-widget').find(':contains(with LinkedIn)').last().text('Apply with LinkedIn');
+
         var $jobAppError = $('.job-application-error');
         var $jobAppStatus = $('.job-application-status');
         var $jobAppSubmit = $('.job-application-submit');
