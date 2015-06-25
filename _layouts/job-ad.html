@@ -73,7 +73,7 @@
                         <h2 class="heading-2">{{ job_viewmodel.department }}</h2>
                     </div>
 
-    <form class="job-application-form" accept-charset="UTF-8" action="{{ relative_path_to_root }}jobs/apply" enctype="multipart/form-data" id="application_form" method="post">
+    <form class="job-application-form" accept-charset="UTF-8" action="{{ relative_path_to_root }}jobs/apply" enctype="multipart/form-data" method="post">
         <input type="hidden" class="job-application-id" name="id" value="{{ job_viewmodel.id }}" />
         <input type="hidden" name="mapped_url_token" value="{{ job_viewmodel.id }}" />
 
@@ -153,8 +153,8 @@
         <div class="job-application-error"></div>
         <input type="submit" class="job-application-submit" value="Submit Application">
     </form>
-</div>
 
+                </div>
             </div>
         </div>
     </div>
