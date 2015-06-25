@@ -11,8 +11,11 @@
         var $jobAppError = $('.job-application-error');
         var $jobAppStatus = $('.job-application-status');
         var $jobAppSubmit = $('.job-application-submit');
+        var $jobAppForm = $('.job-application-form');
+        var jobAppId = $('.job-application-id').val();
+        var jobAppTitle = $('title').text();
 
-        $('.job-application-form').ajaxForm({
+        $jobAppForm.ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {
                 $jobAppSubmit.hide();
@@ -21,11 +24,19 @@
             },
             success: function(response, statusText) {
                 $jobAppStatus.text('Thank you for you application!').show();
+                ga('send', 'pageview', {
+                    'page': '/jobs/apply/' + jobAppId,
+                    'title': jobAppTitle
+                });
             },
             error: function(xhr, name, error) {
                 $jobAppStatus.text('').hide();
                 $jobAppError.text('Sorry, your application could not be sent right now. Please try again later.').show();
                 $jobAppSubmit.show();
+                ga('send', 'pageview', {
+                    'page': '/jobs/apply/' + jobAppId + '?error',
+                    'title': jobAppTitle
+                });
             }
         });
     });

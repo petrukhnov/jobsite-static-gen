@@ -74,7 +74,7 @@
                     </div>
 
     <form class="job-application-form" accept-charset="UTF-8" action="{{ relative_path_to_root }}jobs/apply" enctype="multipart/form-data" id="application_form" method="post">
-        <input type="hidden" name="id" value="{{ job_viewmodel.id }}" />
+        <input type="hidden" class="job-application-id" name="id" value="{{ job_viewmodel.id }}" />
         <input type="hidden" name="mapped_url_token" value="{{ job_viewmodel.id }}" />
 
         <script type="text/javascript" src="//platform.linkedin.com/in.js">
