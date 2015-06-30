@@ -39,6 +39,12 @@ greenhouse:
               name: 'resume'
             - type: 'textarea'
               name: 'resume_text'
+        - label: 'Cover Letter'
+          fields:
+            - type: 'input_file'
+              name: 'cover_letter'
+            - type: 'textarea'
+              name: 'cover_letter_text'
         - label: 'Public LinkedIn profile'
           fields:
             - type: 'input_text'

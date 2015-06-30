@@ -114,7 +114,14 @@
             {%- if field.type === 'input_file' %}
             <div class="job-application-btn job-application-field">
                 <span>Attach</span>
-                <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file" onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
+                <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file"
+                       onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
+            </div>
+
+            <div class="job-application-btn job-application-field">
+                <span>Dropbox</span>
+                <input id="{{ field.name }}_url" name="{{ field.name }}_url" class="job-application-file" type="text" onclick="selectFromDropbox(this)">
+                <input type="hidden" id="{{ field.name }}_url_filename" name="{{ field.name }}_url_filename" value="" onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
             </div>
             {%- endif %}
 
@@ -130,7 +137,7 @@
 
             <div class="jobapp-chosen-file hide">
                 <span class="jobapp-filename"></span>
-                <span class="jobapp-removefile" onclick="var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').addClass('hide'); $q.find('.job-application-field').removeClass('hide'); $q.find('input[type=file]').val('');">x</span>
+                <span class="jobapp-removefile" onclick="var $q = $('.{{ question_class }}'); console.log('Cleaning...'); console.log($q); $q.find('.jobapp-chosen-file').addClass('hide'); $q.find('.job-application-field').removeClass('hide'); $q.find('input[type=file]').val(''); $q.find('input[id$=url]').val(''); $q.find('input[id$=url_filename]').val('');">x</span>
             </div>
         </div>
         {%- endfor -%}
@@ -167,6 +174,26 @@
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
 
     <script async type="text/javascript">
+
+        function selectFromDropbox(input) {
+            Dropbox.choose({
+                success: function(files) {
+                    var $url = $(input);
+                    var $name = $url.next();
+                    $url.val(files[0].link);
+                    $name.val(files[0].name);
+                    // do somehing with the icon? files[0].icon
+
+                    $name[0].onchange();
+                },
+                cancel: function() {
+
+                },
+                linkType: "direct",
+                multiselect: false,
+                extensions: [".pdf", ".doc", ".docx", ".txt", ".rtf"]
+            })
+        }
         function onLinkedInLoad() {
             IN.Event.on(IN, "auth", getLinkedinProfileData);
         }
@@ -176,7 +203,6 @@
         }
 
         function onLinkedinSuccess(data) {
-            console.log(data);
             var $jobappForm = $('.job-application-form');
             $.each(data, function(key, value) {
                 if (LINKEDIN_FIELDS_MAP[key]) {
