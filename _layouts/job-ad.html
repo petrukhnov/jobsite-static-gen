@@ -81,7 +81,7 @@
             api_key: 77tqnlah0k64tk
             authorize: true
             onLoad: onLinkedInLoad
-            scope: r_emailaddress
+            scope: r_emailaddress r_fullprofile
         </script>
         <script type="in/Login"></script>
 
@@ -137,7 +137,7 @@
 
             <div class="jobapp-chosen-file hide">
                 <span class="jobapp-filename"></span>
-                <span class="jobapp-removefile" onclick="var $q = $('.{{ question_class }}'); console.log('Cleaning...'); console.log($q); $q.find('.jobapp-chosen-file').addClass('hide'); $q.find('.job-application-field').removeClass('hide'); $q.find('input[type=file]').val(''); $q.find('input[id$=url]').val(''); $q.find('input[id$=url_filename]').val('');">x</span>
+                <span class="jobapp-removefile" onclick="var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').addClass('hide'); $q.find('.job-application-field').removeClass('hide'); $q.find('input[type=file]').val(''); $q.find('input[id$=url]').val(''); $q.find('input[id$=url_filename]').val('');">x</span>
             </div>
         </div>
         {%- endfor -%}
@@ -169,7 +169,6 @@
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
-    <!-- <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="mh9jyh4mfwjnfhj"></script>-->
     <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="pk0ofxzs5utzfad"></script>
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
 
@@ -182,7 +181,6 @@
                     var $name = $url.next();
                     $url.val(files[0].link);
                     $name.val(files[0].name);
-                    // do somehing with the icon? files[0].icon
 
                     $name[0].onchange();
                 },
@@ -199,7 +197,7 @@
         }
 
         function getLinkedinProfileData() {
-            IN.API.Raw("/people/~:(first-name,last-name,email-address,phone-numbers,headline,location,summary,specialties,positions,public-profile-url)").result(onLinkedinSuccess);
+            IN.API.Raw("/people/~:(first-name,last-name,email-address,phone-numbers,headline,location,summary,specialties,positions,educations,public-profile-url)").result(onLinkedinSuccess);
         }
 
         function onLinkedinSuccess(data) {
@@ -217,23 +215,47 @@
                 '-------------------------------------------\nSummary\n\n' +
                 data.summary + '\n\n' +
                 '-------------------------------------------\nExperience\n\n' +
-                $.map(data.positions.values, positionIntoText).join('\n\n');
+                positionsText(data).join('\n\n') + '\n\n' +
+                '-------------------------------------------\nEducation\n\n' +
+                educationsText(data).join('\n\n');
 
             $jobappForm.find('textarea[name=resume_text]').removeClass('hide').val(resume);
         }
 
-        function positionIntoText(pos) {
+        function positionsText(data) {
             try {
-                return '- ' + pos.title + ' at ' + pos.company.name + '\n' +
-                    dateIntoText(pos.startDate) + ' - ' + dateIntoText(pos.endDate) + '\n' +
-                    pos.summary;
-            } catch (e) {
-                return '';
+                return $.map(data.positions.values, positionIntoText);
+            }
+            catch (e) {
+                return [];
             }
         }
 
+        function educationsText(data) {
+            try {
+                return $.map(data.educations.values, educationIntoText);
+            }
+            catch (e) {
+                return [];
+            }
+        }
+
+        function positionIntoText(pos) {
+            return '- ' + pos.title + ' at ' + pos.company.name + '\n' +
+                    dateIntoText(pos.startDate) + ' - ' + dateIntoText(pos.endDate) + '\n' +
+                    pos.summary;
+        }
+
+        function educationIntoText(edu) {
+            console.log(edu);
+            return  '- ' + edu.schoolName + '\n' +
+                    edu.degree + ' in ' + edu.fieldOfStudy + '\n' +
+                    dateIntoText(edu.startDate) + ' - ' + dateIntoText(edu.endDate) + '\n' +
+                    edu.notes;
+        }
+
         function dateIntoText(date) {
-            return date ? date.month + '/' + date.year : 'Present';
+            return date ? (date.month ? date.month + '/' : '') + date.year : 'Present';
         }
 
         var LINKEDIN_FIELDS_MAP = {
