@@ -197,7 +197,7 @@
         }
 
         function getLinkedinProfileData() {
-            IN.API.Raw("/people/~:(first-name,last-name,email-address,phone-numbers,headline,location,summary,specialties,positions,educations,public-profile-url)").result(onLinkedinSuccess);
+            IN.API.Raw("/people/~:(first-name,last-name,email-address,phone-numbers,headline,location,summary,specialties,positions,educations,skills,public-profile-url)").result(onLinkedinSuccess);
         }
 
         function onLinkedinSuccess(data) {
@@ -217,7 +217,9 @@
                 '-------------------------------------------\nExperience\n\n' +
                 positionsText(data).join('\n\n') + '\n\n' +
                 '-------------------------------------------\nEducation\n\n' +
-                educationsText(data).join('\n\n');
+                educationsText(data).join('\n\n') + '\n\n' +
+                '-------------------------------------------\nSkills\n\n' +
+                skillsText(data).join(', ');
 
             $jobappForm.find('textarea[name=resume_text]').removeClass('hide').val(resume);
         }
@@ -240,6 +242,16 @@
             }
         }
 
+
+        function skillsText(data) {
+            try {
+                return $.map(data.skills.values, function (val) { return val.skill.name; });
+            }
+            catch (e) {
+                return [];
+            }
+        }
+
         function positionIntoText(pos) {
             return '- ' + pos.title + ' at ' + pos.company.name + '\n' +
                     dateIntoText(pos.startDate) + ' - ' + dateIntoText(pos.endDate) + '\n' +
@@ -247,7 +259,6 @@
         }
 
         function educationIntoText(edu) {
-            console.log(edu);
             return  '- ' + edu.schoolName + '\n' +
                     edu.degree + ' in ' + edu.fieldOfStudy + '\n' +
                     dateIntoText(edu.startDate) + ' - ' + dateIntoText(edu.endDate) + '\n' +
