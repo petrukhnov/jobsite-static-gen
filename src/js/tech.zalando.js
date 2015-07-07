@@ -21,6 +21,7 @@
                 $jobAppSubmit.hide();
                 $jobAppError.text('').hide();
                 $jobAppStatus.text('Sending...').hide();
+                trackSubmitEvent('clicked', 'submit');
             },
             success: function(response, statusText) {
                 $jobAppStatus.text('Thank you for you application!').show();
