@@ -23,7 +23,7 @@
                 trackSubmitEvent('clicked', 'submit');
             },
             success: function(response, statusText) {
-                $jobAppForm.replaceWith('<div class="job-application-success"></div><h1>Thank you for applying!</h1><p>It is great to see that you are interested in joining us at Zalando. Your application has been received and we are doing our best to provide you feedback as soon as possible. Please be patient while we review your details.</p><p>Your Zalando Team</p></div>');
+                $jobAppForm.replaceWith('<div class="job-application-success"><h1>Thank you for applying!</h1><p>It is great to see that you are interested in joining us at Zalando. Your application has been received and we are doing our best to provide you feedback as soon as possible. Please be patient while we review your details.</p><p>Your Zalando Team</p></div>');
                 trackSubmitEvent('applied', 'success');
             },
             error: function(xhr, name, error) {
