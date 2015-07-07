@@ -37,7 +37,7 @@
 
         function trackSubmitEvent(eventAction, eventLabel) {
             try {
-                ga('send', 'event', 'jobs', eventAction, eventLabel, jobAppId);
+                ga('send', 'event', 'jobs', eventAction, eventLabel);
             } catch (e) {
 
             }
