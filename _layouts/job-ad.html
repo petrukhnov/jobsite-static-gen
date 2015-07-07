@@ -207,6 +207,7 @@
                     $jobappForm.find(LINKEDIN_FIELDS_MAP[key]).val(value);
                 }
             });
+            $jobappForm.find('input[name=phone]').val(firstPhoneNumber(data.phoneNumbers));
 
             var resume =
                 data.firstName + ' ' + data.lastName + '\n' +
@@ -222,6 +223,10 @@
                 skillsText(data).join(', ');
 
             $jobappForm.find('textarea[name=resume_text]').removeClass('hide').val(resume);
+        }
+
+        function firstPhoneNumber(nrs) {
+            return nrs && nrs.values && nrs.values[0] && nrs.values[0].phoneNumber;
         }
 
         function positionsText(data) {
