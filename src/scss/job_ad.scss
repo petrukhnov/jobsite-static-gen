@@ -257,6 +257,10 @@
     width: 100%;
 }
 
+.job-application-submit:disabled {
+    background-color: $color-light-gray-lighter;
+}
+
 .eu-privacy-consent-toggle {
     cursor: pointer;
 }

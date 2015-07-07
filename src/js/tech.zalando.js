@@ -18,19 +18,17 @@
         $jobAppForm.ajaxForm({
             dataType: 'json',
             beforeSubmit: function() {
-                $jobAppSubmit.hide();
+                $jobAppSubmit.attr('disabled', 'disabled').val('Processing...');
                 $jobAppError.text('').hide();
-                $jobAppStatus.text('Sending...').hide();
                 trackSubmitEvent('clicked', 'submit');
             },
             success: function(response, statusText) {
-                $jobAppStatus.text('Thank you for you application!').show();
+                $jobAppForm.replaceWith('<h1>Thank you for applying!</h1><p>It is great to see that you are interested in joining us at Zalando. Your application has been received and we are doing our best to provide you feedback as soon as possible. Please be patient while we review your details.</p><p>Your Zalando Team</p>');
                 trackSubmitEvent('applied', 'success');
             },
             error: function(xhr, name, error) {
-                $jobAppStatus.text('').hide();
                 $jobAppError.text('Sorry, your application could not be sent right now. Please try again later.').show();
-                $jobAppSubmit.show();
+                $jobAppSubmit.removeAttr('disabled').val('Submit Application');
                 trackSubmitEvent('applied', 'error');
             }
         });
