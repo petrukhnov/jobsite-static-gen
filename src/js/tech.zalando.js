@@ -24,21 +24,23 @@
             },
             success: function(response, statusText) {
                 $jobAppStatus.text('Thank you for you application!').show();
-                ga('send', 'pageview', {
-                    'page': '/jobs/apply/' + jobAppId,
-                    'title': jobAppTitle
-                });
+                trackSubmitEvent('applied', 'success');
             },
             error: function(xhr, name, error) {
                 $jobAppStatus.text('').hide();
                 $jobAppError.text('Sorry, your application could not be sent right now. Please try again later.').show();
                 $jobAppSubmit.show();
-                ga('send', 'pageview', {
-                    'page': '/jobs/apply/' + jobAppId + '?error',
-                    'title': jobAppTitle
-                });
+                trackSubmitEvent('applied', 'error');
             }
         });
+
+        function trackSubmitEvent(eventAction, eventLabel) {
+            try {
+                ga('send', 'event', 'jobs', eventAction, eventLabel, jobAppId);
+            } catch (e) {
+
+            }
+        }
     });
 
     var hideCookieBar = function () {
