@@ -34,11 +34,7 @@
         });
 
         function trackSubmitEvent(eventAction, eventLabel) {
-            try {
-                ga('send', 'event', 'jobs', eventAction, eventLabel);
-            } catch (e) {
-
-            }
+            ga('send', 'event', 'jobs', eventAction, eventLabel);
         }
     });
 
