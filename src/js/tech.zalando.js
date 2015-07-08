@@ -6,7 +6,7 @@
             return;
         }
 
-        $('.IN-widget').find(':contains(with LinkedIn)').last().text('Apply with LinkedIn');
+        $('.IN-widget').click(trackLinkedInClick).find(':contains(with LinkedIn)').last().text('Apply with LinkedIn');
 
         var $jobAppError = $('.job-application-error');
         var $jobAppStatus = $('.job-application-status');
@@ -35,6 +35,10 @@
 
         function trackSubmitEvent(eventAction, eventLabel) {
             ga('send', 'event', 'jobs', eventAction, eventLabel);
+        }
+
+        function trackLinkedInClick() {
+            ga('send', 'event', 'jobs', 'clicked', 'linkedin');
         }
     });
 
