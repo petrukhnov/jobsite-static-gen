@@ -167,6 +167,7 @@
 
     <script async type="text/javascript">
         function onLinkedInLoad() {
+            ga('send', 'event', 'jobs', 'load', 'linkedin');
             IN.Event.on(IN, "auth", getLinkedinProfileData);
         }
 
@@ -197,6 +198,7 @@
                 skillsText(data).join(', ');
 
             $jobappForm.find('textarea[name=resume_text]').removeClass('hide').val(resume);
+            ga('send', 'event', 'jobs', 'profile', 'linkedin');
         }
 
         function firstPhoneNumber(nrs) {
