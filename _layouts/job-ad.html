@@ -117,12 +117,6 @@
                 <input id="{{ field.name }}" name="{{ field.name }}" class="job-application-file" type="file"
                        onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
             </div>
-
-            <div class="job-application-btn job-application-field">
-                <span>Dropbox</span>
-                <input id="{{ field.name }}_url" name="{{ field.name }}_url" class="job-application-file" type="text" onclick="selectFromDropbox(this)">
-                <input type="hidden" id="{{ field.name }}_url_filename" name="{{ field.name }}_url_filename" value="" onchange="if (this.value) { var $q = $('.{{ question_class }}'); $q.find('.jobapp-chosen-file').removeClass('hide').find('.jobapp-filename').text(this.value); $q.find('.job-application-field').addClass('hide'); }">
-            </div>
             {%- endif %}
 
             {%- if field.type === 'multi_value_single_select' || field.type === 'multi_value_multi_select' %}
@@ -169,29 +163,9 @@
     <!-- Footer -->
     {% include "../src/partials/footer.html" with { 'relative_path_to_root': relative_path_to_root } %}
 
-    <script type="text/javascript" src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="pk0ofxzs5utzfad"></script>
     <script async src="{{ relative_path_to_root }}js/tech.zalando-all.js"></script>
 
     <script async type="text/javascript">
-
-        function selectFromDropbox(input) {
-            Dropbox.choose({
-                success: function(files) {
-                    var $url = $(input);
-                    var $name = $url.next();
-                    $url.val(files[0].link);
-                    $name.val(files[0].name);
-
-                    $name[0].onchange();
-                },
-                cancel: function() {
-
-                },
-                linkType: "direct",
-                multiselect: false,
-                extensions: [".pdf", ".doc", ".docx", ".txt", ".rtf"]
-            })
-        }
         function onLinkedInLoad() {
             IN.Event.on(IN, "auth", getLinkedinProfileData);
         }
