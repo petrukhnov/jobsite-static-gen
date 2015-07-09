@@ -32,9 +32,9 @@ $(function() {
 
         // Playing the home video differs on mobile and desktop (model popup vs
         // visiting the video URL). Both cases are tracked as identical events.
-        var pageTitle = $('title').text();
-        $('#play-home-video').click(eventTracker('Videos', 'Play', pageTitle + ' Video'));
-        $('#goto-home-video').click(linkTracker('Videos', 'Play', pageTitle + ' Video'));
+        var eventLabel = $('title').text() + ' Video';
+        $('#play-home-video').click(eventTracker('Videos', 'Play', eventLabel));
+        $('#goto-home-video').click(linkTracker('Videos', 'Play', eventLabel));
 
     }(jQuery));
 
