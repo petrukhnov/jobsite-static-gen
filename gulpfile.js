@@ -15,6 +15,7 @@ var swig = require('swig'),
 // include gulp plugins
 var fs = require('fs'),
     execSync = require('child_process').execSync,
+    md5 = require('MD5'),
     program = require('commander'),
     jshint = require('gulp-jshint'),
     sass = require('gulp-sass'),
@@ -246,7 +247,7 @@ gulp.task('clean:all', ['clean'], function() {
 });
 
 // pull contents from prismic and generate static html
-gulp.task('metalsmith', function() {
+gulp.task('metalsmith', ['minify-css'], function() {
     try { fs.mkdirSync('build/posts', 0755); } catch (e) {}
     return gulp.src(['src/**/*.md'])
         .pipe(gulp_front_matter()).on('data', function(file) {
@@ -259,7 +260,8 @@ gulp.task('metalsmith', function() {
                   // Default title and description meta tags.
                   // Can be overridden in page layouts via the head.html partial
                   'title': 'Zalando Tech',
-                  'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.'
+                  'description': 'This is the home of Zalando Tech. We dress code! Check out our job page for available positions.',
+                  'cssHash': fileHash('build/css/tech.zalando-all.css')
               })
               .use(prismic({
                   'url': 'https://zalando-jobsite.prismic.io/api',
@@ -312,7 +314,7 @@ gulp.task('rename-js', ['metalsmith'], function() {
 // build static website from sources
 gulp.task('build',function(cb) {
     runSequence('clean', ['metalsmith', 'rename-js', 'minify-js', 'minify-js:react',
-                          'minify-css', 'copy-assets'], 'build-to-dist', cb);
+                          'copy-assets'], 'build-to-dist', cb);
 });
 
 // publish to AWS S3
@@ -418,4 +420,8 @@ function notifyFailedBuild() {
     } catch(e) {
 
     }
+}
+
+function fileHash(filename) {
+    return md5(fs.readFileSync(filename)).substr(0, 10);
 }
