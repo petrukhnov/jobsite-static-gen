@@ -12,7 +12,7 @@ location:
   links:
     -
       link: http://www.moenchengladbach.de/index.php?id=freizeit_tourismus&L=1
-      image: moenchengladbach_flag.png
+      image: moenchengladbach_emblem.png
       title: Visit Mönchengladbach
       text: Explore the city Mönchengladbach!
     -
@@ -25,4 +25,8 @@ location:
       image: tripadvisor_logo.jpg
       title: TripAdvisor
       text: Your guide to hotels, restaurants and going out in Mönchengladbach.
+prismic:
+  authors:
+    query: '[[:d = at(document.type, "author")]]'
+    allPages: true
 ---
